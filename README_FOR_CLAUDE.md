@@ -49,11 +49,12 @@ Marcel's own labels are the source of truth; confirm with him when unsure.
 - Genre examples: Organic House, Deep House, Melodic House, Progressive House,
   Afro House, Minimal / Deep Tech. Often two joined with `&` or `·`.
 - Optional extras: `4K`, `4K Drone`, featured DJ names.
-- TIME-OF-DAY IN TITLES: Marcel tends to leave it OUT (he trimmed "Daytime" from
-  #24 and "Sunset" was not added to #25). Keep titles simple:
-  `[Genre] Mix at [Location], [Region] | Marcel Vibe [NN]`. Put the sunrise/
-  sunset/daytime detail in the description's `🕐 Time:` line instead. Only put a
-  time word in the title if it's truly the hook (e.g. #20, the only sunrise).
+- TIME-OF-DAY IN TITLES: it's Marcel's per-session call, so ALWAYS offer both
+  forms and let him pick. He trimmed "Daytime" from #24 but chose to keep
+  "Sunset" in #25. Default base form is simple:
+  `[Genre] Mix at [Location], [Region] | Marcel Vibe [NN]`, with `Sunset` /
+  `Sunrise` / `Daytime` as an optional word before "Mix". The `🕐 Time:` line in
+  the description always carries the detail regardless.
 - Always end with `| Marcel Vibe [NN]`.
 
 ## Description structure (in this order)
