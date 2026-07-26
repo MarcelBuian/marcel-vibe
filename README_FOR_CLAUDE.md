@@ -34,14 +34,26 @@ Marcel's own labels are the source of truth; confirm with him when unsure.
 - Reserve **Progressive House** for genuinely driving/peak progressive sets.
 - Melodic Techno only when there are clearly techno-leaning tracks (e.g. Argy &
   Goom Gum). Use sparingly.
-- Other labels seen: Organic House, Deep House, Afro House, Minimal / Deep Tech.
+- **Progressive House** (the deeper/driving, Sudbeat/Bedrock/Sound Avenue kind):
+  Hernan Cattaneo, Guy J, Gai Barone, Alex O'Rion, Simos Tagias, Digital Mess,
+  PROFF, Golan Zocher, Nicholas Van Orton. #23 and #24 are the reference sets.
+- **Organic House** (Hoomidas / Forestrip / Argentinian scene): Pambouk, Elliot
+  Moriarty, Nicolas Viana, Oovsha, Ivan Garci, Francisco Manrique, Valdovinos.
+  #25 is the reference set (Beatport confirms these as Organic House).
+- Other labels seen: Deep House, Afro House, Minimal / Deep Tech.
+- When Marcel asks, it's fine to WEB-SEARCH a couple of the set's key artists /
+  a signature track on Beatport to confirm the genre before labelling.
 
 ## Title formula
 `[Genre] [time/format] Mix at [Location], [Region] | Marcel Vibe [NN]`
 - Genre examples: Organic House, Deep House, Melodic House, Progressive House,
   Afro House, Minimal / Deep Tech. Often two joined with `&` or `·`.
-- Optional extras: `Sunset` / `Sunrise`, `4K`, `4K Drone`, featured DJ names.
-- Lead with whatever makes the session special (e.g. #20 = the only *sunrise*).
+- Optional extras: `4K`, `4K Drone`, featured DJ names.
+- TIME-OF-DAY IN TITLES: Marcel tends to leave it OUT (he trimmed "Daytime" from
+  #24 and "Sunset" was not added to #25). Keep titles simple:
+  `[Genre] Mix at [Location], [Region] | Marcel Vibe [NN]`. Put the sunrise/
+  sunset/daytime detail in the description's `🕐 Time:` line instead. Only put a
+  time word in the title if it's truly the hook (e.g. #20, the only sunrise).
 - Always end with `| Marcel Vibe [NN]`.
 
 ## Description structure (in this order)
