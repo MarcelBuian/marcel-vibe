@@ -65,7 +65,10 @@ Marcel's own labels are the source of truth; confirm with him when unsure.
 4. Metadata block, each on its own line:
    `📍 Location:` / `🕐 Time:` / `🎥 Shot in 4K (...)` / `🎵 Genres:`
    (DJs line `🎧 DJs:` when there are guests).
-5. `🎶 Tracklist` with timestamps (recent style uses `HH:MM:SS`).
+5. `🎶 Tracklist` with timestamps. TIMESTAMP FORMAT: always keep the consistent
+   `00:00:00` (HH:MM:SS) form Marcel uses across ALL sessions, first stamp
+   `00:00:00`. Do NOT switch to `0:00` / `M:SS` and do NOT recommend changing the
+   format for YouTube chapters - Marcel has decided catalogue consistency wins.
 6. A line of **exactly 3 hashtags** (standard from #20 on). YouTube only shows
    the first 3 above the title and ignores everything past 15, and the heavy
    discovery work lives in Tags.txt — so keep it to 3 clean, series-relevant
@@ -84,6 +87,10 @@ Marcel's own labels are the source of truth; confirm with him when unsure.
 - PUNCTUATION: Marcel does NOT use em dashes (—) or en dashes (–). Always use a
   plain hyphen "-" (e.g. "set - and it wasn't easy", "DUALIS - Avalon"). Never
   output — or – anywhere in titles, descriptions, or tags.
+- NO filler sign-offs. Do NOT add generic closers like "I hope you enjoy the
+  video and the music" or "don't forget to like & subscribe" - they add no
+  value. End the prose on the story itself, then go straight to the 📍 metadata
+  block.
 
 ## Tags style (Tags.txt)
 Comma-separated, no spaces needed between items. Always include MANY branding
