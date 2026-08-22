@@ -13,12 +13,32 @@ mkdir -p "$TARGET_FOLDER" && \
 --parse-metadata "%(album)s:%(album)s" \
 --parse-metadata "%(release_year)s:%(release_date)s" \
 --output "$TARGET_FOLDER/%(artist)s - %(title)s - %(release_year)s.%(ext)s" \
+--download-archive "$TARGET_FOLDER/archive.txt" \
 --no-overwrites \
 --no-mtime \
 --playlist-start 1 \
 --cookies-from-browser chrome \
 "https://music.youtube.com/playlist?list=PLoFzNYfE7BsiCqlFEJjndm53GIcXNAyDS" && \
 find "$TARGET_FOLDER/" -name "*.mp3" > "$TARGET_FOLDER.m3u"
+
+
+### ONE-TIME (per folder): seed archive.txt from songs already downloaded,
+### so the command above skips them instead of re-downloading. Checks metadata
+### only (a second or two per song, no downloads). Rerun-safe.
+cd ~/Music/yt-dlp/ && \
+TARGET_FOLDER="DeepAndMelodicHouse" && \
+./yt-dlp \
+--skip-download \
+--ignore-errors \
+-o "$TARGET_FOLDER/%(artist)s - %(title)s - %(release_year)s.mp3" \
+--print "%(id)s" \
+--print filename \
+--cookies-from-browser chrome \
+"https://music.youtube.com/playlist?list=PLoFzNYfE7BsiCqlFEJjndm53GIcXNAyDS" \
+| paste - - | while IFS=$'\t' read -r id fn; do
+  [ -f "$fn" ] && echo "youtube $id"
+done > "$TARGET_FOLDER/archive.txt" && \
+wc -l "$TARGET_FOLDER/archive.txt"
 
 
 
