@@ -45,12 +45,20 @@ BOT_AUTHORS = {"@monstercatbot", "monstercatbot"}
 TRACK_RE = re.compile(r"'(?P<title>[^']+)' by (?P<artist>.+?)[!.]?\s*$")
 # Same track re-announced within this window counts as the same spin.
 SAME_SPIN_SECONDS = 12 * 60
+# yt-dlp dying this fast means it's broken (stale version), not a stream hiccup.
+QUICK_FAIL_SECONDS = 60
+# After this many quick failures in a row, download a fresh standalone yt-dlp.
+UPDATE_AFTER_FAILURES = 3
+
+YTDLP_ASSET = {"darwin": "yt-dlp_macos", "win32": "yt-dlp.exe"}.get(sys.platform, "yt-dlp")
+YTDLP_LOCAL = os.path.join(SCRIPT_DIR, "yt-dlp.exe" if sys.platform == "win32" else "yt-dlp")
 
 
 def find_ytdlp(override=None):
-    """Locate yt-dlp: --ytdlp flag, .venv next to this script, or PATH."""
+    """Locate yt-dlp: --ytdlp flag, downloaded binary, .venv, or PATH."""
     candidates = [override] if override else []
     candidates += [
+        YTDLP_LOCAL,  # standalone binary fetched by download_ytdlp()
         os.path.join(SCRIPT_DIR, ".venv", "bin", "yt-dlp"),
         os.path.join(SCRIPT_DIR, ".venv", "Scripts", "yt-dlp.exe"),  # Windows
         shutil.which("yt-dlp"),
@@ -63,6 +71,36 @@ def find_ytdlp(override=None):
         "  python3 -m venv .venv && .venv/bin/pip install yt-dlp\n"
         "(see README.md), or pass --ytdlp /path/to/yt-dlp"
     )
+
+
+def download_ytdlp(current):
+    """Fetch the latest standalone yt-dlp; returns the path to use, or None.
+
+    YouTube regularly breaks old yt-dlp versions, and pip installs can be
+    pinned to an old release by the Python version (e.g. macOS system 3.9).
+    The standalone release binary bundles its own Python, so it always works.
+    Overwrites `current` when it's ours (under this script's directory),
+    otherwise leaves system/pip installs alone and saves next to the script.
+    """
+    dest = current if os.path.abspath(current).startswith(SCRIPT_DIR + os.sep) else YTDLP_LOCAL
+    url = f"https://github.com/yt-dlp/yt-dlp/releases/latest/download/{YTDLP_ASSET}"
+    print(f"Downloading latest yt-dlp to {dest} ...", flush=True)
+    import urllib.request
+
+    tmp = dest + ".new"
+    try:
+        with urllib.request.urlopen(url, timeout=120) as r, open(tmp, "wb") as f:
+            shutil.copyfileobj(r, f)
+        os.chmod(tmp, 0o755)
+        os.replace(tmp, dest)
+    except OSError as e:
+        print(f"Download failed ({e}); keeping current yt-dlp.", flush=True)
+        try:
+            os.remove(tmp)
+        except OSError:
+            pass
+        return None
+    return dest
 
 
 def lookup_song(ytdlp, artist, title):
@@ -218,8 +256,10 @@ def cmd_log(args):
     print(f"Songs file: {SONGS_CSV}  (Ctrl+C to stop)", flush=True)
 
     proc = None
+    quick_fails = 0
     try:
         while True:
+            started = time.monotonic()
             session = os.path.join(
                 DATA_DIR, "chat-" + dt.datetime.now().strftime("%Y%m%d-%H%M%S")
             )
@@ -261,6 +301,20 @@ def cmd_log(args):
                             label = f"play #{song['plays']}"
                         print(f"[{ts:%Y-%m-%d %H:%M}] {label}: {artist} — {title}{extra}", flush=True)
             remove_chat_dumps(session)
+            if proc.returncode != 0 and time.monotonic() - started < QUICK_FAIL_SECONDS:
+                quick_fails += 1
+            else:
+                quick_fails = 0
+            if quick_fails >= UPDATE_AFTER_FAILURES:
+                print(
+                    f"yt-dlp failed {quick_fails} times in a row — "
+                    "probably outdated, fetching the latest standalone build...",
+                    flush=True,
+                )
+                fresh = download_ytdlp(ytdlp)
+                if fresh:
+                    ytdlp = fresh
+                    quick_fails = 0
             print("yt-dlp exited (stream hiccup?), restarting in 30s...", flush=True)
             time.sleep(30)
     except KeyboardInterrupt:
