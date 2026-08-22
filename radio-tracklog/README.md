@@ -15,28 +15,34 @@ with a first-added date, a play counter, and a last-played date that update
 whenever the song repeats. It can also look up each song's YouTube link and
 release year.
 
-## Requirements
+## Quick start (new laptop)
 
-- Python 3.9 or newer (`python3 --version` to check)
-- Internet connection
-- Nothing else — yt-dlp is installed into a local `.venv` folder in step 1
-
-## Setup (one time, per laptop)
-
-Open a terminal in this folder and run:
+Copy this folder (without `.venv`, if present), open a terminal, and run:
 
 ```bash
-cd "$(dirname "$0")" 2>/dev/null; cd /path/to/MarcelVibe/radio-tracklog   # this folder
+cd radio-tracklog
 python3 -m venv .venv
 .venv/bin/pip install yt-dlp
+python3 radio_tracklog.py log
 ```
 
-On **Windows** use instead:
+That's everything — the first two `.venv` lines are one-time setup, the
+last line starts the logger. Details below.
+
+On **Windows** the setup lines are instead:
 
 ```bat
 py -m venv .venv
 .venv\Scripts\pip install yt-dlp
+py radio_tracklog.py log
 ```
+
+## Requirements
+
+- Python 3.9 or newer (`python3 --version` to check)
+- Internet connection
+- Nothing else — yt-dlp is installed into a local `.venv` folder by the
+  setup lines above
 
 ## Run
 
@@ -47,12 +53,16 @@ python3 radio_tracklog.py log
 ```
 
 Leave it running (hours or days — the longer, the better the data).
-Every detected spin is printed as it appears (`NEW` = first time ever seen):
+Every detected spin is printed as it happens — either a brand-new song or
+a counter increment:
 
 ```
-[2026-08-22 12:24] NEW rshand — Unworthy
-[2026-08-22 12:31]     Enviado Vida — Touch This Feeling
+[2026-08-22 12:24] NEW song added: rshand — Unworthy  (2025)  https://www.youtube.com/watch?v=vc_WFWM9XGc
+[2026-08-22 12:31] play #2: Enviado Vida — Touch This Feeling
 ```
+
+New songs are looked up on YouTube right away, so their link and year land
+in `songs.csv` (and on screen) the moment they are added.
 
 Stop with `Ctrl+C` (it prints the stats summary on exit).
 If the stream or connection hiccups, the script reconnects by itself.
@@ -82,11 +92,13 @@ playlist.
 python3 radio_tracklog.py enrich
 ```
 
-For every song that doesn't have them yet, this searches YouTube (via
-yt-dlp) and fills the `youtube` and `year` columns in `songs.csv`. Run it
-again anytime — it only looks up songs that are still missing info. The
-chat bot itself only announces title + artist, so this lookup is how the
-extra details get in.
+New songs get their YouTube link and year automatically while logging, so
+normally you won't need this. It exists as a repair tool: for every song
+still missing that info (e.g. the live lookup failed, or rows from before
+this feature), it searches YouTube via yt-dlp and fills the `youtube` and
+`year` columns in `songs.csv`. Run it anytime — it only touches songs with
+missing info. The chat bot itself only announces title + artist, so these
+lookups are how the extra details get in.
 
 ### 3. See which songs repeat the most
 

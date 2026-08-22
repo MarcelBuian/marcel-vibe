@@ -1,0 +1,5 @@
+# machine-specific Python env — recreate with: python3 -m venv .venv && .venv/bin/pip install yt-dlp
+.venv/
+
+# transient chat dumps written while the logger runs (auto-deleted on exit)
+tracklog/chat-*

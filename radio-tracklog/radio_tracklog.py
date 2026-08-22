@@ -65,6 +65,27 @@ def find_ytdlp(override=None):
     )
 
 
+def lookup_song(ytdlp, artist, title):
+    """Search YouTube for the song; returns (url, year) — either may be None."""
+    try:
+        out = subprocess.run(
+            [
+                ytdlp,
+                "--skip-download",
+                "--print",
+                "%(webpage_url)s\t%(release_year,upload_date>%Y)s",
+                f"ytsearch1:{artist} {title}",
+            ],
+            capture_output=True, text=True, timeout=60,
+        ).stdout.strip()
+    except (subprocess.TimeoutExpired, OSError):
+        return None, None
+    parts = out.split("\t")
+    if len(parts) == 2 and parts[0].startswith("http"):
+        return parts[0], (parts[1] if parts[1].isdigit() else None)
+    return None, None
+
+
 class SongBook:
     """songs.csv: one row per song; counter and last_played update on repeat."""
 
@@ -225,9 +246,20 @@ def cmd_log(args):
                         continue
                     result = book.add_spin(ts, *track)
                     if result:
+                        title, artist = track
+                        song = book.songs[(artist, title)]
+                        if result == "new":
+                            song["youtube"], song["year"] = (
+                                v or "" for v in lookup_song(ytdlp, artist, title)
+                            )
                         book.save()
-                        tag = "NEW " if result == "new" else "    "
-                        print(f"[{ts:%Y-%m-%d %H:%M}] {tag}{track[1]} — {track[0]}", flush=True)
+                        if result == "new":
+                            extra = f"  ({song['year'] or 'year?'})  {song['youtube'] or 'no link found'}"
+                            label = "NEW song added"
+                        else:
+                            extra = ""
+                            label = f"play #{song['plays']}"
+                        print(f"[{ts:%Y-%m-%d %H:%M}] {label}: {artist} — {title}{extra}", flush=True)
             remove_chat_dumps(session)
             print("yt-dlp exited (stream hiccup?), restarting in 30s...", flush=True)
             time.sleep(30)
@@ -284,24 +316,11 @@ def cmd_enrich(args):
     print(f"Looking up {len(todo)} songs on YouTube (a few seconds each)...", flush=True)
     for r in todo:
         query = f"{r['artist']} {r['title']}"
-        try:
-            out = subprocess.run(
-                [
-                    ytdlp,
-                    "--skip-download",
-                    "--print",
-                    "%(webpage_url)s\t%(release_year,upload_date>%Y)s",
-                    f"ytsearch1:{query}",
-                ],
-                capture_output=True, text=True, timeout=60,
-            ).stdout.strip()
-        except subprocess.TimeoutExpired:
-            out = ""
-        parts = out.split("\t")
-        if len(parts) == 2 and parts[0].startswith("http"):
-            r["youtube"] = r["youtube"] or parts[0]
-            if parts[1].isdigit():
-                r["year"] = r["year"] or parts[1]
+        url, year = lookup_song(ytdlp, r["artist"], r["title"])
+        if url:
+            r["youtube"] = r["youtube"] or url
+            if year:
+                r["year"] = r["year"] or year
             book.save()
             print(f"  {query}  ->  {r['year'] or '?'}  {r['youtube']}", flush=True)
         else:
