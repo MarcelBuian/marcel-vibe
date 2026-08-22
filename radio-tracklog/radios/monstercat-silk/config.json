@@ -1,0 +1,14 @@
+{
+  "url": "https://www.youtube.com/watch?v=WsDyRAPFBC8",
+  "capture_interval_seconds": 60,
+  "ocr_region": {
+    "x": [
+      0.12,
+      0.75
+    ],
+    "y": [
+      0.02,
+      0.4
+    ]
+  }
+}

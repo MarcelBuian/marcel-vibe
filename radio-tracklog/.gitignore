@@ -1,14 +1,22 @@
-# machine-specific Python env — recreate with: python3 -m venv .venv && .venv/bin/pip install yt-dlp
+# optional machine-specific Python env (not required — the script uses
+# the standalone yt-dlp binary it downloads itself)
 .venv/
 
-# standalone yt-dlp binary, auto-downloaded by the script when yt-dlp breaks
+# standalone binaries, auto-downloaded by the script on first use
 /yt-dlp
 /yt-dlp.exe
 /yt-dlp.new
 /yt-dlp.exe.new
+/ffmpeg
+/ffmpeg.exe
+/ffmpeg.new
 
-# transient chat dumps written while the logger runs (auto-deleted on exit)
-tracklog/chat-*
+# compiled OCR helper, rebuilt automatically from ocr.swift
+/.ocr
+
+# transient files written while the loggers run (auto-cleaned on exit)
+radios/*/chat-*
+radios/*/.frame.jpg*
 
 # Python bytecode cache, auto-regenerated
 __pycache__/

@@ -1,81 +1,124 @@
 # Radio Tracklog
 
-Logs the songs played on the YouTube 24/7 radio stream
-**"Deep & Melodic House 24/7: Relaxing Music • Chill Study Music"** (Monstercat Silk)
-and tells you which songs repeat and **when each song was heard for the first time**.
+Logs the songs played on YouTube 24/7 radio streams and tells you which
+songs repeat and **when each song was heard for the first time**. Ships
+configured for **"Deep & Melodic House 24/7"** (Monstercat Silk), and any
+number of other radios can be added — each one lives in its own folder
+under `radios/` with its own settings and song list.
 
-How it works: the stream's chat bot (`@monstercatbot`) names the currently
-playing track whenever a viewer types `!track` or `!love` in the live chat, e.g.
+Two independent ways of hearing what's playing:
 
-> @someone loves 'Toast' by Flexible Fire feat. Fractures!
+- **`watch` (recommended, macOS)** — grabs one video frame every N seconds
+  and reads the stream's on-screen "now playing" overlay using macOS's
+  built-in OCR (the Vision framework — on-device, offline, free, no AI
+  service and no API keys). Catches **every** song with its start time.
+- **`log`** — captures the live chat with yt-dlp and parses the chat bot's
+  track announcements (`@someone loves 'Toast' by Flexible Fire!`). Works
+  on any OS, but it's sampled: the bot only speaks when a viewer types
+  `!track` or `!love`, so quiet chat means gaps.
 
-This script captures the live chat with yt-dlp, extracts those bot messages,
-and maintains **`tracklog/songs.csv`** — one row per song, never duplicated,
-with a first-added date, a play counter, and a last-played date that update
-whenever the song repeats. It can also look up each song's YouTube link and
-release year.
+Both write the same **`radios/<name>/songs.csv`** — one row per song,
+never duplicated, with a first-added date, a play counter, and a
+last-played date that update whenever the song repeats. They can run at
+the same time and cross-check each other.
 
 ## Quick start (new laptop)
 
-Copy this folder (without `.venv`, if present), open a terminal, and run:
+Copy this folder, open a terminal, and run:
 
 ```bash
 cd radio-tracklog
-python3 -m venv .venv
-.venv/bin/pip install yt-dlp
-python3 radio_tracklog.py log
+python3 radio_tracklog.py watch
 ```
 
-That's everything — the first two `.venv` lines are one-time setup, the
-last line starts the logger. Details below.
+That's everything. On first run the script sets itself up — no venv, no
+pip, no manual installs, no questions:
 
-On **Windows** the setup lines are instead:
+- **yt-dlp**: downloaded automatically (standalone build, ~35 MB).
+- **ffmpeg**: downloaded automatically (static build, ~30 MB).
+- **OCR helper**: `ocr.swift` is compiled automatically (~30s). This needs
+  Apple's Command Line Tools — if `swiftc` is missing, run
+  `xcode-select --install` once and re-run.
+- **radios/monstercat-silk/**: created with a default `config.json`.
 
-```bat
-py -m venv .venv
-.venv\Scripts\pip install yt-dlp
-py radio_tracklog.py log
+The same self-setup keeps things working over time: when YouTube breaks
+an old yt-dlp (it regularly does), the script notices the repeated
+failures and re-downloads the latest build by itself.
+
+On Windows/Linux only the chat-based `log` mode works (`watch` uses
+macOS-only OCR); install ffmpeg/yt-dlp via your package manager if the
+auto-download doesn't cover your platform.
+
+## Radios and their settings
+
+Each radio is a folder: `radios/<name>/` containing `config.json` and
+`songs.csv`. With a single radio, commands need no arguments; with
+several, name the one you mean: `python3 radio_tracklog.py watch chill`.
+
+`config.json` parameters:
+
+```json
+{
+  "url": "https://www.youtube.com/watch?v=WsDyRAPFBC8",
+  "capture_interval_seconds": 60,
+  "ocr_region": {"x": [0.12, 0.75], "y": [0.02, 0.4]}
+}
 ```
 
-## Requirements
+- **`url`** — the YouTube live stream to follow.
+- **`capture_interval_seconds`** — `watch` mode: how often to grab a frame
+  and read the overlay. 60 is a good default (songs run 3–5 minutes).
+- **`ocr_region`** — `watch` mode: where the now-playing overlay sits in
+  the frame, as fractions of width/height **measured from the bottom-left
+  corner**. The default matches Monstercat's bottom-left overlay while
+  excluding the cover art and the social handle in the top corner. Adjust
+  per radio if a stream draws its overlay elsewhere.
 
-- Python 3.9 or newer (`python3 --version` to check)
-- Internet connection
-- Nothing else — yt-dlp is installed into a local `.venv` folder by the
-  setup lines above
+**Adding a radio**: run `python3 radio_tracklog.py watch my-radio` — the
+folder and a default `config.json` are created — then put the stream's
+URL into that `config.json` and run it again.
 
 ## Run
 
-### 1. Start logging
+### 1. Start watching (macOS)
+
+```bash
+python3 radio_tracklog.py watch
+```
+
+Prints one line per song change; between changes it prints compact
+progress marks so you can see it's alive:
+
+```
+[2026-08-22 13:20] NEW song added: Arnie Way & Toutounji — Somebody  (2024)  https://...
+....
+[2026-08-22 13:24] NEW song added: Dokho — Finding Solane  (2026)  https://...
+..?.
+```
+
+- `.` — same song still playing (nothing counted, on purpose)
+- `?` — frame captured but the overlay couldn't be read
+- `x` — capture hiccup (network/stream); recovers by itself
+
+Stop with `Ctrl+C` (prints the stats summary on exit).
+
+### Alternative/extra: chat-based logging
 
 ```bash
 python3 radio_tracklog.py log
 ```
 
-Leave it running (hours or days — the longer, the better the data).
-Every detected spin is printed as it happens — either a brand-new song or
-a counter increment:
-
-```
-[2026-08-22 12:24] NEW song added: rshand — Unworthy  (2025)  https://www.youtube.com/watch?v=vc_WFWM9XGc
-[2026-08-22 12:31] play #2: Enviado Vida — Touch This Feeling
-```
-
-New songs are looked up on YouTube right away, so their link and year land
-in `songs.csv` (and on screen) the moment they are added.
-
-Stop with `Ctrl+C` (it prints the stats summary on exit).
-If the stream or connection hiccups, the script reconnects by itself.
-
-If yt-dlp keeps failing right after starting (YouTube regularly breaks old
-yt-dlp versions), the script downloads the latest standalone yt-dlp build
-from GitHub into this folder automatically and carries on with that — no
-manual updating needed.
+Same output format, driven by the chat bot instead of the screen. Useful
+on non-macOS machines, or alongside `watch` — both update the same
+`songs.csv` without double counting (a song re-announced within 12
+minutes counts as the same spin, and songs are matched
+case-insensitively across the two sources).
 
 ### 2. Get the result — one row per song, no duplicates
 
 ```bash
-python3 radio_tracklog.py list
+python3 radio_tracklog.py list    # oldest first
+python3 radio_tracklog.py stats   # most played first
 ```
 
 ```
@@ -84,60 +127,56 @@ first added  plays  last played  year  song
 2026-08-21       3  2026-08-24   2024  Flexible Fire feat. Fractures — Toast
 ```
 
-Oldest first. `first added` never changes; `plays` and `last played` are
-updated every time the song repeats. This is the same data as
-**`tracklog/songs.csv`** (columns:
-`first_added,plays,last_played,artist,title,youtube,year`), which is kept up
-to date live while the logger runs — open that file if you just want the
-playlist.
+`first added` never changes; `plays` and `last played` update every time
+the song repeats. The same data lives in **`radios/<name>/songs.csv`**
+(columns: `first_added,plays,last_played,artist,title,youtube,year`),
+kept up to date live — open that file if you just want the playlist.
 
-### Optional: add YouTube links and release years
+### Optional: fill in missing YouTube links and years
 
 ```bash
 python3 radio_tracklog.py enrich
 ```
 
-New songs get their YouTube link and year automatically while logging, so
-normally you won't need this. It exists as a repair tool: for every song
-still missing that info (e.g. the live lookup failed, or rows from before
-this feature), it searches YouTube via yt-dlp and fills the `youtube` and
-`year` columns in `songs.csv`. Run it anytime — it only touches songs with
-missing info. The chat bot itself only announces title + artist, so these
-lookups are how the extra details get in.
+New songs get their YouTube link and release year automatically the
+moment they're added; `enrich` is the repair tool for rows where that
+live lookup failed. Run it anytime — it only touches incomplete rows.
 
-### 3. See which songs repeat the most
+## Artist-name casing (`radios/<name>/artist-casing.txt`)
 
-```bash
-python3 radio_tracklog.py stats
-```
-
-```
-plays  first seen       last seen        track
-    7  2026-08-21T14:42 2026-08-24T09:10 Enviado Vida — Touch This Feeling
-    3  2026-08-21T15:29 2026-08-23T22:01 Flexible Fire feat. Fractures — Toast
-```
+The on-screen overlay prints everything in CAPITALS, so `watch`
+normalizes names to Title Case (`ARNIE WAY & TOUTOUNJI` → `Arnie Way &
+Toutounji`, `SOMEBODY` → `Somebody`). Some artists' names really are
+uppercase (or lowercase) on purpose — list them in the radio's own
+`artist-casing.txt`, one per line with their exact spelling, and the
+script keeps that casing. Each radio has its own file (created
+automatically) since every station has its own artist roster; the
+Monstercat one comes pre-filled with a few known names (PROFF, PRAANA,
+zensei, …). When you spot a new all-caps artist in `songs.csv`, check how
+they spell themselves (their YouTube/Spotify page) and add them to the
+file. Names containing dots or digits (A.M.R) are left untouched
+automatically.
 
 ## Good to know
 
-- **`tracklog/songs.csv` is the single source of truth** — one row per
-  song, no duplicates. To move your history to another laptop, copy that
-  one file; the script continues where it left off (the newest
-  `last_played` date is what stops it from re-counting YouTube's chat
-  backlog after a restart). Note: only per-song totals are kept, not the
-  time of every individual play.
-- **The log is sampled.** The bot only names the track when someone in chat
-  asks it, so quiet periods leave gaps. Counts are a lower bound. Bonus: on
-  every start YouTube sends a backlog of recent chat, so you also get some
-  history from before you started the script.
-- **You can help the sampling**: open the stream in a browser and type
-  `!track` in the chat yourself — the script will catch the bot's answer.
-- `tracklog/chat-*.json*` files are raw chat dumps — just the transport the
-  script reads from while logging. They are deleted automatically when a
-  session ends; if you ever see leftovers (e.g. after a crash), they are
-  safe to delete.
-- **Other streams**: `python3 radio_tracklog.py log --url <youtube-live-url>`
-  works for any 24/7 stream whose bot announces tracks as `'Title' by Artist`
-  (edit `BOT_AUTHORS` / `TRACK_RE` at the top of the script for other bots).
-- The full official rotation of this stream is also published as a Spotify
-  playlist: https://monster.cat/chillhouse — the script tells you what
-  actually played and when; the playlist tells you everything that *can* play.
+- **`songs.csv` is the single source of truth** — to move a radio's
+  history to another laptop, copy its folder under `radios/`; the script
+  continues where it left off (the newest `last_played` date stops it
+  from re-counting the chat backlog after a restart). Only per-song
+  totals are kept, not the time of every individual play.
+- **The binaries are disposable** — `yt-dlp`, `ffmpeg`, and `.ocr` in
+  this folder are auto-downloaded/compiled; they don't need to be copied
+  to another machine (but copying them saves the first-run downloads).
+- `chat-*.json*` and `.frame.jpg` files inside a radio's folder are
+  transient transport files; they're cleaned up automatically, and are
+  safe to delete if a crash ever leaves them behind.
+- **Chat sampling can be helped**: open the stream in a browser and type
+  `!track` in the chat — the `log` mode will catch the bot's answer.
+- **Other chat bots**: `log` mode is tuned to Monstercat's bot; edit
+  `BOT_AUTHORS` / `TRACK_RE` at the top of the script for other bots.
+  `watch` mode has no such dependency — just set `url` and, if needed,
+  `ocr_region`.
+- The full official rotation of the Monstercat Silk stream is also
+  published as a Spotify playlist: https://monster.cat/chillhouse — the
+  script tells you what actually played and when; the playlist tells you
+  everything that *can* play.

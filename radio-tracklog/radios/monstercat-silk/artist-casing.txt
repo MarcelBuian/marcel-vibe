@@ -1,0 +1,16 @@
+# Exact artist-name casing for names that are not simple "Title Case".
+#
+# The watch mode reads the stream's on-screen overlay, which prints
+# everything in CAPITALS, so the script rewrites names to Title Case
+# ("ARNIE WAY" -> "Arnie Way"). Any name listed here keeps the exact
+# casing written below instead — use it for artists whose names are
+# intentionally UPPERCASE, lowercase, or otherwise unusual, for this radio.
+#
+# One name per line, matching is case-insensitive, '#' lines are comments.
+# (Names containing dots or digits, like A.M.R, are already left alone.)
+BT
+EMBRZ
+LTN
+PRAANA
+PROFF
+zensei
