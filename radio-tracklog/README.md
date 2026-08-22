@@ -67,6 +67,11 @@ in `songs.csv` (and on screen) the moment they are added.
 Stop with `Ctrl+C` (it prints the stats summary on exit).
 If the stream or connection hiccups, the script reconnects by itself.
 
+If yt-dlp keeps failing right after starting (YouTube regularly breaks old
+yt-dlp versions), the script downloads the latest standalone yt-dlp build
+from GitHub into this folder automatically and carries on with that — no
+manual updating needed.
+
 ### 2. Get the result — one row per song, no duplicates
 
 ```bash
