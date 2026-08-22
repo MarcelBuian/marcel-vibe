@@ -3,3 +3,6 @@
 
 # transient chat dumps written while the logger runs (auto-deleted on exit)
 tracklog/chat-*
+
+# Python bytecode cache, auto-regenerated
+__pycache__/
