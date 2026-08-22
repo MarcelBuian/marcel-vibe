@@ -653,23 +653,35 @@ def read_overlay(ocr_bin, frame_path, region):
     for line in r.stdout.splitlines():
         try:
             coords, text = line.split("\t", 1)
-            x, y = (float(v) for v in coords.split())
+            x, y, w = (float(v) for v in coords.split())
         except ValueError:
             continue
+        text = text.strip()
+        # timers ("1:11"), waveform numbers, photo junk: no letters, no name
+        if not any(c.isalpha() for c in text):
+            continue
         if (region["x"][0] <= x <= region["x"][1]
-                and region["y"][0] <= y <= region["y"][1] and text.strip()):
-            rows.append((y, x, text.strip()))
-    # group into visual lines (same height), left to right, top first
+                and region["y"][0] <= y <= region["y"][1]):
+            rows.append((y, x, w, text))
+    # group into visual lines (same height), left to right, top first —
+    # joining only fragments that sit right next to each other
     rows.sort(key=lambda t: (-round(t[0], 2), t[1]))
-    lines = []
-    for y, _x, text in rows:
-        if lines and abs(lines[-1][0] - y) < 0.025:
-            lines[-1] = (lines[-1][0], lines[-1][1] + " " + text)
+    lines = []  # [y, x_start, x_end, text]
+    for y, x, w, text in rows:
+        if lines and abs(lines[-1][0] - y) < 0.025 and x - lines[-1][2] < 0.05:
+            lines[-1][2] = max(lines[-1][2], x + w)
+            lines[-1][3] += " " + text
         else:
-            lines.append((y, text))
+            lines.append([y, x, x + w, text])
+    if not lines:
+        return None
+    # the overlay block is left-aligned: artist and title share their left
+    # edge — anything starting further right is background junk, not a line
+    left = min(ln[1] for ln in lines)
+    lines = [ln for ln in lines if ln[1] - left < 0.04]
     if len(lines) < 2:
         return None
-    return lines[1][1], lines[0][1]  # (title, artist)
+    return lines[1][3], lines[0][3]  # (title, artist)
 
 
 def cmd_watch(args):

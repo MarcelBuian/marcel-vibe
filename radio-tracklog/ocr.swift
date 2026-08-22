@@ -2,9 +2,10 @@
 // built-in Vision framework — fully on-device and offline.
 // Compiled automatically by the script (swiftc -O -o .ocr ocr.swift).
 //
-// Prints one line per recognized text:  "<x> <y>\t<text>"
+// Prints one line per recognized text:  "<x> <y> <width>\t<text>"
 // where x/y are the text's position as fractions of the frame measured
-// from the BOTTOM-LEFT corner (Vision's coordinate system).
+// from the BOTTOM-LEFT corner (Vision's coordinate system) and width is
+// the text's width as a fraction of the frame width.
 import Foundation
 import Vision
 import AppKit
@@ -19,7 +20,7 @@ let req = VNRecognizeTextRequest { request, _ in
     for obs in (request.results as? [VNRecognizedTextObservation]) ?? [] {
         if let top = obs.topCandidates(1).first {
             let b = obs.boundingBox
-            print("\(String(format: "%.3f %.3f", b.origin.x, b.origin.y))\t\(top.string)")
+            print("\(String(format: "%.3f %.3f %.3f", b.origin.x, b.origin.y, b.size.width))\t\(top.string)")
         }
     }
 }
