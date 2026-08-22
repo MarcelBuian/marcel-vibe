@@ -22,23 +22,18 @@ mkdir -p "$TARGET_FOLDER" && \
 find "$TARGET_FOLDER/" -name "*.mp3" > "$TARGET_FOLDER.m3u"
 
 
-### ONE-TIME (per folder): seed archive.txt from songs already downloaded,
-### so the command above skips them instead of re-downloading. Checks metadata
-### only (a second or two per song, no downloads). Rerun-safe.
-cd ~/Music/yt-dlp/ && \
-TARGET_FOLDER="DeepAndMelodicHouse" && \
-./yt-dlp \
---skip-download \
---ignore-errors \
--o "$TARGET_FOLDER/%(artist)s - %(title)s - %(release_year)s.mp3" \
---print "%(id)s" \
---print filename \
---cookies-from-browser chrome \
-"https://music.youtube.com/playlist?list=PLoFzNYfE7BsiCqlFEJjndm53GIcXNAyDS" \
-| paste - - | while IFS=$'\t' read -r id fn; do
-  [ -f "$fn" ] && echo "youtube $id"
-done > "$TARGET_FOLDER/archive.txt" && \
-wc -l "$TARGET_FOLDER/archive.txt"
+### How --download-archive works (no seeding needed):
+### - yt-dlp already skips songs whose .mp3 exists ("has already been
+###   downloaded") AND records their ID into archive.txt while doing so.
+### - So the FIRST run with --download-archive takes the usual time
+###   (it still checks each song's metadata, but downloads nothing you
+###   already have) and fills archive.txt by itself, with normal progress
+###   output in the console.
+### - Every run AFTER that is instant: songs in archive.txt are skipped
+###   before any metadata is fetched ("has already been recorded in the
+###   archive", ~0.2s per song).
+### Same recipe for the other playlist folders: add the
+### --download-archive "$TARGET_FOLDER/archive.txt" line to their commands.
 
 
 
