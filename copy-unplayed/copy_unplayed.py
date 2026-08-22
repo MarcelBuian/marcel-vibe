@@ -19,6 +19,9 @@ case-insensitive, and suffixes like "(Extended Mix)", "[Silk Music]" or a
 different year don't prevent a match. Every fuzzy match is printed so you
 can check it. Rerun-safe: files already in the destination are not copied
 again.
+
+Add --prune to also DELETE songs from the destination that have since been
+added to the already-played file.
 """
 
 import argparse
@@ -67,6 +70,11 @@ def main():
     p.add_argument("folder_source", help="folder with the mp3 files")
     p.add_argument("folder_dest", help="folder to copy not-yet-played songs into")
     p.add_argument("file_already_played", help="text file listing played songs")
+    p.add_argument(
+        "--prune",
+        action="store_true",
+        help="also DELETE songs from the destination that are now in the played list",
+    )
     args = p.parse_args()
 
     src = os.path.expanduser(args.folder_source)
@@ -98,8 +106,22 @@ def main():
             shutil.copy2(os.path.join(src, fn), os.path.join(dst, fn))
             copied += 1
 
+    pruned = []
+    if args.prune:
+        for fn in sorted(os.listdir(dst)):
+            if not fn.lower().endswith(".mp3"):
+                continue
+            stem = re.sub(r"\s+-\s+(\d{4}|NA)\.mp3$", "", fn, flags=re.I)
+            if match_played(stem, played):
+                os.remove(os.path.join(dst, fn))
+                pruned.append(fn)
+
     print(f"copied {copied} new, {already_there} were already in destination, "
           f"skipped {len(skipped)} already-played")
+    if pruned:
+        print(f"\npruned {len(pruned)} now-played songs from destination:")
+        for fn in pruned:
+            print("  x", fn)
     if fuzzy:
         print("\nfuzzy matches (check these look right):")
         for entry, fn in fuzzy:

@@ -37,5 +37,8 @@ Marsh - Belle
   prevent a match. Every fuzzy match is printed so you can check it.
 - Rerun-safe: run it again after the played list grows — it only copies
   what's new, never duplicates.
+- Songs that were copied earlier and *later* added to the played list are
+  NOT removed by default. Add `--prune` at the end of the command to also
+  delete those from the destination (it prints every file it deletes).
 - At the end it lists played entries that matched no file, so you can
   spot typos or missing songs.
