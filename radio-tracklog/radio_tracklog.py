@@ -41,6 +41,7 @@ import signal
 import subprocess
 import sys
 import time
+import unicodedata
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 RADIOS_DIR = os.path.join(SCRIPT_DIR, "radios")
@@ -270,15 +271,35 @@ SEP_RE = re.compile(
 )
 
 
+def fold(text):
+    """Accent-insensitive form of a name — OCR reads NŌPI as NÖPI/NÓPI/NOPI
+    depending on the frame, so all matching happens on the folded form."""
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(c for c in text if not unicodedata.combining(c))
+    return text.translate(str.maketrans({
+        "ø": "o", "Ø": "O", "đ": "d", "Đ": "D", "ł": "l", "Ł": "L",
+        "ß": "ss", "æ": "ae", "Æ": "AE", "œ": "oe", "Œ": "OE",
+    }))
+
+
+def song_key(artist, title):
+    """Case- and accent-insensitive identity of a song."""
+    return (fold(artist).lower(), fold(title).lower())
+
+
 def load_artist_casing(radio):
-    """The radio's artist-casing.txt: exact spellings that defy Title Case."""
+    """The radio's artist-casing.txt: exact spellings that defy Title Case.
+
+    Keys are folded, so one entry ("Nōpi") covers every diacritic variant
+    OCR may produce for it.
+    """
     casing = {}
     if os.path.exists(radio.casing_path):
         with open(radio.casing_path, encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
                 if line and not line.startswith("#"):
-                    casing[line.lower()] = line
+                    casing[fold(line).lower()] = line
     return casing
 
 
@@ -291,13 +312,13 @@ def _cap(word):
 
 
 def _title_chunk(chunk, casing):
-    if chunk.lower() in casing:
-        return casing[chunk.lower()]
+    if fold(chunk).lower() in casing:
+        return casing[fold(chunk).lower()]
     words = []
     for i, w in enumerate(chunk.split()):
         lw = w.lower()
-        if lw in casing:
-            words.append(casing[lw])
+        if fold(w).lower() in casing:
+            words.append(casing[fold(w).lower()])
         elif "." in w or any(c.isdigit() for c in w):
             words.append(w)  # A.M.R, MK2, years — leave untouched
         elif i and lw in SMALL_WORDS:
@@ -317,8 +338,8 @@ def normalize_name(text, casing):
     text = " ".join(text.split())
     if not text or text != text.upper():
         return text
-    if text.lower() in casing:
-        return casing[text.lower()]
+    if fold(text).lower() in casing:
+        return casing[fold(text).lower()]
     out, pos = [], 0
     for m in SEP_RE.finditer(text):
         out += [_title_chunk(text[pos:m.start()], casing), m.group(0).lower()]
@@ -364,7 +385,7 @@ class SongBook:
         self._load()
 
     def _load(self):
-        self.songs = {}  # (artist.lower(), title.lower()) -> row dict
+        self.songs = {}  # song_key(artist, title) -> row dict
         self.max_last = None  # newest last_played; guards against chat backlog
         if not os.path.exists(self.path):
             return
@@ -373,7 +394,17 @@ class SongBook:
             for row in csv.DictReader(f):
                 row = {k: row.get(k, "") for k in FIELDS}
                 row["plays"] = int(row["plays"] or 1)
-                self.songs[(row["artist"].lower(), row["title"].lower())] = row
+                key = song_key(row["artist"], row["title"])
+                if key in self.songs:  # rows written before key folding — merge
+                    m = self.songs[key]
+                    m["plays"] += row["plays"]
+                    m["first_added"] = min(m["first_added"], row["first_added"])
+                    m["last_played"] = max(m["last_played"], row["last_played"])
+                    m["youtube"] = m["youtube"] or row["youtube"]
+                    m["year"] = m["year"] or row["year"]
+                    self.dirty = True
+                else:
+                    self.songs[key] = row
                 last = dt.datetime.fromisoformat(row["last_played"])
                 if self.max_last is None or last > self.max_last:
                     self.max_last = last
@@ -397,9 +428,9 @@ class SongBook:
         self.max_last = ts
         self.dirty = True
         iso = ts.isoformat(timespec="seconds")
-        song = self.songs.get((artist.lower(), title.lower()))
+        song = self.songs.get(song_key(artist, title))
         if song is None:
-            self.songs[(artist.lower(), title.lower())] = {
+            self.songs[song_key(artist, title)] = {
                 "first_added": iso, "plays": 1, "last_played": iso,
                 "artist": artist, "title": title, "youtube": "", "year": "",
             }
@@ -491,7 +522,7 @@ def record_spin(book, ytdlp, ts, title, artist, radio=None, downloads=None):
         if book.dirty:  # same-spin: last_played moved — persist it so the
             book.save()  # other process's same-spin window sees it too
         return None
-    song = book.songs[(artist.lower(), title.lower())]
+    song = book.songs[song_key(artist, title)]
     if result == "new":
         song["youtube"], song["year"] = (
             v or "" for v in lookup_song(ytdlp, song["artist"], song["title"])
@@ -880,7 +911,7 @@ def cmd_watch(args):
                 else:
                     title = normalize_name(got[0], casing)
                     artist = normalize_name(got[1], casing)
-                    key = (artist.lower(), title.lower())
+                    key = song_key(artist, title)
                     if key == last:
                         note(".")
                         pending = None
