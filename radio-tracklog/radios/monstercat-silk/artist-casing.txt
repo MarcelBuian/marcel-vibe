@@ -8,9 +8,20 @@
 #
 # One name per line, matching is case-insensitive, '#' lines are comments.
 # (Names containing dots or digits, like A.M.R, are already left alone.)
+ATTLAS
 BT
+Cornelius SA
 EMBRZ
+FM
+Jay FM
 LTN
+MXV
+MØØNE
+Nōpi
 PRAANA
 PROFF
+RAINE
+rshand
+terro
+TMPST
 zensei

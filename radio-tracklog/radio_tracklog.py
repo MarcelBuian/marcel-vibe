@@ -641,6 +641,19 @@ def grab_frame(ffmpeg, manifest_url, frame_path):
             pass
 
 
+def clean_ocr_text(text):
+    """Trim OCR junk from a name's edges and close unbalanced parentheses.
+
+    One-frame misreads produce things like "• Finding Mero", "Focus*",
+    "Sound Therapy -" or "Silver Lining (Intro Mix" — trailing periods are
+    kept (some titles really end in "Inc.").
+    """
+    text = text.strip(" \t'\"`•·|*®™-–—")
+    if text.count("(") > text.count(")"):
+        text += ")"
+    return text
+
+
 def read_overlay(ocr_bin, frame_path, region):
     """OCR the frame; returns (title, artist) from the overlay or None.
 
@@ -681,7 +694,10 @@ def read_overlay(ocr_bin, frame_path, region):
     lines = [ln for ln in lines if ln[1] - left < 0.04]
     if len(lines) < 2:
         return None
-    return lines[1][3], lines[0][3]  # (title, artist)
+    title, artist = clean_ocr_text(lines[1][3]), clean_ocr_text(lines[0][3])
+    if not title or not artist:
+        return None
+    return title, artist
 
 
 def cmd_watch(args):
@@ -702,10 +718,15 @@ def cmd_watch(args):
     frame = os.path.join(radio.folder, ".frame.jpg")
     print(f"Watching {radio.name}: {radio.url}", flush=True)
     print(f"One frame every {interval:.0f}s -> {radio.songs_csv}  (Ctrl+C to stop)", flush=True)
-    print("'.' = same song still playing, '?' = overlay unreadable, 'x' = capture hiccup", flush=True)
+    print(
+        "'.' = same song still playing, '+' = new name, awaiting a confirming read, "
+        "'?' = overlay unreadable, 'x' = capture hiccup",
+        flush=True,
+    )
 
     manifest = None
     last = None
+    pending = None  # unseen name waiting for a second identical read
     pending_dots = False
 
     def note(sym):
@@ -733,10 +754,18 @@ def cmd_watch(args):
                 else:
                     title = normalize_name(got[0], casing)
                     artist = normalize_name(got[1], casing)
-                    if (artist.lower(), title.lower()) == last:
+                    key = (artist.lower(), title.lower())
+                    if key == last:
                         note(".")
+                        pending = None
+                    elif key not in book.songs and key != pending:
+                        # a name never seen before: one-frame OCR misreads
+                        # look exactly like this, so ask for a second opinion
+                        pending = key
+                        note("+")
                     else:
-                        last = (artist.lower(), title.lower())
+                        pending = None
+                        last = key
                         line = record_spin(book, ytdlp, dt.datetime.now(), title, artist)
                         if line:
                             if pending_dots:

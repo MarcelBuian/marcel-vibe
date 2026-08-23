@@ -97,6 +97,9 @@ progress marks so you can see it's alive:
 ```
 
 - `.` — same song still playing (nothing counted, on purpose)
+- `+` — a name never seen before; the script waits for a second identical
+  read before adding it (one-frame OCR misreads die here, real new songs
+  just get logged one capture later)
 - `?` — frame captured but the overlay couldn't be read
 - `x` — capture hiccup (network/stream); recovers by itself
 
