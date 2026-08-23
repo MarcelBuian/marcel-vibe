@@ -22,6 +22,7 @@ Usage:
   python3 radio_tracklog.py list [radio]    # songs by first-added date
   python3 radio_tracklog.py stats [radio]   # songs by play count
   python3 radio_tracklog.py enrich [radio]  # look up YouTube link + year
+  python3 radio_tracklog.py download [radio] # backfill missing mp3s
 
 [radio] defaults to the only folder in radios/ (created on first run).
 yt-dlp and ffmpeg download themselves on first use — see README.md.
@@ -54,6 +55,9 @@ DEFAULT_CONFIG = {
     "url": DEFAULT_URL,
     # watch mode: how often to grab a frame and read the overlay
     "capture_interval_seconds": 60,
+    # also download every logged song as a best-quality mp3 into
+    # radios/<name>/mp3/ (see also the `download` command for backfilling)
+    "download_mp3": False,
     # watch mode: where the now-playing overlay sits in the frame, as
     # fractions of width/height measured from the BOTTOM-LEFT corner
     "ocr_region": {"x": [0.12, 0.75], "y": [0.02, 0.40]},
@@ -131,12 +135,18 @@ def download_ytdlp(current):
     return dest
 
 
-def find_ffmpeg():
-    """Locate ffmpeg (project folder or PATH); auto-download it on macOS."""
+def find_ffmpeg(optional=False):
+    """Locate ffmpeg (project folder or PATH); auto-download it on macOS.
+
+    With optional=True a missing ffmpeg returns None instead of exiting
+    (mp3 downloads are then skipped rather than killing the logger).
+    """
     for c in (FFMPEG_LOCAL, shutil.which("ffmpeg")):
         if c and os.path.exists(c):
             return c
     if sys.platform != "darwin":
+        if optional:
+            return None
         sys.exit("ffmpeg not found — install it and re-run (see README.md).")
     arch = {"arm64": "arm64", "x86_64": "amd64"}.get(platform.machine())
     if not arch:
@@ -419,7 +429,61 @@ class SongBook:
         self.dirty = False
 
 
-def record_spin(book, ytdlp, ts, title, artist):
+def mp3_path(radio, song):
+    """radios/<name>/mp3/Artist - Title - Year.mp3 (year only when known)."""
+    name = f"{song['artist']} - {song['title']}"
+    if song.get("year"):
+        name += f" - {song['year']}"
+    safe = re.sub(r'[\\/:*?"<>|]', "_", name)
+    return os.path.join(radio.folder, "mp3", safe + ".mp3")
+
+
+def download_mp3(radio, ytdlp, song, wait=False):
+    """Download a song's YouTube link as best-quality mp3 into radios/<name>/mp3/.
+
+    wait=False (the live loggers) runs yt-dlp in the background so the
+    capture loop keeps its rhythm; wait=True (the `download` command)
+    blocks and returns True/False.
+    """
+    url = song.get("youtube")
+    dest = mp3_path(radio, song)
+    if not url or os.path.exists(dest):
+        return None
+    ffmpeg = find_ffmpeg(optional=True)
+    if not ffmpeg:
+        return None  # mp3 conversion impossible; logging goes on regardless
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+    import shlex
+
+    # clean ID3 tags from our own (normalized) data, not the YouTube title
+    tags = f"-metadata {shlex.quote('artist=' + song['artist'])} " \
+           f"-metadata {shlex.quote('title=' + song['title'])}"
+    if song.get("year"):
+        tags += f" -metadata date={song['year']}"
+    cmd = [
+        ytdlp, "-f", "bestaudio", "-x", "--audio-format", "mp3",
+        "--audio-quality", "0", "--ffmpeg-location", ffmpeg,
+        "--embed-thumbnail", "--convert-thumbnails", "jpg",  # cover art in the file
+        "--postprocessor-args", f"ExtractAudio+ffmpeg:{tags}",
+        "--no-progress", "-o", dest[: -len(".mp3")] + ".%(ext)s", url,
+    ]
+    if wait:
+        r = subprocess.run(cmd, capture_output=True, text=True)
+        return r.returncode == 0 and os.path.exists(dest)
+    return subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
+def finished_downloads(downloads):
+    """Yield (song, ok) for background mp3 downloads that have finished."""
+    for item in downloads[:]:
+        proc, song, dest = item
+        if proc.poll() is None:
+            continue
+        downloads.remove(item)
+        yield song, proc.returncode == 0 and os.path.exists(dest)
+
+
+def record_spin(book, ytdlp, ts, title, artist, radio=None, downloads=None):
     """Count a spin, enrich+save new songs; returns the line to print, or None."""
     book.refresh()  # sync with a concurrently running watch/log process
     result = book.add_spin(ts, title, artist)
@@ -433,12 +497,19 @@ def record_spin(book, ytdlp, ts, title, artist):
             v or "" for v in lookup_song(ytdlp, song["artist"], song["title"])
         )
     book.save()
+    mp3_note = ""
+    if result == "new" and radio and radio.cfg.get("download_mp3"):
+        proc = download_mp3(radio, ytdlp, song)  # in the background; loop keeps going
+        if proc is not None:
+            mp3_note = "  [mp3 downloading...]"
+            if downloads is not None:
+                downloads.append((proc, song, mp3_path(radio, song)))
     if result == "new":
         extra = f"  ({song['year'] or 'year?'})  {song['youtube'] or 'no link found'}"
         label = "NEW song added"
     else:
         extra, label = "", f"play #{song['plays']}"
-    return f"[{ts:%Y-%m-%d %H:%M}] {label}: {song['artist']} — {song['title']}{extra}"
+    return f"[{ts:%Y-%m-%d %H:%M}] {label}: {song['artist']} — {song['title']}{extra}{mp3_note}"
 
 
 # ------------------------------------------------------------- chat mode
@@ -516,8 +587,39 @@ def _sigterm(*_):
     raise KeyboardInterrupt
 
 
+def acquire_single_instance(radio, mode):
+    """One `watch`/`log` per radio: exit with a warning when one already runs.
+
+    Uses an OS-level lock on radios/<name>/.<mode>.lock held for the whole
+    process lifetime — released automatically by the OS on any kind of
+    exit, so a crash never leaves a stale lock behind. The returned file
+    handle must stay referenced by the caller.
+    """
+    try:
+        import fcntl
+    except ImportError:  # Windows: no flock — run unguarded
+        return None
+    path = os.path.join(radio.folder, f".{mode}.lock")
+    f = open(path, "a+", encoding="utf-8")
+    try:
+        fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        f.seek(0)
+        holder = f.read().strip() or "unknown pid"
+        sys.exit(
+            f"A `{mode}` for radio '{radio.name}' is already running ({holder}) — "
+            "closing this second copy."
+        )
+    f.seek(0)
+    f.truncate()
+    f.write(f"pid {os.getpid()}, started {dt.datetime.now():%Y-%m-%d %H:%M:%S}\n")
+    f.flush()
+    return f
+
+
 def cmd_log(args):
     radio = resolve_radio(args)
+    _lock = acquire_single_instance(radio, "log")  # noqa: F841 — held until exit
     signal.signal(signal.SIGTERM, _sigterm)  # clean up on `kill` too, not just Ctrl+C
     remove_chat_dumps(radio.folder)  # leftovers from previous runs
     ytdlp = find_ytdlp(args.ytdlp)
@@ -528,6 +630,7 @@ def cmd_log(args):
 
     proc = None
     quick_fails = 0
+    downloads = []  # background mp3 downloads still running
     try:
         while True:
             started = time.monotonic()
@@ -551,13 +654,16 @@ def cmd_log(args):
             offsets, seen = {}, set()
             while proc.poll() is None:
                 time.sleep(5)
+                for song, ok in finished_downloads(downloads):
+                    state = "mp3 saved" if ok else "mp3 download FAILED"
+                    print(f"{state}: {song['artist']} — {song['title']}", flush=True)
                 for ts, author, text in tail_session(session, offsets, seen):
                     track = parse_track(author, text)
                     if not track:
                         continue
                     title = normalize_name(track[0], casing)
                     artist = normalize_name(track[1], casing)
-                    line = record_spin(book, ytdlp, ts, title, artist)
+                    line = record_spin(book, ytdlp, ts, title, artist, radio, downloads)
                     if line:
                         print(line, flush=True)
             remove_chat_dumps(radio.folder, session)
@@ -589,6 +695,9 @@ def cmd_log(args):
         remove_chat_dumps(radio.folder)
         if book.dirty:
             book.save()
+        still = [i for i in downloads if i[0].poll() is None]
+        if still:
+            print(f"{len(still)} mp3 download(s) still finishing in the background.", flush=True)
     cmd_stats(args)
 
 
@@ -707,6 +816,7 @@ def cmd_watch(args):
             "so it only runs on a Mac — use the chat-based `log` mode instead."
         )
     radio = resolve_radio(args)
+    _lock = acquire_single_instance(radio, "watch")  # noqa: F841 — held until exit
     signal.signal(signal.SIGTERM, _sigterm)
     ytdlp = find_ytdlp(args.ytdlp)
     ffmpeg = find_ffmpeg()
@@ -720,7 +830,7 @@ def cmd_watch(args):
     print(f"One frame every {interval:.0f}s -> {radio.songs_csv}  (Ctrl+C to stop)", flush=True)
     print(
         "'.' = same song still playing, '+' = new name, awaiting a confirming read, "
-        "'?' = overlay unreadable, 'x' = capture hiccup",
+        "'♪' = mp3 saved, '?' = overlay unreadable, 'x' = capture hiccup",
         flush=True,
     )
 
@@ -728,15 +838,31 @@ def cmd_watch(args):
     last = None
     pending = None  # unseen name waiting for a second identical read
     pending_dots = False
+    downloads = []  # background mp3 downloads still running
 
     def note(sym):
         nonlocal pending_dots
         print(sym, end="", flush=True)
         pending_dots = True
 
+    def show(line):
+        nonlocal pending_dots
+        if pending_dots:
+            print(flush=True)
+            pending_dots = False
+        print(line, flush=True)
+
     try:
         while True:
             t0 = time.monotonic()
+            for song, ok in finished_downloads(downloads):
+                if ok:
+                    note("♪")
+                else:
+                    show(
+                        f"mp3 download FAILED: {song['artist']} — {song['title']}"
+                        "  (backfill later with: radio_tracklog.py download)"
+                    )
             got = None
             try:
                 if manifest is None:
@@ -766,12 +892,11 @@ def cmd_watch(args):
                     else:
                         pending = None
                         last = key
-                        line = record_spin(book, ytdlp, dt.datetime.now(), title, artist)
+                        line = record_spin(
+                            book, ytdlp, dt.datetime.now(), title, artist, radio, downloads
+                        )
                         if line:
-                            if pending_dots:
-                                print(flush=True)
-                                pending_dots = False
-                            print(line, flush=True)
+                            show(line)
                         else:
                             note(".")  # e.g. brief flap back to the previous song
             time.sleep(max(1.0, interval - (time.monotonic() - t0)))
@@ -784,6 +909,9 @@ def cmd_watch(args):
             pass
         if book.dirty:
             book.save()
+        still = [i for i in downloads if i[0].poll() is None]
+        if still:
+            print(f"{len(still)} mp3 download(s) still finishing in the background.", flush=True)
     cmd_stats(args)
 
 
@@ -846,13 +974,54 @@ def cmd_enrich(args):
     print(f"\nDone. Updated {radio.songs_csv}")
 
 
+def cmd_download(args):
+    """Backfill missing mp3s. One radio when named; otherwise every radio
+    that has download_mp3 enabled in its config.json."""
+    os.makedirs(RADIOS_DIR, exist_ok=True)
+    explicit = bool(args.radio)  # a named radio downloads even when the setting is off
+    names = [args.radio] if explicit else sorted(
+        d for d in os.listdir(RADIOS_DIR) if os.path.isdir(os.path.join(RADIOS_DIR, d))
+    )
+    if not names:
+        sys.exit("No radios yet — run the watch/log command first.")
+    ytdlp = find_ytdlp(args.ytdlp)
+    find_ffmpeg()  # resolve (or fetch) it up front, once
+    for name in names:
+        args.radio = name
+        radio = resolve_radio(args)
+        if not explicit and not radio.cfg.get("download_mp3"):
+            print(f"{name}: download_mp3 is off in config.json — skipping")
+            continue
+        if not os.path.exists(radio.songs_csv):
+            print(f"{name}: no songs logged yet — skipping")
+            continue
+        book = SongBook(radio.songs_csv)
+        todo = [s for s in book.songs.values() if not os.path.exists(mp3_path(radio, s))]
+        done = len(book.songs) - len(todo)
+        print(f"{name}: {done} mp3s present, {len(todo)} missing")
+        for i, song in enumerate(sorted(todo, key=lambda s: s["first_added"]), 1):
+            label = f"{song['artist']} — {song['title']}"
+            if not song["youtube"]:  # never found on YouTube; try once more
+                song["youtube"], song["year"] = (
+                    v or "" for v in lookup_song(ytdlp, song["artist"], song["title"])
+                )
+                if song["youtube"]:
+                    book.save()
+                else:
+                    print(f"  [{i}/{len(todo)}] {label}  ->  no YouTube link found, skipped", flush=True)
+                    continue
+            ok = download_mp3(radio, ytdlp, song, wait=True)
+            print(f"  [{i}/{len(todo)}] {label}  ->  {'ok' if ok else 'FAILED'}", flush=True)
+    print("Done.")
+
+
 def main():
     p = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     p.add_argument(
         "command", nargs="?", default="log",
-        choices=["watch", "log", "list", "stats", "enrich"],
+        choices=["watch", "log", "list", "stats", "enrich", "download"],
     )
     p.add_argument(
         "radio", nargs="?", default=None,
@@ -863,7 +1032,7 @@ def main():
     args = p.parse_args()
     {
         "watch": cmd_watch, "log": cmd_log, "list": cmd_list,
-        "stats": cmd_stats, "enrich": cmd_enrich,
+        "stats": cmd_stats, "enrich": cmd_enrich, "download": cmd_download,
     }[args.command](args)
 
 

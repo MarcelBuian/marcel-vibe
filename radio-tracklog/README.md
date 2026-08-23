@@ -61,6 +61,7 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
 {
   "url": "https://www.youtube.com/watch?v=WsDyRAPFBC8",
   "capture_interval_seconds": 60,
+  "download_mp3": true,
   "ocr_region": {"x": [0.12, 0.75], "y": [0.02, 0.4]}
 }
 ```
@@ -68,6 +69,14 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
 - **`url`** — the YouTube live stream to follow.
 - **`capture_interval_seconds`** — `watch` mode: how often to grab a frame
   and read the overlay. 60 is a good default (songs run 3–5 minutes).
+- **`download_mp3`** — when `true`, every newly logged song is also
+  downloaded as a best-quality mp3 (YouTube's best audio, converted to
+  MP3 V0) into `radios/<name>/mp3/`, named `Artist - Title - Year.mp3`
+  (year omitted when unknown). Each file gets the cover art embedded plus
+  clean ID3 tags (artist/title/year) taken from the song list, so players
+  identify every track properly. The download runs in the background so
+  the logger never skips a beat. The mp3 folder is gitignored — the files
+  can always be re-fetched.
 - **`ocr_region`** — `watch` mode: where the now-playing overlay sits in
   the frame, as fractions of width/height **measured from the bottom-left
   corner**. The default matches Monstercat's bottom-left overlay while
@@ -100,6 +109,9 @@ progress marks so you can see it's alive:
 - `+` — a name never seen before; the script waits for a second identical
   read before adding it (one-frame OCR misreads die here, real new songs
   just get logged one capture later)
+- `♪` — a background mp3 download finished (with `download_mp3` on, new
+  songs get a `[mp3 downloading...]` tag on their line; a failed download
+  prints its own line so you know to backfill later)
 - `?` — frame captured but the overlay couldn't be read
 - `x` — capture hiccup (network/stream); recovers by itself
 
@@ -144,6 +156,18 @@ python3 radio_tracklog.py enrich
 New songs get their YouTube link and release year automatically the
 moment they're added; `enrich` is the repair tool for rows where that
 live lookup failed. Run it anytime — it only touches incomplete rows.
+
+### Optional: backfill missing mp3s
+
+```bash
+python3 radio_tracklog.py download            # all radios with download_mp3 on
+python3 radio_tracklog.py download my-radio   # this radio, even if it's off
+```
+
+Downloads a best-quality mp3 for every logged song that isn't in the
+radio's `mp3/` folder yet — songs logged before `download_mp3` was
+turned on, or whose live download failed. Rerun-safe: existing files are
+never downloaded twice.
 
 ## Artist-name casing (`radios/<name>/artist-casing.txt`)
 

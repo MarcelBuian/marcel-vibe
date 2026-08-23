@@ -17,6 +17,10 @@
 # transient files written while the loggers run (auto-cleaned on exit)
 radios/*/chat-*
 radios/*/.frame.jpg*
+radios/*/.*.lock
+
+# downloaded music (re-fetchable anytime with: radio_tracklog.py download)
+radios/*/mp3/
 
 # Python bytecode cache, auto-regenerated
 __pycache__/
