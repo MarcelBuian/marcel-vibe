@@ -14,6 +14,10 @@
 # compiled OCR helper, rebuilt automatically from ocr.swift
 /.ocr
 
+# Google OAuth secrets for the YouTube playlist sync — never commit
+/google-oauth.json
+/.google-token.json
+
 # transient files written while the loggers run (auto-cleaned on exit)
 radios/*/chat-*
 radios/*/.frame.jpg*
@@ -21,6 +25,11 @@ radios/*/.*.lock
 
 # downloaded music (re-fetchable anytime with: radio_tracklog.py download)
 radios/*/mp3/
+
+# derived playlist state, rebuilt by: radio_tracklog.py playlist
+radios/*/playlist-videos.txt
+radios/*/playlist-extra.txt
+radios/*/.playlist-quota
 
 # Python bytecode cache, auto-regenerated
 __pycache__/

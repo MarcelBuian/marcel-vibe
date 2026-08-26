@@ -1,7 +1,20 @@
 {
   "url": "https://www.youtube.com/watch?v=WsDyRAPFBC8",
   "capture_interval_seconds": 60,
-  "download_mp3": true,
+  "download_mp3": {
+    "enabled": {
+      "enabled": true,
+      "prefer": "radio edit",
+      "use_ignore_file": true
+    },
+    "prefer": "",
+    "use_ignore_file": true
+  },
+  "save_to_yt_playlist": {
+    "enabled": true,
+    "link": "https://music.youtube.com/playlist?list=PLoFzNYfE7BsiCqlFEJjndm53GIcXNAyDS",
+    "use_ignore_file": true
+  },
   "ocr_region": {
     "x": [
       0.12,
