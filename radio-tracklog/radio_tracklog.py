@@ -344,7 +344,7 @@ SMALL_WORDS = {
 # artist separators, kept (lowercased) while each side is normalized alone
 SEP_RE = re.compile(
     r"\s*,\s+|\s+&\s+|\s+x\s+|\s+vs\.?\s+|\s+ft\.?\s+|\s+feat\.?\s+"
-    r"|\s+featuring\s+|\s+pres\.?\s+|\s+presents\s+",
+    r"|\s+featuring\s+|\s+pres\.?\s+|\s+presents\s+|\s+w/\s+",
     re.IGNORECASE,
 )
 
