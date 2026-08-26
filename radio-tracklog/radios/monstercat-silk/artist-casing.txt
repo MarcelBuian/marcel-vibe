@@ -20,8 +20,11 @@ MØØNE
 Nōpi
 PRAANA
 PROFF
+Ra5im
 RAINE
 rshand
 terro
 TMPST
 zensei
+# OCR misreadings -> correct name (the overlay's 5 reads as an S)
+Rasim -> Ra5im

@@ -23,6 +23,7 @@ Usage:
   python3 radio_tracklog.py stats [radio]   # songs by play count
   python3 radio_tracklog.py enrich [radio]  # look up YouTube link + year
   python3 radio_tracklog.py download [radio] # backfill missing mp3s
+  python3 radio_tracklog.py playlist [radio] # sync songs into the YouTube playlist
 
 [radio] defaults to the only folder in radios/ (created on first run).
 yt-dlp and ffmpeg download themselves on first use — see README.md.
@@ -56,9 +57,16 @@ DEFAULT_CONFIG = {
     "url": DEFAULT_URL,
     # watch mode: how often to grab a frame and read the overlay
     "capture_interval_seconds": 60,
-    # also download every logged song as a best-quality mp3 into
-    # radios/<name>/mp3/ (see also the `download` command for backfilling)
-    "download_mp3": False,
+    # enabled: download every logged song as a best-quality mp3 into
+    # radios/<name>/mp3/ (see also the `download` command for backfilling).
+    # prefer: bias the YouTube search that picks THE link for a song
+    # (csv + playlist + mp3), e.g. "extended mix" or "radio edit".
+    # use_ignore_file: skip songs listed in the radio's ignore.txt.
+    "download_mp3": {"enabled": False, "prefer": "", "use_ignore_file": True},
+    # enabled + link: add every logged song to this YouTube playlist
+    # (needs the one-time Google authorization — see README and the
+    # `playlist` command). use_ignore_file: skip songs from ignore.txt.
+    "save_to_yt_playlist": {"enabled": False, "link": "", "use_ignore_file": True},
     # watch mode: where the now-playing overlay sits in the frame, as
     # fractions of width/height measured from the BOTTOM-LEFT corner
     "ocr_region": {"x": [0.12, 0.75], "y": [0.02, 0.40]},
@@ -208,6 +216,29 @@ CASING_TEMPLATE = """\
 """
 
 
+IGNORE_TEMPLATE = """\
+# ignore.txt — songs this radio should SKIP.
+#
+# The logger still records every song it hears in songs.csv (the history
+# stays complete); this list only stops the two follow-up actions:
+#   - downloading the song as an mp3        (download_mp3.use_ignore_file)
+#   - adding the song to the YouTube playlist (save_to_yt_playlist.use_ignore_file)
+# Each action obeys this list only while its use_ignore_file flag in
+# config.json is true.
+#
+# One entry per line, in either form:
+#
+#   https://www.youtube.com/watch?v=dQw4w9WgXcQ     a YouTube link
+#   dQw4w9WgXcQ                                     ...or just the video id
+#   Some Artist - Some Song                         artist - title
+#
+# Artist - Title entries match case- and accent-insensitively (SOME
+# ARTIST / Söme Ärtist all count). Lines starting with # are comments.
+# Changes are picked up when a logger starts — restart a running watch
+# after editing.
+"""
+
+
 class Radio:
     def __init__(self, name):
         self.name = name
@@ -215,8 +246,11 @@ class Radio:
         self.songs_csv = os.path.join(self.folder, "songs.csv")
         self.config_path = os.path.join(self.folder, "config.json")
         self.casing_path = os.path.join(self.folder, "artist-casing.txt")
+        self.ignore_path = os.path.join(self.folder, "ignore.txt")
         self.cfg = None
         self.url = None
+        self.ignore = None  # parsed ignore.txt
+        self.prefer = ""  # search bias, e.g. "extended mix"
 
 
 def resolve_radio(args):
@@ -248,11 +282,55 @@ def resolve_radio(args):
     if not os.path.exists(radio.casing_path):
         with open(radio.casing_path, "w", encoding="utf-8") as f:
             f.write(CASING_TEMPLATE)
-    cfg = dict(DEFAULT_CONFIG)
+    if not os.path.exists(radio.ignore_path):
+        with open(radio.ignore_path, "w", encoding="utf-8") as f:
+            f.write(IGNORE_TEMPLATE)
     with open(radio.config_path, encoding="utf-8") as f:
-        cfg.update(json.load(f))
+        raw = json.load(f)
+    cfg = {}
+    for k, v in DEFAULT_CONFIG.items():  # defaults + one level of nesting
+        rv = raw.get(k)
+        cfg[k] = {**v, **(rv if isinstance(rv, dict) else {})} if isinstance(v, dict) \
+            else raw.get(k, v)
+    # Migrate older config layouts. Old values only ever overwrite when they
+    # actually carry something — an old process re-adding its empty defaults
+    # must never blank out values a newer layout already holds.
+    legacy_keys = {"download", "youtube_playlist", "ignore", "playlist", "save_to_playlist"}
+    dl, pl = cfg["download_mp3"], cfg["save_to_yt_playlist"]
+    if isinstance(raw.get("download_mp3"), bool):  # the original flat toggle
+        dl["enabled"] = raw["download_mp3"]
+    if isinstance(raw.get("download"), dict):
+        d = raw["download"]
+        dl["enabled"] = d.get("mp3", dl["enabled"])
+        dl["prefer"] = d.get("prefer") or dl["prefer"]
+        dl["use_ignore_file"] = d.get("use_ignore_file", d.get("ignore", dl["use_ignore_file"]))
+    if raw.get("youtube_playlist"):
+        pl["link"] = raw["youtube_playlist"]
+    if isinstance(raw.get("ignore"), dict):
+        dl["use_ignore_file"] = raw["ignore"].get("apply_to_downloads", True)
+        pl["use_ignore_file"] = raw["ignore"].get("apply_to_playlist", True)
+    for old in ("playlist", "save_to_playlist"):  # short-lived earlier names
+        if isinstance(raw.get(old), dict):
+            p = raw[old]
+            pl["link"] = p.get("link") or pl["link"]
+            pl["use_ignore_file"] = p.get("use_ignore_file", p.get("ignore", pl["use_ignore_file"]))
+    if "enabled" not in (raw.get("save_to_yt_playlist") or {}):
+        pl["enabled"] = bool(pl["link"])  # flag is new — on when a link exists
+    dl.pop("mp3", None)
+    dl.pop("ignore", None)
+    pl.pop("ignore", None)
+    for k, v in raw.items():  # keep unknown keys a user may have added
+        if k not in cfg and k not in legacy_keys:
+            cfg[k] = v
+    if cfg != raw:
+        with open(radio.config_path, "w", encoding="utf-8") as f:
+            json.dump(cfg, f, indent=2)
+            f.write("\n")
+        print(f"Upgraded {radio.config_path} to the current settings layout.", flush=True)
     radio.cfg = cfg
     radio.url = args.url or cfg["url"]
+    radio.prefer = (cfg["download_mp3"].get("prefer") or "").strip()
+    radio.ignore = load_ignore(radio)
     return radio
 
 
@@ -291,14 +369,22 @@ def load_artist_casing(radio):
     """The radio's artist-casing.txt: exact spellings that defy Title Case.
 
     Keys are folded, so one entry ("Nōpi") covers every diacritic variant
-    OCR may produce for it.
+    OCR may produce for it. A line "Wrong -> Right" additionally maps an
+    OCR misspelling to the correct name (e.g. "Rasim -> Ra5im", because
+    the overlay's 5 reads as an S).
     """
     casing = {}
     if os.path.exists(radio.casing_path):
         with open(radio.casing_path, encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
-                if line and not line.startswith("#"):
+                if not line or line.startswith("#"):
+                    continue
+                if "->" in line:
+                    wrong, right = (p.strip() for p in line.split("->", 1))
+                    if wrong and right:
+                        casing[fold(wrong).lower()] = right
+                else:
                     casing[fold(line).lower()] = line
     return casing
 
@@ -350,25 +436,44 @@ def normalize_name(text, casing):
 
 # --------------------------------------------------------------- songbook
 
-def lookup_song(ytdlp, artist, title):
-    """Search YouTube for the song; returns (url, year) — either may be None."""
+def _yt_search(ytdlp, query, n):
+    """yt-dlp search: list of (url, year_or_None, video_title)."""
     try:
         out = subprocess.run(
             [
                 ytdlp,
                 "--skip-download",
                 "--print",
-                "%(webpage_url)s\t%(release_year,upload_date>%Y)s",
-                f"ytsearch1:{artist} {title}",
+                "%(webpage_url)s\t%(release_year,upload_date>%Y)s\t%(title)s",
+                f"ytsearch{n}:{query}",
             ],
-            capture_output=True, text=True, timeout=60,
+            capture_output=True, text=True, timeout=90,
         ).stdout.strip()
     except (subprocess.TimeoutExpired, OSError):
-        return None, None
-    parts = out.split("\t")
-    if len(parts) == 2 and parts[0].startswith("http"):
-        return parts[0], (parts[1] if parts[1].isdigit() else None)
-    return None, None
+        return []
+    results = []
+    for line in out.splitlines():
+        parts = line.split("\t")
+        if len(parts) == 3 and parts[0].startswith("http"):
+            results.append((parts[0], parts[1] if parts[1].isdigit() else None, parts[2]))
+    return results
+
+
+def lookup_song(ytdlp, artist, title, prefer=""):
+    """Search YouTube for the song; returns (url, year) — either may be None.
+
+    With prefer (e.g. "extended mix"), results whose video title contains
+    that phrase win; otherwise it falls back to the plain best match.
+    """
+    if prefer:
+        # strict phrase match: "Cola (ARTBAT Extended Remix)" must NOT count
+        # as the extended mix of "Cola" — better the plain original than a
+        # different version by someone else
+        for url, year, vtitle in _yt_search(ytdlp, f"{artist} {title} {prefer}", 8):
+            if fold(prefer).lower() in fold(vtitle).lower():
+                return url, year
+    results = _yt_search(ytdlp, f"{artist} {title}", 1)
+    return results[0][:2] if results else (None, None)
 
 
 class SongBook:
@@ -525,22 +630,371 @@ def record_spin(book, ytdlp, ts, title, artist, radio=None, downloads=None):
     song = book.songs[song_key(artist, title)]
     if result == "new":
         song["youtube"], song["year"] = (
-            v or "" for v in lookup_song(ytdlp, song["artist"], song["title"])
+            v or "" for v in lookup_song(
+                ytdlp, song["artist"], song["title"], radio.prefer if radio else ""
+            )
         )
     book.save()
-    mp3_note = ""
-    if result == "new" and radio and radio.cfg.get("download_mp3"):
-        proc = download_mp3(radio, ytdlp, song)  # in the background; loop keeps going
-        if proc is not None:
-            mp3_note = "  [mp3 downloading...]"
-            if downloads is not None:
-                downloads.append((proc, song, mp3_path(radio, song)))
+    notes = ""
+    if result == "new" and radio and radio.cfg["download_mp3"]["enabled"]:
+        if radio.cfg["download_mp3"].get("use_ignore_file") and is_ignored(radio, song):
+            notes += "  [mp3: on the ignore list]"
+        else:
+            proc = download_mp3(radio, ytdlp, song)  # in the background; loop keeps going
+            if proc is not None:
+                notes += "  [mp3 downloading...]"
+                if downloads is not None:
+                    downloads.append((proc, song, mp3_path(radio, song)))
+    if result == "new" and radio and playlist_enabled(radio):
+        vid = video_id(song["youtube"])
+        cache = read_playlist_cache(radio)
+        if not vid:
+            pass
+        elif radio.cfg["save_to_yt_playlist"].get("use_ignore_file") and is_ignored(radio, song):
+            notes += "  [playlist: on the ignore list]"
+        elif cache is None:
+            notes += "  [playlist: run `radio_tracklog.py playlist` once first]"
+        elif song_in_playlist(song, cache):
+            notes += "  [already in playlist]"
+        elif quota_blocked_today(radio):
+            notes += "  [playlist: daily quota reached — auto-resumes tomorrow]"
+        else:
+            token = google_access_token()  # silent: None until the one-time auth ran
+            if not token:
+                notes += "  [playlist: authorize once with: radio_tracklog.py playlist]"
+            else:
+                ok, reason = playlist_insert(token, playlist_id(radio), vid)
+                if ok:
+                    append_playlist_cache(radio, vid, song["title"], song["artist"])
+                    notes += "  [playlist ok]"
+                elif reason == "quotaExceeded":
+                    mark_quota(radio)
+                    notes += "  [playlist: daily quota reached — auto-resumes tomorrow]"
+                else:
+                    notes += f"  [playlist: {reason}]"
     if result == "new":
         extra = f"  ({song['year'] or 'year?'})  {song['youtube'] or 'no link found'}"
         label = "NEW song added"
     else:
         extra, label = "", f"play #{song['plays']}"
-    return f"[{ts:%Y-%m-%d %H:%M}] {label}: {song['artist']} — {song['title']}{extra}{mp3_note}"
+    return f"[{ts:%Y-%m-%d %H:%M}] {label}: {song['artist']} — {song['title']}{extra}{notes}"
+
+
+# -------------------------------------------------- youtube playlist sync
+
+GOOGLE_OAUTH_FILE = os.path.join(SCRIPT_DIR, "google-oauth.json")
+GOOGLE_TOKEN_FILE = os.path.join(SCRIPT_DIR, ".google-token.json")
+YT_SCOPE = "https://www.googleapis.com/auth/youtube"
+
+
+def http_json(url, data=None, headers=None, timeout=30):
+    """POST (form dict / json bytes) or GET a URL; returns the parsed JSON,
+    including Google's error responses instead of raising on HTTP errors."""
+    import urllib.error
+    import urllib.parse
+    import urllib.request
+
+    if isinstance(data, dict):
+        data = urllib.parse.urlencode(data).encode()
+    req = urllib.request.Request(url, data=data, headers=headers or {})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return json.loads(r.read().decode())
+    except urllib.error.HTTPError as e:
+        try:
+            return json.loads(e.read().decode())
+        except ValueError:
+            return {"error": f"HTTP {e.code}"}
+
+
+def playlist_id(radio):
+    """The playlist id from save_to_yt_playlist.link (or a bare id)."""
+    link = (radio.cfg["save_to_yt_playlist"].get("link") or "").strip()
+    if not link:
+        return None
+    m = re.search(r"[?&]list=([\w-]+)", link)
+    return m.group(1) if m else link
+
+
+def playlist_enabled(radio):
+    """Playlist saving is on: enabled in config AND a link is set."""
+    return bool(radio.cfg["save_to_yt_playlist"].get("enabled") and playlist_id(radio))
+
+
+def video_id(url):
+    m = re.search(r"[?&]v=([\w-]{6,})", url or "")
+    return m.group(1) if m else None
+
+
+def load_ignore(radio):
+    """Parse ignore.txt into video ids and folded 'artist - title' names."""
+    ids, names = set(), set()
+    if os.path.exists(radio.ignore_path):
+        with open(radio.ignore_path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                vid = video_id(line) or (line if re.fullmatch(r"[\w-]{11}", line) else None)
+                if vid:
+                    ids.add(vid)
+                else:
+                    names.add(fold(" ".join(line.split())).lower())
+    return {"ids": ids, "names": names}
+
+
+def is_ignored(radio, song):
+    vid = video_id(song.get("youtube"))
+    if vid and vid in radio.ignore["ids"]:
+        return True
+    return fold(f"{song['artist']} - {song['title']}").lower() in radio.ignore["names"]
+
+
+# Local mirror of the playlist's content: "video_id<TAB>title<TAB>channel"
+# per line. Refreshed from the real playlist by `playlist`; consulted (and
+# appended) by the live loggers so nothing is ever added twice. Its absence
+# means we don't know the membership yet — then the live loggers refuse to
+# add. Matching against it is per SONG, not per upload: a hand-added copy
+# of a track (different video id) still counts as "already in playlist".
+def playlist_cache_path(radio):
+    return os.path.join(radio.folder, "playlist-videos.txt")
+
+
+def read_playlist_cache(radio):
+    """List of (video_id, title, channel) rows, or None if never synced."""
+    if not os.path.exists(playlist_cache_path(radio)):
+        return None
+    rows = []
+    with open(playlist_cache_path(radio), encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                parts = (line.rstrip("\n").split("\t") + ["", ""])[:3]
+                rows.append((parts[0].strip(), parts[1], parts[2]))
+    return rows
+
+
+def write_playlist_cache(radio, rows):
+    with open(playlist_cache_path(radio), "w", encoding="utf-8") as f:
+        for vid, title, channel in rows:
+            f.write(f"{vid}\t{title}\t{channel}\n")
+
+
+def append_playlist_cache(radio, vid, title, channel):
+    with open(playlist_cache_path(radio), "a", encoding="utf-8") as f:
+        f.write(f"{vid}\t{title}\t{channel}\n")
+
+
+# Same-song version suffixes — "Belle (Extended Mix)" IS "Belle"; a remix
+# by someone else is NOT, so only these exact words are stripped.
+_VERSION_RE = re.compile(
+    r"\s*[(\[]\s*(?:extended|radio|original|club)\s+(?:mix|edit|version)\s*[)\]]\s*$"
+    r"|\s*[(\[]\s*extended\s*[)\]]\s*$",
+    re.IGNORECASE,
+)
+
+
+def _title_key(text):
+    return _VERSION_RE.sub("", fold(text)).lower().strip()
+
+
+def song_in_playlist(song, cache_rows):
+    """Is this song already in the playlist — under ANY upload?
+
+    Exact video-id match, or a playlist entry whose (folded) video title
+    equals the song title — version suffixes like "(Extended Mix)"
+    ignored — and whose channel looks like the song's artist (music
+    uploads sit on "<Artist> - Topic" channels). A title match with no
+    channel information also counts.
+    """
+    vid = video_id(song.get("youtube"))
+    t = _title_key(song["title"])
+    a = fold(song["artist"]).lower()
+    artist_parts = [p.strip() for p in re.split(r"[&,]|\bx\b|feat\.?", a) if p.strip()]
+    for row_vid, row_title, row_channel in cache_rows:
+        if vid and row_vid == vid:
+            return True
+        if _title_key(row_title) != t:
+            continue
+        ch = fold(row_channel).lower().replace("- topic", "").strip()
+        if not ch or ch in a or any(p in ch or ch in p for p in artist_parts):
+            return True
+    return False
+
+
+# The day the YouTube API quota ran out, so every playlist writer backs
+# off until the next day (the watcher then resumes automatically).
+def quota_path(radio):
+    return os.path.join(radio.folder, ".playlist-quota")
+
+
+def quota_blocked_today(radio):
+    try:
+        with open(quota_path(radio), encoding="utf-8") as f:
+            return f.read().strip() == dt.date.today().isoformat()
+    except OSError:
+        return False
+
+
+def mark_quota(radio):
+    with open(quota_path(radio), "w", encoding="utf-8") as f:
+        f.write(dt.date.today().isoformat())
+
+
+def playlist_pending(radio, book, cache_rows):
+    """Songs (with their video ids) not yet in the playlist, oldest first."""
+    out, queued = [], set()
+    apply_ignore = radio.cfg["save_to_yt_playlist"].get("use_ignore_file")
+    for s in sorted(book.songs.values(), key=lambda r: r["first_added"]):
+        vid = video_id(s["youtube"])
+        if (vid and vid not in queued
+                and not song_in_playlist(s, cache_rows)
+                and not (apply_ignore and is_ignored(radio, s))):
+            out.append((s, vid))
+            queued.add(vid)  # two songs can share a search-found link
+    return out
+
+
+def google_access_token(interactive=False):
+    """An access token for the YouTube API, or None when not set up.
+
+    Uses the refresh token saved in .google-token.json. With
+    interactive=True and no saved token, runs Google's device flow once
+    (visit a URL, type a short code) and saves the refresh token.
+    """
+    if not os.path.exists(GOOGLE_OAUTH_FILE):
+        if interactive:
+            sys.exit(
+                f"{GOOGLE_OAUTH_FILE} is missing.\n"
+                'Create it with your Google OAuth client as\n'
+                '  {"client_id": "...", "client_secret": "..."}\n'
+                "— one-time setup, see README.md (YouTube playlist section)."
+            )
+        return None
+    with open(GOOGLE_OAUTH_FILE, encoding="utf-8") as f:
+        client = json.load(f)
+    cid, secret = client.get("client_id"), client.get("client_secret")
+    if os.path.exists(GOOGLE_TOKEN_FILE):
+        with open(GOOGLE_TOKEN_FILE, encoding="utf-8") as f:
+            refresh = json.load(f).get("refresh_token")
+        if refresh:
+            r = http_json("https://oauth2.googleapis.com/token", {
+                "client_id": cid, "client_secret": secret,
+                "refresh_token": refresh, "grant_type": "refresh_token",
+            })
+            if r.get("access_token"):
+                return r["access_token"]
+    if not interactive:
+        return None
+    d = http_json("https://oauth2.googleapis.com/device/code",
+                  {"client_id": cid, "scope": YT_SCOPE})
+    if "verification_url" not in d:
+        sys.exit(f"Google authorization failed: {d}")
+    print(f"\nOne-time authorization: open  {d['verification_url']}")
+    print(f"and enter the code:  {d['user_code']}\n(waiting...)", flush=True)
+    while True:
+        time.sleep(d.get("interval", 5))
+        r = http_json("https://oauth2.googleapis.com/token", {
+            "client_id": cid, "client_secret": secret,
+            "device_code": d["device_code"],
+            "grant_type": "urn:ietf:params:oauth:grant-type:device_code",
+        })
+        if r.get("access_token"):
+            with open(GOOGLE_TOKEN_FILE, "w", encoding="utf-8") as f:
+                json.dump({"refresh_token": r["refresh_token"]}, f)
+            print("Authorized — token saved next to the script.", flush=True)
+            return r["access_token"]
+        if r.get("error") not in ("authorization_pending", "slow_down"):
+            sys.exit(f"Google authorization failed: {r.get('error', r)}")
+
+
+def playlist_insert(token, pl, vid):
+    """Add one video to the playlist; returns (ok, error_reason)."""
+    body = json.dumps({"snippet": {
+        "playlistId": pl,
+        "resourceId": {"kind": "youtube#video", "videoId": vid},
+    }}).encode()
+    r = http_json(
+        "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet",
+        body, {"Authorization": "Bearer " + token, "Content-Type": "application/json"},
+    )
+    if "id" in r:
+        return True, ""
+    err = r.get("error", {})
+    reason = (err.get("errors") or [{}])[0].get("reason") or err.get("message") or "failed"
+    return False, reason
+
+
+def playlist_items(token, pl):
+    """Everything in the playlist: [{'item', 'vid', 'title', 'channel'}, ...]
+    ('item' is the playlist-entry id, needed to delete an entry)."""
+    items, page = [], ""
+    while True:
+        url = ("https://www.googleapis.com/youtube/v3/playlistItems"
+               f"?part=snippet&maxResults=50&playlistId={pl}")
+        if page:
+            url += "&pageToken=" + page
+        r = http_json(url, headers={"Authorization": "Bearer " + token})
+        if "items" not in r:
+            sys.exit(f"Could not read the playlist: {r.get('error', {}).get('message', r)}")
+        for i in r["items"]:
+            sn = i["snippet"]
+            items.append({
+                "item": i["id"],
+                "vid": sn["resourceId"].get("videoId"),
+                "title": sn.get("title", ""),
+                "channel": sn.get("videoOwnerChannelTitle", ""),
+            })
+        page = r.get("nextPageToken", "")
+        if not page:
+            return items
+
+
+def cmd_playlist(args):
+    """Sync songs.csv into the configured playlist (and refresh the caches)."""
+    radio = resolve_radio(args)
+    pl = playlist_id(radio)
+    if not pl:
+        sys.exit(f'Put the playlist link into "save_to_yt_playlist"."link" in {radio.config_path} first.')
+    if not radio.cfg["save_to_yt_playlist"].get("enabled"):
+        sys.exit(f'Playlist saving is off — set "save_to_yt_playlist"."enabled" to true in {radio.config_path}.')
+    token = google_access_token(interactive=True)
+    book = load_book(radio)
+    existing = playlist_items(token, pl)
+    rows = sorted(((i["vid"], i["title"], i["channel"]) for i in existing),
+                  key=lambda r: r[1].lower())
+    write_playlist_cache(radio, rows)
+
+    # report: playlist entries that match none of our songs — keep an eye on
+    songs = list(book.songs.values())
+    extra = [i for i in existing
+             if not any(song_in_playlist(s, [(i["vid"], i["title"], i["channel"])])
+                        for s in songs)]
+    report = os.path.join(radio.folder, "playlist-extra.txt")
+    with open(report, "w", encoding="utf-8") as f:
+        f.write("# In the YouTube playlist but matching no song in songs.csv "
+                "(regenerated by `playlist`)\n")
+        for i in sorted(extra, key=lambda i: i["title"].lower()):
+            # music uploads carry the artist in the channel, not the title
+            artist = re.sub(r"\s*-\s*Topic$", "", i["channel"]).strip()
+            name = f"{artist} — {i['title']}" if artist else i["title"]
+            f.write(f"{name}  https://www.youtube.com/watch?v={i['vid']}\n")
+
+    todo = playlist_pending(radio, book, rows)
+    print(f"{radio.name}: {len(existing)} videos in the playlist, "
+          f"{len(extra)} of them match no logged song (see {os.path.basename(report)}), "
+          f"{len(todo)} songs to add")
+    for i, (s, v) in enumerate(todo, 1):
+        ok, reason = playlist_insert(token, pl, v)
+        print(f"  [{i}/{len(todo)}] {s['artist']} — {s['title']}  ->  {'ok' if ok else reason}",
+              flush=True)
+        if ok:
+            append_playlist_cache(radio, v, s["title"], s["artist"])
+        elif reason == "quotaExceeded":
+            mark_quota(radio)
+            print("Daily YouTube API quota reached — a running `watch` resumes by itself "
+                  "tomorrow, or rerun this command.")
+            break
+    print("Done.")
 
 
 # ------------------------------------------------------------- chat mode
@@ -870,6 +1324,7 @@ def cmd_watch(args):
     pending = None  # unseen name waiting for a second identical read
     pending_dots = False
     downloads = []  # background mp3 downloads still running
+    pl_pending = None  # playlist catch-up queue; None = recompute when possible
 
     def note(sym):
         nonlocal pending_dots
@@ -894,6 +1349,39 @@ def cmd_watch(args):
                         f"mp3 download FAILED: {song['artist']} — {song['title']}"
                         "  (backfill later with: radio_tracklog.py download)"
                     )
+            # playlist catch-up: work off songs still missing from the
+            # playlist, a few per cycle, resuming the day after a quota block
+            if playlist_enabled(radio) and not quota_blocked_today(radio):
+                cache = read_playlist_cache(radio)
+                if cache is not None:
+                    if pl_pending is None:
+                        pl_pending = playlist_pending(radio, book, cache)
+                        if pl_pending:
+                            show(f"playlist catch-up: {len(pl_pending)} song(s) to add")
+                    if pl_pending:
+                        token = google_access_token()
+                        if not token:
+                            pl_pending = []  # not authorized (yet) — leave it be
+                        added = 0
+                        while pl_pending and added < 5:
+                            s, vid = pl_pending[0]
+                            ok, reason = playlist_insert(token, playlist_id(radio), vid)
+                            if ok:
+                                pl_pending.pop(0)
+                                append_playlist_cache(radio, vid, s["title"], s["artist"])
+                                added += 1
+                            elif reason == "quotaExceeded":
+                                mark_quota(radio)
+                                show(f"playlist: daily quota reached — "
+                                     f"{len(pl_pending)} song(s) wait for tomorrow")
+                                pl_pending = None  # recompute once the day passes
+                                break
+                            else:
+                                show(f"playlist: {s['artist']} — {s['title']} "
+                                     f"failed ({reason}) — skipped")
+                                pl_pending.pop(0)
+                        if added and not pl_pending:
+                            show("playlist catch-up complete")
             got = None
             try:
                 if manifest is None:
@@ -993,7 +1481,7 @@ def cmd_enrich(args):
     print(f"Looking up {len(todo)} songs on YouTube (a few seconds each)...", flush=True)
     for r in todo:
         query = f"{r['artist']} {r['title']}"
-        url, year = lookup_song(ytdlp, r["artist"], r["title"])
+        url, year = lookup_song(ytdlp, r["artist"], r["title"], radio.prefer)
         if url:
             r["youtube"] = r["youtube"] or url
             if year:
@@ -1020,21 +1508,29 @@ def cmd_download(args):
     for name in names:
         args.radio = name
         radio = resolve_radio(args)
-        if not explicit and not radio.cfg.get("download_mp3"):
-            print(f"{name}: download_mp3 is off in config.json — skipping")
+        if not explicit and not radio.cfg["download_mp3"]["enabled"]:
+            print(f"{name}: download_mp3.enabled is false in config.json — skipping")
             continue
         if not os.path.exists(radio.songs_csv):
             print(f"{name}: no songs logged yet — skipping")
             continue
         book = SongBook(radio.songs_csv)
-        todo = [s for s in book.songs.values() if not os.path.exists(mp3_path(radio, s))]
-        done = len(book.songs) - len(todo)
-        print(f"{name}: {done} mp3s present, {len(todo)} missing")
+        apply_ignore = radio.cfg["download_mp3"].get("use_ignore_file")
+        todo, ignored = [], 0
+        for s in book.songs.values():
+            if apply_ignore and is_ignored(radio, s):
+                ignored += 1
+            elif not os.path.exists(mp3_path(radio, s)):
+                todo.append(s)
+        done = len(book.songs) - len(todo) - ignored
+        print(f"{name}: {done} mp3s present, {len(todo)} missing"
+              + (f", {ignored} on the ignore list" if ignored else ""))
         for i, song in enumerate(sorted(todo, key=lambda s: s["first_added"]), 1):
             label = f"{song['artist']} — {song['title']}"
             if not song["youtube"]:  # never found on YouTube; try once more
                 song["youtube"], song["year"] = (
-                    v or "" for v in lookup_song(ytdlp, song["artist"], song["title"])
+                    v or "" for v in
+                    lookup_song(ytdlp, song["artist"], song["title"], radio.prefer)
                 )
                 if song["youtube"]:
                     book.save()
@@ -1052,7 +1548,7 @@ def main():
     )
     p.add_argument(
         "command", nargs="?", default="log",
-        choices=["watch", "log", "list", "stats", "enrich", "download"],
+        choices=["watch", "log", "list", "stats", "enrich", "download", "playlist"],
     )
     p.add_argument(
         "radio", nargs="?", default=None,
@@ -1064,6 +1560,7 @@ def main():
     {
         "watch": cmd_watch, "log": cmd_log, "list": cmd_list,
         "stats": cmd_stats, "enrich": cmd_enrich, "download": cmd_download,
+        "playlist": cmd_playlist,
     }[args.command](args)
 
 

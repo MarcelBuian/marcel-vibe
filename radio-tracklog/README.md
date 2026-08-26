@@ -61,22 +61,39 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
 {
   "url": "https://www.youtube.com/watch?v=WsDyRAPFBC8",
   "capture_interval_seconds": 60,
-  "download_mp3": true,
+  "download_mp3": {"enabled": true, "prefer": "", "use_ignore_file": true},
+  "save_to_yt_playlist": {"enabled": true, "link": "https://www.youtube.com/playlist?list=PL...", "use_ignore_file": true},
   "ocr_region": {"x": [0.12, 0.75], "y": [0.02, 0.4]}
 }
 ```
 
+(Configs in older layouts are upgraded automatically on first run.)
+
 - **`url`** — the YouTube live stream to follow.
 - **`capture_interval_seconds`** — `watch` mode: how often to grab a frame
   and read the overlay. 60 is a good default (songs run 3–5 minutes).
-- **`download_mp3`** — when `true`, every newly logged song is also
-  downloaded as a best-quality mp3 (YouTube's best audio, converted to
-  MP3 V0) into `radios/<name>/mp3/`, named `Artist - Title - Year.mp3`
+- **`download_mp3.enabled`** — when `true`, every newly logged song is
+  also downloaded as a best-quality mp3 (YouTube's best audio, converted
+  to MP3 V0) into `radios/<name>/mp3/`, named `Artist - Title - Year.mp3`
   (year omitted when unknown). Each file gets the cover art embedded plus
   clean ID3 tags (artist/title/year) taken from the song list, so players
   identify every track properly. The download runs in the background so
   the logger never skips a beat. The mp3 folder is gitignored — the files
   can always be re-fetched.
+- **`download_mp3.prefer`** — bias the YouTube search that picks a song's
+  link, e.g. `"extended mix"` or `"radio edit"`. The search then favors
+  uploads whose title contains that phrase (falling back to the normal
+  best match). Note this decides THE link for the song — csv, playlist,
+  and mp3 all use it — and only affects songs logged after you set it;
+  already-logged songs keep their links.
+- **`save_to_yt_playlist.enabled` / `.link`** — when enabled, every
+  logged song is added to this YouTube playlist (see the playlist
+  section below for the one-time Google setup).
+- **`download_mp3.use_ignore_file` / `save_to_yt_playlist.use_ignore_file`**
+  — whether entries in the radio's `ignore.txt` are skipped for that
+  feature. The file takes one entry per line: a YouTube link (or bare
+  video id), or `Artist - Title` (case- and accent-insensitive); the
+  file's header explains the details.
 - **`ocr_region`** — `watch` mode: where the now-playing overlay sits in
   the frame, as fractions of width/height **measured from the bottom-left
   corner**. The default matches Monstercat's bottom-left overlay while
@@ -168,6 +185,67 @@ Downloads a best-quality mp3 for every logged song that isn't in the
 radio's `mp3/` folder yet — songs logged before `download_mp3` was
 turned on, or whose live download failed. Rerun-safe: existing files are
 never downloaded twice.
+
+### Optional: mirror the songs into a YouTube playlist
+
+Put a playlist link into the radio's `config.json`:
+
+```json
+  "save_to_yt_playlist": {"enabled": true, "link": "https://www.youtube.com/playlist?list=PL...", "use_ignore_file": true}
+```
+
+Adding videos to a playlist writes to your YouTube account, which Google
+only allows through its official API after a one-time authorization
+(~10 minutes in the Google Cloud console, done once per Google account):
+
+1. **Project**: at https://console.cloud.google.com/ → project picker →
+   "New project" → any name → Create (and make sure it's selected).
+2. **Enable the API** (easy to miss — nothing works without it):
+   *APIs & Services* → *Library* → search **"YouTube Data API v3"** →
+   Enable.
+3. **Consent screen**: the OAuth pages live under "Google Auth Platform",
+   which is NOT in the products menu — get there via *APIs & Services* →
+   *OAuth consent screen*, or directly:
+   https://console.cloud.google.com/auth/overview. Run the wizard:
+   app name + your email as support email → Audience: **External** →
+   your email as contact → Finish → Create.
+4. **Publish it** (otherwise Google expires the login every 7 days): the
+   console requires a homepage and privacy-policy URL before it lets you
+   publish — any page of yours works, e.g. your GitHub profile
+   (`https://github.com/YOURNAME`) in both fields on the **Branding**
+   page, plus `github.com` under **Authorized domains**; press **Save**
+   (bottom of the page — the fields don't count until saved). Then on
+   the **Audience** page press **"Publish app"**.
+   *Can't publish? Fallback that works immediately: on the Audience page
+   add yourself under **Test users** — everything works the same, you
+   just re-authorize weekly (the script tells you when).*
+5. **The client**: **Clients** page (sidebar) → "+ Create client" →
+   Application type: **"TVs and Limited Input devices"** → Create. Copy
+   `google-oauth.json.example` to `google-oauth.json` and paste the
+   shown client id and secret into it.
+6. Run `python3 radio_tracklog.py playlist` — it prints a google.com/device
+   code to type once in your browser, then adds every logged song that's
+   not in the playlist yet (rerun-safe; it reads the playlist first, so
+   tracks that are already in it are never re-added). The "unverified
+   app" warning during authorization is expected — it's your own app.
+
+The sync also maintains two files in the radio's folder:
+
+- `playlist-videos.txt` — a local mirror of what's in the playlist
+  (video id + title). The live loggers check it before adding, which is
+  what makes live additions duplicate-proof; run `playlist` once before
+  relying on live adds, and rerun it whenever you edit the playlist by
+  hand so the mirror stays truthful.
+- `playlist-extra.txt` — tracks that are in the playlist but not in
+  `songs.csv`, just to keep an eye on what got in from elsewhere.
+
+From then on, the live `watch`/`log` adds each NEW song to the playlist
+the moment it's logged (`[playlist ok]` on the song's line). Errors on a
+single song are reported and skipped — they never block the rest.
+Google's free API quota allows ~200 playlist additions per day; when
+it's hit, the script notes the day and a running `watch` automatically
+resumes the remaining additions the next day (a few per capture cycle),
+no action needed. Both Google secret files are gitignored.
 
 ## Artist-name casing (`radios/<name>/artist-casing.txt`)
 
