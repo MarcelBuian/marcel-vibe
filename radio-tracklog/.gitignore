@@ -30,6 +30,8 @@ radios/*/mp3/
 radios/*/playlist-videos.txt
 radios/*/playlist-extra.txt
 radios/*/.playlist-quota
+# YouTube title cache used by: radio_tracklog.py casing
+radios/*/.video-titles.txt
 
 # Python bytecode cache, auto-regenerated
 __pycache__/

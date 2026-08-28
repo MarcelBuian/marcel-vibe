@@ -24,6 +24,7 @@ Usage:
   python3 radio_tracklog.py enrich [radio]  # look up YouTube link + year
   python3 radio_tracklog.py download [radio] # backfill missing mp3s
   python3 radio_tracklog.py playlist [radio] # sync songs into the YouTube playlist
+  python3 radio_tracklog.py casing [radio]   # verify artist casing against YouTube titles
 
 [radio] defaults to the only folder in radios/ (created on first run).
 yt-dlp and ffmpeg download themselves on first use — see README.md.
@@ -469,10 +470,14 @@ def normalize_name(text, casing):
     (PROFF, zensei, ...).
     """
     text = " ".join(text.split())
-    if not text or text != text.upper():
+    if not text:
         return text
     if fold(text).lower() in casing:
         return casing[fold(text).lower()]
+    if text != text.upper():
+        # already cased (chat) — only enforce the pinned spellings, so a
+        # chat "Oracle & Jeans" can't undo a verified "ORACLE & JEANS"
+        return _recase(text, casing)
     out, pos = [], 0
     for m in SEP_RE.finditer(text):
         out += [_title_chunk(text[pos:m.start()], casing), m.group(0).lower()]
@@ -1518,6 +1523,193 @@ def cmd_watch(args):
     cmd_stats(args)
 
 
+# ----------------------------------------------------------------- casing
+
+def _artist_parts(name):
+    """'A.M.R & Cornelius SA' -> ['A.M.R', 'Cornelius SA'] (split on SEP_RE)."""
+    return [p.strip() for p in SEP_RE.split(name) if p and p.strip()]
+
+
+def _find_cased(name, text):
+    """How `name` is written inside `text` (case/accent-insensitive, whole words), or None."""
+    if not name or not text:
+        return None
+    ft, fn = fold(text).lower(), fold(name).lower()
+    if len(ft) != len(text):  # folding changed the length (ß -> ss): offsets unusable
+        return None
+    for m in re.finditer(re.escape(fn), ft):
+        s, e = m.span()
+        if (s == 0 or not ft[s - 1].isalnum()) and (e == len(ft) or not ft[e].isalnum()):
+            return text[s:e]
+    return None
+
+
+def video_titles_path(radio):
+    return os.path.join(radio.folder, ".video-titles.txt")
+
+
+def load_video_titles(radio):
+    """{video_id: (title, channel)} already known locally — from the playlist
+    sync cache and from earlier `casing` runs — so yt-dlp only fetches the rest."""
+    titles = {}
+    for vid, title, channel in read_playlist_cache(radio) or []:
+        if vid:
+            titles[vid] = (title, channel)
+    if os.path.exists(video_titles_path(radio)):
+        with open(video_titles_path(radio), encoding="utf-8") as f:
+            for line in f:
+                parts = (line.rstrip("\n").split("\t") + ["", ""])[:3]
+                if parts[0]:
+                    titles[parts[0]] = (parts[1], parts[2])
+    return titles
+
+
+def fetch_video_titles(ytdlp, radio, vids):
+    """Ask YouTube for title + channel of these video ids (one yt-dlp call per
+    batch), remember them in .video-titles.txt, return {vid: (title, channel)}."""
+    got = {}
+    batch = 15
+    for i in range(0, len(vids), batch):
+        chunk = vids[i:i + batch]
+        try:
+            r = subprocess.run(
+                [ytdlp, "--skip-download", "--ignore-errors", "--no-warnings",
+                 "--print", "%(id)s\t%(channel)s\t%(title)s"]
+                + [f"https://www.youtube.com/watch?v={v}" for v in chunk],
+                capture_output=True, text=True, timeout=60 + 30 * len(chunk),
+            )
+            out = r.stdout
+        except (subprocess.TimeoutExpired, OSError):
+            out = ""
+        with open(video_titles_path(radio), "a", encoding="utf-8") as f:
+            for line in out.splitlines():
+                parts = line.split("\t")
+                if len(parts) == 3 and parts[0] in chunk:
+                    got[parts[0]] = (parts[2], parts[1])
+                    f.write(f"{parts[0]}\t{parts[2]}\t{parts[1]}\n")
+        print(f"  fetched {min(i + batch, len(vids))}/{len(vids)} video titles", flush=True)
+    return got
+
+
+def _recase(name, decided):
+    """Rewrite each artist inside a credit line to its decided casing, keeping separators."""
+    out, pos = [], 0
+    for m in SEP_RE.finditer(name):
+        chunk = name[pos:m.start()]
+        out += [decided.get(fold(chunk.strip()).lower(), chunk), m.group(0)]
+        pos = m.end()
+    chunk = name[pos:]
+    out.append(decided.get(fold(chunk.strip()).lower(), chunk))
+    return "".join(out)
+
+
+def cmd_casing(args):
+    """Check every artist's casing against the YouTube videos linked in songs.csv.
+
+    The uploader's own spelling — the artist's name as written in the video
+    title, or in the "<Artist> - Topic" channel name — is taken as the truth.
+    Names spelled differently from plain Title Case go into artist-casing.txt;
+    songs.csv (and the mp3 file names) are rewritten to the verified casing.
+    --check only reports.
+    """
+    radio = resolve_radio(args)
+    book = load_book(radio)
+    casing = load_artist_casing(radio)
+    titles = load_video_titles(radio)
+    missing = sorted({video_id(r["youtube"]) for r in book.songs.values()
+                      if video_id(r["youtube"]) and video_id(r["youtube"]) not in titles})
+    if missing:
+        print(f"{len(missing)} video title(s) not cached yet — asking YouTube...", flush=True)
+        titles.update(fetch_video_titles(find_ytdlp(args.ytdlp), radio, missing))
+
+    # votes[artist key] = {casing as seen: count}
+    votes, stored = {}, {}
+    no_link, unread = [], []
+    for r in book.songs.values():
+        vid = video_id(r["youtube"])
+        if not vid:
+            no_link.append(r)
+            continue
+        if vid not in titles:
+            unread.append(r)
+            continue
+        title, channel = titles[vid]
+        # evidence, best first: the video title ("Artist - Title [Silk Music]"),
+        # then the channel name — the artist's own channel or "<Artist> - Topic"
+        for part in _artist_parts(r["artist"]):
+            key = fold(part).lower()
+            stored.setdefault(key, part)
+            seen = _find_cased(part, title) or _find_cased(part, channel)
+            if seen:
+                votes.setdefault(key, {}).setdefault(seen, 0)
+                votes[key][seen] += 1
+
+    decided, unusual, conflicts = {}, [], []
+    for key, seen in sorted(votes.items()):
+        best = max(seen.items(), key=lambda kv: (kv[1], kv[0] == stored[key]))[0]
+        decided[key] = best
+        plain = normalize_name(best.upper(), {})  # what Title Case would make of it
+        if best != plain or key in casing:
+            unusual.append(key)
+            if key in casing and casing[key] != best:
+                conflicts.append((casing[key], best))
+    # plain entries (not "Wrong -> Right" mappings) that no linked video backs up
+    unverified = [v for k, v in casing.items() if k not in votes and fold(v).lower() == k]
+
+    print(f"\n{len(votes)} artists checked against {len(titles)} YouTube titles:")
+    for key in unusual:
+        mark = "conflict" if any(c[1] == decided[key] for c in conflicts) else \
+               ("ok" if key in casing else "NEW")
+        print(f"  {mark:8} {decided[key]}   (seen {votes[key][decided[key]]}x"
+              + ("" if len(votes[key]) == 1 else f", also {sorted(set(votes[key]) - {decided[key]})}")
+              + ")")
+    for old, new in conflicts:
+        print(f"  artist-casing.txt says {old!r} but YouTube writes {new!r} — updating")
+    if unverified:
+        print(f"  no YouTube evidence for: {', '.join(sorted(unverified))} (kept as listed)")
+    for r in no_link:
+        print(f"  no YouTube link: {r['artist']} — {r['title']}  (run `enrich` first)")
+    for r in unread:
+        print(f"  video unreadable: {r['artist']} — {r['title']}  {r['youtube']}")
+
+    rows_changed = [r for r in book.songs.values()
+                    if _recase(r["artist"], decided) != r["artist"]]
+    new_entries = [decided[k] for k in unusual if k not in casing]
+    if args.check:
+        print(f"\n--check: {len(new_entries)} new casing entr{'y' if len(new_entries) == 1 else 'ies'}, "
+              f"{len(conflicts)} correction(s), {len(rows_changed)} songs.csv row(s) would change.")
+        return
+
+    if new_entries or conflicts:
+        with open(radio.casing_path, encoding="utf-8") as f:
+            lines = f.read().splitlines()
+        fixed = {old: new for old, new in conflicts}
+        lines = [fixed.get(ln.strip(), ln) for ln in lines]
+        if new_entries:
+            lines += ["# verified from the linked YouTube videos (radio_tracklog.py casing)"]
+            lines += sorted(new_entries, key=str.lower)
+        tmp = radio.casing_path + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines) + "\n")
+        os.replace(tmp, radio.casing_path)
+        print(f"\nartist-casing.txt: {len(new_entries)} added, {len(conflicts)} corrected.")
+    if rows_changed:
+        for r in rows_changed:
+            old_mp3 = mp3_path(radio, r)
+            r["artist"] = _recase(r["artist"], decided)
+            new_mp3 = mp3_path(radio, r)
+            if os.path.exists(old_mp3) and old_mp3 != new_mp3 and (
+                    not os.path.exists(new_mp3) or os.path.samefile(old_mp3, new_mp3)):
+                os.rename(old_mp3, new_mp3)  # samefile: case-only change on macOS's FS
+        book.dirty = True
+        book.save()
+        print(f"songs.csv: {len(rows_changed)} row(s) re-cased (mp3 files renamed to match).")
+    if not (new_entries or conflicts or rows_changed):
+        print("\nEverything already matches — nothing to change.")
+    elif not args.check:
+        print("Restart a running `watch`/`log` so it picks up the new casing.")
+
+
 # ----------------------------------------------------------- read-only
 
 def load_book(radio):
@@ -1632,7 +1824,7 @@ def main():
     )
     p.add_argument(
         "command", nargs="?", default="log",
-        choices=["watch", "log", "list", "stats", "enrich", "download", "playlist"],
+        choices=["watch", "log", "list", "stats", "enrich", "download", "playlist", "casing"],
     )
     p.add_argument(
         "radio", nargs="?", default=None,
@@ -1640,11 +1832,13 @@ def main():
     )
     p.add_argument("--url", default=None, help="override the radio's YouTube URL")
     p.add_argument("--ytdlp", default=None, help="path to yt-dlp (default: auto-detect)")
+    p.add_argument("--check", action="store_true",
+                   help="casing: only report, change nothing")
     args = p.parse_args()
     {
         "watch": cmd_watch, "log": cmd_log, "list": cmd_list,
         "stats": cmd_stats, "enrich": cmd_enrich, "download": cmd_download,
-        "playlist": cmd_playlist,
+        "playlist": cmd_playlist, "casing": cmd_casing,
     }[args.command](args)
 
 

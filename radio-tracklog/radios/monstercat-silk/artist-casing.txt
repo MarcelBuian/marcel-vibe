@@ -29,3 +29,11 @@ TMPST
 zensei
 # OCR misreadings -> correct name (the overlay's 5 reads as an S)
 Rasim -> Ra5im
+# verified from the linked YouTube videos (radio_tracklog.py casing)
+DUALIS
+JEANS
+LAR
+OKASSUS
+oncor
+ORACLE
+TOMB

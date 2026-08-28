@@ -268,6 +268,24 @@ they spell themselves (their YouTube/Spotify page) and add them to the
 file. Names containing dots or digits (A.M.R) are left untouched
 automatically.
 
+You don't have to guess: every logged song carries its YouTube link, and
+the uploader's own spelling — the artist's name in the video title
+(`Blue Haze - Amber Glow [Silk Music]`), in their channel name, or in a
+`<Artist> - Topic` channel — is the reference. The `casing` command
+checks all of them and fixes the file and `songs.csv` (mp3 file names
+included):
+
+```bash
+python3 radio_tracklog.py casing --check   # report only
+python3 radio_tracklog.py casing           # apply
+```
+
+It takes a majority across an artist's songs, so one odd upload cannot
+flip a name, and it tells you which listed names no linked video could
+confirm. Video titles are fetched once and cached in
+`radios/<name>/.video-titles.txt`. Restart a running `watch` afterwards —
+it loads the casing file at startup.
+
 ## Good to know
 
 - **`songs.csv` is the single source of truth** — to move a radio's
