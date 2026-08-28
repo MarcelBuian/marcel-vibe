@@ -28,3 +28,17 @@ guess a casing: verify against the linked YouTube video title
 (`SongBook.refresh()` + the 12-minute same-spin window). When editing
 `songs.csv` while a logger runs, keep the write atomic (tmp + replace)
 — the running process picks the file up on its next spin.
+
+## Clock / timezone changes
+Timestamps are naive local time. On 2026-08-28 the Mac's zone switched
+(UTC+3 -> Europe/Malta) at 11:45 and the wall clock fell back an hour;
+the old `add_spin()` backlog guard (`ts <= max_last`) then dropped every
+`watch` spin for an hour, printed as a long row of `.`. Fixed: `watch`
+passes `live=True` (no backlog guard), same-spin uses `abs()`, and
+`warn_clock_skew()` announces future-dated rows at startup. Don't
+reintroduce a "newest row wins" check on the live OCR path.
+All times now go through `now()`/`today()`/`from_epoch()`, which use the
+`timezone` from config.json (default Europe/Malta) — never call
+`dt.datetime.now()` / `date.today()` / `fromtimestamp()` directly.
+Rows stamped 2026-08-26 16:00 .. 2026-08-28 12:44 were written in +0300
+and have been shifted -1h to Malta time.

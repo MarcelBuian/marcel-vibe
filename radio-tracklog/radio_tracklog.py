@@ -55,6 +55,11 @@ DEFAULT_URL = "https://www.youtube.com/watch?v=WsDyRAPFBC8"  # Monstercat Silk 2
 DEFAULT_CONFIG = {
     # the YouTube live stream to follow
     "url": DEFAULT_URL,
+    # every date/time the script writes (songs.csv, lock, quota marker) is
+    # in THIS zone, whatever zone the Mac is set to — so travelling never
+    # shifts the log. IANA name ("Europe/Malta", "UTC") or a fixed offset
+    # ("+02:00"). Malta observes DST, hence the name rather than "+02".
+    "timezone": "Europe/Malta",
     # watch mode: how often to grab a frame and read the overlay
     "capture_interval_seconds": 60,
     # enabled: download every logged song as a best-quality mp3 into
@@ -77,6 +82,42 @@ BOT_AUTHORS = {"@monstercatbot", "monstercatbot"}
 TRACK_RE = re.compile(r"'(?P<title>[^']+)' by (?P<artist>.+?)[!.]?\s*$")
 # Same track re-announced within this window counts as the same spin.
 SAME_SPIN_SECONDS = 12 * 60
+
+# The zone all timestamps are expressed in; set from config.json by
+# resolve_radio(). Until then (module import, tests) the Mac's zone is used.
+TZ = None
+
+
+def parse_timezone(name):
+    """'Europe/Malta' / 'UTC' / '+02:00' / '-0530' -> tzinfo, or raise ValueError."""
+    name = (name or "").strip()
+    m = re.fullmatch(r"(?:UTC|GMT)?([+-])(\d{1,2})(?::?(\d{2}))?", name)
+    if m:
+        sign = 1 if m.group(1) == "+" else -1
+        delta = dt.timedelta(hours=int(m.group(2)), minutes=int(m.group(3) or 0))
+        return dt.timezone(sign * delta, name)
+    if name.upper() == "UTC":
+        return dt.timezone.utc
+    try:
+        import zoneinfo
+
+        return zoneinfo.ZoneInfo(name)
+    except Exception as e:  # unknown key or no zoneinfo module (Python < 3.9)
+        raise ValueError(f"unknown timezone {name!r} ({e})") from None
+
+
+def now():
+    """Current wall-clock time in the configured zone, naive (as stored in songs.csv)."""
+    return dt.datetime.now(TZ).replace(tzinfo=None)
+
+
+def today():
+    return now().date()
+
+
+def from_epoch(seconds):
+    """Unix time -> naive datetime in the configured zone."""
+    return dt.datetime.fromtimestamp(seconds, TZ).replace(tzinfo=None)
 
 # yt-dlp dying this fast means it's broken (stale version), not a stream hiccup.
 QUICK_FAIL_SECONDS = 60
@@ -328,6 +369,12 @@ def resolve_radio(args):
             f.write("\n")
         print(f"Upgraded {radio.config_path} to the current settings layout.", flush=True)
     radio.cfg = cfg
+    global TZ
+    try:
+        TZ = parse_timezone(cfg["timezone"])
+    except ValueError as e:
+        sys.exit(f'{radio.config_path}: "timezone" — {e}. Use an IANA name like '
+                 f'"Europe/Malta" or an offset like "+02:00".')
     radio.url = args.url or cfg["url"]
     radio.prefer = (cfg["download_mp3"].get("prefer") or "").strip()
     radio.ignore = load_ignore(radio)
@@ -525,12 +572,19 @@ class SongBook:
         if mtime != self._mtime:
             self._load()
 
-    def add_spin(self, ts, title, artist):
-        """Count one spin; returns 'new', 'repeat', or None (backlog / same spin)."""
-        # chat backlog is re-sent on every (re)start — never re-count the past
-        if self.max_last is not None and ts <= self.max_last:
+    def add_spin(self, ts, title, artist, guard_backlog=True):
+        """Count one spin; returns 'new', 'repeat', or None (backlog / same spin).
+
+        guard_backlog: the chat logger gets the chat history re-sent on
+        every (re)start, so anything not newer than the newest row is
+        skipped. A live OCR read is never a backlog — `watch` passes False;
+        otherwise a clock that moved back (config "timezone" changed, Mac
+        clock corrected) would drop every song until it catches up with the CSV.
+        """
+        if guard_backlog and self.max_last is not None and ts <= self.max_last:
             return None
-        self.max_last = ts
+        if self.max_last is None or ts > self.max_last:
+            self.max_last = ts
         self.dirty = True
         iso = ts.isoformat(timespec="seconds")
         song = self.songs.get(song_key(artist, title))
@@ -546,7 +600,9 @@ class SongBook:
         if song["title"] == song["title"].upper() and title != title.upper():
             song["title"] = title
         last = dt.datetime.fromisoformat(song["last_played"])
-        same_spin = (ts - last).total_seconds() < SAME_SPIN_SECONDS
+        # abs(): a last_played more than 12 min in the *future* means the
+        # clock/timezone moved back — that's a real new spin, not the same one
+        same_spin = abs((ts - last).total_seconds()) < SAME_SPIN_SECONDS
         song["last_played"] = iso
         if same_spin:
             return None
@@ -619,10 +675,35 @@ def finished_downloads(downloads):
         yield song, proc.returncode == 0 and os.path.exists(dest)
 
 
-def record_spin(book, ytdlp, ts, title, artist, radio=None, downloads=None):
-    """Count a spin, enrich+save new songs; returns the line to print, or None."""
+def warn_clock_skew(book, mode):
+    """Say so when songs.csv holds timestamps from the future.
+
+    Happens when the Mac's clock or timezone moved back (e.g. travelling
+    west: the zone switch turns 12:44 into 11:44). Timestamps are local
+    wall-clock time, so the CSV keeps a one-hour discontinuity there; the
+    loggers keep working, but the chat logger's backlog guard skips songs
+    until the clock has caught up.
+    """
+    ts = now()
+    if book.max_last is None or book.max_last <= ts + dt.timedelta(minutes=1):
+        return
+    ahead = int((book.max_last - ts).total_seconds() // 60)
+    msg = (f"note: the newest last_played in songs.csv ({book.max_last:%Y-%m-%d %H:%M}) is "
+           f"{ahead} min ahead of the current time in {TZ} ({ts:%H:%M}) — was the "
+           f'"timezone" in config.json changed, or is the Mac\'s clock off?')
+    if mode == "log":
+        msg += f" Chat announcements are ignored until {book.max_last:%H:%M}."
+    print(msg, flush=True)
+
+
+def record_spin(book, ytdlp, ts, title, artist, radio=None, downloads=None, live=False):
+    """Count a spin, enrich+save new songs; returns the line to print, or None.
+
+    live=True marks a spin observed right now (OCR frame) rather than read
+    from a chat dump that may contain history — see SongBook.add_spin.
+    """
     book.refresh()  # sync with a concurrently running watch/log process
-    result = book.add_spin(ts, title, artist)
+    result = book.add_spin(ts, title, artist, guard_backlog=not live)
     if not result:
         if book.dirty:  # same-spin: last_played moved — persist it so the
             book.save()  # other process's same-spin window sees it too
@@ -830,14 +911,14 @@ def quota_path(radio):
 def quota_blocked_today(radio):
     try:
         with open(quota_path(radio), encoding="utf-8") as f:
-            return f.read().strip() == dt.date.today().isoformat()
+            return f.read().strip() == today().isoformat()
     except OSError:
         return False
 
 
 def mark_quota(radio):
     with open(quota_path(radio), "w", encoding="utf-8") as f:
-        f.write(dt.date.today().isoformat())
+        f.write(today().isoformat())
 
 
 def playlist_pending(radio, book, cache_rows):
@@ -1018,7 +1099,7 @@ def iter_chat_messages(raw_line):
         runs = r.get("message", {}).get("runs", [])
         text = "".join(x.get("text", "") for x in runs if isinstance(x, dict))
         usec = r.get("timestampUsec")
-        ts = dt.datetime.fromtimestamp(int(usec) / 1e6) if usec else dt.datetime.now()
+        ts = from_epoch(int(usec) / 1e6) if usec else now()
         yield ts, author, text
 
 
@@ -1097,7 +1178,7 @@ def acquire_single_instance(radio, mode):
         )
     f.seek(0)
     f.truncate()
-    f.write(f"pid {os.getpid()}, started {dt.datetime.now():%Y-%m-%d %H:%M:%S}\n")
+    f.write(f"pid {os.getpid()}, started {now():%Y-%m-%d %H:%M:%S}\n")
     f.flush()
     return f
 
@@ -1110,6 +1191,7 @@ def cmd_log(args):
     ytdlp = find_ytdlp(args.ytdlp)
     casing = load_artist_casing(radio)
     book = SongBook(radio.songs_csv)
+    warn_clock_skew(book, "log")
     print(f"Logging tracks from {radio.url}", flush=True)
     print(f"Songs file: {radio.songs_csv}  (Ctrl+C to stop)", flush=True)
 
@@ -1120,7 +1202,7 @@ def cmd_log(args):
         while True:
             started = time.monotonic()
             session = os.path.join(
-                radio.folder, "chat-" + dt.datetime.now().strftime("%Y%m%d-%H%M%S")
+                radio.folder, "chat-" + now().strftime("%Y%m%d-%H%M%S")
             )
             proc = subprocess.Popen(
                 [
@@ -1308,6 +1390,7 @@ def cmd_watch(args):
     ocr = ensure_ocr()
     casing = load_artist_casing(radio)
     book = SongBook(radio.songs_csv)
+    warn_clock_skew(book, "watch")
     interval = float(radio.cfg["capture_interval_seconds"])
     region = radio.cfg["ocr_region"]
     frame = os.path.join(radio.folder, ".frame.jpg")
@@ -1412,7 +1495,8 @@ def cmd_watch(args):
                         pending = None
                         last = key
                         line = record_spin(
-                            book, ytdlp, dt.datetime.now(), title, artist, radio, downloads
+                            book, ytdlp, now(), title, artist, radio, downloads,
+                            live=True,
                         )
                         if line:
                             show(line)

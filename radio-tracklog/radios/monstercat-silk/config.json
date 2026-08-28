@@ -1,5 +1,6 @@
 {
   "url": "https://www.youtube.com/watch?v=WsDyRAPFBC8",
+  "timezone": "Europe/Malta",
   "capture_interval_seconds": 60,
   "download_mp3": {
     "enabled": {

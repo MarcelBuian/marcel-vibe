@@ -61,6 +61,7 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
 {
   "url": "https://www.youtube.com/watch?v=WsDyRAPFBC8",
   "capture_interval_seconds": 60,
+  "timezone": "Europe/Malta",
   "download_mp3": {"enabled": true, "prefer": "", "use_ignore_file": true},
   "save_to_yt_playlist": {"enabled": true, "link": "https://www.youtube.com/playlist?list=PL...", "use_ignore_file": true},
   "ocr_region": {"x": [0.12, 0.75], "y": [0.02, 0.4]}
@@ -72,6 +73,11 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
 - **`url`** — the YouTube live stream to follow.
 - **`capture_interval_seconds`** — `watch` mode: how often to grab a frame
   and read the overlay. 60 is a good default (songs run 3–5 minutes).
+- **`timezone`** — the zone every date/time is written in (`songs.csv`,
+  lock and quota files), regardless of the zone the Mac is set to — so
+  travelling never shifts the log. An IANA name (`"Europe/Malta"`,
+  `"UTC"`) or a fixed offset (`"+02:00"`). Changing it later leaves the
+  rows already written in the old zone.
 - **`download_mp3.enabled`** — when `true`, every newly logged song is
   also downloaded as a best-quality mp3 (YouTube's best audio, converted
   to MP3 V0) into `radios/<name>/mp3/`, named `Artist - Title - Year.mp3`
@@ -269,6 +275,11 @@ automatically.
   continues where it left off (the newest `last_played` date stops it
   from re-counting the chat backlog after a restart). Only per-song
   totals are kept, not the time of every individual play.
+- **Timestamps are wall-clock time in the configured `timezone`**, not
+  the Mac's. If they still end up ahead of the clock (zone setting
+  changed, Mac clock corrected), the script says so at startup; `watch`
+  keeps counting, while `log` ignores chat until the clock has caught up
+  with the newest row.
 - **The binaries are disposable** — `yt-dlp`, `ffmpeg`, and `.ocr` in
   this folder are auto-downloaded/compiled; they don't need to be copied
   to another machine (but copying them saves the first-run downloads).
