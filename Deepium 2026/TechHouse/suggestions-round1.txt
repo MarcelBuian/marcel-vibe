@@ -1,0 +1,49 @@
+# Deepium 2026 - Tech House - suggestions round 1 (43 tracks)
+# Format: Artist - Title - Year - YouTube Music link   # vibe note
+# Sorted roughly from daytime/warm-up energy (top) to night/peak (bottom).
+# HOW TO USE: put a "+" at the start of every line you like, then run  ./dl-liked.sh TechHouse
+# Lines marked [SEARCH LINK - not verified] had no confident YouTube match - the link opens a YT Music search instead.
+#
+Chris Stussy - Here for the summer - 2026 - https://music.youtube.com/watch?v=kkUQ6-TygX0   # sunny warm daytime roller
+Toman - Verano En NY - 2025 - https://music.youtube.com/watch?v=XVQF2ebeT-A   # Latin percussion beach groove
+Dunmore Brothers & Ben Westbeech - Trust Me - 2026 - https://music.youtube.com/watch?v=kAgmVpWzC3s   # soulful vocal warm bass
+Josh Baker - Come Closer (feat. Sienna Sophia) - 2025 - https://music.youtube.com/watch?v=iS0CXumP_5w   # smooth vocal afternoon groove
+Dennis Cruz - Monochrome (feat. Pumpkin) - 2025 - https://music.youtube.com/watch?v=2ds8kFCKLG8   # deep rolling minimal bass
+Franky Rizardo - Shinjuku - 2025 - https://music.youtube.com/watch?v=WP1a5pBLctc   # deep driving hypnotic groove
+Prunk - Something About You - 2025 - https://music.youtube.com/watch?v=Bq3QXueNOxY   # warm PIV vocal roller
+Dennis Quin - False Promises - 2024 - https://music.youtube.com/watch?v=evxrwQYs4Ds   # bass-driven vocal house bump
+ANOTR & 3DDY - Like It (Extended Mix) - 2026 - https://music.youtube.com/watch?v=El8PIuY8fbA   # melodic vocal sunset groove
+Mat.Joe - High On Love - 2025 - https://music.youtube.com/watch?v=wSunTV-Ij_w   # disco-flavoured pumping bassline
+Claude VonStroke - Two Line Groove - 2026 - https://music.youtube.com/watch?v=HmOROpK_M5g   # rolling bass quirky vocals
+Rossi. - Don't Touch That Dial - 2025 - https://music.youtube.com/watch?v=FLdfUfDA0Os   # bumpy vocal chop groove
+Dennis Cruz & Patrick Luna - Bubbling - 2026 - https://music.youtube.com/watch?v=ZmZzeQL0_xI   # groove-heavy Solid Grooves bump
+Michael Bibi - Lil Freaky - 2025 - https://music.youtube.com/watch?v=XXDbJni22lQ   # cheeky vocal minimal tech
+PAWSA - Ride On Me - 2026 - https://music.youtube.com/watch?v=qMlhfSodBxs   # stripped DC10 bass groove
+Sidney Charles & Kolter - Let's Pardey - 2025 - https://music.youtube.com/watch?v=tw73oBmvrgo   # chunky bass vocal chops
+East End Dubs & Di Chiara Brothers - Face Bass - 2026 - https://music.youtube.com/watch?v=6Kx_qbFZZck   # heavy sub deep tech
+Kolter - What Did You Come For? - 2026 - https://music.youtube.com/watch?v=b3nQbOfldrw   # bouncy UK-flavoured peak groove
+Jamie Jones - Murder Mystery (Extended Mix) - 2025 - https://music.youtube.com/watch?v=SD6c5neZQKY   # dark vocal Hot Creations peak
+Chris Stussy - Darkness - 2026 - https://music.youtube.com/watch?v=IAKj6UETHRg   # driving low-end night tension
+Michael Bibi - Lets Get High - 2026 - https://music.youtube.com/watch?v=l7nVIlCWPd0   # peak-time late-night anthem
+Hot Since 82 & Shades of Rhythm - Shaded - 2026 - https://music.youtube.com/watch?v=um--OpY6UWo   # rave-rooted peak closer
+Gorgon City - Voodoo (Extended Mix) - 2024 - https://music.youtube.com/watch?v=7qMmmuA2m8Y   # sunset groove, chanted vocal hook
+Dom Dolla - Dreamin (feat. Daya) (Extended Mix) - 2025 - https://music.youtube.com/watch?v=PdR0JAV2oTI   # hypnotic vocal house singalong
+FISHER & Kita Alexander - Atmosphere (Extended Mix) - 2024 - https://music.youtube.com/search?q=FISHER+%26+Kita+Alexander+Atmosphere+%28Extended+Mix%29   [SEARCH LINK - not verified]   # warm pop-vocal beach anthem
+John Summit & HAYLA - Where You Are (Extended Mix) - 2023 - https://music.youtube.com/search?q=John+Summit+%26+HAYLA+Where+You+Are+%28Extended+Mix%29   [SEARCH LINK - not verified]   # golden-hour hands-up vocal
+Gorgon City - Work It Out (Extended Mix) - 2026 - https://music.youtube.com/search?q=Gorgon+City+Work+It+Out+%28Extended+Mix%29   [SEARCH LINK - not verified]   # euphoric Poppy Baskcomb vocal fuel
+Ultra Nate, HUGEL & Imael Angel - Movin' To The Sun (Extended Mix) - 2026 - https://music.youtube.com/search?q=Ultra+Nate%2C+HUGEL+%26+Imael+Angel+Movin%27+To+The+Sun+%28Extended+Mix%29   [SEARCH LINK - not verified]   # most-Shazamed 2026 summer hit
+Chris Lake, Sammy Virji & Nathan Nicholson - Summertime Blues (Extended Mix) - 2024 - https://music.youtube.com/search?q=Chris+Lake%2C+Sammy+Virji+%26+Nathan+Nicholson+Summertime+Blues+%28Extended+Mix%29   [SEARCH LINK - not verified]   # feelgood rolling vocal groove
+Nina Simone - See-Line Woman (Mochakk Mix) - 2026 - https://music.youtube.com/search?q=Nina+Simone+See-Line+Woman+%28Mochakk+Mix%29   [SEARCH LINK - not verified]   # Coachella-debuted classic rework
+HUGEL & Cumbiafrica - Marianela (Que Pasa) (Extended Mix) - 2023 - https://music.youtube.com/watch?v=GJtj84f-R-4   # Latin cumbia tech house bomb
+John Summit - La Danza (Extended Mix) - 2022 - https://music.youtube.com/watch?v=DrO5TTpxO24   # Latin percussion peak groove
+Wade - I Was Made For Lovin' You (Extended Mix) - 2025 - https://music.youtube.com/watch?v=TeV5XLGMIlQ   # KISS hook, tech house flip
+Kevin McKay, Pupa Nas T & Denise Belfon - Work (Extended Mix) - 2024 - https://music.youtube.com/watch?v=g4-sW0MAIeE   # dancehall vocal, Beatport smash
+Dom Dolla - Saving Up (Extended Mix) - 2023 - https://music.youtube.com/watch?v=QqdN3p50Q4U   # massive singalong, bouncing bass
+Max Styler & Westend - Rhythm Machine (Extended Mix) - 2024 - https://music.youtube.com/watch?v=0mDRQJOS6j4   # bouncy peak-time tech house
+Matt Sassari - Give It To Me (Extended Mix) - 2021 - https://music.youtube.com/watch?v=Whva45ZocNU   # Beatport #1 vocal bassline
+Eli Brown - Diamonds On My Mind (Extended Mix) - 2023 - https://music.youtube.com/watch?v=gkZ8Zmx9NIM   # dark driving vocal hook
+Cloonee & Jocelyn Enriquez - XTC (Extended Mix) - 2026 - https://music.youtube.com/watch?v=-tH_-NEQD78   # darker Hellbent peak weapon
+Michael Bibi, KETTAMA & Wu-Tang Clan - MYSTERY OF RAW (Extended Mix) - 2026 - https://music.youtube.com/watch?v=_OH9eYTaoXI   # Wu-Tang rap tech house bomb
+Biscits - Freak (Extended Mix) - 2024 - https://music.youtube.com/watch?v=zvBDbHevFwI   # festival belter, raw bass
+SIDEPIECE & 95 South - Can I Ride (Extended Mix) - 2026 - https://music.youtube.com/watch?v=BYBBJIM173Q   # 132 BPM Miami bass energy
+Mau P - TESLA (Extended Mix) - 2025 - https://music.youtube.com/search?q=Mau+P+TESLA+%28Extended+Mix%29   [SEARCH LINK - not verified]   # relentless late-night peak driver

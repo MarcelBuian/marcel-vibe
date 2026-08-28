@@ -1,0 +1,46 @@
+# Deepium 2026 - Deep House - tracks you ALREADY PLAYED in past Marcel Vibe sets (placeholders / safe fallbacks)
+# Format: Artist - Title - Year - YouTube Music link   # session where you played it
+# Mark with "+" and run  ./dl-liked.sh DeepHouse  to download these too (this subfolder is scanned as well).
+#
+Gentleman (DJ) - Deeply Love - ? - https://music.youtube.com/search?q=Gentleman+%28DJ%29+Deeply+Love   [SEARCH LINK - not verified]   # played #26
+Gaston Lopez - Limits on the Mind - ? - https://music.youtube.com/search?q=Gaston+Lopez+Limits+on+the+Mind   [SEARCH LINK - not verified]   # played #26
+Gentleman (DJ) - Velvet Nights - ? - https://music.youtube.com/search?q=Gentleman+%28DJ%29+Velvet+Nights   [SEARCH LINK - not verified]   # played #26
+Sarandub - Stormy Weather - 2024 - https://music.youtube.com/watch?v=KbgAS_GvcMM   # played #26
+Undrsound Soul, Gentleman (DJ) - Silent Connection - 2025 - https://music.youtube.com/watch?v=HgQKhPlbbQw   # played #26
+Jarquin & Cano - Dance Obsession - 2015 - https://music.youtube.com/watch?v=zIBAqowlu04   # played #26
+Mallin - Set Me Free - ? - https://music.youtube.com/watch?v=flGVaI1xutA   # played #26
+Quasar - I Never Thought I'd See The Day - ? - https://music.youtube.com/search?q=Quasar+I+Never+Thought+I%27d+See+The+Day   [SEARCH LINK - not verified]   # played #26
+Bonetti - Deep Flavour - ? - https://music.youtube.com/search?q=Bonetti+Deep+Flavour   [SEARCH LINK - not verified]   # played #26
+Figgy - Tell Me - ? - https://music.youtube.com/search?q=Figgy+Tell+Me   [SEARCH LINK - not verified]   # played #26
+Luis Radio - Reach Up - ? - https://music.youtube.com/search?q=Luis+Radio+Reach+Up   [SEARCH LINK - not verified]   # played #26
+Gibbon - Game Of Pleasure (Reconstruction Mix) - 2022 - https://music.youtube.com/watch?v=D1c4TtG2tgg   # played #26
+Dave Boyle, Bollo - Sundance (Bollo Remix) - 2012 - https://music.youtube.com/watch?v=Q-gZ5b08LdA   # played #26
+Groove Theory - Tell Me (Artmann Edit) - 2020 - https://music.youtube.com/watch?v=krGFQk2xceE   # played #26
+Computer Data - Ego - ? - https://music.youtube.com/watch?v=-Obdq-of4Kc   # played #26
+Kolter - Virtuos Pie - ? - https://music.youtube.com/watch?v=gZHdp9_pTr0   # played #26
+AstroHertz - RainDrops - ? - https://music.youtube.com/watch?v=tJLUzndP1r8   # played #26
+Fullempty - 777/Poolside - 2024 - https://music.youtube.com/watch?v=YJYy5QlwkoI   # played #26
+Sensei - Trust - 2021 - https://music.youtube.com/watch?v=LZx9KpzX6LE   # played #26
+Computer Data - Seele - 2020 - https://music.youtube.com/watch?v=EzXLR2ra7cs   # played #26
+Gentleman (DJ) - Tell Me What You Need - ? - https://music.youtube.com/search?q=Gentleman+%28DJ%29+Tell+Me+What+You+Need   [SEARCH LINK - not verified]   # played #09
+Deep Spelle - Funk Foot - ? - https://music.youtube.com/search?q=Deep+Spelle+Funk+Foot   [SEARCH LINK - not verified]   # played #09
+Gentleman & Juvedybo - Jazzy Night - ? - https://music.youtube.com/search?q=Gentleman+%26+Juvedybo+Jazzy+Night   [SEARCH LINK - not verified]   # played #10
+Gentleman (DJ) - Listen to Sade (Kanedo Remix) - ? - https://music.youtube.com/search?q=Gentleman+%28DJ%29+Listen+to+Sade+%28Kanedo+Remix%29   [SEARCH LINK - not verified]   # played #10
+Darles Flow, Gentleman (DJ) - Isolation - ? - https://music.youtube.com/search?q=Darles+Flow%2C+Gentleman+%28DJ%29+Isolation   [SEARCH LINK - not verified]   # played #15
+Thee Gobbs, AraSoul Sax - No Words - ? - https://music.youtube.com/search?q=Thee+Gobbs%2C+AraSoul+Sax+No+Words   [SEARCH LINK - not verified]   # played #06
+Henrik Villard - Find A Certain Way - ? - https://music.youtube.com/search?q=Henrik+Villard+Find+A+Certain+Way   [SEARCH LINK - not verified]   # played #08
+Fake Moses - See The Sea - ? - https://music.youtube.com/search?q=Fake+Moses+See+The+Sea   [SEARCH LINK - not verified]   # played #08
+Colau - I Know You Love Me - ? - https://music.youtube.com/search?q=Colau+I+Know+You+Love+Me   [SEARCH LINK - not verified]   # played #08
+DELACOUR - About You - 2023 - https://music.youtube.com/watch?v=gZKcQh12-Vw   # played #08
+Nahamasy & DJ Poolboi - Let Go - 2021 - https://music.youtube.com/watch?v=32RHUW0LQKQ   # played #08
+Jason Hersco - Frick - ? - https://music.youtube.com/watch?v=k93PbnbIX6g   # played #08
+Moonsound, Sllash - Thinking About You (Pascal Junior Remix) - ? - https://music.youtube.com/watch?v=OvFg-c1U9UU   # played #13
+Midi Culture - Oh Mammy - ? - https://music.youtube.com/watch?v=UgkkZPOpM6Y   # played #19
+Dj Dark & MD Dj - Isla Bonita - ? - https://music.youtube.com/watch?v=IWId08d3ETw   # played #19
+Carla's Dreams - Eroina Sub Pielea Mea (Midi Culture Remix) - ? - https://music.youtube.com/search?q=Carla%27s+Dreams+Eroina+Sub+Pielea+Mea+%28Midi+Culture+Remix%29   [SEARCH LINK - not verified]   # played #19
+Andreas Balicki - Smile - ? - https://music.youtube.com/search?q=Andreas+Balicki+Smile   [SEARCH LINK - not verified]   # played #11
+Amol Reon - The Dawn - ? - https://music.youtube.com/search?q=Amol+Reon+The+Dawn   [SEARCH LINK - not verified]   # played #08
+Oscar Barila - My Oxygen (T.Markakis Remix) - ? - https://music.youtube.com/search?q=Oscar+Barila+My+Oxygen+%28T.Markakis+Remix%29   [SEARCH LINK - not verified]   # played #08
+16BL - Deep In My Soul - ? - https://music.youtube.com/search?q=16BL+Deep+In+My+Soul   [SEARCH LINK - not verified]   # played #13
+Gaston Lopez - Real Dancer - ? - https://music.youtube.com/search?q=Gaston+Lopez+Real+Dancer   [SEARCH LINK - not verified]   # played #09
+Otistic - Down - ? - https://music.youtube.com/search?q=Otistic+Down   [SEARCH LINK - not verified]   # played #11

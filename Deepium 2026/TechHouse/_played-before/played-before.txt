@@ -1,0 +1,40 @@
+# Deepium 2026 - Tech House - tracks you ALREADY PLAYED in past Marcel Vibe sets (placeholders / safe fallbacks)
+# Format: Artist - Title - Year - YouTube Music link   # session where you played it
+# Mark with "+" and run  ./dl-liked.sh TechHouse  to download these too (this subfolder is scanned as well).
+#
+DJ Chus, Dennis Cruz - The Sun (Drums Mix) - 2018 - https://music.youtube.com/watch?v=Mr97RgYjWdA   # played #01
+Hot Since 82, Liz Cass - Eye of the Storm - 2020 - https://music.youtube.com/watch?v=EzQt31v_bgk   # played #11
+Hot Since 82, Alex Mills, Daley Padley - Vapours - 2019 - https://music.youtube.com/watch?v=BcC6ctCXvIs   # played #12 #13
+Claude VonStroke, Nala - Wet State - 2021 - https://music.youtube.com/watch?v=lx2iJ1cVBU8   # played #06
+Solomun - Love Recycled 4 - 2025 - https://music.youtube.com/watch?v=6oNLBJDqY34   # played #16
+Dennis Cruz - Bonito - 2024 - https://music.youtube.com/watch?v=OgT6cJiEFRY   # played #16
+Dennis Cruz - Going Down - ? - https://music.youtube.com/search?q=Dennis+Cruz+Going+Down   [SEARCH LINK - not verified]   # played #16
+Adisyn - Digital Heart - ? - https://music.youtube.com/search?q=Adisyn+Digital+Heart   [SEARCH LINK - not verified]   # played #16
+Mr. Belt & Wezol - Keep It Exciting - ? - https://music.youtube.com/search?q=Mr.+Belt+%26+Wezol+Keep+It+Exciting   [SEARCH LINK - not verified]   # played #16
+Arielle Free - Feels So Good - 2023 - https://music.youtube.com/watch?v=SFLqoy8MnEo   # played #16
+Savage & SHe - In The Dark - ? - https://music.youtube.com/search?q=Savage+%26+SHe+In+The+Dark   [SEARCH LINK - not verified]   # played #16
+Fantomel - Dame Un Grrr (Provi Extended Remix) - 2025 - https://music.youtube.com/watch?v=EiyZABpUMPY   # played #16
+Matt Sassari, Hugel, Sonique - It Feels So Good (Jamy Nox Remix) - 2025 - https://music.youtube.com/watch?v=5O6J4TS7-os   # played #17
+The Temper Trap - Sweet Disposition (John Summit & Silver Panda Remix) - 2024 - https://music.youtube.com/watch?v=fB6M8bjKZXU   # played #17
+Fred Again.., The Blessed Madonna X Shakedown - (We've Lost Dancing) X At Night (SWITCH DISCO EDIT) - 2023 - https://music.youtube.com/watch?v=ZM3nsxw-8EQ   # played #15 #17
+Oliver Cheatham - Get Down Saturday Night (Rules Remix) - 2023 - https://music.youtube.com/watch?v=6bLVxMI1JBI   # played #17
+Frost - We Call It House - 2019 - https://music.youtube.com/watch?v=G2XxSoQ2L58   # played #17
+Supermode - Tell Me Why (MEDUZA Remix) - 2022 - https://music.youtube.com/watch?v=GUaltRgMaMA   # played #17
+Supermode - Tell Me Why (James Carter Remix) - 2024 - https://music.youtube.com/watch?v=kVJTEaUJq2A   # played #18
+Kevin McKay - In The Air Tonight (Amal Nemer Extended Remix) - 2024 - https://music.youtube.com/watch?v=Wm3Ajs00Deo   # played #11
+Tube & Berger, Juliet Sikora - Come on Now (Set It Off) - 2014 - https://music.youtube.com/watch?v=0RNbu9YfeZM   # played #11
+Hugel, Cumbiafrica - Morenita - 2021 - https://music.youtube.com/watch?v=zcFGYuJDTY0   # played #19
+HUGEL x Topic x Arash feat. Daecolm - I Adore You - 2024 - https://music.youtube.com/watch?v=KiIc54yyktw   # played #19
+Franky Rizardo & Ros T ft Eunice Collins - Out The Fire (At The Hotel) - 2021 - https://music.youtube.com/watch?v=ilM0QzRfaT0   # played #19
+Maesic & Marshall Jefferson - Life Is Simple (Move Your Body) - 2025 - https://music.youtube.com/watch?v=jH60oDOVyn8   # played #19
+ANOTR, Abel Balder - Relax My Eyes - 2023 - https://music.youtube.com/watch?v=-SLc9v10wV4   # played #19
+Nate Ash & Mr. Bones - Home Fries - 2025 - https://music.youtube.com/watch?v=Hik3-V3Uzto   # played #19
+CYRIL - Stumblin' In - 2024 - https://music.youtube.com/watch?v=57VMB1IzLKY   # played #19
+Mat.Joe - Make A Living - 2015 - https://music.youtube.com/watch?v=ub_PgsqJ_wE   # played #19
+Sweetpower - Happy Days - 2019 - https://music.youtube.com/watch?v=ug4wIWuqY-o   # played #19
+Shouse - Love Tonight (Vintage Culture & Kiko Franco Remix) - 2021 - https://music.youtube.com/watch?v=_yr0FehC6U0   # played #03
+Kelis - Milkshake 20 (Alex Wann Remix) - 2024 - https://music.youtube.com/watch?v=z3gtFd3_N0E   # played #03
+Kings Of Leon - Sex On Fire (Groove Shack Remix) - 2024 - https://music.youtube.com/watch?v=VGGKZs4iFBg   # played #03
+Adam Port, Stryv - Move feat. Malachiii - 2024 - https://music.youtube.com/watch?v=95dB-ObZ7Ho   # played #03
+TCTS & Boston Bun - Without You - 2021 - https://music.youtube.com/watch?v=BBUSs0t85ms   # played #05
+Deeleegenz - In The Groove - 2023 - https://music.youtube.com/watch?v=r7TMWmpLtN4   # played #11

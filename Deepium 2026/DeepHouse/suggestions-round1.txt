@@ -1,0 +1,43 @@
+# Deepium 2026 - Deep House - suggestions round 1 (37 tracks)
+# Format: Artist - Title - Year - YouTube Music link   # vibe note
+# Sorted roughly from daytime/warm-up energy (top) to night/peak (bottom).
+# HOW TO USE: put a "+" at the start of every line you like, then run  ./dl-liked.sh DeepHouse
+# Lines marked [SEARCH LINK - not verified] had no confident YouTube match - the link opens a YT Music search instead.
+#
+Session Victim - The Unheard - 2025 - https://music.youtube.com/watch?v=C6d-r1deERA   # hazy jazzy house, dusty trip-hop
+Rick Wade - Intrusive Emotions - 2025 - https://music.youtube.com/watch?v=UN8MqWMOT9A   # flickering jazz keys, deep sub
+Byron The Aquarius - Long Way Home - 2025 - https://music.youtube.com/watch?v=LqREdlKmcus   # jazzy Detroit keys, soulful swing
+Laurence Guy - Waiting For Love - 2022 - https://music.youtube.com/watch?v=w1MJDYDr8p8   # dreamy sample house, warm haze
+Deep Spelle - My Heart - 2025 - https://music.youtube.com/watch?v=m57d0Jirkq0   # warm chilled deep house
+Sarandub - Don't Tell Me - 2025 - https://music.youtube.com/watch?v=1dWxEhCVjAU   # dusty drums, sampled vocal deep
+Laurence Guy & J. Peacock - Everything I've Got - 2025 - https://music.youtube.com/search?q=Laurence+Guy+%26+J.+Peacock+Everything+I%27ve+Got   [SEARCH LINK - not verified]   # warm feel-good sample house
+Jesse Bru - Sun Strut - 2022 - https://music.youtube.com/search?q=Jesse+Bru+Sun+Strut   [SEARCH LINK - not verified]   # sunny classy house strut
+Gentleman (DJ) - Escape - 2026 - https://music.youtube.com/search?q=Gentleman+%28DJ%29+Escape   [SEARCH LINK - not verified]   # elegant deep, soft pads
+Artmann - Stick Around - 2025 - https://music.youtube.com/watch?v=nHUo_Whzf1k   # organic drums, deep sunset chords
+DJOKO - Daylight - 2022 - https://music.youtube.com/watch?v=WnhicL4rnqw   # deep minimal chords, rolling groove
+Black Loops - Higher (Kolter Remix) - 2022 - https://music.youtube.com/watch?v=fE4EJh8K2Gk   # rolling deep groove, warm sub
+Session Victim & Nebraska - Make It Happen - 2025 - https://music.youtube.com/watch?v=UG3DtdSThx4   # sample-rich soulful house
+Fouk - Floating - 2025 - https://music.youtube.com/watch?v=G0uLRzqRXpQ   # funky warm house, jazzy keys
+Bonetti - House Trippin' - 2025 - https://music.youtube.com/watch?v=aFxicNCgmrg   # jackin' deep groove, chunky bass
+Harrison BDP - Cherry - 2025 - https://music.youtube.com/watch?v=0FA4mN7SI-A   # lush deep house roller
+Dam Swindle - What You Give - 2025 - https://music.youtube.com/watch?v=KQjFuLNgNqs   # lush organs, moody NY keys
+Dennis Quin - Hard Days Work - 2025 - https://music.youtube.com/watch?v=rLiSixh9p0U   # piano house, spoken word
+Kerri Chandler - Sunrise [Watergate] - 2022 - https://music.youtube.com/watch?v=Gsp9fHrMvMo   # golden-hour deep classic
+Jimpster - Crispy Pancakes - 2026 - https://music.youtube.com/watch?v=IviYK7FLiZU   # live-bass disco-leaning warm opener
+Sebb Junior - Body Language (Extended Mix) - 2025 - https://music.youtube.com/watch?v=r9Rjdh-n4eQ   # jazzy soulful deep groove
+Atjazz feat. Rona Ray - Shine - 2026 - https://music.youtube.com/watch?v=oC8-jykmU5Q   # warm soulful vocal deep house
+Kerri Chandler & NAE (SA) - Caged Bird (Full Vocal Mix) - 2024 - https://music.youtube.com/watch?v=tSCo4zPlChk   # classic Kaoz deep vocal soul
+Kevin McKay - Mon Coeur - 2026 - https://music.youtube.com/watch?v=vWTtldl8rZ4   # nu-disco tinged deep roller
+Crackazat - Pick Me Up - 2026 - https://music.youtube.com/watch?v=oRKPgrnJ34U   # funky jazz-soul house, live horns
+Dario D'Attis & Mr. V - Back To The Old - 2025 - https://music.youtube.com/watch?v=MYJnPMFhrfY   # deep spoken-vocal Poker Flat groove
+Michael Gray feat. Dyanna Fearon - I'm Falling For You - 2026 - https://music.youtube.com/watch?v=WNmM5sha6Qs   # lush soulful sunset singalong
+Pascal Junior - I Needed You - 2025 - https://music.youtube.com/watch?v=7DVUn7HraLk   # Romanian deep house emotive vocal
+Butch & Life On Planets - Get High With You (Extended Mix) - 2025 - https://music.youtube.com/watch?v=hgDDoC4-1WU   # poolside disco-deep vocal
+Dennis Ferrer feat. Janelle Kroll - Mind Ur Step (Sam Divine Extended Remix) - 2024 - https://music.youtube.com/watch?v=2gWQ91jB0fM   # synthy ethereal vocal shuffle
+Girls of the Internet feat. Anelisa Lamola - Affirmations (Dennis Ferrer Extended Remix) - 2025 - https://music.youtube.com/watch?v=x4B8MQj0ZN8   # uplifting soulful Pacha vocal
+Crackazat feat. Lyric Jones & Eva Lazarus - SUN - 2026 - https://music.youtube.com/search?q=Crackazat+feat.+Lyric+Jones+%26+Eva+Lazarus+SUN   [SEARCH LINK - not verified]   # sun-drenched soulful vocal bounce
+Sllash & Doppe - Move That Body - 2026 - https://music.youtube.com/watch?v=jaWEum4oiDU   # Romanian groovy sunset house
+Purple Disco Machine - Disco Cherry (Extended Mix) - 2026 - https://music.youtube.com/watch?v=4v5l7U9AANg   # polished disco-house sunset peak
+Solomun & Inez - Raider on the Storm - 2026 - https://music.youtube.com/watch?v=ke6LNJunZ8k   # emotional deep vocal peak anthem
+Ferreck Dawn & Hayley May - Deep Inside - 2025 - https://music.youtube.com/watch?v=voQQVBtF72Q   # steel-drum soulful summer anthem
+Low Steppa - Got The Funk (Extended Mix) - 2025 - https://music.youtube.com/watch?v=UhR1DeWtadY   # funky peak-time Defected closer

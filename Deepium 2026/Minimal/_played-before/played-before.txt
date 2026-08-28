@@ -1,0 +1,28 @@
+# Deepium 2026 - Minimal - tracks you ALREADY PLAYED in past Marcel Vibe sets (placeholders / safe fallbacks)
+# Format: Artist - Title - Year - YouTube Music link   # session where you played it
+# Mark with "+" and run  ./dl-liked.sh Minimal  to download these too (this subfolder is scanned as well).
+#
+Honeydripper - All About You - 2017 - https://music.youtube.com/watch?v=ErKhJSIRy5I   # played #14
+Quivver - See Through - 2024 - https://music.youtube.com/watch?v=yQ4Vlj5PeEk   # played #14
+Stoilku, Mladen Stoiljkovic - Sve Je Mir - 2022 - https://music.youtube.com/watch?v=RXMXYDVhIh0   # played #14
+KiRiK - Svoi Dom - 2023 - https://music.youtube.com/watch?v=fewUAnzXr9A   # played #10
+Frost - Overtones - 2020 - https://music.youtube.com/watch?v=l2wjB-HslZY   # played #10
+GNTLMN - Soulva - Odyssey - 2025 - https://music.youtube.com/watch?v=829nsBSWbNs   # played #05
+Kolter - Lose My Breath - 2024 - https://music.youtube.com/watch?v=BCYHSRZnnb4   # played #05
+Nacho Scoppa - Y que - 2026 - https://music.youtube.com/watch?v=0HnfZJFqmXA   # played #05
+Holo - Ode To Else - 2024 - https://music.youtube.com/watch?v=cUtHidxIXSw   # played #05
+Robert Cecil - This Time Around - 2025 - https://music.youtube.com/watch?v=uQVBV3Bdu9E   # played #05
+Patrice Meiner, Sasha Kaktus - Deep Tool - 2016 - https://music.youtube.com/watch?v=TSfHzuP9_xY   # played #05 #14
+SIT, Cristi Cons, Vlad Caia - Furtuna - ? - https://music.youtube.com/search?q=SIT%2C+Cristi+Cons%2C+Vlad+Caia+Furtuna   [SEARCH LINK - not verified]   # played #05
+Marcu Rares - Flamingo Ahead - ? - https://music.youtube.com/search?q=Marcu+Rares+Flamingo+Ahead   [SEARCH LINK - not verified]   # played #14
+Hraach - No Smile On The Street - 2015 - https://music.youtube.com/watch?v=5_-hsnFxAWM   # played #14
+Deep Active Sound - Pia - 2016 - https://music.youtube.com/watch?v=aNge8yGGH60   # played #14
+Bryz - Vapors - 2018 - https://music.youtube.com/watch?v=kAAghOF1KcM   # played #14
+Bryz - Morning Light - 2018 - https://music.youtube.com/watch?v=2cT0t_DuDfw   # played #14
+Crihan - Spune - 2020 - https://music.youtube.com/watch?v=n09T0X7XYys   # played #14
+Bryz - Birds - 2018 - https://music.youtube.com/watch?v=HdfifX-kF1g   # played #14
+Mayro - Crazy Thoughts - ? - https://music.youtube.com/search?q=Mayro+Crazy+Thoughts   [SEARCH LINK - not verified]   # played #14
+Bryz - Emotion - 2018 - https://music.youtube.com/watch?v=gurUFyb1dys   # played #14
+Cojoc, Moldovan - Pleasure - 2019 - https://music.youtube.com/watch?v=o6SzpON2nfw   # played #14
+Evren Ulusoy - Histoire d'amour - 2010 - https://music.youtube.com/watch?v=zFgG_fYNajc   # played #14
+Fuerteventura Deep Sound - REA4 - 2024 - https://music.youtube.com/watch?v=qyE-qnJWZSk   # played #14

@@ -1,0 +1,46 @@
+# Deepium 2026 - Minimal - suggestions round 1 (40 tracks)
+# Format: Artist - Title - Year - YouTube Music link   # vibe note
+# Sorted roughly from daytime/warm-up energy (top) to night/peak (bottom).
+# HOW TO USE: put a "+" at the start of every line you like, then run  ./dl-liked.sh Minimal
+# Lines marked [SEARCH LINK - not verified] had no confident YouTube match - the link opens a YT Music search instead.
+#
+Petre Inspirescu - Those That Tremble - 2025 - https://music.youtube.com/search?q=Petre+Inspirescu+Those+That+Tremble   [SEARCH LINK - not verified]   # slow-blooming long-form afternoon hypnosis
+Marcu Rares - Bonsoir - 2022 - https://music.youtube.com/search?q=Marcu+Rares+Bonsoir   [SEARCH LINK - not verified]   # melancholic deep beach drift
+BRYZ - Limerence - 2025 - https://music.youtube.com/search?q=BRYZ+Limerence   [SEARCH LINK - not verified]   # warm textures, patient groove
+Crihan - Aliosha - 2024 - https://music.youtube.com/search?q=Crihan+Aliosha   [SEARCH LINK - not verified]   # hazy dusty micro-house
+Jay Bliss - Europa Echoes - 2024 - https://music.youtube.com/search?q=Jay+Bliss+Europa+Echoes   [SEARCH LINK - not verified]   # dubby deep minimal shimmer
+Mihai Popoviciu - What I Need - 2025 - https://music.youtube.com/watch?v=y-9OO8FZqrk   # vocal rolling deep house
+Andrey Djackonda - Nature's Calling - 2025 - https://music.youtube.com/watch?v=Si-WO6if0wk   # Moldovan dub-tech roller
+Lizz - The Grief - 2024 - https://music.youtube.com/watch?v=5P5eLy_TUA0   # ten-minute deep hypnotic ride
+BRYZ - Sunset Cliffs - 2025 - https://music.youtube.com/watch?v=LShSj-BAqt0   # golden-hour hypnotic sway
+Livio & Roby - Cascada de EV - 2026 - https://music.youtube.com/watch?v=z7CRSrIsHeI   # moody early-evening groove
+Sublee - Simple Two - 2024 - https://music.youtube.com/watch?v=SsaNbgepu-M   # trippy playful minimal bounce
+Vlad Arapasu - Floating Tone - 2026 - https://music.youtube.com/watch?v=Xfp8-Xn3Xig   # floating dusk minimal trip
+Barac - Spectral Processor - 2025 - https://music.youtube.com/watch?v=v6p4gJb9X9A   # psychedelic slow burner
+Dan Andrei - Clockworks - 2024 - https://music.youtube.com/search?q=Dan+Andrei+Clockworks   [SEARCH LINK - not verified]   # ticking acid-tinged groove
+Arapu - Take It Deep Down - 2024 - https://music.youtube.com/watch?v=Lnx29qUWc7g   # deep rolling low-end
+Kozo - Continental - 2024 - https://music.youtube.com/watch?v=RKxSMiJwrvI   # seductive Bucharest minimal gem
+RH.CHER - Gwen - 2025 - https://music.youtube.com/watch?v=wuonJLZFi14   # hypnotic arpiar-school night roll (Rhadoo & Traian Chereches)
+Sepp - Your Skin Smell - 2026 - https://music.youtube.com/watch?v=xr0VLP64VJg   # lush rolling hypnotic roller
+Nu Zau - Synthetic - 2024 - https://music.youtube.com/watch?v=ot8IyX0UIbI   # bouncy micro-groove hooks
+Crihan - Grushenka - 2024 - https://music.youtube.com/watch?v=301K0vBjbR4   # dark cinematic driving minimal
+Cezar - Solo 2305 - 2025 - https://music.youtube.com/watch?v=5nxO6i0iWHw   # polyrhythmic orchestral tension
+Arapu - Over - 2025 - https://music.youtube.com/watch?v=Glprnr5_LgE   # driving Liniar pressure
+Barac - Hypnotic Grayscale - 2024 - https://music.youtube.com/watch?v=Sepwbp4PCjo   # relentless trance-minimal late-night
+Cristi Cons - Primordial - 2026 - https://music.youtube.com/watch?v=WlfjTQ7cqBg   # Amphia peak-time depth
+Djebali & Tuccillo - Shoreline Check - 2025 - https://music.youtube.com/watch?v=LbsFJ3XHS2g   # sunlit deep house live jam
+Across Boundaries, Chris Stussy & Locklead - Sakura - 2025 - https://music.youtube.com/watch?v=B7rGMkRbjkw   # blooming hypnotic afternoon groove
+Pheek - Misty Steps - 2025 - https://music.youtube.com/watch?v=ZTRgMGRlshs   # dubby microhouse warm haze
+Janeret - Mantrax - 2025 - https://music.youtube.com/watch?v=OepjtTFyoIw   # liquid Parisian deep roller
+Toman - Seguimos - 2025 - https://music.youtube.com/watch?v=XKLbe8isJT8   # rolling sub-bass deep tech
+Mihai Pol - Goliath - 2025 - https://music.youtube.com/watch?v=5qu9vZL3tys   # swinging micro-groove, subtle tension
+Malin Genie & Frits Wentink - Exopaq - 2025 - https://music.youtube.com/watch?v=KKFRfq4D-5g   # wonky deep bass shuffle
+Fabe - Still On Fizz - 2024 - https://music.youtube.com/watch?v=1JUHigjugx8   # bubbly Berlin minimal bounce
+Varhat - Breaking Out - 2024 - https://music.youtube.com/watch?v=wFGFzNc1q5Y   # hazy acid-tinged minimal trip
+Kolter - Who You Talking To? - 2025 - https://music.youtube.com/watch?v=taDVjno_Gmc   # cheeky vocal-hook minimal funk
+Julian Perez - Voloka - 2025 - https://music.youtube.com/watch?v=1uyT8sbLBBc   # tribal Berlin minimal pressure
+Traumer - All The Love - 2025 - https://music.youtube.com/watch?v=rOOttLuFLpI   # sunset vocal deep-tech anthem
+Robin Ordell - Civic TV - 2026 - https://music.youtube.com/watch?v=nmXHU9FNyyI   # trippy UK minimal groover
+Saktu - Fucha - 2026 - https://music.youtube.com/watch?v=_pvHrpoPxr4   # sleek hypnotic low-end pressure
+Archie Hamilton & Sidney Charles - Reset - 2025 - https://music.youtube.com/watch?v=vHdlpdXmbyk   # peak-time deep tech thump
+Enzo Siragusa - Kilimanjaro Sound - 2025 - https://music.youtube.com/watch?v=me8-z6tNIYg   # reese bass late-night pressure
