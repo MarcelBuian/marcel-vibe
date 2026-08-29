@@ -1,0 +1,63 @@
+# Minimal - suggested mixing order (light -> aggressive). number | bpm | source | file
+## 1. Deep & dreamy - Romanian minimal warm-up, 120-124 bpm
+010 | 120.0 bpm | new              | Marcu Rares - Bonsoir - 2022.mp3
+020P | 122.9 bpm | _played-before   | Crihan   Spune - 2020.mp3
+030P | 123.0 bpm | _played-before   | Frost - Overtones (Extended Mix) - 2020.mp3
+040P | 123.0 bpm | _played-before   | Bryz - Vapors - 2018.mp3
+050P | 123.0 bpm | _played-before   | BRYZ - Morning Light - 2018.mp3
+060P | 123.0 bpm | _played-before   | BRYZ - Birds - 2018.mp3
+070P | 123.1 bpm | _played-before   | BRYZ - Emotion - 2018.mp3
+080P | 123.0 bpm | _played-before   | Deep Active Sound - Pia - 2016.mp3
+090P | 122.0 bpm | _played-before   | Hraach - No smile on the street(Original Mix) - 2015.mp3
+100P | 124.0 bpm | _played-before   | Evren Ulusoy - Histoire d'amour - 2010.mp3
+110P | 124.0 bpm | _played-before   | Fuerteventura Deep Sound - REA4 - 2024.mp3
+120P | 124.1 bpm | _played-before   | Stoilku, Mladen Stoiljkovic - Sve Je Mir - 2022.mp3
+130P | 124.1 bpm | _played-before   | Patrice Meiner, Sasha Kaktus - Deep Tool (Original Mix) - 2016.mp3
+140P | 124.0 bpm | _played-before   | Holo - Ode To Else - 2024.mp3
+150P | 123.0 bpm | _played-before   | Soulva - Odyssey (Original Mix) - 2025.mp3
+160P | 124.1 bpm | _played-before   | Honeydripper - All About You - 2017.mp3
+170P | 124.0 bpm | _played-before   | Quivver - See Through (Original Mix) - 2024.mp3
+180P | 125.0 bpm | _played-before   | Robert Cecil, Robert Cecil, Robert Cecil - This Time Around - 2025.mp3
+190P | 125.0 bpm | _played-before   | KiRiK - Svoi Dom - 2023.mp3
+200P | 124.1 bpm | _played-before   | Cojoc & Moldovan - Pleasure [STRYD001] - 2019.mp3
+210P | 125.0 bpm | _played-before   | Nacho Scoppa - Y qué - 2026.mp3
+
+## 2. Hypnotic rominimal - rolling grooves, 124-128 bpm
+220 | 124.0 bpm | new              | Crihan - Grushenka - 2024.mp3
+230 | 124.0 bpm | new              | Pheek - Misty Steps - 2025.mp3
+240 | 124.0 bpm | new              | Janeret - Mantrax - 2025.mp3
+250 | 124.9 bpm | new              | Livio & Roby - Cascada de EV - 2023.mp3
+260 | 127.0 bpm | new              | Arapu - Over [Liniar005] - 2019.mp3
+270 | 125.9 bpm | new              | Continental VIII (kozo) - klaus rulowski - 2012.mp3
+280 | 127.1 bpm | new              | Andrey Djackonda - Nature's Calling - 2025.mp3
+290 | 127.9 bpm | new              | Nu Zau - Synthetic [LOKLTD002] - 2024.mp3
+300 | 128.0 bpm | new              | Barac - Hypnotic Grayscale [YECAD004] - 2024.mp3
+310 | 126.0 bpm | new              | Cezar Lazar - Solo 2305 - 2026.mp3
+320 | 126.0 bpm | new              | BRYZ - Sunset Cliffs [LongStory002] - 2025.mp3
+330 | 126.6 bpm | new              | BRYZ - Limerence [LongStory002] - 2025.mp3
+340 | 128.0 bpm | new              | Rhadoo & Traian Chereches - Gwen - 2025.mp3
+350 | 128.0 bpm | new              | Barac - Spectral Processor - 2025.mp3
+360 | 127.0 bpm | new              | Mihai Pol - Goliath - 2025.mp3
+370 | 128.0 bpm | new              | Traumer - All The Love - 2025.mp3
+380 | 194.8 bpm | new              | Vlad Arapasu - Floating Tone [LTH006] - 2026.mp3
+390 | 124.0 bpm | new              | Djebali, Tuccillo, Mehdi Djebali, Giuseppe Tuccillo - Shoreline Check - 2026.mp3
+400 | 126.1 bpm | new              | Sublee - Simple Two (Original Mix) - 2024.mp3
+410 | 128.0 bpm | new              | Lizz - The Grief [FSROD001] - 2024.mp3
+
+## 3. Night drive - deep tech & micro-house, 128-132 bpm
+420 | 129.0 bpm | new              | Julian Perez, Julian Perez - Voloka - 2025.mp3
+430 | 128.0 bpm | new              | Premiere： Mihai Popoviciu - What I Need [Sublease Music] - 2025.mp3
+440 | 129.1 bpm | new              | Arapu - Take It Deep Down (Original Mix) - 2024.mp3
+450 | 128.0 bpm | new              | Toman - Seguimos - 2025.mp3
+460 | 130.0 bpm | new              | Sepp-Your Skin Smell (REFACELIMITED015) - 2026.mp3
+470 | 130.0 bpm | new              | Cristi Cons - Primordial - 2026.mp3
+480 | 130.0 bpm | new              | Locklead, Chris Stussy, Across Boundaries - Sakura (Original Mix) - 2025.mp3
+490P | 130.1 bpm | _played-before   | Lose my Breath - 2024.mp3
+500 | 132.0 bpm | new              | Kolter - Who You Talking To？ - 2025.mp3
+510 | 130.0 bpm | new              | Robin Ordell - Civic Tv [NTC004] - 2026.mp3
+520 | 130.0 bpm | new              | Saktu - Fucha [HSBRGV014] - 2025.mp3
+530 | 130.0 bpm | new              | Sidney Charles, Archie Hamilton - Reset - 2025.mp3
+540 | 131.0 bpm | new              | Fabe (Ger) - Still On Fizz - 2024.mp3
+550 | 132.1 bpm | new              | Enzo Siragusa - Kilimanjaro Sound - 2025.mp3
+560 | 136.6 bpm | new              | Varhat, Vincent Lubelli - Breaking Out - 2023.mp3
+570 | 140.8 bpm | new              | Frits Wentink & Malin Genie, Frits Wentink, Malin Genie - Exopaq - 2025.mp3

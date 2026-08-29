@@ -1,0 +1,104 @@
+# TechHouse - suggested mixing order (light -> aggressive). number | bpm | source | file
+## 1. Afternoon warm-up - deep, groovy, 118-124 bpm
+010P | 119.0 bpm | _played-before   | Adisyn - Digital Heart - 2018.mp3
+020P | 121.9 bpm | _played-before   | Hot Since 82  - Vapours feat. Alex Mills (8-track) - 2019.mp3
+030P | 120.0 bpm | _played-before   | Hot Since 82 - Eye Of The Storm (Feat. Liz Cass) (Official Lyric Video) - 2020.mp3
+040P | 120.0 bpm | _played-before   | Claude VonStroke & Nala - Wet State [DIRTYBIRD] - 2021.mp3
+050P | 120.0 bpm | _played-before   | Adam Port, Stryv - Move feat. Malachiii (Extended Version) - 2024.mp3
+060 | 122.0 bpm | new              | Hot Since 82 & Shades Of Rhythm - Shaded (Extended Mix) - 2026.mp3
+070 | 122.0 bpm | _playlist-marcel | Dezza - Her Eyes (Extended Mix) - 2017.mp3
+080P | 122.0 bpm | _played-before   | Mat Joe -  Make A Living (Original Mix) - 2015.mp3
+090P | 123.0 bpm | _played-before   | Deeleegenz - In The Groove - 2023.mp3
+100P | 124.0 bpm | _played-before   | Frost - We Call It House - 2019.mp3
+110P | 122.0 bpm | _played-before   | DJ Chus & Dennis Cruz - The Sun (Drums Mix) - 2018.mp3
+120P | 123.0 bpm | _played-before   | Dennis Cruz - Bonito - 2024.mp3
+130P | 122.0 bpm | _played-before   | Tube & Berger, Juliet Sikora - Come On Now (Set It Off) (Extended Version) - 2014.mp3
+140P | 121.1 bpm | _played-before   | Maesic & Marshall Jefferson - Life Is Simple (Move Your Body) feat. Salomé Das (Official Video) - 2025.mp3
+
+## 2. Sunset feel-good - vocals & crowd favourites, 123-128 bpm
+150P | 117.9 bpm | _played-before   | Kelis - Milkshake 20 [Alex Wann Extended Remix] - 2024.mp3
+160 | 124.0 bpm | _playlist-marcel | Carlos Sane, carluzz - Just a Dream - 2026.mp3
+170 | 124.2 bpm | _playlist-marcel | Sonny Fodera, ShezAr - Somebody New (feat. ShezAr) - 2018.mp3
+180 | 127.0 bpm | _playlist-marcel | Max Styler - You & Me - 2025.mp3
+190 | 124.9 bpm | _playlist-marcel | D-Phunk Behousung - Money, Money, Money (Funky Bass Remix) - 2022.mp3
+200 | 124.9 bpm | _playlist-marcel | Romain Dary - Really That Simple - 2025.mp3
+210P | 123.1 bpm | _played-before   | Oliver Cheatham - Get Down Saturday Night (Rules Remix) - 2023.mp3
+220P | 123.0 bpm | _played-before   | Sweetpower - Happy Days (Original Mix) - 2019.mp3
+230P | 124.0 bpm | _played-before   | Arielle Free - Feels So Good (Extended Mix) - 2023.mp3
+240P | 123.9 bpm | _played-before   | TCTS & Boston Bun (feat. Andrea Martin) - Without You (Extended Mix) - 2021.mp3
+250P | 123.0 bpm | _played-before   | Shouse - Love Tonight (Vintage Culture & Kiko Franco Remix) - 2021.mp3
+260P | 123.2 bpm | _played-before   | Kings Of Leon - Sex On Fire (Groove Shack Afro House Edit) - 2024.mp3
+270P | 126.0 bpm | _played-before   | The Temper Trap - Sweet Disposition (John Summit & Silver Panda) [Extended Remix] - 2024.mp3
+280P | 126.1 bpm | _played-before   | CYRIL - Stumblin' In (Official Music Video) - 2024.mp3
+290P | 120.0 bpm | _played-before   | HUGEL x Topic x Arash feat. Daecolm - I Adore You (Visualizer) - 2024.mp3
+300P | 124.0 bpm | _played-before   | Supermode, James Carter - Tell Me Why (James Carter Extended Remix) - 2024.mp3
+310P | 123.0 bpm | _played-before   | Fred Again.., The Blessed Madonna X Shakedown - (We've Lost Dancing) X At Night (SWITCH DISCO EDIT) - 2023.mp3
+320P | 134.0 bpm | _played-before   | ANOTR, Abel Balder - Relax My Eyes (Lyric Video 4K) - 2023.mp3
+330P | 124.0 bpm | _played-before   | Kevin McKay, Amal Nemer - In The Air Tonight (Amal Nemer Extended Remix) - 2024.mp3
+340P | 122.9 bpm | _played-before   | Fantomel, Kate Linn, Provi - Dame Un Grrr (Provi Extended Remix) - 2025.mp3
+350P | 125.0 bpm | _played-before   | Matt Sassari, HUGEL feat. Sonique - It Feels So Good (Jamy Nox Extended Remix) - 2025.mp3
+360P | 124.0 bpm | _played-before   | Hugel, Cumbiafrica - Morenita (feat. Cumbiafrica) (Extended Mix) - 2021.mp3
+370 | 124.0 bpm | new              | Hugel, Merk & Kremont, Lirico En La Casa - Marianela (Que Pasa) (Extended Mix) - 2022.mp3
+380 | 125.1 bpm | new              | Ultra Nate, Hugel, Imael Angel - Movin' To The Sun (Extended Mix) - 2026.mp3
+390 | 126.0 bpm | _playlist-marcel | Dennis Ferrer - Hey Hey (Mousse T.'s House Masters Re-Rub) - 2018.mp3
+400 | 128.0 bpm | new              | Nina Simone, Mochakk - See-Line Woman (Mochakk Mix) - 2026.mp3
+410 | 127.9 bpm | new              | Wade - I Was Made For Lovin' You (Extended Mix) - 2025.mp3
+420 | 128.0 bpm | new              | Kevin McKay, Pupa Nas T, Denise Belfon - Work (Extended Mix) [Glasgow Underground] - 2022.mp3
+430 | 126.0 bpm | new              | FISHER x Kita Alexander - Atmosphere (Extended Mix) - 2023.mp3
+440 | 126.0 bpm | new              | John Summit & Hayla - Where You Are (Extended Mix) - 2023.mp3
+
+## 3. Evening groove - underground tech house, 125-130 bpm
+450 | 134.4 bpm | new              | Chris Stussy - Here for the summer (Extended) - 2026.mp3
+460 | 126.0 bpm | new              | Toman - Verano En NY - 2025.mp3
+470 | 126.0 bpm | new              | Dunmore Brothers, Ben Westbeech - Trust Me - 2026.mp3
+480 | 128.0 bpm | _playlist-marcel | Late Replies, Joshua Lewis, Kastro David - Show Love - 2025.mp3
+490 | 125.0 bpm | _playlist-marcel | HUX & THIN - The Truth (Original Mix) - 2021.mp3
+500 | 127.0 bpm | _playlist-marcel | TomDūno - Diamond ｜ TECH HOUSE - 2026.mp3
+510 | 125.0 bpm | _playlist-marcel | Raffa FL - Suerte (Extended Mix) - 2020.mp3
+520 | 125.0 bpm | _playlist-marcel | Piero Pirupa - Wtf - 2019.mp3
+530 | 126.0 bpm | _playlist-marcel | Sonny Fodera & Sonickraft - Flashbacks (Extended Mix) - 2021.mp3
+540 | 128.0 bpm | new              | Josh Baker - Come Closer Feat. Sienna Sophia - 2025.mp3
+550 | 127.9 bpm | new              | Dennis Cruz Ft. Pumpkin - Monochrome (Original Mix) - 2025.mp3
+560P | 128.0 bpm | _played-before   | Dennis Cruz - Going Down (Original Mix) - 2024.mp3
+570P | 128.1 bpm | _played-before   | Franky Rizardo & Ros T ft Eunice Collins  - Out The Fire (At The Hotel) - 2021.mp3
+580P | 129.0 bpm | _played-before   | Nate Ash, Mr. Bones - Home Fries - 2025.mp3
+590 | 129.1 bpm | new              | Franky Rizardo - Shinjuku - 2026.mp3
+600 | 129.9 bpm | new              | Prunk - Something About You - 2025.mp3
+610 | 129.1 bpm | new              | Dennis Quin - False Promises (Original Mix) - 2024.mp3
+620 | 130.0 bpm | new              | ANOTR & 3DDY - Like It (Extended Mix) - 2026.mp3
+630 | 129.9 bpm | new              | Mat.Joe - High On Love (Extended Mix) - 2026.mp3
+640 | 127.1 bpm | new              | Claude VonStroke - Two Line Groove (Extended) - 2026.mp3
+650 | 128.0 bpm | new              | Michael Bibi - Lil Freaky (Extended Mix) [Solid Grooves] - 2025.mp3
+660 | 129.1 bpm | new              | Dennis Cruz, Patrick Luna - Bubbling (Extended Mix) - 2026.mp3
+670P | 125.0 bpm | _played-before   | Solomun, Change, Love Recycled, Paolo Gianolio, Tanyayette Willoughby - Love Recycled 4 - 2025.mp3
+680 | 125.9 bpm | new              | Matt Sassari - Give It To Me (Full Vocal Mix - Extended) [Cr2 Records] - 2021.mp3
+690 | 128.0 bpm | new              | Westend & Max Styler - Rhythm Machine (Extended Mix) - 2024.mp3
+700 | 127.9 bpm | new              | Biscits - Freak (Extended Mix) - 2024.mp3
+710 | 130.0 bpm | new              | Dom Dolla - Saving Up (Extended Mix) - 2023.mp3
+720 | 129.0 bpm | new              | Gorgon City - Voodoo (Extended Mix) - 2023.mp3
+730 | 125.9 bpm | new              | John Summit - La Danza (Extended Mix) - 2022.mp3
+740P | 126.0 bpm | _played-before   | Mr. Belt & Wezol, Qobra, Alex Hosking - Keep It Exciting (Extended Mix) - 2024.mp3
+750 | 134.2 bpm | new              | Dom Dolla - Dreamin (feat. Daya) [Extended Mix] - 2025.mp3
+760 | 130.0 bpm | new              | Chris Lake & Sammy Virji - Summertime Blues (feat. Nathan Nicholson) [Extended Mix] - 2024.mp3
+770 | 132.0 bpm | new              | Gorgon City - Work It Out (Extended Mix) - 2026.mp3
+
+## 4. Peak time - big, dark, driving, 128-133 bpm
+780P | 126.0 bpm | _played-before   | Supermode - Tell Me Why (Meduza Extended Remix) - 2022.mp3
+790 | 130.8 bpm | new              | PAWSA - Ride On Me (Extended Mix) - 2026.mp3
+800 | 130.9 bpm | new              | Kolter - What Did You Come For ？ - 2026.mp3
+810 | 132.1 bpm | new              | Sidney Charles, Kolter - Let's Pardey - 2025.mp3
+820 | 132.0 bpm | new              | Rossi. - Don't Touch That Dial - 2025.mp3
+830 | 133.0 bpm | new              | East End Dubs, Di Chiara Brothers - Face Bass - 2026.mp3
+840 | 132.0 bpm | new              | Chris Stussy   Darkness Original Mix - 2026.mp3
+850 | 130.0 bpm | new              | Michael Bibi - Lets Get High (Extended Mix) - 2026.mp3
+860 | 130.2 bpm | new              | Michael Bibi, KETTAMA & Wu-Tang Clan - MYSTERY OF RAW (Extended Mix) - 2026.mp3
+870 | 128.0 bpm | new              | Jamie Jones - Murder Mystery (Extended Mix) - 2025.mp3
+880 | 130.0 bpm | new              | Cloonee & Jocelyn Enriquez - XTC (Extended Mix) - 2026.mp3
+890 | 142.4 bpm | new              | Eli Brown - Diamonds On My Mind (Extended Mix) - 2023.mp3
+900 | 132.0 bpm | new              | SIDEPIECE - Can I Ride (Extended Mix) [feat. 95 South] - 2026.mp3
+910 | 132.1 bpm | new              | Mau P - TESLA (Extended Mix) - 2025.mp3
+
+## 5. Late-night techno finale
+920 | 123.0 bpm | _techno-peak     | Chook - Beyond Redemption - 2020.mp3
+930 | 121.0 bpm | _techno-peak     | Oliver Huntemann - Vertigo (Olivier Giacomotto Remix) - 2019.mp3
+940 | 126.0 bpm | _techno-peak     | Enrico Sangiuliano - Hidden T - 2018.mp3

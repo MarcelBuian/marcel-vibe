@@ -4,11 +4,6 @@
 # HOW TO USE: put a "+" at the start of every line you like, then run  ./dl-liked.sh Minimal
 # Lines marked [SEARCH LINK - not verified] had no confident YouTube match - the link opens a YT Music search instead.
 #
-Petre Inspirescu - Those That Tremble - 2025 - https://music.youtube.com/search?q=Petre+Inspirescu+Those+That+Tremble   [SEARCH LINK - not verified]   # slow-blooming long-form afternoon hypnosis
-Marcu Rares - Bonsoir - 2022 - https://music.youtube.com/search?q=Marcu+Rares+Bonsoir   [SEARCH LINK - not verified]   # melancholic deep beach drift
-BRYZ - Limerence - 2025 - https://music.youtube.com/search?q=BRYZ+Limerence   [SEARCH LINK - not verified]   # warm textures, patient groove
-Crihan - Aliosha - 2024 - https://music.youtube.com/search?q=Crihan+Aliosha   [SEARCH LINK - not verified]   # hazy dusty micro-house
-Jay Bliss - Europa Echoes - 2024 - https://music.youtube.com/search?q=Jay+Bliss+Europa+Echoes   [SEARCH LINK - not verified]   # dubby deep minimal shimmer
 Mihai Popoviciu - What I Need - 2025 - https://music.youtube.com/watch?v=y-9OO8FZqrk   # vocal rolling deep house
 Andrey Djackonda - Nature's Calling - 2025 - https://music.youtube.com/watch?v=Si-WO6if0wk   # Moldovan dub-tech roller
 Lizz - The Grief - 2024 - https://music.youtube.com/watch?v=5P5eLy_TUA0   # ten-minute deep hypnotic ride
@@ -17,7 +12,6 @@ Livio & Roby - Cascada de EV - 2026 - https://music.youtube.com/watch?v=z7CRSrIs
 Sublee - Simple Two - 2024 - https://music.youtube.com/watch?v=SsaNbgepu-M   # trippy playful minimal bounce
 Vlad Arapasu - Floating Tone - 2026 - https://music.youtube.com/watch?v=Xfp8-Xn3Xig   # floating dusk minimal trip
 Barac - Spectral Processor - 2025 - https://music.youtube.com/watch?v=v6p4gJb9X9A   # psychedelic slow burner
-Dan Andrei - Clockworks - 2024 - https://music.youtube.com/search?q=Dan+Andrei+Clockworks   [SEARCH LINK - not verified]   # ticking acid-tinged groove
 Arapu - Take It Deep Down - 2024 - https://music.youtube.com/watch?v=Lnx29qUWc7g   # deep rolling low-end
 Kozo - Continental - 2024 - https://music.youtube.com/watch?v=RKxSMiJwrvI   # seductive Bucharest minimal gem
 RH.CHER - Gwen - 2025 - https://music.youtube.com/watch?v=wuonJLZFi14   # hypnotic arpiar-school night roll (Rhadoo & Traian Chereches)
@@ -28,6 +22,12 @@ Cezar - Solo 2305 - 2025 - https://music.youtube.com/watch?v=5nxO6i0iWHw   # pol
 Arapu - Over - 2025 - https://music.youtube.com/watch?v=Glprnr5_LgE   # driving Liniar pressure
 Barac - Hypnotic Grayscale - 2024 - https://music.youtube.com/watch?v=Sepwbp4PCjo   # relentless trance-minimal late-night
 Cristi Cons - Primordial - 2026 - https://music.youtube.com/watch?v=WlfjTQ7cqBg   # Amphia peak-time depth
+Petre Inspirescu - Those That Tremble - 2025 - https://music.youtube.com/search?q=Petre+Inspirescu+Those+That+Tremble   [SEARCH LINK - not verified]   # slow-blooming long-form afternoon hypnosis
+Marcu Rares - Bonsoir - 2022 - https://music.youtube.com/watch?v=AEYnMgk0CrM   # melancholic deep beach drift
+BRYZ - Limerence - 2025 - https://music.youtube.com/watch?v=tqOr1EJZj3c   # warm textures, patient groove
+Crihan - Aliosha - 2024 - https://music.youtube.com/search?q=Crihan+Aliosha   [SEARCH LINK - not verified]   # hazy dusty micro-house
+Jay Bliss - Europa Echoes - 2024 - https://music.youtube.com/search?q=Jay+Bliss+Europa+Echoes   [SEARCH LINK - not verified]   # dubby deep minimal shimmer
+Dan Andrei - Clockworks - 2024 - https://music.youtube.com/search?q=Dan+Andrei+Clockworks   [SEARCH LINK - not verified]   # ticking acid-tinged groove
 Djebali & Tuccillo - Shoreline Check - 2025 - https://music.youtube.com/watch?v=LbsFJ3XHS2g   # sunlit deep house live jam
 Across Boundaries, Chris Stussy & Locklead - Sakura - 2025 - https://music.youtube.com/watch?v=B7rGMkRbjkw   # blooming hypnotic afternoon groove
 Pheek - Misty Steps - 2025 - https://music.youtube.com/watch?v=ZTRgMGRlshs   # dubby microhouse warm haze

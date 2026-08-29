@@ -1,0 +1,74 @@
+# DeepHouse - suggested mixing order (light -> aggressive). number | bpm | source | file
+## 1. Early afternoon - chill, lo-fi, jazzy, 114-120 bpm
+010P | 114.0 bpm | _played-before   | Gentleman (DJ), BiG AL - Listen to Sade (BiG AL Remix) - 2024.mp3
+020 | 115.0 bpm | new              | Session Victim, Nebraska - Make It Happen - 2025.mp3
+030 | 116.0 bpm | new              | Session Victim - The Unheard - 2025.mp3
+040P | 117.1 bpm | _played-before   | Gentleman & Darles Flow - Isolation (Original Mix) - 2025.mp3
+050 | 117.8 bpm | new              | Crackazat - Pick Me Up - 2026.mp3
+060P | 118.0 bpm | _played-before   | Gentleman - Deeply Love (Original Mix) - 2023.mp3
+070 | 118.0 bpm | new              | Laurence Guy - Waiting For Love - 2022.mp3
+080P | 118.0 bpm | _played-before   | Moonsound, Sllash - Thinking about you (Pascal Junior Remix) - 2017.mp3
+090 | 120.0 bpm | new              | Rick Wade  - Intrusive Emotions - 2025.mp3
+100 | 119.8 bpm | new              | Pascal Junior - I Needed You - 2025.mp3
+110 | 120.0 bpm | new              | Gentleman - Escape (Original Mix) - 2026.mp3
+120P | 120.0 bpm | _played-before   | Sarandub - Stormy Weather (Original Mix) - 2024.mp3
+130 | 120.0 bpm | new              | Sarandub - Don't Tell Me (Original Mix) - 2025.mp3
+140P | 120.0 bpm | _played-before   | Gentleman (DJ) - Velvet Nights - 2025.mp3
+150P | 120.0 bpm | _played-before   | Gentleman - Tell Me What You Need (Original Mix) - 2024.mp3
+160P | 120.0 bpm | _played-before   | Gaston Lopez - Limits On The Mind (Original Mix) - 2024.mp3
+170P | 120.1 bpm | _played-before   | Midi Culture - Oh Mammy - 2020.mp3
+180P | 120.0 bpm | _played-before   | Dj Dark & MD Dj - Isla Bonita (Extended) - 2022.mp3
+
+## 2. Afternoon groove - jazzy & warm deep house, 121-125 bpm
+190 | 121.1 bpm | new              | Atjazz, Rona Ray, Martin Iveson, Veronika Skorokhod - Shine - 2025.mp3
+200P | 121.0 bpm | _played-before   | Carla’s Dreams - Sub Pielea Mea (Midi Culture Remix) ｜ #eroina ｜ Official video - 2016.mp3
+210P | 121.0 bpm | _played-before   | Andreas Balicki - Smile - 2022.mp3
+220P | 121.1 bpm | _played-before   | 16BL - Deep In My Soul (Original Mix) - 2014.mp3
+230P | 121.0 bpm | _played-before   | Jason Hersco - Frick - 2021.mp3
+240P | 121.0 bpm | _played-before   | Gaston Lopez - Real Dancer (Original Mix) - 2025.mp3
+250P | 122.0 bpm | _played-before   | Nahamasy & DJ Poolboi - Let Go - 2021.mp3
+260P | 122.0 bpm | _played-before   | Amol Reon - The Dawn - 2021.mp3
+270P | 121.9 bpm | _played-before   | Jarquin & Cano – Dance Obsession (Orig Mix) [DeepClass Records] - 2015.mp3
+280P | 122.0 bpm | _played-before   | Undrsound Soul - Silent Connection (Original Mix) - 2025.mp3
+290P | 122.0 bpm | _played-before   | Mallin - Set Me Free (Extended Mix) [Glasgow Underground] - 2023.mp3
+300 | 122.1 bpm | new              | Sllash & Doppe - Move That Body - 2026.mp3
+310 | 123.1 bpm | new              | Fouk - Floating - 2025.mp3
+320 | 123.0 bpm | new              | Jimpster - Crispy Pancakes - 2026.mp3
+330 | 123.1 bpm | new              | Dario D´Attis & Mr. V： Back To The Old - 2025.mp3
+340P | 122.9 bpm | _played-before   | Luis Radio - Reach Up (Original Mix) - 2023.mp3
+350 | 124.1 bpm | new              | Harrison BDP - Cherry - 2025.mp3
+360 | 124.0 bpm | new              | Deep Spelle - My Heart - 2019.mp3
+370P | 124.0 bpm | _played-before   | Gibbon - Game Of Pleasure (Reconstruction Mix) - 2022.mp3
+380 | 123.9 bpm | new              | Jesse Bru - Sun Strut - 2022.mp3
+390 | 124.1 bpm | new              | Kerri Chandler - Sunrise [Watergate] - 2022.mp3
+400 | 124.0 bpm | new              | Kerri Chandler, NAE (SA) - Caged Bird (Full Vocal Mix) - 2024.mp3
+410 | 124.1 bpm | new              | Bonetti - House Trippin' - 2016.mp3
+420P | 124.0 bpm | _played-before   | Oscar Barila - My Oxygen (T.Markakis Remix) - 2023.mp3
+430 | 124.1 bpm | new              | Purple Disco Machine - Disco Cherry (Extended Mix) - 2026.mp3
+440 | 124.3 bpm | new              | Michael Gray, Dyanna Fearon - I'm Falling For You - 2026.mp3
+450 | 124.0 bpm | new              | Butch ft. Life On Planets - Get High With You (Extended Mix) - 2025.mp3
+460P | 124.9 bpm | _played-before   | Dave Boyle, Bollo - Sundance (Bollo Remix) - 2012.mp3
+
+## 3. Sunset - soulful vocals & driving deep house, 125-130 bpm
+470 | 125.1 bpm | new              | Sebb Junior - Body Language (Extended Mix) - 2025.mp3
+480P | 126.0 bpm | _played-before   | Groove Theory - Tell Me (Artmann Edit) - 2020.mp3
+490 | 126.1 bpm | new              | Dam Swindle - What you give - 2025.mp3
+500 | 126.0 bpm | new              | Ferreck Dawn & Hayley May - Deep Inside (Extended Mix) - 2025.mp3
+510 | 126.1 bpm | new              | Laurence Guy & J Peacock - Everything I've Got - 2026.mp3
+520 | 129.2 bpm | new              | Byron the Aquarius - Long Way Home - 2025.mp3
+530P | 128.0 bpm | _played-before   | Fullempty - 777⧸Poolside - 2024.mp3
+540P | 127.9 bpm | _played-before   | AstroHertz - RainDrops (Extended Mix) - 2024.mp3
+550P | 127.9 bpm | _played-before   | Sensei - Trust - 2021.mp3
+560P | 127.1 bpm | _played-before   | Kolter - Virtuos pie - 2019.mp3
+570P | 127.0 bpm | _played-before   | Computer Data - Ego - 2020.mp3
+580P | 136.0 bpm | _played-before   | Computer Data - Seele - 2020.mp3
+590 | 127.8 bpm | new              | Black Loops, Kolter - Higher (Kolter Remix) - 2023.mp3
+600 | 128.0 bpm | new              | Artmann - Stick Around - 2023.mp3
+610P | 126.9 bpm | _played-before   | DELACOUR - About You - 2023.mp3
+620 | 128.0 bpm | new              | Low Steppa & Capri - Got The Funk (Extended Mix) - 2025.mp3
+630 | 128.0 bpm | new              | Dennis Ferrer feat. Janelle Kroll  - Mind Ur Step (Sam Divine Extended Remix) - 2024.mp3
+640 | 127.1 bpm | new              | Girls of the Internet, Anelisa Lamola, Dennis Ferrer - Affirmations (Dennis Ferrer Extended Remix) - 2025.mp3
+650 | 128.0 bpm | new              | Kevin McKay - Mon Coeur (Extended Mix) - 2026.mp3
+660 | 127.9 bpm | new              | Dennis Quin - Hard Days Work - 2025.mp3
+670 | 128.0 bpm | new              | Solomun & Inéz - Raider on the Storm (Extended Mix) - 2026.mp3
+680 | 132.6 bpm | new              | DJOKO - Daylight - 2020.mp3

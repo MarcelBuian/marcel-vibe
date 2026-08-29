@@ -1,0 +1,169 @@
+# MelodicHouse - suggested mixing order (light -> aggressive). number | bpm | source | file
+## 1. Soft opening - ambient, very gentle, 112-118 bpm
+0010 | 130.2 bpm | new              | ORACLE - Echoes - 2022.mp3
+0020 | 130.0 bpm | new              | Enviado Vida - Retinal Pathology - 2017.mp3
+0030 | 120.0 bpm | new              | Elypsis feat. Mandy Reign - I Won't Let Go - 2018.mp3
+0040 | 118.0 bpm | new              | A.M.R - Silver Lining (Intro Mix) - 2018.mp3
+0050 | 120.1 bpm | new              | Approaching Black - What You Need - 2019.mp3
+0060P | 120.0 bpm | _played-before   | Approaching Black & Shingo Nakamura - I'm Still Breathing - 2019.mp3
+0070 | 119.9 bpm | new              | A.M.R - Pale Blue - 2019.mp3
+0080 | 118.0 bpm | new              | Faodail - Turning - 2024.mp3
+0090 | 119.0 bpm | new              | Liam Thomas & Finding Mero - Phrases - 2025.mp3
+0100 | 116.1 bpm | new              | A.M.R & Brandon Mignacca - Fell Out of Love - 2020.mp3
+0110 | 115.0 bpm | new              | A.M.R - Outer Space - 2024.mp3
+0120 | 112.0 bpm | new              | Approaching Black - Entering Eden - 2019.mp3
+0130P | 114.0 bpm | _played-before   | Sound Quelle - Lastecostra - 2023.mp3
+0140 | 115.0 bpm | new              | Gregory Esayan - Make a Wish (Jay FM Remix) - 2018.mp3
+0150 | 115.0 bpm | new              | Enviado Vida - Touch This Feeling - 2026.mp3
+0160 | 115.0 bpm | new              | Flexible Fire - South Wind - 2026.mp3
+0170 | 115.0 bpm | new              | Flexible Fire - Unfolding Road - 2026.mp3
+0180P | 116.0 bpm | _played-before   | Elypsis - Open Road - 2017.mp3
+0190P | 116.0 bpm | _played-before   | Dokho - Finding Solane - 2026.mp3
+0200 | 116.0 bpm | new              | Dokho & Fløa - Velvia - 2026.mp3
+0210 | 116.0 bpm | new              | Duce & Etza - Tuolumne - 2026.mp3
+0220 | 116.0 bpm | new              | Enviado Vida - Dirty INC. - 2018.mp3
+0230 | 116.0 bpm | new              | Meeting Molly - Westeros - 2020.mp3
+0240 | 116.0 bpm | new              | A.M.R - Bittersweet - 2026.mp3
+0250 | 116.9 bpm | new              | Flexible Fire - Nido del Águila - 2020.mp3
+0260 | 117.0 bpm | new              | Flexible Fire - La Cumbre - 2021.mp3
+0270 | 117.1 bpm | new              | Flexible Fire - Starfall - 2026.mp3
+0280 | 117.0 bpm | new              | Stendahl - Austrumi - 2022.mp3
+0290P | 117.0 bpm | _played-before   | Etza - Este - 2024.mp3
+0300 | 117.0 bpm | new              | TOMB - Unbound - 2023.mp3
+0310 | 117.0 bpm | new              | Jay FM - Voices - 2018.mp3
+0320 | 117.0 bpm | new              | Aftruu - Addiction - 2022.mp3
+0330P | 117.9 bpm | _played-before   | Flexible Fire - Costa Serena - 2023.mp3
+
+## 2. Dreamy Silk sound - warm & emotional, 118-120 bpm
+0340P | 118.0 bpm | _played-before   | A.M.R - Voyager - 2019.mp3
+0350P | 118.0 bpm | _played-before   | Approaching Black - Sensitive - 2022.mp3
+0360P | 118.0 bpm | _played-before   | Flexible Fire - El Refugio - 2023.mp3
+0370P | 118.9 bpm | _played-before   | Flexible Fire - Alpina - 2022.mp3
+0380 | 118.0 bpm | new              | Flexible Fire - Amatista - 2023.mp3
+0390 | 119.0 bpm | new              | Flexible Fire - Marea Turquesa - 2023.mp3
+0400 | 119.0 bpm | new              | Flexible Fire & Enviado Vida - Drops of Dew - 2025.mp3
+0410 | 119.0 bpm | new              | Flexible Fire & Dias Ridge - Eucalyptus - 2025.mp3
+0420 | 119.0 bpm | new              | Flexible Fire & Dias Ridge - Through the Inversion - 2024.mp3
+0430 | 118.0 bpm | new              | Etza - Sur - 2023.mp3
+0440 | 118.0 bpm | new              | Enviado Vida - A Passing Glance - 2026.mp3
+0450 | 118.0 bpm | new              | Cloudcage & Mango - Much Is Taken, Much Abides - 2024.mp3
+0460 | 118.0 bpm | new              | Cloudcage - Ever Wanted - 2024.mp3
+0470 | 118.0 bpm | new              | Mango & Cloudcage - Snowglobe - 2025.mp3
+0480 | 119.0 bpm | new              | Mango & Cloudcage - More Than This - 2023.mp3
+0490 | 119.0 bpm | new              | Mango, Cloudcage & Matt Sky - Calling - 2023.mp3
+0500 | 118.0 bpm | new              | Jay FM - Timeless - 2018.mp3
+0510P | 120.0 bpm | _played-before   | Jay FM - Wishful Thinking - 2021.mp3
+0520 | 118.0 bpm | new              | Shingo Nakamura - Focus - 2022.mp3
+0530 | 118.0 bpm | new              | Shingo Nakamura - Golden Leaves - 2023.mp3
+0540 | 119.0 bpm | new              | Shingo Nakamura - Falling Off - 2022.mp3
+0550 | 118.0 bpm | new              | Shingo Nakamura & Cloudcage - Thousands of Sounds - 2026.mp3
+0560 | 118.0 bpm | new              | Shingo Nakamura & Jordin Post - Take Me Away (A.M.R Remix) - 2026.mp3
+0570 | 119.0 bpm | new              | Stendahl - Parhelion - 2022.mp3
+0580P | 118.0 bpm | _played-before   | Stendahl - Make You Mine - 2025.mp3
+0590P | 119.0 bpm | _played-before   | Shingo Nakamura & Stendahl - Time - 2024.mp3
+0600P | 118.0 bpm | _played-before   | zensei & Delaney Kai - sound therapy - 2024.mp3
+0610 | 118.0 bpm | new              | zensei - Marina del Rey - 2024.mp3
+0620 | 118.0 bpm | new              | Blood Groove & Kikis - Places - 2026.mp3
+0630 | 118.0 bpm | new              | Aleyum & Arnie Way - Midnight Pulse - 2025.mp3
+0640 | 118.0 bpm | new              | Aftruu - Falling Asleep - 2023.mp3
+0650P | 118.0 bpm | _played-before   | Finding Mero - In Loving Memories - 2023.mp3
+0660 | 118.0 bpm | new              | Finding Mero - Since July - 2026.mp3
+0670 | 119.0 bpm | new              | Finding Mero - Still with Me - 2026.mp3
+0680 | 118.0 bpm | new              | Seawayz - Be Better - 2026.mp3
+0690 | 118.0 bpm | new              | Kaskade & Punctual feat. Poppy Baskcomb - Heaven Knows (Shingo Nakamura Remix) - 2025.mp3
+0700 | 118.0 bpm | new              | Arnie Way & Toutounji - Somebody - 2026.mp3
+0710 | 118.0 bpm | new              | Arnie Way - Let Go - 2026.mp3
+0720P | 118.0 bpm | _played-before   | Arnie Way - Only You - 2026.mp3
+0730P | 118.0 bpm | _played-before   | RAINE - Nomad - 2025.mp3
+0740 | 118.0 bpm | new              | RAINE - Where You Go - 2026.mp3
+0750P | 118.0 bpm | _played-before   | rshand - Overthinking - 2025.mp3
+0760P | 118.0 bpm | _played-before   | oncor - By Myself - 2025.mp3
+0770 | 118.0 bpm | new              | OKASSUS - Allure - 2025.mp3
+0780 | 118.0 bpm | new              | ORACLE - Around Me - 2024.mp3
+0790 | 118.0 bpm | new              | Archaellum - Threads - 2021.mp3
+0800P | 118.1 bpm | _played-before   | Archaellum - Something Beautiful - 2025.mp3
+0810 | 119.0 bpm | new              | Aftruu - Tribute to Me - 2020.mp3
+0820 | 119.0 bpm | new              | Approaching Black - Closer - 2019.mp3
+0830 | 119.0 bpm | new              | Aleyum - Galvanic Seasons - 2026.mp3
+0840 | 119.0 bpm | new              | Enviado Vida & Clarico - A Sudden Display of Life - 2024.mp3
+0850 | 119.9 bpm | new              | Enviado Vida - Best of Times - 2020.mp3
+0860 | 119.0 bpm | new              | Flexible Fire feat. Fractures - Toast - 2024.mp3
+0870 | 120.0 bpm | new              | Liam Thomas - Tokyo - 2024.mp3
+
+## 3. Uplifting - brighter, driving melodic house, 120-122 bpm
+0880P | 120.0 bpm | _played-before   | Glaue - Kykeon - 2021.mp3
+0890 | 120.0 bpm | new              | Not Now Please - Don't Forget the Parachute - 2021.mp3
+0900P | 120.0 bpm | _played-before   | Vintage & Morelli x Arielle Maren w_ RNX - Lonely Shore (Blood Groove & Kikis Remix) - 2020.mp3
+0910P | 120.0 bpm | _played-before   | Dokho & Not Now Please - Two Lakes - 2024.mp3
+0920 | 118.0 bpm | new              | Dokho & Not Now Please - Follow the Princess - 2023.mp3
+0930 | 120.0 bpm | new              | Dokho - Crystal Cave - 2025.mp3
+0940P | 120.0 bpm | _played-before   | Dokho - One Night in Medellín - 2025.mp3
+0950P | 120.0 bpm | _played-before   | Jake Kaiser - Kestrel - 2021.mp3
+0960P | 120.0 bpm | _played-before   | Jay FM - Come - 2018.mp3
+0970P | 120.0 bpm | _played-before   | Nōpi - Bila - 2020.mp3
+0980P | 120.0 bpm | _played-before   | Shingo Nakamura - Phenomena - 2021.mp3
+0990P | 120.0 bpm | _played-before   | Shingo Nakamura & Warung - Worlds Apart - 2025.mp3
+1000 | 121.0 bpm | new              | Shingo Nakamura - Come Closer - 2023.mp3
+1010 | 120.0 bpm | new              | ORACLE - Sunrise - 2026.mp3
+1020 | 120.2 bpm | new              | ORACLE & Holochrome - Love Me, Let Me Go - 2025.mp3
+1030 | 120.0 bpm | new              | ORACLE & JEANS - Evergreen - 2026.mp3
+1040P | 120.0 bpm | _played-before   | ORACLE - Breathless - 2026.mp3
+1050 | 120.0 bpm | new              | OKASSUS - Maraschino - 2026.mp3
+1060 | 120.0 bpm | new              | Finding Mero - Glass Souls - 2025.mp3
+1070 | 121.0 bpm | new              | Finding Mero - Solitude - 2025.mp3
+1080P | 121.1 bpm | _played-before   | Finding Mero - Wistful Waves - 2025.mp3
+1090 | 121.0 bpm | new              | Keanler & Lewyn - Oxygen - 2023.mp3
+1100 | 121.0 bpm | new              | Enviado Vida - 2 Years Later - 2019.mp3
+1110 | 121.0 bpm | new              | Sound Quelle - Melancholy Strings - 2021.mp3
+1120 | 121.0 bpm | new              | Aftruu - Words Left Unsaid - 2022.mp3
+1130 | 120.9 bpm | new              | Claes Rosen - One-sided Love - 2020.mp3
+1140P | 120.0 bpm | _played-before   | oncor - Find Yourself Again - 2025.mp3
+1150 | 120.0 bpm | new              | rshand - Adore - 2025.mp3
+1160 | 120.0 bpm | new              | rshand - Leave It All - 2024.mp3
+1170 | 120.0 bpm | new              | rshand - Unworthy - 2025.mp3
+1180 | 120.0 bpm | new              | rshand - November - 2025.mp3
+1190 | 122.0 bpm | new              | rshand & Birø - Chrome - 2025.mp3
+1200 | 120.0 bpm | new              | A.M.R & Fractures - Mirrorball - 2023.mp3
+1210 | 120.0 bpm | new              | A.M.R & MØØNE - Numb - 2025.mp3
+1220 | 120.0 bpm | new              | A.M.R - Sealine - 2024.mp3
+1230 | 120.0 bpm | new              | A.M.R x Blood Groove & Kikis - Lotus - 2024.mp3
+1240 | 120.0 bpm | new              | A.M.R & Cornelius SA - Amber Sunlight Falls - 2025.mp3
+1250P | 120.0 bpm | _played-before   | A.M.R - A Flicker of Hope - 2025.mp3
+1260 | 120.0 bpm | new              | ATTLAS & Mango - Angel Montreal - 2026.mp3
+1270 | 120.0 bpm | new              | Aftruu - Echoes of You - 2024.mp3
+1280 | 120.0 bpm | new              | Aftruu - Where the Rails Hold Us - 2026.mp3
+1290 | 120.0 bpm | new              | Approaching Black - A Cause and Effect - 2022.mp3
+1300P | 120.0 bpm | _played-before   | Approaching Black - Amber Glow - 2026.mp3
+1310 | 120.0 bpm | new              | Approaching Black - Dream Whispers - 2026.mp3
+1320P | 120.0 bpm | _played-before   | Approaching Black - You Fill My Soul - 2022.mp3
+1330 | 120.0 bpm | new              | Banyan - Ephemeral - 2025.mp3
+1340P | 120.0 bpm | _played-before   | DUALIS - Avalon - 2025.mp3
+1350 | 120.0 bpm | new              | DUALIS - Ride - 2024.mp3
+1360 | 120.0 bpm | new              | Dias Ridge & TMPST - Further & Further - 2026.mp3
+1370 | 120.0 bpm | new              | Dias Ridge & TMPST - Pendulum - 2026.mp3
+1380 | 120.0 bpm | new              | Elliot Vast - Paradise - 2026.mp3
+1390 | 120.0 bpm | new              | Elypsis - Into the Storm - 2017.mp3
+1400 | 120.0 bpm | new              | Flexible Fire & Dias Ridge - Time Trials - 2023.mp3
+1410 | 120.0 bpm | new              | Flexible Fire & Etza - Sunlight - 2022.mp3
+1420P | 120.0 bpm | _played-before   | Flexible Fire - Laguna Azul - 2022.mp3
+1430 | 120.0 bpm | new              | Flexible Fire feat. Alex Hentze - Añoranza - 2024.mp3
+1440 | 120.0 bpm | new              | Grafine - Dawn - 2026.mp3
+1450P | 120.0 bpm | _played-before   | Sound Quelle - Aklana - 2024.mp3
+1460 | 120.0 bpm | new              | TOMB & LAR - Trails - 2023.mp3
+1470 | 120.0 bpm | new              | terro & TMPST - Halcyon - 2025.mp3
+1480P | 118.0 bpm | _played-before   | Marsh - Belle - 2017.mp3
+1490 | 118.0 bpm | new              | Marsh - Mini Anthem - 2017.mp3
+
+## 4. Peak melodic - biggest, most progressive, 122-128 bpm
+1500P | 122.0 bpm | _played-before   | Approaching Black - Alone Again - 2017.mp3
+1510 | 122.0 bpm | new              | Dokho - Samaria - 2023.mp3
+1520 | 122.0 bpm | new              | Not Now Please - Time Trap - 2025.mp3
+1530P | 123.0 bpm | _played-before   | Dokho - Saganaki - 2023.mp3
+1540P | 123.0 bpm | _played-before   | Shingo Nakamura & MØØNE - Cautious Love - 2026.mp3
+1550 | 123.0 bpm | new              | terro & TMPST - Never Let You Go - 2025.mp3
+1560 | 124.0 bpm | new              | MXV & Courtney Storm - Can You - 2025.mp3
+1570P | 124.1 bpm | _played-before   | Blue Haze - Amber Glow (Blood Groove & Kikis Remix) - 2017.mp3
+1580 | 124.0 bpm | new              | Nora En Pure - Gratitude (Extended Mix) - 2022.mp3
+1590 | 124.0 bpm | new              | Andrewboy, Bugyi András - Life - 2021.mp3
+1600 | 124.1 bpm | new              | Momo Dobrev, Shadowmaw - Nightfall (Original Mix) - 2020.mp3
+1610 | 128.0 bpm | new              | Cassian, YOTTO, Da Hool – Love Parade (Extended Mix) - 2025.mp3

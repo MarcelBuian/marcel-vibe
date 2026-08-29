@@ -61,7 +61,7 @@ download_batch() {   # $1 = destination dir, $2 = newline-separated URLs
     --retry-sleep "http:exp=2:60" --extractor-retries 3 \
     "${fmt[@]}" \
     --embed-thumbnail --convert-thumbnails jpg --embed-metadata \
-    --output "$dest/%(artist&{} - |)s%(title)s - %(release_year,upload_date>%Y)s.%(ext)s" \
+    --output "$dest/%(artist&{} - |)s%(title)s - %(release_date>%Y,upload_date>%Y)s.%(ext)s" \
     --download-archive "$dest/archive.txt" \
     --no-overwrites --no-mtime \
     --batch-file -
