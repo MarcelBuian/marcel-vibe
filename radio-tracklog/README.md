@@ -22,13 +22,14 @@ never duplicated, with a first-added date, a play counter, and a
 last-played date that update whenever the song repeats. They can run at
 the same time and cross-check each other.
 
-## Quick start (new laptop)
+## Quick start (new laptop — Mac or Windows)
 
 Copy this folder, open a terminal, and run:
 
 ```bash
 cd radio-tracklog
-python3 radio_tracklog.py watch
+python3 radio_tracklog.py watch        # macOS
+python radio_tracklog.py watch         # Windows (Python 3.9+ from python.org or the Store)
 ```
 
 That's everything. On first run the script sets itself up — no venv, no
@@ -36,18 +37,22 @@ pip, no manual installs, no questions:
 
 - **yt-dlp**: downloaded automatically (standalone build, ~35 MB).
 - **ffmpeg**: downloaded automatically (static build, ~30 MB).
-- **OCR helper**: `ocr.swift` is compiled automatically (~30s). This needs
-  Apple's Command Line Tools — if `swiftc` is missing, run
-  `xcode-select --install` once and re-run.
+- **OCR helper**: on macOS `ocr.swift` is compiled automatically (~30s;
+  needs Apple's Command Line Tools — if `swiftc` is missing, run
+  `xcode-select --install` once and re-run). On Windows `ocr.ps1` uses
+  the OCR engine built into Windows 10/11 through the stock PowerShell —
+  nothing to compile or install (it needs a Windows language pack with
+  OCR, which English and most others include).
 - **radios/monstercat-silk/**: created with a default `config.json`.
 
 The same self-setup keeps things working over time: when YouTube breaks
 an old yt-dlp (it regularly does), the script notices the repeated
 failures and re-downloads the latest build by itself.
 
-On Windows/Linux only the chat-based `log` mode works (`watch` uses
-macOS-only OCR); install ffmpeg/yt-dlp via your package manager if the
-auto-download doesn't cover your platform.
+Everything works the same on both systems; the `radios/` folder is
+portable between them (copy it, keep the same `timezone`). On Linux only
+the chat-based `log` mode works (no built-in OCR); install ffmpeg via your
+package manager there.
 
 ## Radios and their settings
 
@@ -112,7 +117,7 @@ URL into that `config.json` and run it again.
 
 ## Run
 
-### 1. Start watching (macOS)
+### 1. Start watching (macOS / Windows)
 
 ```bash
 python3 radio_tracklog.py watch

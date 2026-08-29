@@ -42,3 +42,14 @@ All times now go through `now()`/`today()`/`from_epoch()`, which use the
 `dt.datetime.now()` / `date.today()` / `fromtimestamp()` directly.
 Rows stamped 2026-08-26 16:00 .. 2026-08-28 12:44 were written in +0300
 and have been shifted -1h to Malta time.
+
+## macOS and Windows
+`watch` runs on both. The OCR helper is `ocr.swift` (Vision) on macOS and
+`ocr.ps1` (Windows.Media.Ocr via Windows PowerShell 5.1) on Windows;
+`ensure_ocr()` returns the command prefix, `read_overlay()` parses the
+same "x y w<TAB>text" lines from either. Keep the two helpers' output
+format identical (fractions from the BOTTOM-LEFT, y = bottom edge of the
+text box). ffmpeg auto-downloads on both (martin-riedl.de for macOS,
+BtbN GitHub builds for Windows); the single-instance lock uses fcntl on
+macOS and msvcrt on Windows. Only macOS can be tested from this machine —
+Windows changes need a run on a real Windows box.

@@ -4,9 +4,9 @@
 Two independent ways of hearing what's playing:
 
   watch  — grab one video frame every N seconds and read the stream's
-           on-screen "now playing" overlay with macOS's built-in OCR
-           (Vision framework — offline, free, no AI service involved).
-           Catches every song. macOS only.
+           on-screen "now playing" overlay with the OS's built-in OCR
+           (macOS Vision / Windows.Media.Ocr — offline, free, no AI
+           service involved). Catches every song. macOS and Windows.
   log    — capture the stream's live chat with yt-dlp and parse the chat
            bot's track announcements ("@user loves 'Title' by Artist!").
            Works on any OS, but sampled: only songs someone asked about.
@@ -17,7 +17,7 @@ one row per song (never duplicated) with a first-added date, a play
 counter, and a last-played date that update whenever the song repeats.
 
 Usage:
-  python3 radio_tracklog.py watch [radio]   # OCR the overlay (macOS)
+  python3 radio_tracklog.py watch [radio]   # OCR the overlay (macOS / Windows)
   python3 radio_tracklog.py log [radio]     # chat-bot logger
   python3 radio_tracklog.py list [radio]    # songs by first-added date
   python3 radio_tracklog.py stats [radio]   # songs by play count
@@ -49,6 +49,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 RADIOS_DIR = os.path.join(SCRIPT_DIR, "radios")
 OCR_SWIFT = os.path.join(SCRIPT_DIR, "ocr.swift")
 OCR_BIN = os.path.join(SCRIPT_DIR, ".ocr")
+OCR_PS1 = os.path.join(SCRIPT_DIR, "ocr.ps1")  # Windows twin of ocr.swift
 FIELDS = ["first_added", "plays", "last_played", "artist", "title", "youtube", "year"]
 
 DEFAULT_RADIO = "monstercat-silk"
@@ -187,7 +188,7 @@ def download_ytdlp(current):
 
 
 def find_ffmpeg(optional=False):
-    """Locate ffmpeg (project folder or PATH); auto-download it on macOS.
+    """Locate ffmpeg (project folder or PATH); auto-download it on macOS/Windows.
 
     With optional=True a missing ffmpeg returns None instead of exiting
     (mp3 downloads are then skipped rather than killing the logger).
@@ -195,42 +196,77 @@ def find_ffmpeg(optional=False):
     for c in (FFMPEG_LOCAL, shutil.which("ffmpeg")):
         if c and os.path.exists(c):
             return c
-    if sys.platform != "darwin":
+    if sys.platform == "darwin":
+        arch = {"arm64": "arm64", "x86_64": "amd64"}.get(platform.machine())
+        if not arch:
+            sys.exit(f"No static ffmpeg build known for {platform.machine()} — install ffmpeg manually.")
+        url = f"https://ffmpeg.martin-riedl.de/redirect/latest/macos/{arch}/release/ffmpeg.zip"
+        member, size = "ffmpeg", "~30 MB"
+    elif sys.platform == "win32":
+        url = ("https://github.com/BtbN/FFmpeg-Builds/releases/latest/download/"
+               "ffmpeg-master-latest-win64-gpl.zip")
+        member, size = "bin/ffmpeg.exe", "~100 MB"  # a zip of the whole suite; we keep ffmpeg.exe
+    else:
         if optional:
             return None
         sys.exit("ffmpeg not found — install it and re-run (see README.md).")
-    arch = {"arm64": "arm64", "x86_64": "amd64"}.get(platform.machine())
-    if not arch:
-        sys.exit(f"No static ffmpeg build known for {platform.machine()} — install ffmpeg manually.")
-    url = f"https://ffmpeg.martin-riedl.de/redirect/latest/macos/{arch}/release/ffmpeg.zip"
-    print(f"Downloading ffmpeg (one-time, ~30 MB) to {FFMPEG_LOCAL} ...", flush=True)
-    import io
+    print(f"Downloading ffmpeg (one-time, {size}) to {FFMPEG_LOCAL} ...", flush=True)
     import urllib.request
     import zipfile
 
-    tmp = FFMPEG_LOCAL + ".new"
+    tmp, zip_tmp = FFMPEG_LOCAL + ".new", FFMPEG_LOCAL + ".zip.part"
     try:
-        with urllib.request.urlopen(url, timeout=600) as r:
-            data = r.read()
-        with zipfile.ZipFile(io.BytesIO(data)) as z, z.open("ffmpeg") as src, open(tmp, "wb") as f:
-            shutil.copyfileobj(src, f)
+        with urllib.request.urlopen(url, timeout=900) as r, open(zip_tmp, "wb") as f:
+            shutil.copyfileobj(r, f)
+        with zipfile.ZipFile(zip_tmp) as z:
+            name = next((n for n in z.namelist() if n == member or n.endswith("/" + member)), None)
+            if not name:
+                raise KeyError(f"{member} not in the archive")
+            with z.open(name) as src, open(tmp, "wb") as f:
+                shutil.copyfileobj(src, f)
         os.chmod(tmp, 0o755)
         os.replace(tmp, FFMPEG_LOCAL)
     except (OSError, zipfile.BadZipFile, KeyError) as e:
-        try:
-            os.remove(tmp)
-        except OSError:
-            pass
+        for leftover in (tmp, zip_tmp):
+            try:
+                os.remove(leftover)
+            except OSError:
+                pass
         sys.exit(f"ffmpeg download failed ({e}) — install it manually (see README.md).")
+    try:
+        os.remove(zip_tmp)
+    except OSError:
+        pass
     return FFMPEG_LOCAL
 
 
 def ensure_ocr():
-    """Compile ocr.swift (macOS Vision text recognition) once; reuse after."""
+    """The OCR helper as a command prefix (append the image path to run it).
+
+    macOS: ocr.swift (Vision) compiled once to .ocr and reused.
+    Windows: ocr.ps1 (Windows.Media.Ocr) run through the stock Windows
+    PowerShell 5.1 — the one every Windows 10/11 ships with, which exposes
+    the WinRT types (PowerShell 7 does not, so `pwsh` is deliberately not used).
+    """
+    if sys.platform == "win32":
+        if not os.path.exists(OCR_PS1):
+            sys.exit(f"{OCR_PS1} is missing — it ships with this project (see README.md).")
+        ps = shutil.which("powershell") or os.path.join(
+            os.environ.get("SystemRoot", r"C:\Windows"),
+            "System32", "WindowsPowerShell", "v1.0", "powershell.exe")
+        if not os.path.exists(ps):
+            sys.exit("Windows PowerShell (powershell.exe) not found — it is needed to run ocr.ps1.")
+        return [ps, "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass",
+                "-File", OCR_PS1]
+    if sys.platform != "darwin":
+        sys.exit(
+            "watch mode reads the on-screen overlay with the OS's built-in OCR, which\n"
+            "exists on macOS and Windows only — use the chat-based `log` mode here."
+        )
     if not os.path.exists(OCR_SWIFT):
         sys.exit(f"{OCR_SWIFT} is missing — it ships with this project (see README.md).")
     if os.path.exists(OCR_BIN) and os.path.getmtime(OCR_BIN) >= os.path.getmtime(OCR_SWIFT):
-        return OCR_BIN
+        return [OCR_BIN]
     if not shutil.which("swiftc"):
         sys.exit(
             "swiftc not found — the OCR helper needs Apple's Command Line Tools.\n"
@@ -240,7 +276,7 @@ def ensure_ocr():
     r = subprocess.run(["swiftc", "-O", "-o", OCR_BIN, OCR_SWIFT], capture_output=True, text=True)
     if r.returncode != 0:
         sys.exit(f"OCR helper failed to compile:\n{r.stderr}")
-    return OCR_BIN
+    return [OCR_BIN]
 
 
 # ---------------------------------------------------------------- radios
@@ -621,7 +657,14 @@ class SongBook:
             w.writeheader()
             for row in sorted(self.songs.values(), key=lambda r: r["first_added"]):
                 w.writerow(row)
-        os.replace(tmp, self.path)
+        for attempt in range(10):  # Windows: replace fails while the other logger reads
+            try:
+                os.replace(tmp, self.path)
+                break
+            except PermissionError:
+                if attempt == 9:
+                    raise
+                time.sleep(0.2)
         self._mtime = os.path.getmtime(self.path)
         self.dirty = False
 
@@ -1166,17 +1209,22 @@ def acquire_single_instance(radio, mode):
     exit, so a crash never leaves a stale lock behind. The returned file
     handle must stay referenced by the caller.
     """
-    try:
-        import fcntl
-    except ImportError:  # Windows: no flock — run unguarded
-        return None
     path = os.path.join(radio.folder, f".{mode}.lock")
     f = open(path, "a+", encoding="utf-8")
     try:
-        fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        if sys.platform == "win32":
+            import msvcrt  # byte-range lock; mandatory on Windows, so read the
+            f.seek(0)      # holder text BEFORE locking (reading a locked byte fails)
+            holder = f.read().strip() or "unknown pid"
+            f.seek(0)
+            msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, 1)
+        else:
+            import fcntl
+            fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except OSError:
-        f.seek(0)
-        holder = f.read().strip() or "unknown pid"
+        if sys.platform != "win32":
+            f.seek(0)
+            holder = f.read().strip() or "unknown pid"
         sys.exit(
             f"A `{mode}` for radio '{radio.name}' is already running ({holder}) — "
             "closing this second copy."
@@ -1335,14 +1383,16 @@ def clean_ocr_text(text):
     return text
 
 
-def read_overlay(ocr_bin, frame_path, region):
+def read_overlay(ocr_cmd, frame_path, region):
     """OCR the frame; returns (title, artist) from the overlay or None.
 
     The overlay puts the artist on top and the title below it. The OCR
-    helper prints one line per recognized text with its x/y position as
-    fractions from the bottom-left; only text inside `region` is used.
+    helper (ocr.swift / ocr.ps1, see ensure_ocr) prints one line per
+    recognized text with its x/y position as fractions from the
+    bottom-left; only text inside `region` is used.
     """
-    r = subprocess.run([ocr_bin, frame_path], capture_output=True, text=True, timeout=120)
+    r = subprocess.run(ocr_cmd + [frame_path], capture_output=True, text=True,
+                       encoding="utf-8", errors="replace", timeout=120)
     rows = []
     for line in r.stdout.splitlines():
         try:
@@ -1382,12 +1432,7 @@ def read_overlay(ocr_bin, frame_path, region):
 
 
 def cmd_watch(args):
-    if sys.platform != "darwin":
-        sys.exit(
-            "watch mode reads the on-screen overlay with macOS's built-in OCR,\n"
-            "so it only runs on a Mac — use the chat-based `log` mode instead."
-        )
-    radio = resolve_radio(args)
+    radio = resolve_radio(args)  # (platform support is checked by ensure_ocr)
     _lock = acquire_single_instance(radio, "watch")  # noqa: F841 — held until exit
     signal.signal(signal.SIGTERM, _sigterm)
     ytdlp = find_ytdlp(args.ytdlp)
@@ -1819,6 +1864,12 @@ def cmd_download(args):
 
 
 def main():
+    if sys.platform == "win32":  # cp1252 consoles/pipes would choke on '♪' and '—'
+        for stream in (sys.stdout, sys.stderr):
+            try:
+                stream.reconfigure(encoding="utf-8", errors="replace")
+            except (AttributeError, ValueError):
+                pass
     p = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
