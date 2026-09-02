@@ -1,0 +1,26 @@
+# #17 - 2025-09-27 Blue Hole, Gozo - set order. OK = mp3 in this folder, MISSING = not available on YouTube
+MISSING | Meliora - Pendienti A Mi
+OK      | Andrew Dum - Les Djinns (Radio Edit)  ->  Andrew Dum - Les Djinns (Original Mix) - 2025.mp3
+OK      | Safar (FR) - Voodoo People  ->  Safar (FR) - Voodoo People - 2022.mp3
+OK      | Simone Vitullo & Tanit - Rorogwela  ->  Simone Vitullo, Tanit _ Rorogwela (Original Mix) - 2021.mp3
+OK      | Supermode - Tell Me Why (MEDUZA Remix)  ->  Supermode - Tell Me Why (Meduza Extended Remix) - 2022.mp3
+OK      | Khen - Yellow  ->  Khen - Yellow - 2022.mp3
+OK      | Nico Morano & Mewhy - Everything I Own (Gorje Hewek Remix)  ->  Premiere： Nico Morano & MeWhy - Everything I Own (Gorje Hewek Remix) [Ontourage Music] - 2024.mp3
+OK      | Arkadyan - Tulila (Safar FR Remix)  ->  Arkadyan - Tulila (Safar FR Remix) {Sol Selectas} - 2022.mp3
+MISSING | Ry X - Only (Fejká's Sunrise Edit)
+OK      | Booka Shade - Love Inc  ->  Booka Shade - Love Inc (Official Music Video) - 2013.mp3
+OK      | Maga, Sean Doron & Tim Engelhardt - You & I, Paradise  ->  You and I Paradise - Maga, Sean Doron, Tim Engelhardt ft DUDHA - 2022.mp3
+OK      | Mandy & Booka Shade - O Superman (SIS Remix) [feat. Laurie Anderson]  ->  M.A.N.D.Y. vs Booka Shade feat. Laurie Anderson - O Superman (SIS Remix) - 2020.mp3
+OK      | Above & Beyond, anamē, Marty Longstaff - Gratitude (Sébastien Léger Remix)  ->  Above & Beyond, anamē - Gratitude feat. Marty Longstaff (Sébastien Léger Remix) - 2022.mp3
+OK      | Kasper Koman - Fruit  ->  Kasper Koman - Fruit (Original Mix) - 2022.mp3
+MISSING | Underher - Damaged Goods (feat. Fina Catalino) [Uoenes Future Funk Remix]
+OK      | Tim Engelhardt - Follow  ->  Tim Engelhardt： Follow - 2022.mp3
+OK      | Matt Sassari, Hugel, Sonique - It Feels So Good (Jamy Nox Remix)  ->  Matt Sassari, HUGEL feat. Sonique - It Feels So Good (Jamy Nox Extended Remix) - 2025.mp3
+OK      | Above & Beyond, Zoë Johnston - Crazy Love (ANUQRAM Extended Mix)  ->  Above & Beyond feat. Zoë Johnston - Crazy Love (ANUQRAM Extended Mix) - 2024.mp3
+OK      | Fred Again.., The Blessed Madonna X Shakedown - (We've Lost Dancing) X At Night (SWITCH DISCO EDIT)  ->  Fred Again.., The Blessed Madonna X Shakedown - (We've Lost Dancing) X At Night (SWITCH DISCO EDIT) - 2023.mp3
+OK      | The Temper Trap - Sweet Disposition (John Summit & Silver Panda Remix)  ->  The Temper Trap - Sweet Disposition (John Summit & Silver Panda) [Extended Remix] - 2024.mp3
+MISSING | Mx Cartier & Luca - Oh Na Ri Na
+OK      | Billie Eilish - Everything I Wanted  ->  Billie Eilish - everything i wanted - 2020.mp3
+OK      | Liyv - Throne  ->  Liyv - Throne (coss & iorie Version) - 2020.mp3
+OK      | Frost - We Call It House  ->  Frost - We Call It House - 2019.mp3
+OK      | Oliver Cheatham - Get Down Saturday Night (Rules Remix)  ->  Oliver Cheatham - Get Down Saturday Night (Rules Remix) - 2023.mp3

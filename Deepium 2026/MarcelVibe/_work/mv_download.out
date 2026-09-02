@@ -1,0 +1,45 @@
+[round 1] 01: downloading 17
+[round 1] 02: downloading 15
+[round 1] 03: downloading 19
+[round 1] 04: downloading 15
+[round 1] 05: downloading 12
+[round 1] 06: downloading 12
+[round 1] 07: downloading 13
+[round 1] 08: downloading 14
+[round 1] 09: downloading 2
+[round 1] 10: downloading 3
+[round 1] 11: downloading 4
+[round 1] 12: downloading 1
+[round 1] 13: downloading 2
+[round 1] 14: downloading 13
+[round 1] 15: downloading 1
+[round 1] 16: downloading 7
+[round 1] 17: downloading 6
+[round 1] 18: downloading 1
+[round 1] 19: downloading 12
+[round 1] 23: downloading 12
+[round 1] 24: downloading 12
+[round 1] 26: downloading 17
+[round 1] 09: downloading 12
+[round 1] 10: downloading 6
+[round 1] 11: downloading 9
+[round 1] 11: downloading 6
+[round 1] 12: downloading 6
+[round 1] 13: downloading 15
+[round 1] 08: downloading 2
+[round 1] 14: downloading 1
+[round 1] 15: downloading 11
+[round 1] 16: downloading 18
+[round 1] 17: downloading 14
+[round 1] 18: downloading 11
+[round 1] 19: downloading 8
+[round 1] 20: downloading 20
+[round 1] 26: downloading 7
+[round 1] done, 119 attempted this round, 339 mp3 on disk, resolver running: True
+[round 2] 12: downloading 2
+[round 2] 25: downloading 13
+[round 2] 26: downloading 2
+[round 2] 27: downloading 22
+[round 2] done, 39 attempted this round, 378 mp3 on disk, resolver running: False
+[round 3] done, 0 attempted this round, 378 mp3 on disk, resolver running: False
+MV_DOWNLOAD_DONE

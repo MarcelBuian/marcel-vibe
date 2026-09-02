@@ -1,46 +1,47 @@
 # DrumAndBass - suggested mixing order (light -> aggressive). number | bpm | source | file
+# P = played in Marcel Vibe #27 (2026-08-16 Golden Bay). 'old-playlist' = your earlier YouTube D&B prep playlist, 'new' = the Deepium 2026 D&B playlist.
 ## 1. Soft landing - atmospheric & ambient liquid
-010P | 191.4 bpm | _played-before   | Naughty Boy, Beyoncé, Arrow Benjamin - Runnin' (Lose It All) - 2015.mp3
-020P | 162.2 bpm | _played-before   | Death On The Balcony - Altered Perception - 2019.mp3
-030P | 172.6 bpm | _played-before   | High Contrast - Days go by - 2008.mp3
-040P | 172.7 bpm | _played-before   | London Grammar - If You Wait (Calibre Alternate Remix) - 2019.mp3
-050P | 173.7 bpm | _played-before   | LiquidHour DnB, Nenad Markovic - Crooked Broomstick Haze - 2025.mp3
-060P | 170.4 bpm | _played-before   | LiquidHour DnB, Nenad Markovic - Twirling Pothole Spark - 2025.mp3
-070P | 174.3 bpm | _played-before   | LiquidHour DnB, Nenad Markovic - Flux - 2026.mp3
-080P | 174.1 bpm | _played-before   | LiquidHour DnB, Nenad Markovic - Echo Theory - 2025.mp3
-090P | 174.0 bpm | _played-before   | LiquidHour DnB, Nenad Markovic - Skittering Lamp Whirl - 2025.mp3
+010 | 191.4 bpm | old-playlist     | Naughty Boy, Beyoncé, Arrow Benjamin - Runnin' (Lose It All) - 2015.mp3
+020 | 162.2 bpm | old-playlist     | Death On The Balcony - Altered Perception - 2019.mp3
+030 | 172.6 bpm | old-playlist     | High Contrast - Days go by - 2008.mp3
+040 | 172.7 bpm | old-playlist     | London Grammar - If You Wait (Calibre Alternate Remix) - 2019.mp3
+050 | 173.7 bpm | old-playlist     | LiquidHour DnB, Nenad Markovic - Crooked Broomstick Haze - 2025.mp3
+060 | 170.4 bpm | old-playlist     | LiquidHour DnB, Nenad Markovic - Twirling Pothole Spark - 2025.mp3
+070 | 174.3 bpm | old-playlist     | LiquidHour DnB, Nenad Markovic - Flux - 2026.mp3
+080 | 174.1 bpm | old-playlist     | LiquidHour DnB, Nenad Markovic - Echo Theory - 2025.mp3
+090 | 174.0 bpm | old-playlist     | LiquidHour DnB, Nenad Markovic - Skittering Lamp Whirl - 2025.mp3
 100 | 174.0 bpm | new              | LiquidHour DnB, Nenad Markovic - Drip - 2026.mp3
 110 | 174.4 bpm | new              | LiquidHour DnB, Nenad Markovic - Blue Heat - 2026.mp3
 120 | 173.9 bpm | new              | Tranquil Sparks - Songmas Day 19 - 2025.mp3
-130P | 175.0 bpm | _played-before   | Nelver - Touching Soul - 2023.mp3
-140P | 174.4 bpm | _played-before   | Polaris, Ritual, Vio.let - Lullaby feat. Vio.let - 2021.mp3
-150P | 174.7 bpm | _played-before   | T：Base - Love Me - 2016.mp3
+130 | 175.0 bpm | old-playlist     | Nelver - Touching Soul - 2023.mp3
+140 | 174.4 bpm | old-playlist     | Polaris, Ritual, Vio.let - Lullaby feat. Vio.let - 2021.mp3
+150 | 174.7 bpm | old-playlist     | T：Base - Love Me - 2016.mp3
 160 | 174.0 bpm | new              | Anwius - Like Us - 2022.mp3
-170P | 169.9 bpm | _played-before   | Vintage & Morelli - Beyond The Horizon - 2018.mp3
-180P | 174.3 bpm | _played-before   | Papa Pedro, Piotr Ostrowski, Piotr Ostrowski - Goodbye - 2026.mp3
+170 | 169.9 bpm | old-playlist     | Vintage & Morelli - Beyond The Horizon - 2018.mp3
+180 | 174.3 bpm | old-playlist     | Papa Pedro, Piotr Ostrowski, Piotr Ostrowski - Goodbye - 2026.mp3
 
 ## 2. Melodic liquid - Etherwood & friends, warm rollers
-190P | 175.2 bpm | _played-before   | Etherwood - Borderline - Official Video - 2013.mp3
-200P | 173.9 bpm | _played-before   | Etherwood - Light My Way Home (feat. Eva Lazarus) - 2015.mp3
-210P | 175.5 bpm | _played-before   | Etherwood - Souls Apart - 2013.mp3
-220P | 174.0 bpm | _played-before   | Etherwood - Driving Out - 2019.mp3
-230P | 173.1 bpm | _played-before   | Etherwood - Begin By Letting Go - Official Video - 2013.mp3
-240P | 173.0 bpm | _played-before   | Etherwood - Cast Away - 2015.mp3
+190 | 175.2 bpm | old-playlist     | Etherwood - Borderline - Official Video - 2013.mp3
+200 | 173.9 bpm | old-playlist     | Etherwood - Light My Way Home (feat. Eva Lazarus) - 2015.mp3
+210 | 175.5 bpm | old-playlist     | Etherwood - Souls Apart - 2013.mp3
+220 | 174.0 bpm | old-playlist     | Etherwood - Driving Out - 2019.mp3
+230 | 173.1 bpm | old-playlist     | Etherwood - Begin By Letting Go - Official Video - 2013.mp3
+240 | 173.0 bpm | old-playlist     | Etherwood - Cast Away - 2015.mp3
 250 | 174.1 bpm | new              | Etherwood - Away From It All - 2019.mp3
-260P | 174.0 bpm | _played-before   | Tom Walker - Better Half of Me (Etherwood Remix) - 2019.mp3
-270P | 175.1 bpm | _played-before   | Camo & Krooked - All Night (Etherwood Remix) - 2015.mp3
-280P | 174.3 bpm | _played-before   | Technicolour - Ever After - 2012.mp3
-290P | 175.3 bpm | _played-before   | Technicolour, Komatic - The Glow - 2012.mp3
-300P | 174.0 bpm | _played-before   | Alpha Rhythm, Ritual - Downcast - 2021.mp3
-310P | 173.9 bpm | _played-before   | SOLR - Lost In You - 2023.mp3
-320P | 173.9 bpm | _played-before   | SOLR, Kr33per - YGM - 2025.mp3
-330P | 173.9 bpm | _played-before   | Nu：Tone, Maduk, Logistics - Stutter - 2014.mp3
-340P | 173.9 bpm | _played-before   | Nelver - Liberty - 2017.mp3
-350P | 172.1 bpm | _played-before   | Matt View - Change It - 2020.mp3
-360P | 174.1 bpm | _played-before   | Drum Origins - My Eyes On You - 2022.mp3
-370P | 173.9 bpm | _played-before   | HumaNature - Memories - 2021.mp3
-380P | 174.1 bpm | _played-before   | HumaNature, Tarz - Connection - 2017.mp3
-390P | 174.1 bpm | _played-before   | Humanature - First Light - 2018.mp3
+260 | 174.0 bpm | old-playlist     | Tom Walker - Better Half of Me (Etherwood Remix) - 2019.mp3
+270 | 175.1 bpm | old-playlist     | Camo & Krooked - All Night (Etherwood Remix) - 2015.mp3
+280 | 174.3 bpm | old-playlist     | Technicolour - Ever After - 2012.mp3
+290 | 175.3 bpm | old-playlist     | Technicolour, Komatic - The Glow - 2012.mp3
+300 | 174.0 bpm | old-playlist     | Alpha Rhythm, Ritual - Downcast - 2021.mp3
+310 | 173.9 bpm | old-playlist     | SOLR - Lost In You - 2023.mp3
+320 | 173.9 bpm | old-playlist     | SOLR, Kr33per - YGM - 2025.mp3
+330 | 173.9 bpm | old-playlist     | Nu：Tone, Maduk, Logistics - Stutter - 2014.mp3
+340 | 173.9 bpm | old-playlist     | Nelver - Liberty - 2017.mp3
+350 | 172.1 bpm | old-playlist     | Matt View - Change It - 2020.mp3
+360 | 174.1 bpm | old-playlist     | Drum Origins - My Eyes On You - 2022.mp3
+370 | 173.9 bpm | old-playlist     | HumaNature - Memories - 2021.mp3
+380 | 174.1 bpm | old-playlist     | HumaNature, Tarz - Connection - 2017.mp3
+390 | 174.1 bpm | old-playlist     | Humanature - First Light - 2018.mp3
 400 | 173.9 bpm | new              | HumaNature - Since I've Known You - 2020.mp3
 410 | 172.0 bpm | new              | Mojoman - Golden Light - 2026.mp3
 420 | 174.0 bpm | new              | Phloem - Cathartic - 2025.mp3
@@ -52,46 +53,46 @@
 480 | 173.9 bpm | new              | Alexvnder - Creation - 2022.mp3
 490 | 174.1 bpm | new              | Nelver, Nic ZigZag - Prisma - 2021.mp3
 500 | 174.0 bpm | new              | Alpha Rhythm - Jupiter - 2023.mp3
-510P | 174.0 bpm | _played-before   | Alpha Rhythm, Ritual - Illusions - 2022.mp3
-520P | 172.1 bpm | _played-before   | Alpha Rhythm, pyxis - Point Of Light - 2026.mp3
-530P | 173.9 bpm | _played-before   | Keeno - Persevere - 2025.mp3
-540P | 173.9 bpm | _played-before   | Malaky - Gone Away - 2015.mp3
-550P | 173.9 bpm | _played-before   | Mohican Sun - Trade Winds - 2018.mp3
-560P | 174.0 bpm | _played-before   | Fred V, Vio.let - Morning Eclipse (feat. Vio.let) - 2021.mp3
-570P | 174.1 bpm | _played-before   | Phaction, Leo Wood - Electric Wires - 2021.mp3
+510 | 174.0 bpm | old-playlist     | Alpha Rhythm, Ritual - Illusions - 2022.mp3
+520 | 172.1 bpm | old-playlist     | Alpha Rhythm, pyxis - Point Of Light - 2026.mp3
+530 | 173.9 bpm | old-playlist     | Keeno - Persevere - 2025.mp3
+540 | 173.9 bpm | old-playlist     | Malaky - Gone Away - 2015.mp3
+550 | 173.9 bpm | old-playlist     | Mohican Sun - Trade Winds - 2018.mp3
+560 | 174.0 bpm | old-playlist     | Fred V, Vio.let - Morning Eclipse (feat. Vio.let) - 2021.mp3
+570 | 174.1 bpm | old-playlist     | Phaction, Leo Wood - Electric Wires - 2021.mp3
 580 | 174.0 bpm | new              | Sub：liminal, Resurgence - Afraid - 2020.mp3
 590 | 173.6 bpm | new              | QZB, Charli Brix - Take It All - 2018.mp3
 600 | 173.9 bpm | new              | Archangel - Nightline - 2022.mp3
 
 ## 3. Vocal anthems - crowd singalongs
-610P | 172.9 bpm | _played-before   | Adele - Hometown Glory (High Contrast Remix) - 2008.mp3
-620P | 174.1 bpm | _played-before   | Reflekt, Matrix, Delline Bass - Need To Feel Loved (Matrix Remix) - 2022.mp3
-630P | 174.0 bpm | _played-before   | CamelPhat, LOWES, Sub Focus - Easier (Sub Focus Remix) - 2021.mp3
-640P | 171.8 bpm | _played-before   | Netsky, Becky Hill - Hold On - 2020.mp3
-650P | 173.1 bpm | _played-before   | Hybrid Minds, Netsky - Let Me Hold You (Grafix Remix) - 2023.mp3
-660P | 174.1 bpm | _played-before   | Emily Makis, Monrroe - Never Too Old (Friction Remix) - 2024.mp3
-670P | 174.0 bpm | _played-before   | Freaks & Geeks, Emily Makis - Elemental - 2021.mp3
-680P | 174.0 bpm | _played-before   | Wilkinson, HAYLA - I Need (Wilkinson & Metrik Remix) - 2018.mp3
-690P | 173.9 bpm | _played-before   | John Summit, Sub Focus, Julia Church - Go Back - 2023.mp3
-700P | 174.1 bpm | _played-before   | Fred again.., Baby Keem - leavemealone - 2023.mp3
-710P | 174.1 bpm | _played-before   | Sub Focus - Fine Day (Visualiser) - 2023.mp3
-720P | 174.0 bpm | _played-before   | Koven - Chase The Sun - 2023.mp3
-730P | 176.0 bpm | _played-before   | Netsky - Young and Foolish - 2009.mp3
-740P | 176.1 bpm | _played-before   | Netsky - Lost in this world - 2009.mp3
-750P | 174.1 bpm | _played-before   | Grafix - Radiance - 2019.mp3
+610 | 172.9 bpm | old-playlist     | Adele - Hometown Glory (High Contrast Remix) - 2008.mp3
+620 | 174.1 bpm | old-playlist     | Reflekt, Matrix, Delline Bass - Need To Feel Loved (Matrix Remix) - 2022.mp3
+630 | 174.0 bpm | old-playlist     | CamelPhat, LOWES, Sub Focus - Easier (Sub Focus Remix) - 2021.mp3
+640 | 171.8 bpm | old-playlist     | Netsky, Becky Hill - Hold On - 2020.mp3
+650 | 173.1 bpm | old-playlist     | Hybrid Minds, Netsky - Let Me Hold You (Grafix Remix) - 2023.mp3
+660 | 174.1 bpm | old-playlist     | Emily Makis, Monrroe - Never Too Old (Friction Remix) - 2024.mp3
+670 | 174.0 bpm | old-playlist     | Freaks & Geeks, Emily Makis - Elemental - 2021.mp3
+680 | 174.0 bpm | old-playlist     | Wilkinson, HAYLA - I Need (Wilkinson & Metrik Remix) - 2018.mp3
+690 | 173.9 bpm | old-playlist     | John Summit, Sub Focus, Julia Church - Go Back - 2023.mp3
+700 | 174.1 bpm | old-playlist     | Fred again.., Baby Keem - leavemealone - 2023.mp3
+710 | 174.1 bpm | old-playlist     | Sub Focus - Fine Day (Visualiser) - 2023.mp3
+720 | 174.0 bpm | old-playlist     | Koven - Chase The Sun - 2023.mp3
+730 | 176.0 bpm | old-playlist     | Netsky - Young and Foolish - 2009.mp3
+740 | 176.1 bpm | old-playlist     | Netsky - Lost in this world - 2009.mp3
+750 | 174.1 bpm | old-playlist     | Grafix - Radiance - 2019.mp3
 760 | 173.9 bpm | new              | Tapolsky - Де сходить сонце？ - 2024.mp3
 770 | 173.8 bpm | new              | Campbell, Alcemist - Would You (go to bed with me？) - 2023.mp3
-780P | 173.9 bpm | _played-before   | Fugees - Ready Or Not (Champion Bootleg) - 2015.mp3
+780 | 173.9 bpm | old-playlist     | Fugees - Ready Or Not (Champion Bootleg) - 2015.mp3
 
 ## 4. Heavy peak - jump-up, neuro & rave closers
-790P | 173.8 bpm | _played-before   | Wilkinson - Decompression - 2018.mp3
-800P | 174.1 bpm | _played-before   | Sub Focus - Wildfire - 2024.mp3
-810P | 174.9 bpm | _played-before   | Erythh - SUBMITT - 2024.mp3
-820P | 175.1 bpm | _played-before   | Vodkah - Dibs - 2022.mp3
+790 | 173.8 bpm | old-playlist     | Wilkinson - Decompression - 2018.mp3
+800 | 174.1 bpm | old-playlist     | Sub Focus - Wildfire - 2024.mp3
+810 | 174.9 bpm | old-playlist     | Erythh - SUBMITT - 2024.mp3
+820 | 175.1 bpm | old-playlist     | Vodkah - Dibs - 2022.mp3
 830 | 174.1 bpm | new              | Drumsound & Bassline Smith - Pure Fire - 2026.mp3
-840P | 174.0 bpm | _played-before   | Sub Focus, Wilkinson - Rock It (Wilkinson Remix) - 2021.mp3
-850P | 174.1 bpm | _played-before   | Culture Shock - Renaissance - 2019.mp3
-860P | 174.1 bpm | _played-before   | Tantrum Desire - Cluster - 2024.mp3
-870P | 175.0 bpm | _played-before   | Tiësto, Hedex, Basslayerz - Click Click Click - 2024.mp3
-880P | 173.9 bpm | _played-before   | Gydra - Ikra (Original Mix) - 2017.mp3
-890P | 174.1 bpm | _played-before   | Sub Focus - Siren - 2019.mp3
+840 | 174.0 bpm | old-playlist     | Sub Focus, Wilkinson - Rock It (Wilkinson Remix) - 2021.mp3
+850 | 174.1 bpm | old-playlist     | Culture Shock - Renaissance - 2019.mp3
+860 | 174.1 bpm | old-playlist     | Tantrum Desire - Cluster - 2024.mp3
+870 | 175.0 bpm | old-playlist     | Tiësto, Hedex, Basslayerz - Click Click Click - 2024.mp3
+880 | 173.9 bpm | old-playlist     | Gydra - Ikra (Original Mix) - 2017.mp3
+890 | 174.1 bpm | old-playlist     | Sub Focus - Siren - 2019.mp3

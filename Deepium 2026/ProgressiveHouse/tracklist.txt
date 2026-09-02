@@ -1,0 +1,108 @@
+# ProgressiveHouse - suggested mixing order (light -> aggressive). number | bpm | source | file
+## 1. Deep opening - soft, hypnotic progressive, 119-122 bpm
+0010P | 119.0 bpm | _played-before   | SHAMUËL - Zen Beach (Original Mix) - 2026.mp3
+0020P | 120.0 bpm | _played-before   | RIGOONI - Petrichor - 2021.mp3
+0030P | 120.0 bpm | _played-before   | Grance (BR), Soulmac - Happy Incident (Ale Russo Remix) - 2024.mp3
+0040P | 122.1 bpm | _played-before   | PROFF - Snowflake (ABGT584) - 2024.mp3
+0050P | 120.0 bpm | _played-before   | Alex O'Rion & Ezequiel Arias - Solis (Original Mix) [Meanwhile] - 2022.mp3
+0060P | 120.0 bpm | _played-before   | Alex O'Rion - Echium (Original Mix) [meanwhile] - 2021.mp3
+0070 | 120.0 bpm | new              | Premiere： Alex O'Rion & Maze 28 - Glowing Tide - 2025.mp3
+0080 | 120.0 bpm | new              | PREMIERE： Simos Tagias, Roger Martinez - Inner Light (Original Mix) [MEANWHILE RECORDINGS] - 2026.mp3
+0090 | 120.0 bpm | new              | Sebastian Sellares - Limbo - 2025.mp3
+0100 | 121.0 bpm | new              | Juan Deminicis - Samhadi (Original Mix) - 2022.mp3
+0110 | 120.0 bpm | new              | Alex O'Rion - Flow [Meanwhile] - 2026.mp3
+0120P | 120.0 bpm | _played-before   | Argy & Goom Gum - Pantheon [Extended Mix] - 2023.mp3
+0130P | 120.0 bpm | _played-before   | Simon Vuarambon - Lazos - 2021.mp3
+0140P | 120.0 bpm | _played-before   | Kasper Koman - Hi - 2018.mp3
+0150P | 120.0 bpm | _played-before   | RIGOONI - When Midnight Comes (Alex O'Rion Remix) - 2020.mp3
+0160P | 121.1 bpm | _played-before   | BluePaper - Azimuth (Extended Mix) - 2023.mp3
+0170P | 121.2 bpm | _played-before   | HIGHLITE – Caravan (Original Mix) [HL006] - 2020.mp3
+0180P | 121.0 bpm | _played-before   | Tim Green - To Know Nothing - 2020.mp3
+0190P | 121.0 bpm | _played-before   | Weird Sounding Dude - Hyper Dream (ABGT457) - 2021.mp3
+0200P | 121.0 bpm | _played-before   | PREMIERE： Simos Tagias - Strange to Ourselves (Tonaco Remix) [Vapour Recordings] - 2024.mp3
+0210P | 121.0 bpm | _played-before   | Ric Niels - Ikigai (Original Mix) [The Soundgarden] - 2022.mp3
+0220P | 121.0 bpm | _played-before   | Andrea Cassino & Greenage： Losing Part Of Me (Dmitry Molosh Remix) - 2020.mp3
+0230 | 121.0 bpm | new              | PREMIERE： Nicolas Rada - Riot [Meanwhile] - 2025.mp3
+0240P | 122.0 bpm | _played-before   | Rafa Polo — The Sands - 2025.mp3
+0250P | 122.0 bpm | _played-before   | Sebastian Sellares - Timeless Era - 2024.mp3
+0260P | 122.0 bpm | _played-before   | PREMIERE： Bondarev - Meteora (Cosmonaut Remix) [WARPP] - 2024.mp3
+0270P | 122.0 bpm | _played-before   | K Loveski & Geronimo Eguiguren - Kamikaze (Simos Tagias Remix) [Clubsonica Records] - 2023.mp3
+0280P | 123.0 bpm | _played-before   | PROFF, M.O.S. - Namtso (ABGT602) - 2024.mp3
+0290P | 122.0 bpm | _played-before   | Kasper Koman - Fruit (Original Mix) - 2022.mp3
+0300P | 122.0 bpm | _played-before   | Gai Barone - Shuttered (Original Mix) - 2025.mp3
+0310P | 122.0 bpm | _played-before   | Melodiam (AR) – Words Are Weapons (Maze 28 Remix) [onedotsixtwo] - 2024.mp3
+0320P | 122.0 bpm | _played-before   | MAZE 28 Eureka - 2024.mp3
+0330P | 122.0 bpm | _played-before   | Echo Daft - Echoes (Original Mix) [Movement Recordings] - 2022.mp3
+0340P | 122.0 bpm | _played-before   | Franco Camiolo - Speculating As Unknown (Echo Daft Remix) - 2022.mp3
+0350P | 122.0 bpm | _played-before   | Shai T - Gates of Thēbai (Original Mix) [DO NOT SIT ON THE FURNITURE RECORDINGS] - 2021.mp3
+0360P | 122.0 bpm | _played-before   | Soul Engineers, Broken Adam - Kalkan (Extended Mix) - 2024.mp3
+0370P | 123.0 bpm | _played-before   | Teklix - Alchemist (Original Mix) [Outta Limits] - 2022.mp3
+0380 | 122.0 bpm | new              | Alex O'Rion - The Singing Grove (Original Mix) [Movement Recordings] - 2025.mp3
+0390 | 122.0 bpm | new              | Matias Chilano - Metamorphosis (Original Mix) [Movement Recordings] - 2025.mp3
+0400 | 122.0 bpm | new              | Gai Barone - Limbic (Extended Mix) [Univack] - 2026.mp3
+0410 | 122.0 bpm | new              | Gai Barone & Luke Brancaccio - Bedrocking - 2025.mp3
+0420 | 122.0 bpm | new              | Simos Tagias & Tonaco - Alnilam - 2026.mp3
+0430 | 122.1 bpm | new              | Lost Miracle, Sébastien Léger, Roy Rosenfeld - Guarana (Extended Mix) - 2025.mp3
+
+## 2. Rolling - warm driving grooves & big melodies, 121-124 bpm
+0440P | 121.0 bpm | _played-before   | Hernan Cattaneo & Mercurio - Diluted (Extended Mix) [Mango Alley] - 2026.mp3
+0450P | 122.2 bpm | _played-before   | Hexlogic - Pulse [Silk Music] - 2017.mp3
+0460P | 122.0 bpm | _played-before   | Guy J - Stranger In A Strange World - 2025.mp3
+0470P | 122.0 bpm | _played-before   | Serious Dancers, Tim Green - Callahan (Tim Green Edit) - 2023.mp3
+0480P | 122.0 bpm | _played-before   | Above & Beyond - Surge (PROFF & Igor Garanin Extended Mix) - 2023.mp3
+0490P | 122.0 bpm | _played-before   | Aman Anand & Frankie Vertigo - Can't Stop [Gai Barone Extended Remix] [BEST PROGRESSIVE HOUSE] - 2026.mp3
+0500P | 122.0 bpm | _played-before   | Brian Creao - Hierofante (Original Mix) - 2026.mp3
+0510P | 122.0 bpm | _played-before   | Brian Creao - Temperance (Juan Ibañez Remix) - 2026.mp3
+0520P | 122.0 bpm | _played-before   | HAFT - Flow (Original Mix) Meanwhile Horizons - 2025.mp3
+0530P | 122.0 bpm | _played-before   | Mike Rish - The Quest (Kabi Remix) - 2022.mp3
+0540P | 122.0 bpm | _played-before   | Nicholas Van Orton - Groovelow [Balkan Connection South America] - 2026.mp3
+0550 | 121.0 bpm | new              | Nicholas Van Orton - Raven [Balkan Connection South America] - 2025.mp3
+0560 | 122.0 bpm | new              | Nicolas Rada - Glasgow [Meanwhile] - 2025.mp3
+0570 | 122.0 bpm | new              | Guy Mantzur & Khen - Where is Home (Original Mix) [Official Audio] - 2022.mp3
+0580 | 122.0 bpm | new              | Guy J - Rise [Global Underground] - 2026.mp3
+0590 | 123.0 bpm | new              | Kamilo Sanclemente - Parallel Moon - 2026.mp3
+0600 | 123.0 bpm | new              | Kasey Taylor & Jamie Stevens - Hocu Pocu - 2026.mp3
+0610 | 123.0 bpm | new              | Paul Deep - Tique - 2026.mp3
+0620 | 122.0 bpm | new              | Cid Inc., Dmitry Molosh - Aquamarine - 2026.mp3
+0630 | 122.0 bpm | new              | Volen Sentir, PROFF - Heidence - 2025.mp3
+0640 | 122.0 bpm | new              | Analog Jungs - Future Frequency (Extended Mix) - 2025.mp3
+0650 | 122.0 bpm | new              | Mariano Mellino - Poison [Tronic] - 2025.mp3
+0660 | 124.0 bpm | new              | Premiere： Hernan Cattaneo, Mercurio - 2009 [Last Night On Earth] - 2025.mp3
+0670P | 123.0 bpm | _played-before   | PREMIERE： Dmitry Molosh - Dreaming (Original Mix) [Protagonist Recordings] - 2025.mp3
+0680P | 123.0 bpm | _played-before   | PREMIERE： Callecat, Nick Varon - Beyond Perceptions (Hernan Cattaneo & Jamie Stevens Remix) [Manual] - 2024.mp3
+0690P | 123.0 bpm | _played-before   | Ezequiel Arias & Sebastian Sellares - Infinity - 2024.mp3
+0700P | 123.0 bpm | _played-before   | Ilias Katelanos, Plecta - Asphodel (Original Mix) - 2024.mp3
+0710P | 123.0 bpm | _played-before   | PREMIERE： Sunar - Desert Rose (Molac Remix) [Songuara] - 2024.mp3
+0720P | 122.0 bpm | _played-before   | Khen - Lyup - 2025.mp3
+0730P | 122.0 bpm | _played-before   | Khen - Babylon - 2024.mp3
+0740P | 121.0 bpm | _played-before   | Khen - Out Of A Dream - 2020.mp3
+0750P | 123.0 bpm | _played-before   | Bondarev - Remote Control (HAFT Remix) [WARPP] - 2025.mp3
+0760P | 121.0 bpm | _played-before   | Premiere： HAFT - Kaleidoscope (Maze 28 & EMPHI Remix) [Movement Recordings] - 2026.mp3
+0770P | 122.0 bpm | _played-before   | FJL - Alter Ego (Original Mix) [Proportion] - 2025.mp3
+0780P | 122.0 bpm | _played-before   | Mayro - Tactical (4K Music Video) [SkyTop] - 2021.mp3
+0790P | 121.0 bpm | _played-before   | MAX WEXEM Override - 2026.mp3
+0800P | 123.0 bpm | _played-before   | Guy J - Element [Global Underground] - 2025.mp3
+0810P | 123.0 bpm | _played-before   | Dosem - On Board - 2018.mp3
+0820P | 123.0 bpm | _played-before   | Nox Vahn - Brainwasher (Warung Remix) - 2021.mp3
+0830P | 123.0 bpm | _played-before   | Durante - Never B Alone (Extended Mix) - 2025.mp3
+0840P | 122.0 bpm | _played-before   | Sebastien Leger - Ariana (Original Mix) [Lost Miracle] - 2023.mp3
+0850 | 121.0 bpm | new              | Simon Vuarambon - Diafana - 2025.mp3
+0860 | 123.0 bpm | new              | Premiere： Guy J - A Moment Of Clarity [Global Underground] - 2025.mp3
+0870 | 120.0 bpm | new              | Dmitry Molosh - Bird Flight [Proton Music] - 2026.mp3
+0880 | 124.0 bpm | new              | Ezequiel Arias - Perfect Dream (Extended Mix) - 2025.mp3
+0890 | 124.1 bpm | new              | Fauxplay & Anthony Pappa - Forever Seeking - 2026.mp3
+0900 | 124.1 bpm | new              | HAFT - Distant Blue (Extended Mix) - 2026.mp3
+0910 | 124.0 bpm | new              | Durante, Mayro - Mantra (Extended Mix) - 2026.mp3
+0920P | 124.0 bpm | _played-before   | Krasa Rosa, M.O.S. - We Are Kids (ABGT550) - 2023.mp3
+
+## 3. Peak - fastest, darkest, biggest breakdowns, 124-127 bpm
+0930 | 124.0 bpm | new              | Nick Warren & Nicolas Rada - Fuego (Extended Mix) - 2026.mp3
+0940 | 125.0 bpm | new              | Dosem - Levitize (Extended Mix) - 2026.mp3
+0950 | 125.0 bpm | new              | Quivver & Dave Seaman - Starship Disco (Extended Mix) - 2026.mp3
+0960 | 125.0 bpm | new              | Ezequiel Arias - Psychodelia (Extended Mix) - 2026.mp3
+0970 | 126.0 bpm | new              | Jeremy Olander - Stylus - 2025.mp3
+0980 | 126.0 bpm | new              | John Digweed, Nick Muir, & Spencer Brown - Relentless (Extended Mix) - 2025.mp3
+0990 | 127.0 bpm | new              | Sasha - Hollow Sun 25 (Extended Mix) [Last Night On Earth] - 2026.mp3
+1000P | 125.0 bpm | _played-before   | Kolsch - All That Matters (ARTBAT remix), Official Video - 2023.mp3
+1010P | 126.0 bpm | _played-before   | Way Out West - Future Perfect (Henry Saiz Mix) - 2014.mp3
+1020 | 123.0 bpm | new              | Nox Vahn & Marsh - Nemora (Extended Mix) - 2026.mp3

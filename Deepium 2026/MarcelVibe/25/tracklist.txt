@@ -1,0 +1,17 @@
+# #25 - 2026-07-04 Wied il-Mielaħ - Gozo - set order. OK = mp3 in this folder, MISSING = not available on YouTube
+OK      | DSF - Yes, of Course  ->  DSF - Yes, of Course - 2026.mp3
+OK      | Elliot Moriarty - Simple Things  ->  SimpleThings - Elliot Moriarty - 2022.mp3
+MISSING | Ivan Garci - Pure Reflections
+OK      | Pambouk - Forest Language  ->  Pambouk - Forest Language (Original Mix)  [Hoomidaas] - 2021.mp3
+OK      | Stereo Munk, Dublew - Blue Lagoon  ->  Stereo Munk & Dublew - Blue Lagoon (Original) ⧸ Zenebona Records - 2023.mp3
+OK      | Francisco Manrique - Yellow Tree  ->  Francisco Manrique - Yellow Tree (Original Mix) [Anoka] - 2024.mp3
+OK      | Alley SA - Cycles  ->  Alley SA - Cycles - 2025.mp3
+OK      | Anriu - Hey Darling  ->  Anriu - Hey Darling (Extended Mix) [Colorize (Enhanced)] - 2024.mp3
+OK      | Heikoon - Kalaa Malaa  ->  Heikoon – Kalaa Malaa (Extended Mix) - 2026.mp3
+OK      | Matías Delóngaro, Arun K - Esoteric (Arun K Remix)  ->  Matias Delóngaro - Esoteric (Arun K Remix) - 2026.mp3
+OK      | Oovsha - Olyushka [Journey of the Soul]  ->  Oovsha - Olyushka [Journey of the Soul] - 2025.mp3
+OK      | Nicolas Viana - Dusk  ->  Nicolas Viana - Dusk (Extended Mix) [Univack] - 2026.mp3
+OK      | Ranta, Miroshin - Labyrinth  ->  Miroshin, Ranta – Labyrinth (Extended Mix) - 2025.mp3
+OK      | Valdovinos - Linda (Your Life Is Your Life)  ->  Valdovinos - Linda (Your Life is Your Life) (Original Mix) [BAR25-160] - 2021.mp3
+OK      | JFR, Juan Franco Rivero - Lasa  ->  JFR - Lasa - 2024.mp3
+OK      | Bodaishin, izhy, Kora (CA) - Daimoku (Kora Remix)  ->  Izhy & Bodaishin - Daimoku (Kora Remix) [Saisons Musique] - 2025.mp3

@@ -1,0 +1,27 @@
+# #27 - 2026-08-16 Golden Bay - set order. OK = mp3 in this folder, MISSING = not available on YouTube
+OK      | Etherwood - Cast Away  ->  Etherwood - Cast Away - 2015.mp3
+OK      | Humanature - First Light  ->  HumaNature - First Light - 2018.mp3
+OK      | HumaNature - Memories  ->  HumaNature - Memories - 2021.mp3
+OK      | LiquidHour DnB, Nenad Markovic - Flux  ->  LiquidHour DnB, Nenad Markovic - Flux - 2026.mp3
+OK      | LiquidHour DnB, Nenad Markovic - Skittering Lamp Whirl  ->  LiquidHour DnB, Nenad Markovic - Skittering Lamp Whirl - 2025.mp3
+OK      | Tom Walker - Better Half of Me (Etherwood Remix)  ->  Tom Walker - Better Half of Me (Etherwood Remix) [Audio] - 2019.mp3
+OK      | Alpha Rhythm, Ritual - Downcast  ->  Alpha Rhythm & Ritual - Downcast - 2022.mp3
+OK      | Emily Makis, Monrroe - Never Too Old (Friction Remix)  ->  Monrroe & Emily Makis - Never Too Old (Friction Remix) - 2024.mp3
+OK      | Etherwood, Eva Lazarus - Light My Way Home (feat. Eva Lazarus)  ->  Etherwood - Light My Way Home (feat. Eva Lazarus) - 2015.mp3
+OK      | Hybrid Minds, Netsky - Let Me Hold You (Grafix Remix)  ->  Netsky & Hybrid Minds - Let Me Hold You (Grafix Remix) - 2023.mp3
+OK      | Fugees - Ready Or Not (Champion Bootleg)  ->  Fugees - Ready Or Not (Champion Bootleg) - 2015.mp3
+OK      | Netsky, Becky Hill - Hold On  ->  Netsky - Hold On (feat. Becky Hill) - 2020.mp3
+OK      | Papa Pedro, Piotr Ostrowski, Piotr Ostrowski - Goodbye  ->  Papa Pedro, Piotr Ostrowski, Piotr Ostrowski - Goodbye - 2026.mp3
+OK      | Phaction, Leo Wood - Electric Wires  ->  Phaction, Leo Wood - Electric Wires - 2021.mp3
+OK      | HumaNature, Tarz - Connection  ->  HumaNature & Tarz - Connection - 2017.mp3
+OK      | Koven - Chase The Sun  ->  Koven - Chase The Sun (Extended Mix) - 2023.mp3
+OK      | Reflekt, Matrix, Delline Bass - Need To Feel Loved (Matrix Remix)  ->  Reflekt feat Delline Bass - Need To Feel Loved (Matrix Remix) - 2022.mp3
+OK      | Technicolour, Komatic - The Glow  ->  Technicolour, Komatic - The Glow - 2012.mp3
+OK      | Culture Shock - Renaissance  ->  Culture Shock - Renaissance - 2019.mp3
+OK      | Grafix - Radiance  ->  Grafix - Radiance - 2019.mp3
+OK      | Sub Focus, Wilkinson - Rock It (Wilkinson Remix)  ->  Sub Focus - Rock It (Wilkinson Remix) - 2021.mp3
+OK      | Wilkinson - Decompression  ->  Wilkinson - Decompression - 2018.mp3
+OK      | Wilkinson, HAYLA - I Need (Wilkinson & Metrik Remix)  ->  Wilkinson ft. Hayla - I Need (Wilkinson & Metrik Remix) - 2018.mp3
+OK      | Erythh - SUBMITT  ->  Erythh - SUBMITT - 2024.mp3
+OK      | Tantrum Desire - Cluster  ->  Tantrum Desire - Cluster - 2024.mp3
+OK      | Gydra - Ikra (Original Mix)  ->  Gydra - Ikra (Original Mix) - 2017.mp3

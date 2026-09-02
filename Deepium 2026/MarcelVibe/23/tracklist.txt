@@ -1,0 +1,16 @@
+# #23 - 2026-06-26 Miġra l-Ferħa, Rabat, Malta - set order. OK = mp3 in this folder, MISSING = not available on YouTube
+OK      | Marc Samuel (CH) - Zen Beach  ->  SHAMUËL - Zen Beach (Original Mix) - 2026.mp3
+OK      | Alex O'Rion, Ezequiel Arias - Solis  ->  Alex O'Rion & Ezequiel Arias - Solis (Original Mix) [Meanwhile] - 2022.mp3
+MISSING | Digital Mess - Deuterium
+OK      | BluePaper, Bassam Nasser - Azimuth  ->  BluePaper - Azimuth (Extended Mix) - 2023.mp3
+OK      | HIGHLITE - Caravan  ->  HIGHLITE – Caravan (Original Mix) [HL006] - 2020.mp3
+OK      | Krasa Rosa, M.O.S., Sound Quelle - We Are Kids  ->  Krasa Rosa, M.O.S. - We Are Kids (ABGT550) - 2023.mp3
+OK      | HAFT - Kaleidoscope (Maze 28 & EMPHI Remix)  ->  Premiere： HAFT - Kaleidoscope (Maze 28 & EMPHI Remix) [Movement Recordings] - 2026.mp3
+OK      | Max Wexem - Override  ->  MAX WEXEM Override - 2026.mp3
+MISSING | Golan Zocher - Intervals
+OK      | Hexlogic - Pulse  ->  Hexlogic - Pulse [Silk Music] - 2017.mp3
+OK      | Nicholas Van Orton - Groovelow  ->  Nicholas Van Orton - Groovelow [Balkan Connection South America] - 2026.mp3
+OK      | Mayro - Tactical  ->  Mayro - Tactical (4K Music Video) [SkyTop] - 2021.mp3
+OK      | PROFF, M.O.S. - Namtso  ->  PROFF, M.O.S. - Namtso (ABGT602) - 2024.mp3
+MISSING | Acarya, Qualista - Echoes From a Hidden Sky
+OK      | Durante - Never B Alone  ->  Durante - Never B Alone (Extended Mix) - 2025.mp3

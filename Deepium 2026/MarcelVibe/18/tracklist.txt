@@ -1,0 +1,16 @@
+# #18 - 2025-09-28 Paradise Bay, Malta - set order. OK = mp3 in this folder, MISSING = not available on YouTube
+OK      | Evren Furtuna - Cupid  ->  Evren Furtuna - Cupid - 2021.mp3
+OK      | ATANA, Alexis Chevalerias - I Can't Stay Forever  ->  ATANA - I Cant Stay Forever  (Extended Mix) - 2026.mp3
+OK      | Paul Roux - Hold On  ->  paul roux . hold on ( extended mix ) - 2024.mp3
+OK      | Ben Samuel - Toscana  ->  Ben Samuel - Toscana - 2016.mp3
+OK      | Four Candles - Inner  ->  Four Candles - Inner - 2024.mp3
+MISSING | Dst & Kjex - Kaputt (Karmon Remix)
+OK      | Roy Rosenfeld - The Biggest Heart  ->  Roy Rosenfeld - The Biggest Heart (Original Mix) [TRYBESof] - 2019.mp3
+OK      | Deek That - Kupanda Kupumua  ->  Deek That - Kupanda Kupumua (Original Mix) - 2022.mp3
+OK      | Cruz Vittor, Nacho Varela, Nauel, Volen Sentir - Underworld (Volen Sentir Remix)  ->  Nacho Varela, Cruz Vittor, Nauel - Underworld (Volen Sentir Remix) - 2026.mp3
+OK      | DJ Danjer - Green Sky  ->  DJ Danjer - Green Sky (Original Mix) I Ostowana - 2023.mp3
+OK      | Bona Fide & Wassu - Love Sparkles  ->  Bona Fide & Wassu - Love Sparkles - 2022.mp3
+OK      | Supermode - Tell Me Why (James Carter Remix)  ->  Supermode, James Carter - Tell Me Why (James Carter Extended Remix) - 2024.mp3
+OK      | Andre Rizo, VICTHOR - Sombrita  ->  Andre Rizo & VICTHOR - Sombrita (Original mix) - 2017.mp3
+MISSING | Starvoz - The Finishing (Viken Arman Remix)
+OK      | Mobb Deep & Nick Morgan - Shook Ones, Pt. III  ->  Mobb Deep, Nick Morgan - Shook Ones, Pt. III (Extended Mix) - 2024.mp3

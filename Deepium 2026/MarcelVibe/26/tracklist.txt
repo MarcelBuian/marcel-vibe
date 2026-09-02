@@ -1,0 +1,22 @@
+# #26 - 2026-08-15 Riviera - set order. OK = mp3 in this folder, MISSING = not available on YouTube
+OK      | Gentleman (DJ) - Deeply Love  ->  Gentleman - Deeply Love (Original Mix) - 2023.mp3
+OK      | Gaston Lopez - Limits on the Mind  ->  Gaston Lopez - Limits On The Mind (Original Mix) - 2024.mp3
+OK      | Gentleman (DJ) - Velvet Nights  ->  Gentleman (DJ) - Velvet Nights - 2025.mp3
+OK      | Sarandub - Stormy Weather  ->  Sarandub - Stormy Weather (Original Mix) - 2024.mp3
+OK      | Undrsound Soul, Gentleman (DJ) - Silent Connection  ->  Undrsound Soul - Silent Connection (Original Mix) - 2025.mp3
+OK      | Jarquin & Cano - Dance Obsession  ->  Jarquin & Cano – Dance Obsession (Orig Mix) [DeepClass Records] - 2015.mp3
+OK      | Mallin - Set Me Free  ->  Mallin - Set Me Free (Extended Mix) [Glasgow Underground] - 2023.mp3
+OK      | Quasar - I Never Tought I'd See The Day  ->  Quasar - I Never Tought I'd See The Day - 2017.mp3
+OK      | Bonetti - Deep Flavour  ->  Bonetti - Deep Flavour - 2017.mp3
+MISSING | Figgy - Tell Me
+OK      | Luis Radio - Reach Up  ->  Luis Radio - Reach Up (Original Mix) - 2023.mp3
+OK      | Gibbon - Game Of Pleasure (Reconstruction Mix)  ->  Gibbon - Game Of Pleasure (Reconstruction Mix) - 2022.mp3
+OK      | Dave Boyle, Bollo - Sundance (Bollo Remix)  ->  Dave Boyle, Bollo - Sundance (Bollo Remix) - 2012.mp3
+OK      | Groove Theory - Tell Me (Artmann Edit)  ->  Groove Theory - Tell Me (Artmann Edit) - 2020.mp3
+OK      | Computer Data - Ego  ->  Computer Data - Ego - 2020.mp3
+OK      | Kolter - Virtuos Pie  ->  Kolter - Virtuos pie - 2019.mp3
+OK      | AstroHertz - RainDrops  ->  AstroHertz - RainDrops (Extended Mix) - 2024.mp3
+OK      | Fullempty - 777/Poolside  ->  Fullempty - 777⧸Poolside - 2024.mp3
+OK      | Sensei - Trust  ->  Sensei - Trust - 2021.mp3
+OK      | Sasha, Franky Wah, Alexander Coe, Luke Storrs - Haunted  ->  Sasha VS Franky Wah - Haunted (Original Mix) - 2020.mp3
+OK      | Computer Data - Seele  ->  Computer Data - Seele - 2020.mp3

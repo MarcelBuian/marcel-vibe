@@ -1,0 +1,1322 @@
+[36m==> Self-update yt-dlp[0m
+[36m==> ProgressiveHouse: 39 track(s) (mode=mp3)[0m
+Reading URLs from STDIN - EOF (Ctrl+D) to end:
+[download] 0kpD9Ebzccg: has already been recorded in the archive
+[download] 2VeN1CZ_yeI: has already been recorded in the archive
+[download] 3mfWxDAl5y4: has already been recorded in the archive
+[download] 48G5kSfJcCM: has already been recorded in the archive
+[download] 5idQyajyRjs: has already been recorded in the archive
+[download] 6zTgB6764cY: has already been recorded in the archive
+[download] 80GEkEouzi0: has already been recorded in the archive
+[download] 883hVfOyQic: has already been recorded in the archive
+[download] CwulEThT2uw: has already been recorded in the archive
+[download] DpSeuflDJSY: has already been recorded in the archive
+[download] EE_qmV7GxdM: has already been recorded in the archive
+[download] HgtW-ShnEXY: has already been recorded in the archive
+[download] HoKcylxgQGo: has already been recorded in the archive
+[download] I82-k7AfsWs: has already been recorded in the archive
+[download] LCO2k2Pe2tE: has already been recorded in the archive
+[download] MSOEGNyDcGA: has already been recorded in the archive
+[download] NXvhv-E_Ung: has already been recorded in the archive
+[download] OjirCRhu8Gg: has already been recorded in the archive
+[download] PDPhKgaYnEc: has already been recorded in the archive
+[download] QEXS-Vg1qn0: has already been recorded in the archive
+[download] RiSl7lUseyw: has already been recorded in the archive
+[download] T1F25im048Y: has already been recorded in the archive
+[download] UkIS34oGlPk: has already been recorded in the archive
+[download] UpssjaWYdc0: has already been recorded in the archive
+[download] WddAV9bg9Ds: has already been recorded in the archive
+[download] XHNU-ml9x1s: has already been recorded in the archive
+[download] anxJh42s2Sc: has already been recorded in the archive
+[download] hpyq9l2pT0s: has already been recorded in the archive
+[download] m25smPABM1w: has already been recorded in the archive
+[download] mP4DcnWLBQ0: has already been recorded in the archive
+[download] nzgqoO40Nwo: has already been recorded in the archive
+[download] pLfXtLikkSA: has already been recorded in the archive
+[download] rVvkU2LLudU: has already been recorded in the archive
+[download] s0QEs3ZaXBk: has already been recorded in the archive
+[download] sKTzKo8e0_8: has already been recorded in the archive
+[download] tPGv5jQ4sT8: has already been recorded in the archive
+[download] trY1Ac5_5aM: has already been recorded in the archive
+[download] uf09SQ7EYPs: has already been recorded in the archive
+[download] zPOLNfLVJJ0: has already been recorded in the archive
+[36m==> ProgressiveHouse: 39 tracks on disk (yt-dlp exit 0)[0m
+[36m==> ProgressiveHouse/_played-before: 63 track(s) (mode=mp3)[0m
+Reading URLs from STDIN - EOF (Ctrl+D) to end:
+[youtube] Extracting URL: https://www.youtube.com/watch?v=0sBWIqfaZx8
+[youtube] 0sBWIqfaZx8: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 0sBWIqfaZx8: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 0sBWIqfaZx8: Downloading m3u8 information
+[info] 0sBWIqfaZx8: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/PROFF - Snowflake (ABGT584) - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/PROFF - Snowflake (ABGT584) - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/PROFF - Snowflake (ABGT584) - 2024.webp (pass -k to keep)
+[download] Sleeping 3.70 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/PROFF - Snowflake (ABGT584) - 2024.webm
+[download]   0.0% of    4.90MiB at  413.07KiB/s ETA 00:12[download]   0.1% of    4.90MiB at    1.04MiB/s ETA 00:04[download]   0.1% of    4.90MiB at    2.28MiB/s ETA 00:02[download]   0.3% of    4.90MiB at    4.62MiB/s ETA 00:01[download]   0.6% of    4.90MiB at    4.61MiB/s ETA 00:01[download]   1.3% of    4.90MiB at    5.13MiB/s ETA 00:00[download]   2.5% of    4.90MiB at    6.71MiB/s ETA 00:00[download]   5.1% of    4.90MiB at    9.90MiB/s ETA 00:00[download]  10.2% of    4.90MiB at   14.80MiB/s ETA 00:00[download]  20.4% of    4.90MiB at   14.74MiB/s ETA 00:00[download]  40.8% of    4.90MiB at   15.07MiB/s ETA 00:00[download]  81.6% of    4.90MiB at   23.25MiB/s ETA 00:00[download] 100.0% of    4.90MiB at   18.29MiB/s ETA 00:00[download] 100% of    4.90MiB in 00:00:00 at 10.74MiB/s  
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/PROFF - Snowflake (ABGT584) - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/PROFF - Snowflake (ABGT584) - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/PROFF - Snowflake (ABGT584) - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/PROFF - Snowflake (ABGT584) - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=1F8zp3sb_pk
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 1F8zp3sb_pk: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 1F8zp3sb_pk: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 1F8zp3sb_pk: Downloading m3u8 information
+[info] 1F8zp3sb_pk: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/PREMIERE： Simos Tagias - Strange to Ourselves (Tonaco Remix) [Vapour Recordings] - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/PREMIERE： Simos Tagias - Strange to Ourselves (Tonaco Remix) [Vapour Recordings] - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/PREMIERE： Simos Tagias - Strange to Ourselves (Tonaco Remix) [Vapour Recordings] - 2024.webp (pass -k to keep)
+[download] Sleeping 3.84 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/PREMIERE： Simos Tagias - Strange to Ourselves (Tonaco Remix) [Vapour Recordings] - 2024.webm
+[download]   0.0% of    7.04MiB at   58.55KiB/s ETA 02:03[download]   0.0% of    7.04MiB at  171.15KiB/s ETA 00:42[download]   0.1% of    7.04MiB at  394.54KiB/s ETA 00:18[download]   0.2% of    7.04MiB at  836.83KiB/s ETA 00:08[download]   0.4% of    7.04MiB at    1.67MiB/s ETA 00:04[download]   0.9% of    7.04MiB at    3.35MiB/s ETA 00:02[download]   1.8% of    7.04MiB at    3.50MiB/s ETA 00:01[download]   3.5% of    7.04MiB at    5.93MiB/s ETA 00:01[download]   7.1% of    7.04MiB at    7.57MiB/s ETA 00:00[download]  14.2% of    7.04MiB at    9.40MiB/s ETA 00:00[download]  28.4% of    7.04MiB at    9.78MiB/s ETA 00:00[download]  56.8% of    7.04MiB at    2.53MiB/s ETA 00:01[download]  77.4% of    7.04MiB at    1.78MiB/s ETA 00:00[download]  91.4% of    7.04MiB at    1.44MiB/s ETA 00:00[download] 100.0% of    7.04MiB at    1.43MiB/s ETA 00:00[download] 100% of    7.04MiB in 00:00:05 at 1.40MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/PREMIERE： Simos Tagias - Strange to Ourselves (Tonaco Remix) [Vapour Recordings] - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/PREMIERE： Simos Tagias - Strange to Ourselves (Tonaco Remix) [Vapour Recordings] - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/PREMIERE： Simos Tagias - Strange to Ourselves (Tonaco Remix) [Vapour Recordings] - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/PREMIERE： Simos Tagias - Strange to Ourselves (Tonaco Remix) [Vapour Recordings] - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=1nfR0e3pQZQ
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 1nfR0e3pQZQ: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 1nfR0e3pQZQ: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 1nfR0e3pQZQ: Downloading m3u8 information
+[info] 1nfR0e3pQZQ: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Aman Anand & Frankie Vertigo - Can't Stop [Gai Barone Extended Remix] [BEST PROGRESSIVE HOUSE] - 2026.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Aman Anand & Frankie Vertigo - Can't Stop [Gai Barone Extended Remix] [BEST PROGRESSIVE HOUSE] - 2026.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Aman Anand & Frankie Vertigo - Can't Stop [Gai Barone Extended Remix] [BEST PROGRESSIVE HOUSE] - 2026.webp (pass -k to keep)
+[download] Sleeping 2.39 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Aman Anand & Frankie Vertigo - Can't Stop [Gai Barone Extended Remix] [BEST PROGRESSIVE HOUSE] - 2026.webm
+[download]   0.0% of    7.10MiB at  435.55KiB/s ETA 00:16[download]   0.0% of    7.10MiB at    1.05MiB/s ETA 00:06[download]   0.1% of    7.10MiB at    2.18MiB/s ETA 00:03[download]   0.2% of    7.10MiB at    4.25MiB/s ETA 00:01[download]   0.4% of    7.10MiB at    4.76MiB/s ETA 00:01[download]   0.9% of    7.10MiB at    5.46MiB/s ETA 00:01[download]   1.7% of    7.10MiB at    8.42MiB/s ETA 00:00[download]   3.5% of    7.10MiB at   10.46MiB/s ETA 00:00[download]   7.0% of    7.10MiB at   14.38MiB/s ETA 00:00[download]  14.1% of    7.10MiB at   14.72MiB/s ETA 00:00[download]  28.1% of    7.10MiB at   14.73MiB/s ETA 00:00[download]  56.3% of    7.10MiB at   13.01MiB/s ETA 00:00[download] 100.0% of    7.10MiB at   10.04MiB/s ETA 00:00[download] 100% of    7.10MiB in 00:00:00 at 8.39MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Aman Anand & Frankie Vertigo - Can't Stop [Gai Barone Extended Remix] [BEST PROGRESSIVE HOUSE] - 2026.mp3
+Deleting original file ProgressiveHouse/_played-before/Aman Anand & Frankie Vertigo - Can't Stop [Gai Barone Extended Remix] [BEST PROGRESSIVE HOUSE] - 2026.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Aman Anand & Frankie Vertigo - Can't Stop [Gai Barone Extended Remix] [BEST PROGRESSIVE HOUSE] - 2026.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Aman Anand & Frankie Vertigo - Can't Stop [Gai Barone Extended Remix] [BEST PROGRESSIVE HOUSE] - 2026.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=1nwZGBDUbcQ
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 1nwZGBDUbcQ: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 1nwZGBDUbcQ: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 1nwZGBDUbcQ: Downloading m3u8 information
+[info] 1nwZGBDUbcQ: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Video Thumbnail 41 does not exist
+[info] Downloading video thumbnail 40 ...
+[info] Video Thumbnail 40 does not exist
+[info] Downloading video thumbnail 39 ...
+[info] Video Thumbnail 39 does not exist
+[info] Downloading video thumbnail 38 ...
+[info] Video Thumbnail 38 does not exist
+[info] Downloading video thumbnail 37 ...
+[info] Writing video thumbnail 37 to: ProgressiveHouse/_played-before/Nox Vahn - Brainwasher (Warung Remix) - 2021.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Nox Vahn - Brainwasher (Warung Remix) - 2021.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Nox Vahn - Brainwasher (Warung Remix) - 2021.webp (pass -k to keep)
+[download] Sleeping 2.52 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Nox Vahn - Brainwasher (Warung Remix) - 2021.webm
+[download]   0.0% of    6.33MiB at  473.02KiB/s ETA 00:13[download]   0.0% of    6.33MiB at    1.01MiB/s ETA 00:06[download]   0.1% of    6.33MiB at    2.04MiB/s ETA 00:03[download]   0.2% of    6.33MiB at    3.98MiB/s ETA 00:01[download]   0.5% of    6.33MiB at    4.45MiB/s ETA 00:01[download]   1.0% of    6.33MiB at    4.74MiB/s ETA 00:01[download]   2.0% of    6.33MiB at    6.82MiB/s ETA 00:00[download]   3.9% of    6.33MiB at    9.89MiB/s ETA 00:00[download]   7.9% of    6.33MiB at   14.99MiB/s ETA 00:00[download]  15.8% of    6.33MiB at   15.09MiB/s ETA 00:00[download]  31.6% of    6.33MiB at   14.98MiB/s ETA 00:00[download]  63.2% of    6.33MiB at    8.87MiB/s ETA 00:00[download] 100.0% of    6.33MiB at    8.75MiB/s ETA 00:00[download] 100% of    6.33MiB in 00:00:00 at 6.38MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Nox Vahn - Brainwasher (Warung Remix) - 2021.mp3
+Deleting original file ProgressiveHouse/_played-before/Nox Vahn - Brainwasher (Warung Remix) - 2021.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Nox Vahn - Brainwasher (Warung Remix) - 2021.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Nox Vahn - Brainwasher (Warung Remix) - 2021.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=2glkcczfC5c
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 2glkcczfC5c: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 2glkcczfC5c: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 2glkcczfC5c: Downloading m3u8 information
+[info] 2glkcczfC5c: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/SHAMUËL - Zen Beach (Original Mix) - 2026.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/SHAMUËL - Zen Beach (Original Mix) - 2026.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/SHAMUËL - Zen Beach (Original Mix) - 2026.webp (pass -k to keep)
+[download] Sleeping 3.55 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/SHAMUËL - Zen Beach (Original Mix) - 2026.webm
+[download]   0.0% of    6.62MiB at  400.03KiB/s ETA 00:17[download]   0.0% of    6.62MiB at    1.07MiB/s ETA 00:06[download]   0.1% of    6.62MiB at    2.43MiB/s ETA 00:02[download]   0.2% of    6.62MiB at    5.06MiB/s ETA 00:01[download]   0.5% of    6.62MiB at    2.66MiB/s ETA 00:02[download]   0.9% of    6.62MiB at    4.21MiB/s ETA 00:01[download]   1.9% of    6.62MiB at    5.80MiB/s ETA 00:01[download]   3.8% of    6.62MiB at    7.51MiB/s ETA 00:00[download]   7.5% of    6.62MiB at   10.95MiB/s ETA 00:00[download]  15.1% of    6.62MiB at   13.69MiB/s ETA 00:00[download]  30.2% of    6.62MiB at   14.83MiB/s ETA 00:00[download]  60.4% of    6.62MiB at   11.87MiB/s ETA 00:00[download] 100.0% of    6.62MiB at   13.98MiB/s ETA 00:00[download] 100% of    6.62MiB in 00:00:00 at 10.48MiB/s  
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/SHAMUËL - Zen Beach (Original Mix) - 2026.mp3
+Deleting original file ProgressiveHouse/_played-before/SHAMUËL - Zen Beach (Original Mix) - 2026.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/SHAMUËL - Zen Beach (Original Mix) - 2026.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/SHAMUËL - Zen Beach (Original Mix) - 2026.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=3_NlX_6z8io
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 3_NlX_6z8io: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 3_NlX_6z8io: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 3_NlX_6z8io: Downloading m3u8 information
+[info] 3_NlX_6z8io: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Video Thumbnail 41 does not exist
+[info] Downloading video thumbnail 40 ...
+[info] Video Thumbnail 40 does not exist
+[info] Downloading video thumbnail 39 ...
+[info] Video Thumbnail 39 does not exist
+[info] Downloading video thumbnail 38 ...
+[info] Video Thumbnail 38 does not exist
+[info] Downloading video thumbnail 37 ...
+[info] Writing video thumbnail 37 to: ProgressiveHouse/_played-before/Andrea Cassino & Greenage： Losing Part Of Me (Dmitry Molosh Remix) - 2020.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Andrea Cassino & Greenage： Losing Part Of Me (Dmitry Molosh Remix) - 2020.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Andrea Cassino & Greenage： Losing Part Of Me (Dmitry Molosh Remix) - 2020.webp (pass -k to keep)
+[download] Sleeping 3.64 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Andrea Cassino & Greenage： Losing Part Of Me (Dmitry Molosh Remix) - 2020.webm
+[download]   0.0% of    8.21MiB at  159.92KiB/s ETA 00:52[download]   0.0% of    8.21MiB at  419.70KiB/s ETA 00:20[download]   0.1% of    8.21MiB at  922.87KiB/s ETA 00:09[download]   0.2% of    8.21MiB at    1.85MiB/s ETA 00:04[download]   0.4% of    8.21MiB at  621.42KiB/s ETA 00:13[download]   0.7% of    8.21MiB at  746.02KiB/s ETA 00:11[download]   1.5% of    8.21MiB at  999.28KiB/s ETA 00:08[download]   3.0% of    8.21MiB at    1.49MiB/s ETA 00:05[download]   6.1% of    8.21MiB at    2.35MiB/s ETA 00:03[download]  12.2% of    8.21MiB at    3.88MiB/s ETA 00:01[download]  24.3% of    8.21MiB at    6.60MiB/s ETA 00:00[download]  48.7% of    8.21MiB at   11.40MiB/s ETA 00:00[download]  97.4% of    8.21MiB at   12.47MiB/s ETA 00:00[download] 100.0% of    8.21MiB at   12.68MiB/s ETA 00:00[download] 100% of    8.21MiB in 00:00:01 at 7.95MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Andrea Cassino & Greenage： Losing Part Of Me (Dmitry Molosh Remix) - 2020.mp3
+Deleting original file ProgressiveHouse/_played-before/Andrea Cassino & Greenage： Losing Part Of Me (Dmitry Molosh Remix) - 2020.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Andrea Cassino & Greenage： Losing Part Of Me (Dmitry Molosh Remix) - 2020.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Andrea Cassino & Greenage： Losing Part Of Me (Dmitry Molosh Remix) - 2020.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=4jp2j8IWoS8
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 4jp2j8IWoS8: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 4jp2j8IWoS8: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 4jp2j8IWoS8: Downloading m3u8 information
+[info] 4jp2j8IWoS8: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Simon Vuarambon - Lazos - 2021.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Simon Vuarambon - Lazos - 2021.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Simon Vuarambon - Lazos - 2021.webp (pass -k to keep)
+[download] Sleeping 1.74 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Simon Vuarambon - Lazos - 2021.webm
+[download]   0.0% of    8.53MiB at  Unknown B/s ETA Unknown[download]   0.0% of    8.53MiB at    2.12MiB/s ETA 00:04  [download]   0.1% of    8.53MiB at    4.66MiB/s ETA 00:01[download]   0.2% of    8.53MiB at    9.51MiB/s ETA 00:00[download]   0.4% of    8.53MiB at   18.68MiB/s ETA 00:00[download]   0.7% of    8.53MiB at   35.48MiB/s ETA 00:00[download]   1.5% of    8.53MiB at  964.93KiB/s ETA 00:08[download]   2.9% of    8.53MiB at  696.36KiB/s ETA 00:12[download]   5.9% of    8.53MiB at  618.44KiB/s ETA 00:13[download]  11.7% of    8.53MiB at  514.85KiB/s ETA 00:14[download]  16.8% of    8.53MiB at  473.25KiB/s ETA 00:15[download]  21.3% of    8.53MiB at  447.31KiB/s ETA 00:15[download]  25.6% of    8.53MiB at  450.09KiB/s ETA 00:14[download]  30.9% of    8.53MiB at  439.20KiB/s ETA 00:13[download]  35.4% of    8.53MiB at  387.63KiB/s ETA 00:14[download]  37.9% of    8.53MiB at  373.87KiB/s ETA 00:14[download]  40.7% of    8.53MiB at  381.48KiB/s ETA 00:13[download]  46.4% of    8.53MiB at  407.28KiB/s ETA 00:11[download]  55.5% of    8.53MiB at  486.02KiB/s ETA 00:07[download]  73.6% of    8.53MiB at  615.06KiB/s ETA 00:03[download] 100.0% of    8.53MiB at  706.18KiB/s ETA 00:00[download] 100% of    8.53MiB in 00:00:12 at 692.27KiB/s 
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Simon Vuarambon - Lazos - 2021.mp3
+Deleting original file ProgressiveHouse/_played-before/Simon Vuarambon - Lazos - 2021.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Simon Vuarambon - Lazos - 2021.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Simon Vuarambon - Lazos - 2021.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=53qGTtKlirw
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 53qGTtKlirw: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 53qGTtKlirw: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 53qGTtKlirw: Downloading m3u8 information
+[info] 53qGTtKlirw: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Guy J - Element [Global Underground] - 2025.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Guy J - Element [Global Underground] - 2025.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Guy J - Element [Global Underground] - 2025.webp (pass -k to keep)
+[download] Sleeping 3.79 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Guy J - Element [Global Underground] - 2025.webm
+[download]   0.0% of    7.52MiB at  277.53KiB/s ETA 00:27[download]   0.0% of    7.52MiB at  735.07KiB/s ETA 00:10[download]   0.1% of    7.52MiB at    1.59MiB/s ETA 00:04[download]   0.2% of    7.52MiB at    3.30MiB/s ETA 00:02[download]   0.4% of    7.52MiB at    6.54MiB/s ETA 00:01[download]   0.8% of    7.52MiB at   12.64MiB/s ETA 00:00[download]   1.6% of    7.52MiB at    2.93MiB/s ETA 00:02[download]   3.3% of    7.52MiB at    2.96MiB/s ETA 00:02[download]   6.6% of    7.52MiB at    3.97MiB/s ETA 00:01[download]  13.3% of    7.52MiB at    5.76MiB/s ETA 00:01[download]  26.6% of    7.52MiB at    8.39MiB/s ETA 00:00[download]  53.2% of    7.52MiB at   14.45MiB/s ETA 00:00[download] 100.0% of    7.52MiB at   11.56MiB/s ETA 00:00[download] 100% of    7.52MiB in 00:00:01 at 6.47MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Guy J - Element [Global Underground] - 2025.mp3
+Deleting original file ProgressiveHouse/_played-before/Guy J - Element [Global Underground] - 2025.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Guy J - Element [Global Underground] - 2025.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Guy J - Element [Global Underground] - 2025.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=57yv_qj2naM
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 57yv_qj2naM: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 57yv_qj2naM: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 57yv_qj2naM: Downloading m3u8 information
+[info] 57yv_qj2naM: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Serious Dancers, Tim Green - Callahan (Tim Green Edit) - 2023.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Serious Dancers, Tim Green - Callahan (Tim Green Edit) - 2023.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Serious Dancers, Tim Green - Callahan (Tim Green Edit) - 2023.webp (pass -k to keep)
+[download] Sleeping 2.91 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Serious Dancers, Tim Green - Callahan (Tim Green Edit) - 2023.webm
+[download]   0.0% of    9.38MiB at  981.35KiB/s ETA 00:09[download]   0.0% of    9.38MiB at    2.07MiB/s ETA 00:04[download]   0.1% of    9.38MiB at    4.23MiB/s ETA 00:02[download]   0.2% of    9.38MiB at    7.63MiB/s ETA 00:01[download]   0.3% of    9.38MiB at   13.19MiB/s ETA 00:00[download]   0.7% of    9.38MiB at   23.84MiB/s ETA 00:00[download]   1.3% of    9.38MiB at    1.66MiB/s ETA 00:05[download]   2.7% of    9.38MiB at  933.90KiB/s ETA 00:10[download]   5.3% of    9.38MiB at  772.53KiB/s ETA 00:11[download]  10.6% of    9.38MiB at  730.95KiB/s ETA 00:11[download]  17.9% of    9.38MiB at  715.02KiB/s ETA 00:11[download]  25.1% of    9.38MiB at  843.31KiB/s ETA 00:08[download]  39.5% of    9.38MiB at    1.28MiB/s ETA 00:04[download]  68.3% of    9.38MiB at    1.33MiB/s ETA 00:02[download]  83.4% of    9.38MiB at    1.49MiB/s ETA 00:01[download] 100.0% of    9.38MiB at    1.39MiB/s ETA 00:00[download] 100% of    9.38MiB in 00:00:07 at 1.31MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Serious Dancers, Tim Green - Callahan (Tim Green Edit) - 2023.mp3
+Deleting original file ProgressiveHouse/_played-before/Serious Dancers, Tim Green - Callahan (Tim Green Edit) - 2023.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Serious Dancers, Tim Green - Callahan (Tim Green Edit) - 2023.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Serious Dancers, Tim Green - Callahan (Tim Green Edit) - 2023.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=5J4_vxBErlM
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 5J4_vxBErlM: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 5J4_vxBErlM: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 5J4_vxBErlM: Downloading m3u8 information
+[info] 5J4_vxBErlM: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Krasa Rosa, M.O.S. - We Are Kids (ABGT550) - 2023.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Krasa Rosa, M.O.S. - We Are Kids (ABGT550) - 2023.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Krasa Rosa, M.O.S. - We Are Kids (ABGT550) - 2023.webp (pass -k to keep)
+[download] Sleeping 3.98 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Krasa Rosa, M.O.S. - We Are Kids (ABGT550) - 2023.webm
+[download]   0.0% of    5.36MiB at  519.48KiB/s ETA 00:10[download]   0.1% of    5.36MiB at    1.08MiB/s ETA 00:04[download]   0.1% of    5.36MiB at    2.16MiB/s ETA 00:02[download]   0.3% of    5.36MiB at    3.95MiB/s ETA 00:01[download]   0.6% of    5.36MiB at    4.31MiB/s ETA 00:01[download]   1.1% of    5.36MiB at    5.12MiB/s ETA 00:01[download]   2.3% of    5.36MiB at    6.94MiB/s ETA 00:00[download]   4.6% of    5.36MiB at   10.33MiB/s ETA 00:00[download]   9.3% of    5.36MiB at   14.18MiB/s ETA 00:00[download]  18.6% of    5.36MiB at   15.01MiB/s ETA 00:00[download]  37.3% of    5.36MiB at   14.96MiB/s ETA 00:00[download]  74.6% of    5.36MiB at    7.10MiB/s ETA 00:00[download] 100.0% of    5.36MiB at    9.03MiB/s ETA 00:00[download] 100% of    5.36MiB in 00:00:00 at 7.22MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Krasa Rosa, M.O.S. - We Are Kids (ABGT550) - 2023.mp3
+Deleting original file ProgressiveHouse/_played-before/Krasa Rosa, M.O.S. - We Are Kids (ABGT550) - 2023.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Krasa Rosa, M.O.S. - We Are Kids (ABGT550) - 2023.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Krasa Rosa, M.O.S. - We Are Kids (ABGT550) - 2023.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=6HirHXPZeK0
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 6HirHXPZeK0: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 6HirHXPZeK0: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 6HirHXPZeK0: Downloading m3u8 information
+[info] 6HirHXPZeK0: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/HAFT - Flow (Original Mix) Meanwhile Horizons - 2025.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/HAFT - Flow (Original Mix) Meanwhile Horizons - 2025.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/HAFT - Flow (Original Mix) Meanwhile Horizons - 2025.webp (pass -k to keep)
+[download] Sleeping 2.81 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/HAFT - Flow (Original Mix) Meanwhile Horizons - 2025.webm
+[download]   0.0% of    7.13MiB at  Unknown B/s ETA 00:07[download]   0.0% of    7.13MiB at    2.04MiB/s ETA 00:03[download]   0.1% of    7.13MiB at    4.05MiB/s ETA 00:01[download]   0.2% of    7.13MiB at    7.73MiB/s ETA 00:00[download]   0.4% of    7.13MiB at   14.27MiB/s ETA 00:00[download]   0.9% of    7.13MiB at   16.45MiB/s ETA 00:00[download]   1.7% of    7.13MiB at    3.31MiB/s ETA 00:02[download]   3.5% of    7.13MiB at    3.26MiB/s ETA 00:02[download]   7.0% of    7.13MiB at    4.36MiB/s ETA 00:01[download]  14.0% of    7.13MiB at    6.53MiB/s ETA 00:00[download]  28.1% of    7.13MiB at    9.14MiB/s ETA 00:00[download]  56.1% of    7.13MiB at   15.36MiB/s ETA 00:00[download] 100.0% of    7.13MiB at   10.88MiB/s ETA 00:00[download] 100% of    7.13MiB in 00:00:01 at 6.50MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/HAFT - Flow (Original Mix) Meanwhile Horizons - 2025.mp3
+Deleting original file ProgressiveHouse/_played-before/HAFT - Flow (Original Mix) Meanwhile Horizons - 2025.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/HAFT - Flow (Original Mix) Meanwhile Horizons - 2025.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/HAFT - Flow (Original Mix) Meanwhile Horizons - 2025.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=782-iavTPIM
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 782-iavTPIM: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 782-iavTPIM: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 782-iavTPIM: Downloading m3u8 information
+[info] 782-iavTPIM: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/RIGOONI - When Midnight Comes (Alex O'Rion Remix) - 2020.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/RIGOONI - When Midnight Comes (Alex O'Rion Remix) - 2020.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/RIGOONI - When Midnight Comes (Alex O'Rion Remix) - 2020.webp (pass -k to keep)
+[download] Sleeping 2.24 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/RIGOONI - When Midnight Comes (Alex O'Rion Remix) - 2020.webm
+[download]   0.0% of    8.25MiB at  Unknown B/s ETA 00:08[download]   0.0% of    8.25MiB at    2.46MiB/s ETA 00:03[download]   0.1% of    8.25MiB at    5.34MiB/s ETA 00:01[download]   0.2% of    8.25MiB at   10.80MiB/s ETA 00:00[download]   0.4% of    8.25MiB at   20.99MiB/s ETA 00:00[download]   0.7% of    8.25MiB at   39.06MiB/s ETA 00:00[download]   1.5% of    8.25MiB at   14.60MiB/s ETA 00:00[download]   3.0% of    8.25MiB at   15.66MiB/s ETA 00:00[download]   6.0% of    8.25MiB at   16.46MiB/s ETA 00:00[download]  12.1% of    8.25MiB at    9.77MiB/s ETA 00:00[download]  24.2% of    8.25MiB at    8.24MiB/s ETA 00:00[download]  48.5% of    8.25MiB at    3.59MiB/s ETA 00:01[download]  76.3% of    8.25MiB at    3.50MiB/s ETA 00:00[download] 100.0% of    8.25MiB at    3.89MiB/s ETA 00:00[download] 100% of    8.25MiB in 00:00:02 at 3.37MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/RIGOONI - When Midnight Comes (Alex O'Rion Remix) - 2020.mp3
+Deleting original file ProgressiveHouse/_played-before/RIGOONI - When Midnight Comes (Alex O'Rion Remix) - 2020.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/RIGOONI - When Midnight Comes (Alex O'Rion Remix) - 2020.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/RIGOONI - When Midnight Comes (Alex O'Rion Remix) - 2020.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=7gkYwJkPevA
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 7gkYwJkPevA: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 7gkYwJkPevA: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 7gkYwJkPevA: Downloading m3u8 information
+[info] 7gkYwJkPevA: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 43 ...
+[info] Video Thumbnail 43 does not exist
+[info] Downloading video thumbnail 42 ...
+[info] Video Thumbnail 42 does not exist
+[info] Downloading video thumbnail 41 ...
+[info] Video Thumbnail 41 does not exist
+[info] Downloading video thumbnail 40 ...
+[info] Video Thumbnail 40 does not exist
+[info] Downloading video thumbnail 39 ...
+[info] Video Thumbnail 39 does not exist
+[info] Downloading video thumbnail 38 ...
+[info] Video Thumbnail 38 does not exist
+[info] Downloading video thumbnail 37 ...
+[info] Writing video thumbnail 37 to: ProgressiveHouse/_played-before/Mayro - Tactical (4K Music Video) [SkyTop] - 2021.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Mayro - Tactical (4K Music Video) [SkyTop] - 2021.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Mayro - Tactical (4K Music Video) [SkyTop] - 2021.webp (pass -k to keep)
+[download] Sleeping 1.36 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Mayro - Tactical (4K Music Video) [SkyTop] - 2021.webm
+[download]   0.0% of    3.83MiB at  112.87KiB/s ETA 00:34[download]   0.1% of    3.83MiB at  307.70KiB/s ETA 00:12[download]   0.2% of    3.83MiB at  687.37KiB/s ETA 00:05[download]   0.4% of    3.83MiB at    1.38MiB/s ETA 00:02[download]   0.8% of    3.83MiB at  638.15KiB/s ETA 00:06[download]   1.6% of    3.83MiB at  684.69KiB/s ETA 00:05[download]   3.2% of    3.83MiB at  948.72KiB/s ETA 00:04[download]   6.5% of    3.83MiB at    1.38MiB/s ETA 00:02[download]  13.0% of    3.83MiB at    2.19MiB/s ETA 00:01[download]  26.1% of    3.83MiB at    3.59MiB/s ETA 00:00[download]  52.1% of    3.83MiB at    6.08MiB/s ETA 00:00[download] 100.0% of    3.83MiB at    3.64MiB/s ETA 00:00[download] 100% of    3.83MiB in 00:00:01 at 2.10MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Mayro - Tactical (4K Music Video) [SkyTop] - 2021.mp3
+Deleting original file ProgressiveHouse/_played-before/Mayro - Tactical (4K Music Video) [SkyTop] - 2021.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Mayro - Tactical (4K Music Video) [SkyTop] - 2021.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Mayro - Tactical (4K Music Video) [SkyTop] - 2021.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=87RdX5b6Jt8
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 87RdX5b6Jt8: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 87RdX5b6Jt8: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 87RdX5b6Jt8: Downloading m3u8 information
+[info] 87RdX5b6Jt8: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Mike Rish - The Quest (Kabi Remix) - 2022.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Mike Rish - The Quest (Kabi Remix) - 2022.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Mike Rish - The Quest (Kabi Remix) - 2022.webp (pass -k to keep)
+[download] Sleeping 2.18 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Mike Rish - The Quest (Kabi Remix) - 2022.webm
+[download]   0.0% of    7.70MiB at  129.73KiB/s ETA 01:00[download]   0.0% of    7.70MiB at  357.48KiB/s ETA 00:22[download]   0.1% of    7.70MiB at  798.46KiB/s ETA 00:09[download]   0.2% of    7.70MiB at    1.62MiB/s ETA 00:04[download]   0.4% of    7.70MiB at  596.88KiB/s ETA 00:13[download]   0.8% of    7.70MiB at  685.17KiB/s ETA 00:11[download]   1.6% of    7.70MiB at  932.34KiB/s ETA 00:08[download]   3.2% of    7.70MiB at    1.38MiB/s ETA 00:05[download]   6.5% of    7.70MiB at    2.18MiB/s ETA 00:03[download]  13.0% of    7.70MiB at    3.61MiB/s ETA 00:01[download]  26.0% of    7.70MiB at    6.13MiB/s ETA 00:00[download]  52.0% of    7.70MiB at    3.83MiB/s ETA 00:00[download]  88.2% of    7.70MiB at    3.78MiB/s ETA 00:00[download] 100.0% of    7.70MiB at    4.22MiB/s ETA 00:00[download] 100% of    7.70MiB in 00:00:02 at 3.75MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Mike Rish - The Quest (Kabi Remix) - 2022.mp3
+Deleting original file ProgressiveHouse/_played-before/Mike Rish - The Quest (Kabi Remix) - 2022.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Mike Rish - The Quest (Kabi Remix) - 2022.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Mike Rish - The Quest (Kabi Remix) - 2022.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=9hxphmiGxuI
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 9hxphmiGxuI: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 9hxphmiGxuI: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] 9hxphmiGxuI: Downloading m3u8 information
+[info] 9hxphmiGxuI: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Guy J - Stranger In A Strange World - 2025.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Guy J - Stranger In A Strange World - 2025.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Guy J - Stranger In A Strange World - 2025.webp (pass -k to keep)
+[download] Sleeping 2.64 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Guy J - Stranger In A Strange World - 2025.webm
+[download]   0.0% of    7.15MiB at  123.93KiB/s ETA 00:59[download]   0.0% of    7.15MiB at  349.97KiB/s ETA 00:20[download]   0.1% of    7.15MiB at  794.29KiB/s ETA 00:09[download]   0.2% of    7.15MiB at    1.62MiB/s ETA 00:04[download]   0.4% of    7.15MiB at  578.89KiB/s ETA 00:12[download]   0.9% of    7.15MiB at  716.54KiB/s ETA 00:10[download]   1.7% of    7.15MiB at  959.08KiB/s ETA 00:07[download]   3.5% of    7.15MiB at    1.40MiB/s ETA 00:04[download]   7.0% of    7.15MiB at    2.24MiB/s ETA 00:02[download]  14.0% of    7.15MiB at    3.70MiB/s ETA 00:01[download]  28.0% of    7.15MiB at    6.29MiB/s ETA 00:00[download]  55.9% of    7.15MiB at   10.89MiB/s ETA 00:00[download] 100.0% of    7.15MiB at   15.07MiB/s ETA 00:00[download] 100% of    7.15MiB in 00:00:00 at 7.35MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Guy J - Stranger In A Strange World - 2025.mp3
+Deleting original file ProgressiveHouse/_played-before/Guy J - Stranger In A Strange World - 2025.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Guy J - Stranger In A Strange World - 2025.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Guy J - Stranger In A Strange World - 2025.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=CFU036dzPXE
+[youtube] Sleeping 1.0 seconds ...
+[youtube] CFU036dzPXE: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] CFU036dzPXE: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] CFU036dzPXE: Downloading m3u8 information
+[info] CFU036dzPXE: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 43 ...
+[info] Writing video thumbnail 43 to: ProgressiveHouse/_played-before/Gai Barone - Shuttered (Original Mix) - 2025.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Gai Barone - Shuttered (Original Mix) - 2025.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Gai Barone - Shuttered (Original Mix) - 2025.webp (pass -k to keep)
+[download] Sleeping 1.56 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Gai Barone - Shuttered (Original Mix) - 2025.webm
+[download]   0.0% of    3.14MiB at  150.36KiB/s ETA 00:21[download]   0.1% of    3.14MiB at  435.86KiB/s ETA 00:07[download]   0.2% of    3.14MiB at 1004.18KiB/s ETA 00:03[download]   0.5% of    3.14MiB at    2.08MiB/s ETA 00:01[download]   1.0% of    3.14MiB at    1.48MiB/s ETA 00:02[download]   2.0% of    3.14MiB at    2.72MiB/s ETA 00:01[download]   3.9% of    3.14MiB at    3.26MiB/s ETA 00:00[download]   7.9% of    3.14MiB at    4.48MiB/s ETA 00:00[download]  15.9% of    3.14MiB at    5.56MiB/s ETA 00:00[download]  31.8% of    3.14MiB at    4.57MiB/s ETA 00:00[download]  63.6% of    3.14MiB at    1.82MiB/s ETA 00:00[download]  99.7% of    3.14MiB at    1.36MiB/s ETA 00:00[download] 100.0% of    3.14MiB at    1.36MiB/s ETA 00:00[download] 100% of    3.14MiB in 00:00:02 at 1.24MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Gai Barone - Shuttered (Original Mix) - 2025.mp3
+Deleting original file ProgressiveHouse/_played-before/Gai Barone - Shuttered (Original Mix) - 2025.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Gai Barone - Shuttered (Original Mix) - 2025.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Gai Barone - Shuttered (Original Mix) - 2025.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=E0jS5_YpV5g
+[youtube] Sleeping 1.0 seconds ...
+[youtube] E0jS5_YpV5g: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] E0jS5_YpV5g: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] E0jS5_YpV5g: Downloading m3u8 information
+[info] E0jS5_YpV5g: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Kasper Koman - Fruit (Original Mix) - 2022.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Kasper Koman - Fruit (Original Mix) - 2022.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Kasper Koman - Fruit (Original Mix) - 2022.webp (pass -k to keep)
+[download] Sleeping 2.69 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Kasper Koman - Fruit (Original Mix) - 2022.webm
+[download]   0.0% of    7.77MiB at  494.32KiB/s ETA 00:16[download]   0.0% of    7.77MiB at    1.18MiB/s ETA 00:06[download]   0.1% of    7.77MiB at    2.53MiB/s ETA 00:03[download]   0.2% of    7.77MiB at    5.12MiB/s ETA 00:01[download]   0.4% of    7.77MiB at    7.23MiB/s ETA 00:01[download]   0.8% of    7.77MiB at    6.45MiB/s ETA 00:01[download]   1.6% of    7.77MiB at    8.85MiB/s ETA 00:00[download]   3.2% of    7.77MiB at   10.91MiB/s ETA 00:00[download]   6.4% of    7.77MiB at   15.61MiB/s ETA 00:00[download]  12.9% of    7.77MiB at   15.09MiB/s ETA 00:00[download]  25.7% of    7.77MiB at    5.62MiB/s ETA 00:01[download]  51.5% of    7.77MiB at    6.73MiB/s ETA 00:00[download] 100.0% of    7.77MiB at    7.63MiB/s ETA 00:00[download] 100% of    7.77MiB in 00:00:01 at 5.72MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Kasper Koman - Fruit (Original Mix) - 2022.mp3
+Deleting original file ProgressiveHouse/_played-before/Kasper Koman - Fruit (Original Mix) - 2022.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Kasper Koman - Fruit (Original Mix) - 2022.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Kasper Koman - Fruit (Original Mix) - 2022.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=FUSV3IJYDAQ
+[youtube] Sleeping 1.0 seconds ...
+[youtube] FUSV3IJYDAQ: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] FUSV3IJYDAQ: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] FUSV3IJYDAQ: Downloading m3u8 information
+[info] FUSV3IJYDAQ: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Brian Creao - Temperance (Juan Ibañez Remix) - 2026.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Brian Creao - Temperance (Juan Ibañez Remix) - 2026.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Brian Creao - Temperance (Juan Ibañez Remix) - 2026.webp (pass -k to keep)
+[download] Sleeping 3.08 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Brian Creao - Temperance (Juan Ibañez Remix) - 2026.webm
+[download]   0.0% of    6.31MiB at  492.40KiB/s ETA 00:13[download]   0.0% of    6.31MiB at    1.18MiB/s ETA 00:05[download]   0.1% of    6.31MiB at    2.53MiB/s ETA 00:02[download]   0.2% of    6.31MiB at    5.10MiB/s ETA 00:01[download]   0.5% of    6.31MiB at    3.41MiB/s ETA 00:01[download]   1.0% of    6.31MiB at    4.49MiB/s ETA 00:01[download]   2.0% of    6.31MiB at    6.42MiB/s ETA 00:00[download]   3.9% of    6.31MiB at    9.16MiB/s ETA 00:00[download]   7.9% of    6.31MiB at   13.28MiB/s ETA 00:00[download]  15.8% of    6.31MiB at   14.85MiB/s ETA 00:00[download]  31.7% of    6.31MiB at   14.92MiB/s ETA 00:00[download]  63.3% of    6.31MiB at    6.82MiB/s ETA 00:00[download] 100.0% of    6.31MiB at    8.61MiB/s ETA 00:00[download] 100% of    6.31MiB in 00:00:00 at 7.18MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Brian Creao - Temperance (Juan Ibañez Remix) - 2026.mp3
+Deleting original file ProgressiveHouse/_played-before/Brian Creao - Temperance (Juan Ibañez Remix) - 2026.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Brian Creao - Temperance (Juan Ibañez Remix) - 2026.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Brian Creao - Temperance (Juan Ibañez Remix) - 2026.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=HE7mVJbu9eg
+[youtube] Sleeping 1.0 seconds ...
+[youtube] HE7mVJbu9eg: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] HE7mVJbu9eg: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] HE7mVJbu9eg: Downloading m3u8 information
+[info] HE7mVJbu9eg: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Sebastien Leger - Ariana (Original Mix) [Lost Miracle] - 2023.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Sebastien Leger - Ariana (Original Mix) [Lost Miracle] - 2023.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Sebastien Leger - Ariana (Original Mix) [Lost Miracle] - 2023.webp (pass -k to keep)
+[download] Sleeping 2.34 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Sebastien Leger - Ariana (Original Mix) [Lost Miracle] - 2023.webm
+[download]   0.0% of    8.11MiB at  451.49KiB/s ETA 00:18[download]   0.0% of    8.11MiB at    1.22MiB/s ETA 00:06[download]   0.1% of    8.11MiB at    2.74MiB/s ETA 00:02[download]   0.2% of    8.11MiB at    5.70MiB/s ETA 00:01[download]   0.4% of    8.11MiB at    3.30MiB/s ETA 00:02[download]   0.8% of    8.11MiB at    5.62MiB/s ETA 00:01[download]   1.5% of    8.11MiB at    6.43MiB/s ETA 00:01[download]   3.1% of    8.11MiB at    9.20MiB/s ETA 00:00[download]   6.2% of    8.11MiB at   12.74MiB/s ETA 00:00[download]  12.3% of    8.11MiB at   15.01MiB/s ETA 00:00[download]  24.7% of    8.11MiB at   10.71MiB/s ETA 00:00[download]  49.3% of    8.11MiB at   12.42MiB/s ETA 00:00[download]  98.7% of    8.11MiB at   14.25MiB/s ETA 00:00[download] 100.0% of    8.11MiB at   14.35MiB/s ETA 00:00[download] 100% of    8.11MiB in 00:00:00 at 11.44MiB/s  
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Sebastien Leger - Ariana (Original Mix) [Lost Miracle] - 2023.mp3
+Deleting original file ProgressiveHouse/_played-before/Sebastien Leger - Ariana (Original Mix) [Lost Miracle] - 2023.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Sebastien Leger - Ariana (Original Mix) [Lost Miracle] - 2023.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Sebastien Leger - Ariana (Original Mix) [Lost Miracle] - 2023.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=IiIyqC0mIhw
+[youtube] Sleeping 1.0 seconds ...
+[youtube] IiIyqC0mIhw: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] IiIyqC0mIhw: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] IiIyqC0mIhw: Downloading m3u8 information
+[info] IiIyqC0mIhw: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Echo Daft - Echoes (Original Mix) [Movement Recordings] - 2022.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Echo Daft - Echoes (Original Mix) [Movement Recordings] - 2022.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Echo Daft - Echoes (Original Mix) [Movement Recordings] - 2022.webp (pass -k to keep)
+[download] Sleeping 3.72 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Echo Daft - Echoes (Original Mix) [Movement Recordings] - 2022.webm
+[download]   0.0% of    7.17MiB at  441.13KiB/s ETA 00:16[download]   0.0% of    7.17MiB at    1.18MiB/s ETA 00:06[download]   0.1% of    7.17MiB at    2.64MiB/s ETA 00:02[download]   0.2% of    7.17MiB at    5.44MiB/s ETA 00:01[download]   0.4% of    7.17MiB at    3.94MiB/s ETA 00:01[download]   0.9% of    7.17MiB at    4.78MiB/s ETA 00:01[download]   1.7% of    7.17MiB at    6.55MiB/s ETA 00:01[download]   3.5% of    7.17MiB at    9.69MiB/s ETA 00:00[download]   7.0% of    7.17MiB at    9.93MiB/s ETA 00:00[download]  13.9% of    7.17MiB at    8.44MiB/s ETA 00:00[download]  27.9% of    7.17MiB at    8.38MiB/s ETA 00:00[download]  55.7% of    7.17MiB at   14.24MiB/s ETA 00:00[download] 100.0% of    7.17MiB at    9.51MiB/s ETA 00:00[download] 100% of    7.17MiB in 00:00:00 at 8.25MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Echo Daft - Echoes (Original Mix) [Movement Recordings] - 2022.mp3
+Deleting original file ProgressiveHouse/_played-before/Echo Daft - Echoes (Original Mix) [Movement Recordings] - 2022.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Echo Daft - Echoes (Original Mix) [Movement Recordings] - 2022.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Echo Daft - Echoes (Original Mix) [Movement Recordings] - 2022.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=Jw2CziMZmuo
+[youtube] Sleeping 1.0 seconds ...
+[youtube] Jw2CziMZmuo: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] Jw2CziMZmuo: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] Jw2CziMZmuo: Downloading m3u8 information
+[info] Jw2CziMZmuo: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Grance (BR), Soulmac - Happy Incident (Ale Russo Remix) - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Grance (BR), Soulmac - Happy Incident (Ale Russo Remix) - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Grance (BR), Soulmac - Happy Incident (Ale Russo Remix) - 2024.webp (pass -k to keep)
+[download] Sleeping 1.42 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Grance (BR), Soulmac - Happy Incident (Ale Russo Remix) - 2024.webm
+[download]   0.0% of    7.19MiB at   66.74KiB/s ETA 01:50[download]   0.0% of    7.19MiB at  194.05KiB/s ETA 00:37[download]   0.1% of    7.19MiB at  445.30KiB/s ETA 00:16[download]   0.2% of    7.19MiB at  942.03KiB/s ETA 00:07[download]   0.4% of    7.19MiB at    1.44MiB/s ETA 00:04[download]   0.9% of    7.19MiB at    1.57MiB/s ETA 00:04[download]   1.7% of    7.19MiB at    1.31MiB/s ETA 00:05[download]   3.5% of    7.19MiB at    1.26MiB/s ETA 00:05[download]   6.9% of    7.19MiB at    1.23MiB/s ETA 00:05[download]  13.9% of    7.19MiB at    1.10MiB/s ETA 00:05[download]  27.7% of    7.19MiB at    1.01MiB/s ETA 00:05[download]  40.7% of    7.19MiB at  913.45KiB/s ETA 00:04[download]  50.6% of    7.19MiB at  950.77KiB/s ETA 00:03[download]  66.2% of    7.19MiB at  925.93KiB/s ETA 00:02[download]  77.7% of    7.19MiB at  984.12KiB/s ETA 00:01[download]  98.6% of    7.19MiB at  945.26KiB/s ETA 00:00[download] 100.0% of    7.19MiB at  947.78KiB/s ETA 00:00[download] 100% of    7.19MiB in 00:00:08 at 847.59KiB/s 
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Grance (BR), Soulmac - Happy Incident (Ale Russo Remix) - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/Grance (BR), Soulmac - Happy Incident (Ale Russo Remix) - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Grance (BR), Soulmac - Happy Incident (Ale Russo Remix) - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Grance (BR), Soulmac - Happy Incident (Ale Russo Remix) - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=M-S81wmwIYs
+[youtube] Sleeping 1.0 seconds ...
+[youtube] M-S81wmwIYs: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] M-S81wmwIYs: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] M-S81wmwIYs: Downloading m3u8 information
+[info] M-S81wmwIYs: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Brian Creao - Hierofante (Original Mix) - 2026.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Brian Creao - Hierofante (Original Mix) - 2026.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Brian Creao - Hierofante (Original Mix) - 2026.webp (pass -k to keep)
+[download] Sleeping 2.28 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Brian Creao - Hierofante (Original Mix) - 2026.webm
+[download]   0.0% of    5.96MiB at  836.85KiB/s ETA 00:07[download]   0.0% of    5.96MiB at    2.10MiB/s ETA 00:02[download]   0.1% of    5.96MiB at    4.62MiB/s ETA 00:01[download]   0.2% of    5.96MiB at    9.43MiB/s ETA 00:00[download]   0.5% of    5.96MiB at   18.49MiB/s ETA 00:00[download]   1.0% of    5.96MiB at   15.44MiB/s ETA 00:00[download]   2.1% of    5.96MiB at   15.23MiB/s ETA 00:00[download]   4.2% of    5.96MiB at   16.18MiB/s ETA 00:00[download]   8.4% of    5.96MiB at   15.04MiB/s ETA 00:00[download]  16.8% of    5.96MiB at   14.82MiB/s ETA 00:00[download]  33.6% of    5.96MiB at   14.76MiB/s ETA 00:00[download]  67.1% of    5.96MiB at   12.45MiB/s ETA 00:00[download] 100.0% of    5.96MiB at   12.34MiB/s ETA 00:00[download] 100% of    5.96MiB in 00:00:00 at 8.81MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Brian Creao - Hierofante (Original Mix) - 2026.mp3
+Deleting original file ProgressiveHouse/_played-before/Brian Creao - Hierofante (Original Mix) - 2026.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Brian Creao - Hierofante (Original Mix) - 2026.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Brian Creao - Hierofante (Original Mix) - 2026.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=OKQTSGOs05U
+[youtube] Sleeping 1.0 seconds ...
+[youtube] OKQTSGOs05U: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] OKQTSGOs05U: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] OKQTSGOs05U: Downloading m3u8 information
+[info] OKQTSGOs05U: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Hexlogic - Pulse [Silk Music] - 2017.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Hexlogic - Pulse [Silk Music] - 2017.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Hexlogic - Pulse [Silk Music] - 2017.webp (pass -k to keep)
+[download] Sleeping 3.41 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Hexlogic - Pulse [Silk Music] - 2017.webm
+[download]   0.0% of    5.53MiB at   49.22KiB/s ETA 01:55[download]   0.1% of    5.53MiB at  143.13KiB/s ETA 00:39[download]   0.1% of    5.53MiB at  328.64KiB/s ETA 00:17[download]   0.3% of    5.53MiB at  690.90KiB/s ETA 00:08[download]   0.5% of    5.53MiB at    1.36MiB/s ETA 00:04[download]   1.1% of    5.53MiB at    1.83MiB/s ETA 00:02[download]   2.2% of    5.53MiB at    3.07MiB/s ETA 00:01[download]   4.5% of    5.53MiB at    2.58MiB/s ETA 00:02[download]   9.0% of    5.53MiB at    2.09MiB/s ETA 00:02[download]  18.1% of    5.53MiB at  881.50KiB/s ETA 00:05[download]  27.9% of    5.53MiB at  798.08KiB/s ETA 00:05[download]  39.9% of    5.53MiB at  629.19KiB/s ETA 00:05[download]  47.3% of    5.53MiB at  606.72KiB/s ETA 00:04[download]  56.3% of    5.53MiB at  639.72KiB/s ETA 00:03[download]  72.1% of    5.53MiB at  638.62KiB/s ETA 00:02[download]  83.3% of    5.53MiB at  643.01KiB/s ETA 00:01[download]  95.2% of    5.53MiB at  628.10KiB/s ETA 00:00[download] 100.0% of    5.53MiB at  602.51KiB/s ETA 00:00[download] 100% of    5.53MiB in 00:00:09 at 592.84KiB/s 
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Hexlogic - Pulse [Silk Music] - 2017.mp3
+Deleting original file ProgressiveHouse/_played-before/Hexlogic - Pulse [Silk Music] - 2017.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Hexlogic - Pulse [Silk Music] - 2017.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Hexlogic - Pulse [Silk Music] - 2017.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=RDIM4ABI-bc
+[youtube] Sleeping 1.0 seconds ...
+[youtube] RDIM4ABI-bc: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] RDIM4ABI-bc: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] RDIM4ABI-bc: Downloading m3u8 information
+[info] RDIM4ABI-bc: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Alex O'Rion & Ezequiel Arias - Solis (Original Mix) [Meanwhile] - 2022.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Alex O'Rion & Ezequiel Arias - Solis (Original Mix) [Meanwhile] - 2022.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Alex O'Rion & Ezequiel Arias - Solis (Original Mix) [Meanwhile] - 2022.webp (pass -k to keep)
+[download] Sleeping 3.29 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Alex O'Rion & Ezequiel Arias - Solis (Original Mix) [Meanwhile] - 2022.webm
+[download]   0.0% of    5.83MiB at  566.64KiB/s ETA 00:10[download]   0.1% of    5.83MiB at    1.33MiB/s ETA 00:04[download]   0.1% of    5.83MiB at    2.73MiB/s ETA 00:02[download]   0.3% of    5.83MiB at    4.80MiB/s ETA 00:01[download]   0.5% of    5.83MiB at    4.94MiB/s ETA 00:01[download]   1.1% of    5.83MiB at    5.26MiB/s ETA 00:01[download]   2.1% of    5.83MiB at    7.70MiB/s ETA 00:00[download]   4.3% of    5.83MiB at   10.97MiB/s ETA 00:00[download]   8.6% of    5.83MiB at   14.66MiB/s ETA 00:00[download]  17.1% of    5.83MiB at    9.78MiB/s ETA 00:00[download]  34.3% of    5.83MiB at    8.91MiB/s ETA 00:00[download]  68.6% of    5.83MiB at   15.00MiB/s ETA 00:00[download] 100.0% of    5.83MiB at    9.98MiB/s ETA 00:00[download] 100% of    5.83MiB in 00:00:01 at 5.78MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Alex O'Rion & Ezequiel Arias - Solis (Original Mix) [Meanwhile] - 2022.mp3
+Deleting original file ProgressiveHouse/_played-before/Alex O'Rion & Ezequiel Arias - Solis (Original Mix) [Meanwhile] - 2022.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Alex O'Rion & Ezequiel Arias - Solis (Original Mix) [Meanwhile] - 2022.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Alex O'Rion & Ezequiel Arias - Solis (Original Mix) [Meanwhile] - 2022.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=SZeMzRaZRvA
+[youtube] Sleeping 1.0 seconds ...
+[youtube] SZeMzRaZRvA: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] SZeMzRaZRvA: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] SZeMzRaZRvA: Downloading m3u8 information
+[info] SZeMzRaZRvA: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Premiere： HAFT - Kaleidoscope (Maze 28 & EMPHI Remix) [Movement Recordings] - 2026.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Premiere： HAFT - Kaleidoscope (Maze 28 & EMPHI Remix) [Movement Recordings] - 2026.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Premiere： HAFT - Kaleidoscope (Maze 28 & EMPHI Remix) [Movement Recordings] - 2026.webp (pass -k to keep)
+[download] Sleeping 2.29 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Premiere： HAFT - Kaleidoscope (Maze 28 & EMPHI Remix) [Movement Recordings] - 2026.webm
+[download]   0.0% of    6.38MiB at  318.18KiB/s ETA 00:20[download]   0.0% of    6.38MiB at  788.90KiB/s ETA 00:08[download]   0.1% of    6.38MiB at    1.69MiB/s ETA 00:03[download]   0.2% of    6.38MiB at    3.44MiB/s ETA 00:01[download]   0.5% of    6.38MiB at    6.71MiB/s ETA 00:00[download]   1.0% of    6.38MiB at   13.02MiB/s ETA 00:00[download]   1.9% of    6.38MiB at   13.98MiB/s ETA 00:00[download]   3.9% of    6.38MiB at   13.89MiB/s ETA 00:00[download]   7.8% of    6.38MiB at   14.41MiB/s ETA 00:00[download]  15.7% of    6.38MiB at   15.08MiB/s ETA 00:00[download]  31.3% of    6.38MiB at   14.73MiB/s ETA 00:00[download]  62.7% of    6.38MiB at   11.89MiB/s ETA 00:00[download] 100.0% of    6.38MiB at   11.45MiB/s ETA 00:00[download] 100% of    6.38MiB in 00:00:00 at 9.44MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Premiere： HAFT - Kaleidoscope (Maze 28 & EMPHI Remix) [Movement Recordings] - 2026.mp3
+Deleting original file ProgressiveHouse/_played-before/Premiere： HAFT - Kaleidoscope (Maze 28 & EMPHI Remix) [Movement Recordings] - 2026.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Premiere： HAFT - Kaleidoscope (Maze 28 & EMPHI Remix) [Movement Recordings] - 2026.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Premiere： HAFT - Kaleidoscope (Maze 28 & EMPHI Remix) [Movement Recordings] - 2026.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=Sj6Za1bpb9c
+[youtube] Sleeping 1.0 seconds ...
+[youtube] Sj6Za1bpb9c: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] Sj6Za1bpb9c: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] Sj6Za1bpb9c: Downloading m3u8 information
+[info] Sj6Za1bpb9c: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Video Thumbnail 41 does not exist
+[info] Downloading video thumbnail 40 ...
+[info] Video Thumbnail 40 does not exist
+[info] Downloading video thumbnail 39 ...
+[info] Video Thumbnail 39 does not exist
+[info] Downloading video thumbnail 38 ...
+[info] Video Thumbnail 38 does not exist
+[info] Downloading video thumbnail 37 ...
+[info] Writing video thumbnail 37 to: ProgressiveHouse/_played-before/Ezequiel Arias & Sebastian Sellares - Infinity - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Ezequiel Arias & Sebastian Sellares - Infinity - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Ezequiel Arias & Sebastian Sellares - Infinity - 2024.webp (pass -k to keep)
+[download] Sleeping 2.80 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Ezequiel Arias & Sebastian Sellares - Infinity - 2024.webm
+[download]   0.0% of    6.35MiB at  Unknown B/s ETA Unknown[download]   0.0% of    6.35MiB at    1.98MiB/s ETA 00:03  [download]   0.1% of    6.35MiB at    3.46MiB/s ETA 00:01[download]   0.2% of    6.35MiB at    6.43MiB/s ETA 00:00[download]   0.5% of    6.35MiB at   11.52MiB/s ETA 00:00[download]   1.0% of    6.35MiB at   20.06MiB/s ETA 00:00[download]   2.0% of    6.35MiB at   23.09MiB/s ETA 00:00[download]   3.9% of    6.35MiB at   22.14MiB/s ETA 00:00[download]   7.9% of    6.35MiB at   16.37MiB/s ETA 00:00[download]  15.7% of    6.35MiB at   15.28MiB/s ETA 00:00[download]  31.5% of    6.35MiB at   14.19MiB/s ETA 00:00[download]  63.0% of    6.35MiB at   16.39MiB/s ETA 00:00[download] 100.0% of    6.35MiB at   13.43MiB/s ETA 00:00[download] 100% of    6.35MiB in 00:00:00 at 9.63MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Ezequiel Arias & Sebastian Sellares - Infinity - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/Ezequiel Arias & Sebastian Sellares - Infinity - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Ezequiel Arias & Sebastian Sellares - Infinity - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Ezequiel Arias & Sebastian Sellares - Infinity - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=THnm60-jrrk
+[youtube] Sleeping 1.0 seconds ...
+[youtube] THnm60-jrrk: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] THnm60-jrrk: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] THnm60-jrrk: Downloading m3u8 information
+[info] THnm60-jrrk: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Argy & Goom Gum - Pantheon [Extended Mix] - 2023.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Argy & Goom Gum - Pantheon [Extended Mix] - 2023.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Argy & Goom Gum - Pantheon [Extended Mix] - 2023.webp (pass -k to keep)
+[download] Sleeping 1.22 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Argy & Goom Gum - Pantheon [Extended Mix] - 2023.webm
+[download]   0.0% of    6.00MiB at  706.71KiB/s ETA 00:08[download]   0.0% of    6.00MiB at    1.50MiB/s ETA 00:03[download]   0.1% of    6.00MiB at    2.78MiB/s ETA 00:02[download]   0.2% of    6.00MiB at    5.32MiB/s ETA 00:01[download]   0.5% of    6.00MiB at    9.61MiB/s ETA 00:00[download]   1.0% of    6.00MiB at   17.51MiB/s ETA 00:00[download]   2.1% of    6.00MiB at   22.51MiB/s ETA 00:00[download]   4.2% of    6.00MiB at   14.66MiB/s ETA 00:00[download]   8.3% of    6.00MiB at   14.88MiB/s ETA 00:00[download]  16.7% of    6.00MiB at   15.57MiB/s ETA 00:00[download]  33.3% of    6.00MiB at   15.18MiB/s ETA 00:00[download]  66.7% of    6.00MiB at   22.78MiB/s ETA 00:00[download] 100.0% of    6.00MiB at   13.53MiB/s ETA 00:00[download] 100% of    6.00MiB in 00:00:00 at 9.39MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Argy & Goom Gum - Pantheon [Extended Mix] - 2023.mp3
+Deleting original file ProgressiveHouse/_played-before/Argy & Goom Gum - Pantheon [Extended Mix] - 2023.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Argy & Goom Gum - Pantheon [Extended Mix] - 2023.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Argy & Goom Gum - Pantheon [Extended Mix] - 2023.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=UVMVjavO8uE
+[youtube] Sleeping 1.0 seconds ...
+[youtube] UVMVjavO8uE: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] UVMVjavO8uE: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] UVMVjavO8uE: Downloading m3u8 information
+[info] UVMVjavO8uE: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Dosem - On Board - 2018.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Dosem - On Board - 2018.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Dosem - On Board - 2018.webp (pass -k to keep)
+[download] Sleeping 2.26 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Dosem - On Board - 2018.webm
+[download]   0.0% of    6.70MiB at  Unknown B/s ETA Unknown[download]   0.0% of    6.70MiB at    2.73MiB/s ETA 00:02  [download]   0.1% of    6.70MiB at    5.80MiB/s ETA 00:01[download]   0.2% of    6.70MiB at   11.54MiB/s ETA 00:00[download]   0.5% of    6.70MiB at   22.09MiB/s ETA 00:00[download]   0.9% of    6.70MiB at   16.26MiB/s ETA 00:00[download]   1.9% of    6.70MiB at   15.63MiB/s ETA 00:00[download]   3.7% of    6.70MiB at   15.31MiB/s ETA 00:00[download]   7.5% of    6.70MiB at   14.84MiB/s ETA 00:00[download]  14.9% of    6.70MiB at   14.89MiB/s ETA 00:00[download]  29.9% of    6.70MiB at   15.09MiB/s ETA 00:00[download]  59.7% of    6.70MiB at    9.86MiB/s ETA 00:00[download] 100.0% of    6.70MiB at   12.33MiB/s ETA 00:00[download] 100% of    6.70MiB in 00:00:00 at 9.46MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Dosem - On Board - 2018.mp3
+Deleting original file ProgressiveHouse/_played-before/Dosem - On Board - 2018.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Dosem - On Board - 2018.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Dosem - On Board - 2018.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=UtjZ67FO1N0
+[youtube] Sleeping 1.0 seconds ...
+[youtube] UtjZ67FO1N0: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] UtjZ67FO1N0: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] UtjZ67FO1N0: Downloading m3u8 information
+[info] UtjZ67FO1N0: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/K Loveski & Geronimo Eguiguren - Kamikaze (Simos Tagias Remix) [Clubsonica Records] - 2023.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/K Loveski & Geronimo Eguiguren - Kamikaze (Simos Tagias Remix) [Clubsonica Records] - 2023.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/K Loveski & Geronimo Eguiguren - Kamikaze (Simos Tagias Remix) [Clubsonica Records] - 2023.webp (pass -k to keep)
+[download] Sleeping 3.28 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/K Loveski & Geronimo Eguiguren - Kamikaze (Simos Tagias Remix) [Clubsonica Records] - 2023.webm
+[download]   0.0% of    6.46MiB at  Unknown B/s ETA Unknown[download]   0.0% of    6.46MiB at  Unknown B/s ETA Unknown[download]   0.1% of    6.46MiB at    6.07MiB/s ETA 00:01  [download]   0.2% of    6.46MiB at   11.00MiB/s ETA 00:00[download]   0.5% of    6.46MiB at    5.59MiB/s ETA 00:01[download]   1.0% of    6.46MiB at    5.00MiB/s ETA 00:01[download]   1.9% of    6.46MiB at    7.37MiB/s ETA 00:00[download]   3.9% of    6.46MiB at   10.47MiB/s ETA 00:00[download]   7.7% of    6.46MiB at   14.57MiB/s ETA 00:00[download]  15.5% of    6.46MiB at   14.11MiB/s ETA 00:00[download]  31.0% of    6.46MiB at   14.29MiB/s ETA 00:00[download]  62.0% of    6.46MiB at   12.67MiB/s ETA 00:00[download] 100.0% of    6.46MiB at    4.73MiB/s ETA 00:00[download] 100% of    6.46MiB in 00:00:01 at 4.34MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/K Loveski & Geronimo Eguiguren - Kamikaze (Simos Tagias Remix) [Clubsonica Records] - 2023.mp3
+Deleting original file ProgressiveHouse/_played-before/K Loveski & Geronimo Eguiguren - Kamikaze (Simos Tagias Remix) [Clubsonica Records] - 2023.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/K Loveski & Geronimo Eguiguren - Kamikaze (Simos Tagias Remix) [Clubsonica Records] - 2023.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/K Loveski & Geronimo Eguiguren - Kamikaze (Simos Tagias Remix) [Clubsonica Records] - 2023.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=YgmGEkP6998
+[youtube] Sleeping 1.0 seconds ...
+[youtube] YgmGEkP6998: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] YgmGEkP6998: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] YgmGEkP6998: Downloading m3u8 information
+[info] YgmGEkP6998: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Melodiam (AR) – Words Are Weapons (Maze 28 Remix) [onedotsixtwo] - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Melodiam (AR) – Words Are Weapons (Maze 28 Remix) [onedotsixtwo] - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Melodiam (AR) – Words Are Weapons (Maze 28 Remix) [onedotsixtwo] - 2024.webp (pass -k to keep)
+[download] Sleeping 1.05 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Melodiam (AR) – Words Are Weapons (Maze 28 Remix) [onedotsixtwo] - 2024.webm
+[download]   0.0% of    7.94MiB at  439.01KiB/s ETA 00:18[download]   0.0% of    7.94MiB at    1.18MiB/s ETA 00:06[download]   0.1% of    7.94MiB at    2.67MiB/s ETA 00:02[download]   0.2% of    7.94MiB at    5.55MiB/s ETA 00:01[download]   0.4% of    7.94MiB at    4.27MiB/s ETA 00:01[download]   0.8% of    7.94MiB at    5.06MiB/s ETA 00:01[download]   1.6% of    7.94MiB at    7.45MiB/s ETA 00:01[download]   3.1% of    7.94MiB at   10.68MiB/s ETA 00:00[download]   6.3% of    7.94MiB at   15.02MiB/s ETA 00:00[download]  12.6% of    7.94MiB at   10.00MiB/s ETA 00:00[download]  25.2% of    7.94MiB at    8.31MiB/s ETA 00:00[download]  50.4% of    7.94MiB at   14.28MiB/s ETA 00:00[download] 100.0% of    7.94MiB at   16.55MiB/s ETA 00:00[download] 100% of    7.94MiB in 00:00:00 at 10.52MiB/s  
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Melodiam (AR) – Words Are Weapons (Maze 28 Remix) [onedotsixtwo] - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/Melodiam (AR) – Words Are Weapons (Maze 28 Remix) [onedotsixtwo] - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Melodiam (AR) – Words Are Weapons (Maze 28 Remix) [onedotsixtwo] - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Melodiam (AR) – Words Are Weapons (Maze 28 Remix) [onedotsixtwo] - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=_DdnCeDNKx8
+[youtube] Sleeping 1.0 seconds ...
+[youtube] _DdnCeDNKx8: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] _DdnCeDNKx8: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] _DdnCeDNKx8: Downloading m3u8 information
+[info] _DdnCeDNKx8: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Durante - Never B Alone (Extended Mix) - 2025.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Durante - Never B Alone (Extended Mix) - 2025.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Durante - Never B Alone (Extended Mix) - 2025.webp (pass -k to keep)
+[download] Sleeping 3.11 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Durante - Never B Alone (Extended Mix) - 2025.webm
+[download]   0.0% of    7.60MiB at  143.78KiB/s ETA 00:54[download]   0.0% of    7.60MiB at  391.64KiB/s ETA 00:19[download]   0.1% of    7.60MiB at  885.86KiB/s ETA 00:08[download]   0.2% of    7.60MiB at    1.81MiB/s ETA 00:04[download]   0.4% of    7.60MiB at  592.78KiB/s ETA 00:13[download]   0.8% of    7.60MiB at  691.11KiB/s ETA 00:11[download]   1.6% of    7.60MiB at  938.29KiB/s ETA 00:08[download]   3.3% of    7.60MiB at    1.37MiB/s ETA 00:05[download]   6.6% of    7.60MiB at    2.18MiB/s ETA 00:03[download]  13.1% of    7.60MiB at    3.61MiB/s ETA 00:01[download]  26.3% of    7.60MiB at    6.17MiB/s ETA 00:00[download]  52.6% of    7.60MiB at    9.40MiB/s ETA 00:00[download] 100.0% of    7.60MiB at   12.00MiB/s ETA 00:00[download] 100% of    7.60MiB in 00:00:00 at 9.07MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Durante - Never B Alone (Extended Mix) - 2025.mp3
+Deleting original file ProgressiveHouse/_played-before/Durante - Never B Alone (Extended Mix) - 2025.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Durante - Never B Alone (Extended Mix) - 2025.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Durante - Never B Alone (Extended Mix) - 2025.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=_Kmlqw2q0wA
+[youtube] Sleeping 1.0 seconds ...
+[youtube] _Kmlqw2q0wA: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] _Kmlqw2q0wA: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] _Kmlqw2q0wA: Downloading m3u8 information
+[info] _Kmlqw2q0wA: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Weird Sounding Dude - Hyper Dream (ABGT457) - 2021.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Weird Sounding Dude - Hyper Dream (ABGT457) - 2021.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Weird Sounding Dude - Hyper Dream (ABGT457) - 2021.webp (pass -k to keep)
+[download] Sleeping 1.26 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Weird Sounding Dude - Hyper Dream (ABGT457) - 2021.webm
+[download]   0.0% of    6.18MiB at  825.81KiB/s ETA 00:07[download]   0.0% of    6.18MiB at    1.64MiB/s ETA 00:03[download]   0.1% of    6.18MiB at    3.21MiB/s ETA 00:01[download]   0.2% of    6.18MiB at    6.19MiB/s ETA 00:00[download]   0.5% of    6.18MiB at   11.29MiB/s ETA 00:00[download]   1.0% of    6.18MiB at   16.38MiB/s ETA 00:00[download]   2.0% of    6.18MiB at   15.64MiB/s ETA 00:00[download]   4.0% of    6.18MiB at   18.59MiB/s ETA 00:00[download]   8.1% of    6.18MiB at   15.39MiB/s ETA 00:00[download]  16.2% of    6.18MiB at    9.78MiB/s ETA 00:00[download]  32.4% of    6.18MiB at    8.39MiB/s ETA 00:00[download]  64.8% of    6.18MiB at   14.33MiB/s ETA 00:00[download] 100.0% of    6.18MiB at   14.01MiB/s ETA 00:00[download] 100% of    6.18MiB in 00:00:00 at 9.69MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Weird Sounding Dude - Hyper Dream (ABGT457) - 2021.mp3
+Deleting original file ProgressiveHouse/_played-before/Weird Sounding Dude - Hyper Dream (ABGT457) - 2021.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Weird Sounding Dude - Hyper Dream (ABGT457) - 2021.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Weird Sounding Dude - Hyper Dream (ABGT457) - 2021.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=_qb83mqCp5g
+[youtube] Sleeping 1.0 seconds ...
+[youtube] _qb83mqCp5g: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] _qb83mqCp5g: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] _qb83mqCp5g: Downloading m3u8 information
+[info] _qb83mqCp5g: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Sebastian Sellares - Timeless Era - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Sebastian Sellares - Timeless Era - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Sebastian Sellares - Timeless Era - 2024.webp (pass -k to keep)
+[download] Sleeping 2.59 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Sebastian Sellares - Timeless Era - 2024.webm
+[download]   0.0% of    3.58MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.58MiB at  Unknown B/s ETA Unknown[download]   0.2% of    3.58MiB at    6.16MiB/s ETA 00:00  [download]   0.4% of    3.58MiB at   11.31MiB/s ETA 00:00[download]   0.8% of    3.58MiB at   19.60MiB/s ETA 00:00[download]   1.7% of    3.58MiB at   22.67MiB/s ETA 00:00[download]   3.5% of    3.58MiB at   24.51MiB/s ETA 00:00[download]   6.9% of    3.58MiB at   17.80MiB/s ETA 00:00[download]  13.9% of    3.58MiB at   15.27MiB/s ETA 00:00[download]  27.9% of    3.58MiB at    9.72MiB/s ETA 00:00[download]  55.8% of    3.58MiB at    8.21MiB/s ETA 00:00[download] 100.0% of    3.58MiB at    7.48MiB/s ETA 00:00[download] 100% of    3.58MiB in 00:00:00 at 5.73MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Sebastian Sellares - Timeless Era - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/Sebastian Sellares - Timeless Era - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Sebastian Sellares - Timeless Era - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Sebastian Sellares - Timeless Era - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=cTJ20wxmdDk
+[youtube] Sleeping 1.0 seconds ...
+[youtube] cTJ20wxmdDk: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] cTJ20wxmdDk: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] cTJ20wxmdDk: Downloading m3u8 information
+[info] cTJ20wxmdDk: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Video Thumbnail 41 does not exist
+[info] Downloading video thumbnail 40 ...
+[info] Video Thumbnail 40 does not exist
+[info] Downloading video thumbnail 39 ...
+[info] Video Thumbnail 39 does not exist
+[info] Downloading video thumbnail 38 ...
+[info] Video Thumbnail 38 does not exist
+[info] Downloading video thumbnail 37 ...
+[info] Writing video thumbnail 37 to: ProgressiveHouse/_played-before/Kasper Koman - Hi - 2018.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Kasper Koman - Hi - 2018.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Kasper Koman - Hi - 2018.webp (pass -k to keep)
+[download] Sleeping 1.97 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Kasper Koman - Hi - 2018.webm
+[download]   0.0% of    8.58MiB at  460.86KiB/s ETA 00:19[download]   0.0% of    8.58MiB at    1.04MiB/s ETA 00:08[download]   0.1% of    8.58MiB at    2.16MiB/s ETA 00:03[download]   0.2% of    8.58MiB at    4.20MiB/s ETA 00:02[download]   0.4% of    8.58MiB at    3.99MiB/s ETA 00:02[download]   0.7% of    8.58MiB at    5.14MiB/s ETA 00:01[download]   1.4% of    8.58MiB at    6.70MiB/s ETA 00:01[download]   2.9% of    8.58MiB at    9.36MiB/s ETA 00:00[download]   5.8% of    8.58MiB at   13.79MiB/s ETA 00:00[download]  11.6% of    8.58MiB at   14.80MiB/s ETA 00:00[download]  23.3% of    8.58MiB at   14.84MiB/s ETA 00:00[download]  46.6% of    8.58MiB at   22.13MiB/s ETA 00:00[download]  93.2% of    8.58MiB at   16.95MiB/s ETA 00:00[download] 100.0% of    8.58MiB at   16.02MiB/s ETA 00:00[download] 100% of    8.58MiB in 00:00:01 at 7.73MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Kasper Koman - Hi - 2018.mp3
+Deleting original file ProgressiveHouse/_played-before/Kasper Koman - Hi - 2018.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Kasper Koman - Hi - 2018.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Kasper Koman - Hi - 2018.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=ceewCmsK4OM
+[youtube] Sleeping 1.0 seconds ...
+[youtube] ceewCmsK4OM: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] ceewCmsK4OM: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] ceewCmsK4OM: Downloading m3u8 information
+[info] ceewCmsK4OM: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/PREMIERE： Dmitry Molosh - Dreaming (Original Mix) [Protagonist Recordings] - 2025.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/PREMIERE： Dmitry Molosh - Dreaming (Original Mix) [Protagonist Recordings] - 2025.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/PREMIERE： Dmitry Molosh - Dreaming (Original Mix) [Protagonist Recordings] - 2025.webp (pass -k to keep)
+[download] Sleeping 1.67 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/PREMIERE： Dmitry Molosh - Dreaming (Original Mix) [Protagonist Recordings] - 2025.webm
+[download]   0.0% of    6.97MiB at  118.22KiB/s ETA 01:00[download]   0.0% of    6.97MiB at  343.08KiB/s ETA 00:20[download]   0.1% of    6.97MiB at  789.87KiB/s ETA 00:09[download]   0.2% of    6.97MiB at    1.64MiB/s ETA 00:04[download]   0.4% of    6.97MiB at    1.89MiB/s ETA 00:03[download]   0.9% of    6.97MiB at    3.77MiB/s ETA 00:01[download]   1.8% of    6.97MiB at    3.97MiB/s ETA 00:01[download]   3.6% of    6.97MiB at    6.04MiB/s ETA 00:01[download]   7.2% of    6.97MiB at    7.03MiB/s ETA 00:00[download]  14.3% of    6.97MiB at    5.99MiB/s ETA 00:00[download]  28.7% of    6.97MiB at    2.48MiB/s ETA 00:02[download]  51.1% of    6.97MiB at  783.06KiB/s ETA 00:04[download]  62.4% of    6.97MiB at  750.53KiB/s ETA 00:03[download]  71.2% of    6.97MiB at  747.77KiB/s ETA 00:02[download]  81.4% of    6.97MiB at  720.57KiB/s ETA 00:01[download]  89.5% of    6.97MiB at  699.75KiB/s ETA 00:01[download]  97.0% of    6.97MiB at  705.78KiB/s ETA 00:00[download] 100.0% of    6.97MiB at  713.51KiB/s ETA 00:00[download] 100% of    6.97MiB in 00:00:10 at 675.53KiB/s 
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/PREMIERE： Dmitry Molosh - Dreaming (Original Mix) [Protagonist Recordings] - 2025.mp3
+Deleting original file ProgressiveHouse/_played-before/PREMIERE： Dmitry Molosh - Dreaming (Original Mix) [Protagonist Recordings] - 2025.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/PREMIERE： Dmitry Molosh - Dreaming (Original Mix) [Protagonist Recordings] - 2025.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/PREMIERE： Dmitry Molosh - Dreaming (Original Mix) [Protagonist Recordings] - 2025.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=dE5x2Ruw_Dg
+[youtube] Sleeping 1.0 seconds ...
+[youtube] dE5x2Ruw_Dg: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] dE5x2Ruw_Dg: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] dE5x2Ruw_Dg: Downloading m3u8 information
+[info] dE5x2Ruw_Dg: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Tim Green - To Know Nothing - 2020.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Tim Green - To Know Nothing - 2020.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Tim Green - To Know Nothing - 2020.webp (pass -k to keep)
+[download] Sleeping 1.62 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Tim Green - To Know Nothing - 2020.webm
+[download]   0.0% of    8.63MiB at  Unknown B/s ETA Unknown[download]   0.0% of    8.63MiB at    1.60MiB/s ETA 00:05  [download]   0.1% of    8.63MiB at    3.39MiB/s ETA 00:02[download]   0.2% of    8.63MiB at    6.73MiB/s ETA 00:01[download]   0.4% of    8.63MiB at   12.87MiB/s ETA 00:00[download]   0.7% of    8.63MiB at   16.42MiB/s ETA 00:00[download]   1.4% of    8.63MiB at   18.24MiB/s ETA 00:00[download]   2.9% of    8.63MiB at   15.30MiB/s ETA 00:00[download]   5.8% of    8.63MiB at   16.20MiB/s ETA 00:00[download]  11.6% of    8.63MiB at   15.01MiB/s ETA 00:00[download]  23.2% of    8.63MiB at   14.86MiB/s ETA 00:00[download]  46.3% of    8.63MiB at    2.84MiB/s ETA 00:01[download]  64.5% of    8.63MiB at    3.83MiB/s ETA 00:00[download] 100.0% of    8.63MiB at    5.16MiB/s ETA 00:00[download] 100% of    8.63MiB in 00:00:01 at 4.72MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Tim Green - To Know Nothing - 2020.mp3
+Deleting original file ProgressiveHouse/_played-before/Tim Green - To Know Nothing - 2020.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Tim Green - To Know Nothing - 2020.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Tim Green - To Know Nothing - 2020.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=e85oRjTgdGM
+[youtube] Sleeping 1.0 seconds ...
+[youtube] e85oRjTgdGM: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] e85oRjTgdGM: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] e85oRjTgdGM: Downloading m3u8 information
+[info] e85oRjTgdGM: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Hernan Cattaneo & Mercurio - Diluted (Extended Mix) [Mango Alley] - 2026.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Hernan Cattaneo & Mercurio - Diluted (Extended Mix) [Mango Alley] - 2026.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Hernan Cattaneo & Mercurio - Diluted (Extended Mix) [Mango Alley] - 2026.webp (pass -k to keep)
+[download] Sleeping 3.38 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Hernan Cattaneo & Mercurio - Diluted (Extended Mix) [Mango Alley] - 2026.webm
+[download]   0.0% of    6.77MiB at  248.68KiB/s ETA 00:28[download]   0.0% of    6.77MiB at  659.59KiB/s ETA 00:10[download]   0.1% of    6.77MiB at    1.43MiB/s ETA 00:04[download]   0.2% of    6.77MiB at    2.96MiB/s ETA 00:02[download]   0.4% of    6.77MiB at    5.85MiB/s ETA 00:01[download]   0.9% of    6.77MiB at   10.24MiB/s ETA 00:00[download]   1.8% of    6.77MiB at   11.74MiB/s ETA 00:00[download]   3.7% of    6.77MiB at   13.72MiB/s ETA 00:00[download]   7.4% of    6.77MiB at   14.89MiB/s ETA 00:00[download]  14.7% of    6.77MiB at   14.38MiB/s ETA 00:00[download]  29.5% of    6.77MiB at   14.79MiB/s ETA 00:00[download]  59.0% of    6.77MiB at    2.83MiB/s ETA 00:00[download]  82.1% of    6.77MiB at    3.80MiB/s ETA 00:00[download] 100.0% of    6.77MiB at    3.41MiB/s ETA 00:00[download] 100% of    6.77MiB in 00:00:02 at 3.15MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Hernan Cattaneo & Mercurio - Diluted (Extended Mix) [Mango Alley] - 2026.mp3
+Deleting original file ProgressiveHouse/_played-before/Hernan Cattaneo & Mercurio - Diluted (Extended Mix) [Mango Alley] - 2026.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Hernan Cattaneo & Mercurio - Diluted (Extended Mix) [Mango Alley] - 2026.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Hernan Cattaneo & Mercurio - Diluted (Extended Mix) [Mango Alley] - 2026.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=e9Jyum3xElA
+[youtube] Sleeping 1.0 seconds ...
+[youtube] e9Jyum3xElA: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] e9Jyum3xElA: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] e9Jyum3xElA: Downloading m3u8 information
+[info] e9Jyum3xElA: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Above & Beyond - Surge (PROFF & Igor Garanin Extended Mix) - 2023.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Above & Beyond - Surge (PROFF & Igor Garanin Extended Mix) - 2023.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Above & Beyond - Surge (PROFF & Igor Garanin Extended Mix) - 2023.webp (pass -k to keep)
+[download] Sleeping 1.25 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Above & Beyond - Surge (PROFF & Igor Garanin Extended Mix) - 2023.webm
+[download]   0.0% of    8.82MiB at  114.68KiB/s ETA 01:18[download]   0.0% of    8.82MiB at  327.13KiB/s ETA 00:27[download]   0.1% of    8.82MiB at  743.99KiB/s ETA 00:12[download]   0.2% of    8.82MiB at    1.52MiB/s ETA 00:05[download]   0.3% of    8.82MiB at  636.28KiB/s ETA 00:14[download]   0.7% of    8.82MiB at  683.43KiB/s ETA 00:13[download]   1.4% of    8.82MiB at  932.37KiB/s ETA 00:09[download]   2.8% of    8.82MiB at    1.35MiB/s ETA 00:06[download]   5.7% of    8.82MiB at    2.17MiB/s ETA 00:03[download]  11.3% of    8.82MiB at    3.61MiB/s ETA 00:02[download]  22.7% of    8.82MiB at    6.11MiB/s ETA 00:01[download]  45.3% of    8.82MiB at   10.67MiB/s ETA 00:00[download]  90.7% of    8.82MiB at   11.96MiB/s ETA 00:00[download] 100.0% of    8.82MiB at   12.76MiB/s ETA 00:00[download] 100% of    8.82MiB in 00:00:00 at 9.51MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Above & Beyond - Surge (PROFF & Igor Garanin Extended Mix) - 2023.mp3
+Deleting original file ProgressiveHouse/_played-before/Above & Beyond - Surge (PROFF & Igor Garanin Extended Mix) - 2023.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Above & Beyond - Surge (PROFF & Igor Garanin Extended Mix) - 2023.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Above & Beyond - Surge (PROFF & Igor Garanin Extended Mix) - 2023.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=fPj6u9EfDpA
+[youtube] Sleeping 1.0 seconds ...
+[youtube] fPj6u9EfDpA: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] fPj6u9EfDpA: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] fPj6u9EfDpA: Downloading m3u8 information
+[info] fPj6u9EfDpA: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/MAX WEXEM Override - 2026.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/MAX WEXEM Override - 2026.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/MAX WEXEM Override - 2026.webp (pass -k to keep)
+[download] Sleeping 2.70 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/MAX WEXEM Override - 2026.webm
+[download]   0.0% of    7.34MiB at   53.83KiB/s ETA 02:19[download]   0.0% of    7.34MiB at  156.54KiB/s ETA 00:48[download]   0.1% of    7.34MiB at  360.15KiB/s ETA 00:20[download]   0.2% of    7.34MiB at  755.55KiB/s ETA 00:09[download]   0.4% of    7.34MiB at    1.49MiB/s ETA 00:04[download]   0.8% of    7.34MiB at    2.57MiB/s ETA 00:02[download]   1.7% of    7.34MiB at    3.61MiB/s ETA 00:02[download]   3.4% of    7.34MiB at    5.24MiB/s ETA 00:01[download]   6.8% of    7.34MiB at    5.19MiB/s ETA 00:01[download]  13.6% of    7.34MiB at    4.14MiB/s ETA 00:01[download]  27.2% of    7.34MiB at    1.53MiB/s ETA 00:03[download]  40.0% of    7.34MiB at    1.03MiB/s ETA 00:04[download]  48.2% of    7.34MiB at  740.20KiB/s ETA 00:05[download]  52.3% of    7.34MiB at  747.95KiB/s ETA 00:04[download]  60.5% of    7.34MiB at  717.47KiB/s ETA 00:04[download]  68.1% of    7.34MiB at  706.78KiB/s ETA 00:03[download]  76.5% of    7.34MiB at  722.53KiB/s ETA 00:02[download]  88.2% of    7.34MiB at  735.32KiB/s ETA 00:01[download]  99.2% of    7.34MiB at  721.62KiB/s ETA 00:00[download] 100.0% of    7.34MiB at  723.86KiB/s ETA 00:00[download] 100% of    7.34MiB in 00:00:10 at 689.92KiB/s 
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/MAX WEXEM Override - 2026.mp3
+Deleting original file ProgressiveHouse/_played-before/MAX WEXEM Override - 2026.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/MAX WEXEM Override - 2026.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/MAX WEXEM Override - 2026.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=gAKeK3Hmim8
+[youtube] Sleeping 1.0 seconds ...
+[youtube] gAKeK3Hmim8: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] gAKeK3Hmim8: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] gAKeK3Hmim8: Downloading m3u8 information
+[info] gAKeK3Hmim8: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Ric Niels - Ikigai (Original Mix) [The Soundgarden] - 2022.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Ric Niels - Ikigai (Original Mix) [The Soundgarden] - 2022.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Ric Niels - Ikigai (Original Mix) [The Soundgarden] - 2022.webp (pass -k to keep)
+[download] Sleeping 3.33 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Ric Niels - Ikigai (Original Mix) [The Soundgarden] - 2022.webm
+[download]   0.0% of    7.78MiB at  372.56KiB/s ETA 00:21[download]   0.0% of    7.78MiB at    1.00MiB/s ETA 00:07[download]   0.1% of    7.78MiB at    2.27MiB/s ETA 00:03[download]   0.2% of    7.78MiB at    4.74MiB/s ETA 00:01[download]   0.4% of    7.78MiB at    4.17MiB/s ETA 00:01[download]   0.8% of    7.78MiB at    4.75MiB/s ETA 00:01[download]   1.6% of    7.78MiB at    6.82MiB/s ETA 00:01[download]   3.2% of    7.78MiB at    9.30MiB/s ETA 00:00[download]   6.4% of    7.78MiB at   14.08MiB/s ETA 00:00[download]  12.8% of    7.78MiB at    9.50MiB/s ETA 00:00[download]  25.7% of    7.78MiB at    8.52MiB/s ETA 00:00[download]  51.4% of    7.78MiB at    8.89MiB/s ETA 00:00[download] 100.0% of    7.78MiB at    9.48MiB/s ETA 00:00[download] 100% of    7.78MiB in 00:00:00 at 8.08MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Ric Niels - Ikigai (Original Mix) [The Soundgarden] - 2022.mp3
+Deleting original file ProgressiveHouse/_played-before/Ric Niels - Ikigai (Original Mix) [The Soundgarden] - 2022.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Ric Niels - Ikigai (Original Mix) [The Soundgarden] - 2022.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Ric Niels - Ikigai (Original Mix) [The Soundgarden] - 2022.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=h_89QZ1y6ug
+[youtube] Sleeping 1.0 seconds ...
+[youtube] h_89QZ1y6ug: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] h_89QZ1y6ug: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] h_89QZ1y6ug: Downloading m3u8 information
+[info] h_89QZ1y6ug: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/HIGHLITE – Caravan (Original Mix) [HL006] - 2020.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/HIGHLITE – Caravan (Original Mix) [HL006] - 2020.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/HIGHLITE – Caravan (Original Mix) [HL006] - 2020.webp (pass -k to keep)
+[download] Sleeping 2.01 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/HIGHLITE – Caravan (Original Mix) [HL006] - 2020.webm
+[download]   0.0% of    6.66MiB at  976.56KiB/s ETA 00:07[download]   0.0% of    6.66MiB at    2.27MiB/s ETA 00:02[download]   0.1% of    6.66MiB at    4.60MiB/s ETA 00:01[download]   0.2% of    6.66MiB at    9.26MiB/s ETA 00:00[download]   0.5% of    6.66MiB at   17.99MiB/s ETA 00:00[download]   0.9% of    6.66MiB at   15.71MiB/s ETA 00:00[download]   1.9% of    6.66MiB at   15.21MiB/s ETA 00:00[download]   3.7% of    6.66MiB at   15.03MiB/s ETA 00:00[download]   7.5% of    6.66MiB at   15.47MiB/s ETA 00:00[download]  15.0% of    6.66MiB at   14.79MiB/s ETA 00:00[download]  30.0% of    6.66MiB at   14.84MiB/s ETA 00:00[download]  60.0% of    6.66MiB at   21.17MiB/s ETA 00:00[download] 100.0% of    6.66MiB at   16.94MiB/s ETA 00:00[download] 100% of    6.66MiB in 00:00:00 at 10.16MiB/s  
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/HIGHLITE – Caravan (Original Mix) [HL006] - 2020.mp3
+Deleting original file ProgressiveHouse/_played-before/HIGHLITE – Caravan (Original Mix) [HL006] - 2020.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/HIGHLITE – Caravan (Original Mix) [HL006] - 2020.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/HIGHLITE – Caravan (Original Mix) [HL006] - 2020.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=i1Uwl0geztQ
+[youtube] Sleeping 1.0 seconds ...
+[youtube] i1Uwl0geztQ: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] i1Uwl0geztQ: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] i1Uwl0geztQ: Downloading m3u8 information
+[info] i1Uwl0geztQ: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Franco Camiolo - Speculating As Unknown (Echo Daft Remix) - 2022.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Franco Camiolo - Speculating As Unknown (Echo Daft Remix) - 2022.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Franco Camiolo - Speculating As Unknown (Echo Daft Remix) - 2022.webp (pass -k to keep)
+[download] Sleeping 2.07 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Franco Camiolo - Speculating As Unknown (Echo Daft Remix) - 2022.webm
+[download]   0.0% of    7.83MiB at  Unknown B/s ETA Unknown[download]   0.0% of    7.83MiB at    2.43MiB/s ETA 00:03  [download]   0.1% of    7.83MiB at    5.28MiB/s ETA 00:01[download]   0.2% of    7.83MiB at   10.60MiB/s ETA 00:00[download]   0.4% of    7.83MiB at   20.52MiB/s ETA 00:00[download]   0.8% of    7.83MiB at   38.62MiB/s ETA 00:00[download]   1.6% of    7.83MiB at   18.46MiB/s ETA 00:00[download]   3.2% of    7.83MiB at   15.24MiB/s ETA 00:00[download]   6.4% of    7.83MiB at   16.10MiB/s ETA 00:00[download]  12.8% of    7.83MiB at   14.74MiB/s ETA 00:00[download]  25.5% of    7.83MiB at   15.04MiB/s ETA 00:00[download]  51.1% of    7.83MiB at   23.06MiB/s ETA 00:00[download] 100.0% of    7.83MiB at    6.77MiB/s ETA 00:00[download] 100% of    7.83MiB in 00:00:02 at 3.69MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Franco Camiolo - Speculating As Unknown (Echo Daft Remix) - 2022.mp3
+Deleting original file ProgressiveHouse/_played-before/Franco Camiolo - Speculating As Unknown (Echo Daft Remix) - 2022.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Franco Camiolo - Speculating As Unknown (Echo Daft Remix) - 2022.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Franco Camiolo - Speculating As Unknown (Echo Daft Remix) - 2022.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=i21JJKkOHYk
+[youtube] Sleeping 1.0 seconds ...
+[youtube] i21JJKkOHYk: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] i21JJKkOHYk: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] i21JJKkOHYk: Downloading m3u8 information
+[info] i21JJKkOHYk: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Rafa Polo — The Sands - 2025.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Rafa Polo — The Sands - 2025.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Rafa Polo — The Sands - 2025.webp (pass -k to keep)
+[download] Sleeping 1.41 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Rafa Polo — The Sands - 2025.webm
+[download]   0.0% of    5.81MiB at  316.46KiB/s ETA 00:18[download]   0.1% of    5.81MiB at  798.97KiB/s ETA 00:07[download]   0.1% of    5.81MiB at    1.67MiB/s ETA 00:03[download]   0.3% of    5.81MiB at    3.33MiB/s ETA 00:01[download]   0.5% of    5.81MiB at    6.39MiB/s ETA 00:00[download]   1.1% of    5.81MiB at   12.02MiB/s ETA 00:00[download]   2.1% of    5.81MiB at   15.83MiB/s ETA 00:00[download]   4.3% of    5.81MiB at   14.31MiB/s ETA 00:00[download]   8.6% of    5.81MiB at   14.23MiB/s ETA 00:00[download]  17.2% of    5.81MiB at   14.52MiB/s ETA 00:00[download]  34.4% of    5.81MiB at   14.94MiB/s ETA 00:00[download]  68.8% of    5.81MiB at   20.59MiB/s ETA 00:00[download] 100.0% of    5.81MiB at    5.12MiB/s ETA 00:00[download] 100% of    5.81MiB in 00:00:01 at 4.51MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Rafa Polo — The Sands - 2025.mp3
+Deleting original file ProgressiveHouse/_played-before/Rafa Polo — The Sands - 2025.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Rafa Polo — The Sands - 2025.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Rafa Polo — The Sands - 2025.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=iosaSwiYp4E
+[youtube] Sleeping 1.0 seconds ...
+[youtube] iosaSwiYp4E: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] iosaSwiYp4E: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] iosaSwiYp4E: Downloading m3u8 information
+[info] iosaSwiYp4E: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Kolsch - All That Matters (ARTBAT remix), Official Video - 2023.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Kolsch - All That Matters (ARTBAT remix), Official Video - 2023.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Kolsch - All That Matters (ARTBAT remix), Official Video - 2023.webp (pass -k to keep)
+[download] Sleeping 3.11 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Kolsch - All That Matters (ARTBAT remix), Official Video - 2023.webm
+[download]   0.0% of    8.01MiB at   32.40KiB/s ETA 04:13[download]   0.0% of    8.01MiB at   93.80KiB/s ETA 01:27[download]   0.1% of    8.01MiB at  215.55KiB/s ETA 00:38[download]   0.2% of    8.01MiB at  457.75KiB/s ETA 00:17[download]   0.4% of    8.01MiB at  621.89KiB/s ETA 00:13[download]   0.8% of    8.01MiB at  661.46KiB/s ETA 00:12[download]   1.5% of    8.01MiB at  689.91KiB/s ETA 00:11[download]   3.1% of    8.01MiB at  811.25KiB/s ETA 00:09[download]   6.2% of    8.01MiB at  941.30KiB/s ETA 00:08[download]  12.5% of    8.01MiB at  895.21KiB/s ETA 00:08[download]  22.9% of    8.01MiB at  754.19KiB/s ETA 00:08[download]  30.6% of    8.01MiB at  767.62KiB/s ETA 00:07[download]  40.5% of    8.01MiB at  606.21KiB/s ETA 00:08[download]  45.5% of    8.01MiB at  612.78KiB/s ETA 00:07[download]  53.7% of    8.01MiB at  535.50KiB/s ETA 00:07[download]  57.8% of    8.01MiB at  542.31KiB/s ETA 00:06[download]  65.7% of    8.01MiB at  581.98KiB/s ETA 00:04[download]  80.9% of    8.01MiB at  588.39KiB/s ETA 00:02[download]  88.5% of    8.01MiB at  587.26KiB/s ETA 00:01[download]  95.5% of    8.01MiB at  606.64KiB/s ETA 00:00[download] 100.0% of    8.01MiB at  614.34KiB/s ETA 00:00[download] 100% of    8.01MiB in 00:00:13 at 609.12KiB/s 
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Kolsch - All That Matters (ARTBAT remix), Official Video - 2023.mp3
+Deleting original file ProgressiveHouse/_played-before/Kolsch - All That Matters (ARTBAT remix), Official Video - 2023.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Kolsch - All That Matters (ARTBAT remix), Official Video - 2023.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Kolsch - All That Matters (ARTBAT remix), Official Video - 2023.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=iwxIsI-QClg
+[youtube] Sleeping 1.0 seconds ...
+[youtube] iwxIsI-QClg: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] iwxIsI-QClg: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] iwxIsI-QClg: Downloading m3u8 information
+[info] iwxIsI-QClg: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Teklix - Alchemist (Original Mix) [Outta Limits] - 2022.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Teklix - Alchemist (Original Mix) [Outta Limits] - 2022.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Teklix - Alchemist (Original Mix) [Outta Limits] - 2022.webp (pass -k to keep)
+[download] Sleeping 1.95 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Teklix - Alchemist (Original Mix) [Outta Limits] - 2022.webm
+[download]   0.0% of    7.59MiB at  421.45KiB/s ETA 00:18[download]   0.0% of    7.59MiB at  905.31KiB/s ETA 00:08[download]   0.1% of    7.59MiB at    1.88MiB/s ETA 00:04[download]   0.2% of    7.59MiB at    3.85MiB/s ETA 00:01[download]   0.4% of    7.59MiB at    3.97MiB/s ETA 00:01[download]   0.8% of    7.59MiB at    5.01MiB/s ETA 00:01[download]   1.6% of    7.59MiB at    7.95MiB/s ETA 00:00[download]   3.3% of    7.59MiB at   10.63MiB/s ETA 00:00[download]   6.6% of    7.59MiB at   16.02MiB/s ETA 00:00[download]  13.2% of    7.59MiB at   14.87MiB/s ETA 00:00[download]  26.3% of    7.59MiB at   15.09MiB/s ETA 00:00[download]  52.7% of    7.59MiB at   12.40MiB/s ETA 00:00[download] 100.0% of    7.59MiB at   14.54MiB/s ETA 00:00[download] 100% of    7.59MiB in 00:00:00 at 11.29MiB/s  
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Teklix - Alchemist (Original Mix) [Outta Limits] - 2022.mp3
+Deleting original file ProgressiveHouse/_played-before/Teklix - Alchemist (Original Mix) [Outta Limits] - 2022.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Teklix - Alchemist (Original Mix) [Outta Limits] - 2022.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Teklix - Alchemist (Original Mix) [Outta Limits] - 2022.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=j0slSZOpXcU
+[youtube] Sleeping 1.0 seconds ...
+[youtube] j0slSZOpXcU: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] j0slSZOpXcU: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] j0slSZOpXcU: Downloading m3u8 information
+[info] j0slSZOpXcU: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Khen - Babylon - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Khen - Babylon - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Khen - Babylon - 2024.webp (pass -k to keep)
+[download] Sleeping 3.52 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Khen - Babylon - 2024.webm
+[download]   0.0% of    7.69MiB at  Unknown B/s ETA Unknown[download]   0.0% of    7.69MiB at  Unknown B/s ETA Unknown[download]   0.1% of    7.69MiB at    6.57MiB/s ETA 00:01  [download]   0.2% of    7.69MiB at   13.05MiB/s ETA 00:00[download]   0.4% of    7.69MiB at   16.23MiB/s ETA 00:00[download]   0.8% of    7.69MiB at   15.60MiB/s ETA 00:00[download]   1.6% of    7.69MiB at   28.94MiB/s ETA 00:00[download]   3.2% of    7.69MiB at   22.45MiB/s ETA 00:00[download]   6.5% of    7.69MiB at   20.62MiB/s ETA 00:00[download]  13.0% of    7.69MiB at   18.75MiB/s ETA 00:00[download]  26.0% of    7.69MiB at   16.47MiB/s ETA 00:00[download]  52.0% of    7.69MiB at   12.11MiB/s ETA 00:00[download] 100.0% of    7.69MiB at    8.49MiB/s ETA 00:00[download] 100% of    7.69MiB in 00:00:01 at 6.20MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Khen - Babylon - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/Khen - Babylon - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Khen - Babylon - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Khen - Babylon - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=jpZaL_P0SVY
+[youtube] Sleeping 1.0 seconds ...
+[youtube] jpZaL_P0SVY: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] jpZaL_P0SVY: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] jpZaL_P0SVY: Downloading tv downgraded player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] jpZaL_P0SVY: Downloading web embedded client config
+[youtube] Sleeping 1.0 seconds ...
+[youtube] jpZaL_P0SVY: Downloading player e937390a-main
+[youtube] Sleeping 1.0 seconds ...
+[youtube] jpZaL_P0SVY: Downloading web embedded player API JSON
+[youtube] [jsc:node] Solving JS challenges using node
+[info] jpZaL_P0SVY: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Khen - Out Of A Dream - 2020.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Khen - Out Of A Dream - 2020.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Khen - Out Of A Dream - 2020.webp (pass -k to keep)
+[download] Sleeping 5.00 seconds as required by the site...
+[download] Destination: ProgressiveHouse/_played-before/Khen - Out Of A Dream - 2020.webm
+[download]   0.0% of    8.06MiB at  117.20KiB/s ETA 01:10[download]   0.0% of    8.06MiB at  288.74KiB/s ETA 00:28[download]   0.1% of    8.06MiB at  656.97KiB/s ETA 00:12[download]   0.2% of    8.06MiB at    1.36MiB/s ETA 00:05[download]   0.4% of    8.06MiB at    2.72MiB/s ETA 00:02[download]   0.8% of    8.06MiB at    5.36MiB/s ETA 00:01[download]   1.5% of    8.06MiB at    3.92MiB/s ETA 00:02[download]   3.1% of    8.06MiB at    3.46MiB/s ETA 00:02[download]   6.2% of    8.06MiB at    4.65MiB/s ETA 00:01[download]  12.4% of    8.06MiB at    6.87MiB/s ETA 00:01[download]  24.8% of    8.06MiB at    9.30MiB/s ETA 00:00[download]  49.6% of    8.06MiB at   14.36MiB/s ETA 00:00[download]  99.2% of    8.06MiB at   17.50MiB/s ETA 00:00[download] 100.0% of    8.06MiB at   17.07MiB/s ETA 00:00[download] 100% of    8.06MiB in 00:00:00 at 9.86MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Khen - Out Of A Dream - 2020.mp3
+Deleting original file ProgressiveHouse/_played-before/Khen - Out Of A Dream - 2020.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Khen - Out Of A Dream - 2020.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Khen - Out Of A Dream - 2020.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=l1I-yJ97ErA
+[youtube] Sleeping 1.0 seconds ...
+[youtube] l1I-yJ97ErA: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] l1I-yJ97ErA: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] l1I-yJ97ErA: Downloading m3u8 information
+[info] l1I-yJ97ErA: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/BluePaper - Azimuth (Extended Mix) - 2023.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/BluePaper - Azimuth (Extended Mix) - 2023.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/BluePaper - Azimuth (Extended Mix) - 2023.webp (pass -k to keep)
+[download] Sleeping 1.68 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/BluePaper - Azimuth (Extended Mix) - 2023.webm
+[download]   0.0% of    6.75MiB at  Unknown B/s ETA Unknown[download]   0.0% of    6.75MiB at    2.72MiB/s ETA 00:02  [download]   0.1% of    6.75MiB at    5.54MiB/s ETA 00:01[download]   0.2% of    6.75MiB at   10.83MiB/s ETA 00:00[download]   0.4% of    6.75MiB at   20.21MiB/s ETA 00:00[download]   0.9% of    6.75MiB at   36.31MiB/s ETA 00:00[download]   1.8% of    6.75MiB at   26.89MiB/s ETA 00:00[download]   3.7% of    6.75MiB at   16.46MiB/s ETA 00:00[download]   7.4% of    6.75MiB at   15.33MiB/s ETA 00:00[download]  14.8% of    6.75MiB at   15.57MiB/s ETA 00:00[download]  29.6% of    6.75MiB at   14.88MiB/s ETA 00:00[download]  59.3% of    6.75MiB at    6.10MiB/s ETA 00:00[download] 100.0% of    6.75MiB at    3.76MiB/s ETA 00:00[download] 100% of    6.75MiB in 00:00:01 at 3.50MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/BluePaper - Azimuth (Extended Mix) - 2023.mp3
+Deleting original file ProgressiveHouse/_played-before/BluePaper - Azimuth (Extended Mix) - 2023.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/BluePaper - Azimuth (Extended Mix) - 2023.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/BluePaper - Azimuth (Extended Mix) - 2023.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=lnsQYNk2VR4
+[youtube] Sleeping 1.0 seconds ...
+[youtube] lnsQYNk2VR4: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] lnsQYNk2VR4: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] lnsQYNk2VR4: Downloading m3u8 information
+[info] lnsQYNk2VR4: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/PREMIERE： Callecat, Nick Varon - Beyond Perceptions (Hernan Cattaneo & Jamie Stevens Remix) [Manual] - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/PREMIERE： Callecat, Nick Varon - Beyond Perceptions (Hernan Cattaneo & Jamie Stevens Remix) [Manual] - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/PREMIERE： Callecat, Nick Varon - Beyond Perceptions (Hernan Cattaneo & Jamie Stevens Remix) [Manual] - 2024.webp (pass -k to keep)
+[download] Sleeping 3.04 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/PREMIERE： Callecat, Nick Varon - Beyond Perceptions (Hernan Cattaneo & Jamie Stevens Remix) [Manual] - 2024.webm
+[download]   0.0% of    7.67MiB at  520.58KiB/s ETA 00:15[download]   0.0% of    7.67MiB at 1002.94KiB/s ETA 00:07[download]   0.1% of    7.67MiB at    2.15MiB/s ETA 00:03[download]   0.2% of    7.67MiB at    4.36MiB/s ETA 00:01[download]   0.4% of    7.67MiB at    8.61MiB/s ETA 00:00[download]   0.8% of    7.67MiB at   16.91MiB/s ETA 00:00[download]   1.6% of    7.67MiB at   16.00MiB/s ETA 00:00[download]   3.2% of    7.67MiB at   15.86MiB/s ETA 00:00[download]   6.5% of    7.67MiB at   16.36MiB/s ETA 00:00[download]  13.0% of    7.67MiB at   14.57MiB/s ETA 00:00[download]  26.1% of    7.67MiB at   13.96MiB/s ETA 00:00[download]  52.1% of    7.67MiB at   17.55MiB/s ETA 00:00[download] 100.0% of    7.67MiB at   12.88MiB/s ETA 00:00[download] 100% of    7.67MiB in 00:00:00 at 10.25MiB/s  
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/PREMIERE： Callecat, Nick Varon - Beyond Perceptions (Hernan Cattaneo & Jamie Stevens Remix) [Manual] - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/PREMIERE： Callecat, Nick Varon - Beyond Perceptions (Hernan Cattaneo & Jamie Stevens Remix) [Manual] - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/PREMIERE： Callecat, Nick Varon - Beyond Perceptions (Hernan Cattaneo & Jamie Stevens Remix) [Manual] - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/PREMIERE： Callecat, Nick Varon - Beyond Perceptions (Hernan Cattaneo & Jamie Stevens Remix) [Manual] - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=mzlenuc752Y
+[youtube] Sleeping 1.0 seconds ...
+[youtube] mzlenuc752Y: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] mzlenuc752Y: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] mzlenuc752Y: Downloading m3u8 information
+[info] mzlenuc752Y: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/MAZE 28 Eureka - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/MAZE 28 Eureka - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/MAZE 28 Eureka - 2024.webp (pass -k to keep)
+[download] Sleeping 1.93 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/MAZE 28 Eureka - 2024.webm
+[download]   0.0% of    7.54MiB at   67.46KiB/s ETA 01:54[download]   0.0% of    7.54MiB at  195.76KiB/s ETA 00:39[download]   0.1% of    7.54MiB at  452.17KiB/s ETA 00:17[download]   0.2% of    7.54MiB at  961.91KiB/s ETA 00:08[download]   0.4% of    7.54MiB at    1.44MiB/s ETA 00:05[download]   0.8% of    7.54MiB at    2.88MiB/s ETA 00:02[download]   1.6% of    7.54MiB at    2.95MiB/s ETA 00:02[download]   3.3% of    7.54MiB at    3.71MiB/s ETA 00:01[download]   6.6% of    7.54MiB at    3.08MiB/s ETA 00:02[download]  13.2% of    7.54MiB at    2.06MiB/s ETA 00:03[download]  26.5% of    7.54MiB at  944.07KiB/s ETA 00:06[download]  34.4% of    7.54MiB at  920.72KiB/s ETA 00:05[download]  45.4% of    7.54MiB at  859.19KiB/s ETA 00:04[download]  54.6% of    7.54MiB at  809.24KiB/s ETA 00:04[download]  62.7% of    7.54MiB at  737.95KiB/s ETA 00:03[download]  68.7% of    7.54MiB at  740.44KiB/s ETA 00:03[download]  78.6% of    7.54MiB at  723.95KiB/s ETA 00:02[download]  86.8% of    7.54MiB at  713.63KiB/s ETA 00:01[download]  94.9% of    7.54MiB at  712.23KiB/s ETA 00:00[download] 100.0% of    7.54MiB at  714.21KiB/s ETA 00:00[download] 100% of    7.54MiB in 00:00:12 at 599.73KiB/s 
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/MAZE 28 Eureka - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/MAZE 28 Eureka - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/MAZE 28 Eureka - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/MAZE 28 Eureka - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=n-dUyX5IggI
+[youtube] Sleeping 1.0 seconds ...
+[youtube] n-dUyX5IggI: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] n-dUyX5IggI: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] n-dUyX5IggI: Downloading m3u8 information
+[info] n-dUyX5IggI: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Video Thumbnail 41 does not exist
+[info] Downloading video thumbnail 40 ...
+[info] Video Thumbnail 40 does not exist
+[info] Downloading video thumbnail 39 ...
+[info] Video Thumbnail 39 does not exist
+[info] Downloading video thumbnail 38 ...
+[info] Video Thumbnail 38 does not exist
+[info] Downloading video thumbnail 37 ...
+[info] Writing video thumbnail 37 to: ProgressiveHouse/_played-before/RIGOONI - Petrichor - 2021.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/RIGOONI - Petrichor - 2021.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/RIGOONI - Petrichor - 2021.webp (pass -k to keep)
+[download] Sleeping 1.97 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/RIGOONI - Petrichor - 2021.webm
+[download]   0.0% of    7.66MiB at  448.88KiB/s ETA 00:17[download]   0.0% of    7.66MiB at    1.13MiB/s ETA 00:06[download]   0.1% of    7.66MiB at    2.40MiB/s ETA 00:03[download]   0.2% of    7.66MiB at    4.91MiB/s ETA 00:01[download]   0.4% of    7.66MiB at    7.88MiB/s ETA 00:00[download]   0.8% of    7.66MiB at   13.36MiB/s ETA 00:00[download]   1.6% of    7.66MiB at   10.99MiB/s ETA 00:00[download]   3.3% of    7.66MiB at   15.03MiB/s ETA 00:00[download]   6.5% of    7.66MiB at   15.24MiB/s ETA 00:00[download]  13.0% of    7.66MiB at   14.80MiB/s ETA 00:00[download]  26.1% of    7.66MiB at   14.96MiB/s ETA 00:00[download]  52.2% of    7.66MiB at   10.48MiB/s ETA 00:00[download] 100.0% of    7.66MiB at    8.08MiB/s ETA 00:00[download] 100% of    7.66MiB in 00:00:01 at 6.94MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/RIGOONI - Petrichor - 2021.mp3
+Deleting original file ProgressiveHouse/_played-before/RIGOONI - Petrichor - 2021.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/RIGOONI - Petrichor - 2021.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/RIGOONI - Petrichor - 2021.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=oVRPQKdceJg
+[youtube] Sleeping 1.0 seconds ...
+[youtube] oVRPQKdceJg: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] oVRPQKdceJg: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] oVRPQKdceJg: Downloading m3u8 information
+[info] oVRPQKdceJg: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Nicholas Van Orton - Groovelow [Balkan Connection South America] - 2026.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Nicholas Van Orton - Groovelow [Balkan Connection South America] - 2026.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Nicholas Van Orton - Groovelow [Balkan Connection South America] - 2026.webp (pass -k to keep)
+[download] Sleeping 3.48 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Nicholas Van Orton - Groovelow [Balkan Connection South America] - 2026.webm
+[download]   0.0% of    6.90MiB at  217.33KiB/s ETA 00:32[download]   0.0% of    6.90MiB at  588.23KiB/s ETA 00:12[download]   0.1% of    6.90MiB at    1.30MiB/s ETA 00:05[download]   0.2% of    6.90MiB at    2.69MiB/s ETA 00:02[download]   0.4% of    6.90MiB at    5.00MiB/s ETA 00:01[download]   0.9% of    6.90MiB at    7.41MiB/s ETA 00:00[download]   1.8% of    6.90MiB at    8.11MiB/s ETA 00:00[download]   3.6% of    6.90MiB at   11.42MiB/s ETA 00:00[download]   7.2% of    6.90MiB at   14.69MiB/s ETA 00:00[download]  14.5% of    6.90MiB at   15.48MiB/s ETA 00:00[download]  29.0% of    6.90MiB at   14.84MiB/s ETA 00:00[download]  58.0% of    6.90MiB at    6.73MiB/s ETA 00:00[download] 100.0% of    6.90MiB at    9.28MiB/s ETA 00:00[download] 100% of    6.90MiB in 00:00:00 at 7.44MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Nicholas Van Orton - Groovelow [Balkan Connection South America] - 2026.mp3
+Deleting original file ProgressiveHouse/_played-before/Nicholas Van Orton - Groovelow [Balkan Connection South America] - 2026.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Nicholas Van Orton - Groovelow [Balkan Connection South America] - 2026.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Nicholas Van Orton - Groovelow [Balkan Connection South America] - 2026.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=ojUtNrexUKk
+[youtube] Sleeping 1.0 seconds ...
+[youtube] ojUtNrexUKk: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] ojUtNrexUKk: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] ojUtNrexUKk: Downloading m3u8 information
+[info] ojUtNrexUKk: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Alex O'Rion - Echium (Original Mix) [meanwhile] - 2021.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Alex O'Rion - Echium (Original Mix) [meanwhile] - 2021.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Alex O'Rion - Echium (Original Mix) [meanwhile] - 2021.webp (pass -k to keep)
+[download] Sleeping 2.74 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Alex O'Rion - Echium (Original Mix) [meanwhile] - 2021.webm
+[download]   0.0% of    7.66MiB at  805.82KiB/s ETA 00:09[download]   0.0% of    7.66MiB at    1.94MiB/s ETA 00:03[download]   0.1% of    7.66MiB at    4.20MiB/s ETA 00:01[download]   0.2% of    7.66MiB at    8.48MiB/s ETA 00:00[download]   0.4% of    7.66MiB at   16.42MiB/s ETA 00:00[download]   0.8% of    7.66MiB at   29.22MiB/s ETA 00:00[download]   1.6% of    7.66MiB at   30.60MiB/s ETA 00:00[download]   3.3% of    7.66MiB at   16.98MiB/s ETA 00:00[download]   6.5% of    7.66MiB at   15.79MiB/s ETA 00:00[download]  13.0% of    7.66MiB at    9.85MiB/s ETA 00:00[download]  26.1% of    7.66MiB at    8.36MiB/s ETA 00:00[download]  52.2% of    7.66MiB at   14.35MiB/s ETA 00:00[download] 100.0% of    7.66MiB at    5.75MiB/s ETA 00:00[download] 100% of    7.66MiB in 00:00:01 at 5.15MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Alex O'Rion - Echium (Original Mix) [meanwhile] - 2021.mp3
+Deleting original file ProgressiveHouse/_played-before/Alex O'Rion - Echium (Original Mix) [meanwhile] - 2021.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Alex O'Rion - Echium (Original Mix) [meanwhile] - 2021.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Alex O'Rion - Echium (Original Mix) [meanwhile] - 2021.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=pNYw9kUkPEk
+[youtube] Sleeping 1.0 seconds ...
+[youtube] pNYw9kUkPEk: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] pNYw9kUkPEk: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] pNYw9kUkPEk: Downloading m3u8 information
+[info] pNYw9kUkPEk: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Video Thumbnail 41 does not exist
+[info] Downloading video thumbnail 40 ...
+[info] Writing video thumbnail 40 to: ProgressiveHouse/_played-before/Way Out West - Future Perfect (Henry Saiz Mix) - 2014.jpg
+[ThumbnailsConvertor] Not converting thumbnail "ProgressiveHouse/_played-before/Way Out West - Future Perfect (Henry Saiz Mix) - 2014.jpg"; already is in target format jpg
+[download] Sleeping 2.79 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Way Out West - Future Perfect (Henry Saiz Mix) - 2014.webm
+[download]   0.0% of   10.06MiB at  Unknown B/s ETA Unknown[download]   0.0% of   10.06MiB at  Unknown B/s ETA Unknown[download]   0.1% of   10.06MiB at    6.21MiB/s ETA 00:01  [download]   0.1% of   10.06MiB at   11.78MiB/s ETA 00:00[download]   0.3% of   10.06MiB at    4.76MiB/s ETA 00:02[download]   0.6% of   10.06MiB at    5.12MiB/s ETA 00:01[download]   1.2% of   10.06MiB at    8.75MiB/s ETA 00:01[download]   2.5% of   10.06MiB at   11.35MiB/s ETA 00:00[download]   5.0% of   10.06MiB at   14.68MiB/s ETA 00:00[download]   9.9% of   10.06MiB at   15.63MiB/s ETA 00:00[download]  19.9% of   10.06MiB at   11.11MiB/s ETA 00:00[download]  39.7% of   10.06MiB at    3.73MiB/s ETA 00:01[download]  62.0% of   10.06MiB at    4.92MiB/s ETA 00:00[download]  99.1% of   10.06MiB at    6.98MiB/s ETA 00:00[download]  99.1% of   10.06MiB at  Unknown B/s ETA Unknown[download]  99.2% of   10.06MiB at    2.49MiB/s ETA 00:00  [download]  99.2% of   10.06MiB at    5.25MiB/s ETA 00:00[download]  99.3% of   10.06MiB at   10.26MiB/s ETA 00:00[download]  99.4% of   10.06MiB at   19.60MiB/s ETA 00:00[download]  99.7% of   10.06MiB at   31.63MiB/s ETA 00:00[download] 100.0% of   10.06MiB at   39.49MiB/s ETA 00:00[download] 100% of   10.06MiB in 00:00:02 at 4.59MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Way Out West - Future Perfect (Henry Saiz Mix) - 2014.mp3
+Deleting original file ProgressiveHouse/_played-before/Way Out West - Future Perfect (Henry Saiz Mix) - 2014.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Way Out West - Future Perfect (Henry Saiz Mix) - 2014.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Way Out West - Future Perfect (Henry Saiz Mix) - 2014.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=pqFGIC8tbFg
+[youtube] Sleeping 1.0 seconds ...
+[youtube] pqFGIC8tbFg: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] pqFGIC8tbFg: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] pqFGIC8tbFg: Downloading m3u8 information
+[info] pqFGIC8tbFg: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/PREMIERE： Bondarev - Meteora (Cosmonaut Remix) [WARPP] - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/PREMIERE： Bondarev - Meteora (Cosmonaut Remix) [WARPP] - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/PREMIERE： Bondarev - Meteora (Cosmonaut Remix) [WARPP] - 2024.webp (pass -k to keep)
+[download] Sleeping 2.49 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/PREMIERE： Bondarev - Meteora (Cosmonaut Remix) [WARPP] - 2024.webm
+[download]   0.0% of    6.92MiB at  934.77KiB/s ETA 00:07[download]   0.0% of    6.92MiB at    2.07MiB/s ETA 00:03[download]   0.1% of    6.92MiB at    4.33MiB/s ETA 00:01[download]   0.2% of    6.92MiB at    8.52MiB/s ETA 00:00[download]   0.4% of    6.92MiB at   15.80MiB/s ETA 00:00[download]   0.9% of    6.92MiB at   28.54MiB/s ETA 00:00[download]   1.8% of    6.92MiB at   15.16MiB/s ETA 00:00[download]   3.6% of    6.92MiB at   16.61MiB/s ETA 00:00[download]   7.2% of    6.92MiB at   14.88MiB/s ETA 00:00[download]  14.4% of    6.92MiB at   14.83MiB/s ETA 00:00[download]  28.9% of    6.92MiB at   15.04MiB/s ETA 00:00[download]  57.8% of    6.92MiB at   22.38MiB/s ETA 00:00[download] 100.0% of    6.92MiB at   14.52MiB/s ETA 00:00[download] 100% of    6.92MiB in 00:00:00 at 10.45MiB/s  
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/PREMIERE： Bondarev - Meteora (Cosmonaut Remix) [WARPP] - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/PREMIERE： Bondarev - Meteora (Cosmonaut Remix) [WARPP] - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/PREMIERE： Bondarev - Meteora (Cosmonaut Remix) [WARPP] - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/PREMIERE： Bondarev - Meteora (Cosmonaut Remix) [WARPP] - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=r-_2JK4xbc4
+[youtube] Sleeping 1.0 seconds ...
+[youtube] r-_2JK4xbc4: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] r-_2JK4xbc4: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] r-_2JK4xbc4: Downloading m3u8 information
+[info] r-_2JK4xbc4: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Video Thumbnail 41 does not exist
+[info] Downloading video thumbnail 40 ...
+[info] Video Thumbnail 40 does not exist
+[info] Downloading video thumbnail 39 ...
+[info] Video Thumbnail 39 does not exist
+[info] Downloading video thumbnail 38 ...
+[info] Video Thumbnail 38 does not exist
+[info] Downloading video thumbnail 37 ...
+[info] Video Thumbnail 37 does not exist
+[info] Downloading video thumbnail 36 ...
+[info] Video Thumbnail 36 does not exist
+[info] Downloading video thumbnail 35 ...
+[info] Writing video thumbnail 35 to: ProgressiveHouse/_played-before/Bondarev - Remote Control (HAFT Remix) [WARPP] - 2025.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Bondarev - Remote Control (HAFT Remix) [WARPP] - 2025.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Bondarev - Remote Control (HAFT Remix) [WARPP] - 2025.webp (pass -k to keep)
+[download] Sleeping 3.17 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Bondarev - Remote Control (HAFT Remix) [WARPP] - 2025.webm
+[download]   0.0% of    6.12MiB at  Unknown B/s ETA Unknown[download]   0.0% of    6.12MiB at    2.38MiB/s ETA 00:02  [download]   0.1% of    6.12MiB at    4.40MiB/s ETA 00:01[download]   0.2% of    6.12MiB at    8.01MiB/s ETA 00:00[download]   0.5% of    6.12MiB at   13.43MiB/s ETA 00:00[download]   1.0% of    6.12MiB at   16.16MiB/s ETA 00:00[download]   2.0% of    6.12MiB at   15.74MiB/s ETA 00:00[download]   4.1% of    6.12MiB at   14.48MiB/s ETA 00:00[download]   8.2% of    6.12MiB at   14.82MiB/s ETA 00:00[download]  16.3% of    6.12MiB at   14.69MiB/s ETA 00:00[download]  32.7% of    6.12MiB at   14.82MiB/s ETA 00:00[download]  65.3% of    6.12MiB at    6.16MiB/s ETA 00:00[download] 100.0% of    6.12MiB at    4.25MiB/s ETA 00:00[download] 100% of    6.12MiB in 00:00:01 at 3.89MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Bondarev - Remote Control (HAFT Remix) [WARPP] - 2025.mp3
+Deleting original file ProgressiveHouse/_played-before/Bondarev - Remote Control (HAFT Remix) [WARPP] - 2025.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Bondarev - Remote Control (HAFT Remix) [WARPP] - 2025.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Bondarev - Remote Control (HAFT Remix) [WARPP] - 2025.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=rVThzCxPVsM
+[youtube] Sleeping 1.0 seconds ...
+[youtube] rVThzCxPVsM: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] rVThzCxPVsM: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] rVThzCxPVsM: Downloading m3u8 information
+[info] rVThzCxPVsM: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/Khen - Lyup - 2025.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Khen - Lyup - 2025.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Khen - Lyup - 2025.webp (pass -k to keep)
+[download] Sleeping 2.43 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Khen - Lyup - 2025.webm
+[download]   0.0% of    8.57MiB at  Unknown B/s ETA Unknown[download]   0.0% of    8.57MiB at    2.56MiB/s ETA 00:03  [download]   0.1% of    8.57MiB at    4.76MiB/s ETA 00:01[download]   0.2% of    8.57MiB at    8.68MiB/s ETA 00:00[download]   0.4% of    8.57MiB at   15.42MiB/s ETA 00:00[download]   0.7% of    8.57MiB at   26.66MiB/s ETA 00:00[download]   1.4% of    8.57MiB at   19.15MiB/s ETA 00:00[download]   2.9% of    8.57MiB at   14.59MiB/s ETA 00:00[download]   5.8% of    8.57MiB at   17.39MiB/s ETA 00:00[download]  11.7% of    8.57MiB at   10.22MiB/s ETA 00:00[download]  23.3% of    8.57MiB at    8.49MiB/s ETA 00:00[download]  46.7% of    8.57MiB at    8.05MiB/s ETA 00:00[download]  93.4% of    8.57MiB at    5.29MiB/s ETA 00:00[download] 100.0% of    8.57MiB at    5.30MiB/s ETA 00:00[download] 100% of    8.57MiB in 00:00:01 at 4.99MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Khen - Lyup - 2025.mp3
+Deleting original file ProgressiveHouse/_played-before/Khen - Lyup - 2025.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Khen - Lyup - 2025.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Khen - Lyup - 2025.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=sEZXleciolE
+[youtube] Sleeping 1.0 seconds ...
+[youtube] sEZXleciolE: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] sEZXleciolE: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] sEZXleciolE: Downloading m3u8 information
+[info] sEZXleciolE: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 43 ...
+[info] Video Thumbnail 43 does not exist
+[info] Downloading video thumbnail 42 ...
+[info] Video Thumbnail 42 does not exist
+[info] Downloading video thumbnail 41 ...
+[info] Video Thumbnail 41 does not exist
+[info] Downloading video thumbnail 40 ...
+[info] Video Thumbnail 40 does not exist
+[info] Downloading video thumbnail 39 ...
+[info] Writing video thumbnail 39 to: ProgressiveHouse/_played-before/Shai T - Gates of Thēbai (Original Mix) [DO NOT SIT ON THE FURNITURE RECORDINGS] - 2021.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Shai T - Gates of Thēbai (Original Mix) [DO NOT SIT ON THE FURNITURE RECORDINGS] - 2021.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Shai T - Gates of Thēbai (Original Mix) [DO NOT SIT ON THE FURNITURE RECORDINGS] - 2021.webp (pass -k to keep)
+[download] Sleeping 2.01 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Shai T - Gates of Thēbai (Original Mix) [DO NOT SIT ON THE FURNITURE RECORDINGS] - 2021.webm
+[download]   0.0% of    6.71MiB at  999.12KiB/s ETA 00:06[download]   0.0% of    6.71MiB at    2.22MiB/s ETA 00:03[download]   0.1% of    6.71MiB at    4.75MiB/s ETA 00:01[download]   0.2% of    6.71MiB at    9.46MiB/s ETA 00:00[download]   0.5% of    6.71MiB at   18.06MiB/s ETA 00:00[download]   0.9% of    6.71MiB at   15.81MiB/s ETA 00:00[download]   1.8% of    6.71MiB at   24.59MiB/s ETA 00:00[download]   3.7% of    6.71MiB at   14.78MiB/s ETA 00:00[download]   7.4% of    6.71MiB at   16.33MiB/s ETA 00:00[download]  14.9% of    6.71MiB at    9.90MiB/s ETA 00:00[download]  29.8% of    6.71MiB at    8.30MiB/s ETA 00:00[download]  59.6% of    6.71MiB at   14.23MiB/s ETA 00:00[download] 100.0% of    6.71MiB at   13.59MiB/s ETA 00:00[download] 100% of    6.71MiB in 00:00:00 at 10.44MiB/s  
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Shai T - Gates of Thēbai (Original Mix) [DO NOT SIT ON THE FURNITURE RECORDINGS] - 2021.mp3
+Deleting original file ProgressiveHouse/_played-before/Shai T - Gates of Thēbai (Original Mix) [DO NOT SIT ON THE FURNITURE RECORDINGS] - 2021.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Shai T - Gates of Thēbai (Original Mix) [DO NOT SIT ON THE FURNITURE RECORDINGS] - 2021.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Shai T - Gates of Thēbai (Original Mix) [DO NOT SIT ON THE FURNITURE RECORDINGS] - 2021.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=sI603xjBTSg
+[youtube] Sleeping 1.0 seconds ...
+[youtube] sI603xjBTSg: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] sI603xjBTSg: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] sI603xjBTSg: Downloading m3u8 information
+[info] sI603xjBTSg: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/FJL - Alter Ego (Original Mix) [Proportion] - 2025.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/FJL - Alter Ego (Original Mix) [Proportion] - 2025.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/FJL - Alter Ego (Original Mix) [Proportion] - 2025.webp (pass -k to keep)
+[download] Sleeping 2.14 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/FJL - Alter Ego (Original Mix) [Proportion] - 2025.webm
+[download]   0.0% of    6.12MiB at  776.44KiB/s ETA 00:08[download]   0.0% of    6.12MiB at    1.02MiB/s ETA 00:06[download]   0.1% of    6.12MiB at    2.24MiB/s ETA 00:02[download]   0.2% of    6.12MiB at    4.65MiB/s ETA 00:01[download]   0.5% of    6.12MiB at    9.19MiB/s ETA 00:00[download]   1.0% of    6.12MiB at   17.94MiB/s ETA 00:00[download]   2.0% of    6.12MiB at   20.79MiB/s ETA 00:00[download]   4.1% of    6.12MiB at   25.04MiB/s ETA 00:00[download]   8.2% of    6.12MiB at   16.73MiB/s ETA 00:00[download]  16.3% of    6.12MiB at   10.13MiB/s ETA 00:00[download]  32.7% of    6.12MiB at    8.83MiB/s ETA 00:00[download]  65.4% of    6.12MiB at   15.02MiB/s ETA 00:00[download] 100.0% of    6.12MiB at   11.25MiB/s ETA 00:00[download] 100% of    6.12MiB in 00:00:00 at 8.49MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/FJL - Alter Ego (Original Mix) [Proportion] - 2025.mp3
+Deleting original file ProgressiveHouse/_played-before/FJL - Alter Ego (Original Mix) [Proportion] - 2025.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/FJL - Alter Ego (Original Mix) [Proportion] - 2025.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/FJL - Alter Ego (Original Mix) [Proportion] - 2025.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=tSGABQX0sx8
+[youtube] Sleeping 1.0 seconds ...
+[youtube] tSGABQX0sx8: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] tSGABQX0sx8: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] tSGABQX0sx8: Downloading m3u8 information
+[info] tSGABQX0sx8: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Soul Engineers, Broken Adam - Kalkan (Extended Mix) - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Soul Engineers, Broken Adam - Kalkan (Extended Mix) - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Soul Engineers, Broken Adam - Kalkan (Extended Mix) - 2024.webp (pass -k to keep)
+[download] Sleeping 2.06 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Soul Engineers, Broken Adam - Kalkan (Extended Mix) - 2024.webm
+[download]   0.0% of    8.17MiB at  418.93KiB/s ETA 00:20[download]   0.0% of    8.17MiB at  970.23KiB/s ETA 00:08[download]   0.1% of    8.17MiB at    2.00MiB/s ETA 00:04[download]   0.2% of    8.17MiB at    3.93MiB/s ETA 00:02[download]   0.4% of    8.17MiB at    7.59MiB/s ETA 00:01[download]   0.8% of    8.17MiB at    6.72MiB/s ETA 00:01[download]   1.5% of    8.17MiB at    7.91MiB/s ETA 00:01[download]   3.0% of    8.17MiB at    8.16MiB/s ETA 00:00[download]   6.1% of    8.17MiB at   14.54MiB/s ETA 00:00[download]  12.2% of    8.17MiB at    9.84MiB/s ETA 00:00[download]  24.5% of    8.17MiB at    8.26MiB/s ETA 00:00[download]  48.9% of    8.17MiB at    5.85MiB/s ETA 00:00[download]  97.9% of    8.17MiB at    9.00MiB/s ETA 00:00[download] 100.0% of    8.17MiB at    9.09MiB/s ETA 00:00[download] 100% of    8.17MiB in 00:00:01 at 7.88MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Soul Engineers, Broken Adam - Kalkan (Extended Mix) - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/Soul Engineers, Broken Adam - Kalkan (Extended Mix) - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Soul Engineers, Broken Adam - Kalkan (Extended Mix) - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Soul Engineers, Broken Adam - Kalkan (Extended Mix) - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=tUyg8ngvH-I
+[youtube] Sleeping 1.0 seconds ...
+[youtube] tUyg8ngvH-I: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] tUyg8ngvH-I: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] tUyg8ngvH-I: Downloading m3u8 information
+[info] tUyg8ngvH-I: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/PREMIERE： Sunar - Desert Rose (Molac Remix) [Songuara] - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/PREMIERE： Sunar - Desert Rose (Molac Remix) [Songuara] - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/PREMIERE： Sunar - Desert Rose (Molac Remix) [Songuara] - 2024.webp (pass -k to keep)
+[download] Sleeping 3.69 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/PREMIERE： Sunar - Desert Rose (Molac Remix) [Songuara] - 2024.webm
+[download]   0.0% of    6.80MiB at  358.58KiB/s ETA 00:21[download]   0.0% of    6.80MiB at  545.87KiB/s ETA 00:12[download]   0.1% of    6.80MiB at    1.16MiB/s ETA 00:05[download]   0.2% of    6.80MiB at    2.36MiB/s ETA 00:02[download]   0.4% of    6.80MiB at  629.65KiB/s ETA 00:11[download]   0.9% of    6.80MiB at  722.45KiB/s ETA 00:09[download]   1.8% of    6.80MiB at  950.28KiB/s ETA 00:07[download]   3.7% of    6.80MiB at    1.36MiB/s ETA 00:04[download]   7.3% of    6.80MiB at    2.16MiB/s ETA 00:02[download]  14.7% of    6.80MiB at    3.56MiB/s ETA 00:01[download]  29.4% of    6.80MiB at    6.10MiB/s ETA 00:00[download]  58.8% of    6.80MiB at   10.38MiB/s ETA 00:00[download] 100.0% of    6.80MiB at   12.83MiB/s ETA 00:00[download] 100% of    6.80MiB in 00:00:00 at 8.25MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/PREMIERE： Sunar - Desert Rose (Molac Remix) [Songuara] - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/PREMIERE： Sunar - Desert Rose (Molac Remix) [Songuara] - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/PREMIERE： Sunar - Desert Rose (Molac Remix) [Songuara] - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/PREMIERE： Sunar - Desert Rose (Molac Remix) [Songuara] - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=vIkEsjwey_I
+[youtube] Sleeping 1.0 seconds ...
+[youtube] vIkEsjwey_I: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] vIkEsjwey_I: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] vIkEsjwey_I: Downloading m3u8 information
+[info] vIkEsjwey_I: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: ProgressiveHouse/_played-before/Ilias Katelanos, Plecta - Asphodel (Original Mix) - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/Ilias Katelanos, Plecta - Asphodel (Original Mix) - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/Ilias Katelanos, Plecta - Asphodel (Original Mix) - 2024.webp (pass -k to keep)
+[download] Sleeping 2.27 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/Ilias Katelanos, Plecta - Asphodel (Original Mix) - 2024.webm
+[download]   0.0% of    6.36MiB at  125.72KiB/s ETA 00:52[download]   0.0% of    6.36MiB at  363.30KiB/s ETA 00:17[download]   0.1% of    6.36MiB at  838.43KiB/s ETA 00:07[download]   0.2% of    6.36MiB at    1.74MiB/s ETA 00:03[download]   0.5% of    6.36MiB at    2.39MiB/s ETA 00:02[download]   1.0% of    6.36MiB at    3.19MiB/s ETA 00:01[download]   2.0% of    6.36MiB at    3.75MiB/s ETA 00:01[download]   3.9% of    6.36MiB at    5.30MiB/s ETA 00:01[download]   7.8% of    6.36MiB at    5.41MiB/s ETA 00:01[download]  15.7% of    6.36MiB at    3.88MiB/s ETA 00:01[download]  31.4% of    6.36MiB at    1.07MiB/s ETA 00:04[download]  41.2% of    6.36MiB at  716.52KiB/s ETA 00:05[download]  46.4% of    6.36MiB at  708.21KiB/s ETA 00:04[download]  56.4% of    6.36MiB at  682.73KiB/s ETA 00:04[download]  65.4% of    6.36MiB at  607.48KiB/s ETA 00:03[download]  70.9% of    6.36MiB at  534.66KiB/s ETA 00:03[download]  74.3% of    6.36MiB at  494.78KiB/s ETA 00:03[download]  77.2% of    6.36MiB at  492.52KiB/s ETA 00:03[download]  83.2% of    6.36MiB at  495.93KiB/s ETA 00:02[download]  91.6% of    6.36MiB at  484.84KiB/s ETA 00:01[download]  97.6% of    6.36MiB at  494.87KiB/s ETA 00:00[download] 100.0% of    6.36MiB at  498.62KiB/s ETA 00:00[download] 100% of    6.36MiB in 00:00:13 at 485.47KiB/s 
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/Ilias Katelanos, Plecta - Asphodel (Original Mix) - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/Ilias Katelanos, Plecta - Asphodel (Original Mix) - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/Ilias Katelanos, Plecta - Asphodel (Original Mix) - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/Ilias Katelanos, Plecta - Asphodel (Original Mix) - 2024.mp3"
+[youtube] Extracting URL: https://www.youtube.com/watch?v=xVDETBysuYk
+[youtube] Sleeping 1.0 seconds ...
+[youtube] xVDETBysuYk: Downloading webpage
+[youtube] Sleeping 1.0 seconds ...
+[youtube] xVDETBysuYk: Downloading visionos player API JSON
+[youtube] Sleeping 1.0 seconds ...
+[youtube] xVDETBysuYk: Downloading m3u8 information
+[info] xVDETBysuYk: Downloading 1 format(s): 251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: ProgressiveHouse/_played-before/PROFF, M.O.S. - Namtso (ABGT602) - 2024.webp
+[ThumbnailsConvertor] Converting thumbnail "ProgressiveHouse/_played-before/PROFF, M.O.S. - Namtso (ABGT602) - 2024.webp" to jpg
+Deleting original file ProgressiveHouse/_played-before/PROFF, M.O.S. - Namtso (ABGT602) - 2024.webp (pass -k to keep)
+[download] Sleeping 2.28 seconds ...
+[download] Destination: ProgressiveHouse/_played-before/PROFF, M.O.S. - Namtso (ABGT602) - 2024.webm
+[download]   0.0% of    5.61MiB at  399.19KiB/s ETA 00:14[download]   0.1% of    5.61MiB at 1009.38KiB/s ETA 00:05[download]   0.1% of    5.61MiB at    2.14MiB/s ETA 00:02[download]   0.3% of    5.61MiB at    4.31MiB/s ETA 00:01[download]   0.5% of    5.61MiB at    3.57MiB/s ETA 00:01[download]   1.1% of    5.61MiB at    4.80MiB/s ETA 00:01[download]   2.2% of    5.61MiB at    6.11MiB/s ETA 00:00[download]   4.4% of    5.61MiB at    8.50MiB/s ETA 00:00[download]   8.9% of    5.61MiB at   10.86MiB/s ETA 00:00[download]  17.8% of    5.61MiB at   14.51MiB/s ETA 00:00[download]  35.6% of    5.61MiB at   14.90MiB/s ETA 00:00[download]  71.3% of    5.61MiB at    8.92MiB/s ETA 00:00[download] 100.0% of    5.61MiB at   10.96MiB/s ETA 00:00[download] 100% of    5.61MiB in 00:00:00 at 7.33MiB/s   
+[ExtractAudio] Destination: ProgressiveHouse/_played-before/PROFF, M.O.S. - Namtso (ABGT602) - 2024.mp3
+Deleting original file ProgressiveHouse/_played-before/PROFF, M.O.S. - Namtso (ABGT602) - 2024.webm (pass -k to keep)
+[Metadata] Adding metadata to "ProgressiveHouse/_played-before/PROFF, M.O.S. - Namtso (ABGT602) - 2024.mp3"
+[EmbedThumbnail] ffmpeg: Adding thumbnail to "ProgressiveHouse/_played-before/PROFF, M.O.S. - Namtso (ABGT602) - 2024.mp3"
+[36m==> ProgressiveHouse/_played-before: 63 tracks on disk (yt-dlp exit 0)[0m
