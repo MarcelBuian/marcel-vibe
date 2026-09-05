@@ -17,6 +17,21 @@ artist/title are nonsense. Defenses live in `clean_ocr_text()`,
 two-consecutive-reads confirmation for never-seen songs in `cmd_watch()`.
 Extend those, don't bypass them.
 
+## Per-radio overlay layout
+`read_overlay()` takes the radio's `ocr_layout` (`artist_line`
+top/bottom, `align` left/center, `ignore` labels, `default_artist`,
+`always_visible`) next to `ocr_region` — add options there, never
+station-specific code. monstercat-silk is the default (artist on top,
+left-aligned); aegean-lounge is title on top over "Aegean Lounge
+Official", centered; bassport-deep-techno is a "NOW PLAYING" label
+(ignored) + one title line with default_artist "Bassport Music". Aegean
+only shows its overlay for the first 25 s and last 15 s of a track, hence
+its 10 s capture interval and `always_visible: false` (runs of `.` in
+between are not a bug). A new song there is confirmed by the second read
+inside the 25 s window. Neither new station has a usable chat: `watch`
+only. Both have `youtube_lookup: false` — their tracks aren't on YouTube;
+the search returns junk and blocks the loop ~40 s per new song. One `watch` process per radio; commands need the radio name.
+
 ## Artist name casing
 The overlay is ALL CAPS; `normalize_name()` title-cases it. Artists with
 intentional unusual casing go in the radio's `artist-casing.txt`. Never

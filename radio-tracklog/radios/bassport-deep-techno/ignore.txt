@@ -1,0 +1,19 @@
+# ignore.txt — songs this radio should SKIP.
+#
+# The logger still records every song it hears in songs.csv (the history
+# stays complete); this list only stops the two follow-up actions:
+#   - downloading the song as an mp3        (download_mp3.use_ignore_file)
+#   - adding the song to the YouTube playlist (save_to_yt_playlist.use_ignore_file)
+# Each action obeys this list only while its use_ignore_file flag in
+# config.json is true.
+#
+# One entry per line, in either form:
+#
+#   https://www.youtube.com/watch?v=dQw4w9WgXcQ     a YouTube link
+#   dQw4w9WgXcQ                                     ...or just the video id
+#   Some Artist - Some Song                         artist - title
+#
+# Artist - Title entries match case- and accent-insensitively (SOME
+# ARTIST / Söme Ärtist all count). Lines starting with # are comments.
+# Changes are picked up when a logger starts — restart a running watch
+# after editing.

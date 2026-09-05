@@ -64,6 +64,11 @@ DEFAULT_CONFIG = {
     "timezone": "Europe/Malta",
     # watch mode: how often to grab a frame and read the overlay
     "capture_interval_seconds": 60,
+    # look every new song up on YouTube to fill the link + year columns
+    # (also what mp3 downloads and the playlist sync are based on). Turn
+    # off for stations whose music isn't on YouTube (Aegean, Bassport): the
+    # search then only returns unrelated videos, ~40 s per new song.
+    "youtube_lookup": True,
     # enabled: download every logged song as a best-quality mp3 into
     # radios/<name>/mp3/ (see also the `download` command for backfilling).
     # prefer: bias the YouTube search that picks THE link for a song
@@ -77,6 +82,21 @@ DEFAULT_CONFIG = {
     # watch mode: where the now-playing overlay sits in the frame, as
     # fractions of width/height measured from the BOTTOM-LEFT corner
     "ocr_region": {"x": [0.12, 0.75], "y": [0.02, 0.40]},
+    # watch mode: how the overlay is laid out.
+    # artist_line: "top" (Monstercat: artist above title) or "bottom"
+    #   (title above artist, Aegean Lounge). A single line is read as
+    #   "Artist - Title".
+    # align: "left" (lines share their left edge) or "center" (lines are
+    #   centered on each other, as on Aegean Lounge).
+    # ignore: label texts inside the region that are not names ("NOW PLAYING").
+    # default_artist: the artist when the overlay shows only a title line
+    #   (Bassport: every track is by Bassport Music).
+    # always_visible: false for stations that show the track name only
+    #   briefly per track (Aegean: first 25 s + last 15 s) — unreadable
+    #   frames then print '.' instead of '?'; keep capture_interval_seconds
+    #   short enough to land inside that window.
+    "ocr_layout": {"artist_line": "top", "align": "left", "ignore": [],
+                   "default_artist": "", "always_visible": True},
 }
 
 BOT_AUTHORS = {"@monstercatbot", "monstercatbot"}
@@ -757,7 +777,7 @@ def record_spin(book, ytdlp, ts, title, artist, radio=None, downloads=None, live
             book.save()  # other process's same-spin window sees it too
         return None
     song = book.songs[song_key(artist, title)]
-    if result == "new":
+    if result == "new" and (radio is None or radio.cfg.get("youtube_lookup", True)):
         song["youtube"], song["year"] = (
             v or "" for v in lookup_song(
                 ytdlp, song["artist"], song["title"], radio.prefer if radio else ""
@@ -1383,14 +1403,18 @@ def clean_ocr_text(text):
     return text
 
 
-def read_overlay(ocr_cmd, frame_path, region):
+def read_overlay(ocr_cmd, frame_path, region, layout=None):
     """OCR the frame; returns (title, artist) from the overlay or None.
 
-    The overlay puts the artist on top and the title below it. The OCR
-    helper (ocr.swift / ocr.ps1, see ensure_ocr) prints one line per
-    recognized text with its x/y position as fractions from the
-    bottom-left; only text inside `region` is used.
+    The overlay is a block of two lines: artist and title, in the order
+    and alignment given by `layout` (config "ocr_layout"; the default is
+    artist on top, lines sharing their left edge). The OCR helper
+    (ocr.swift / ocr.ps1, see ensure_ocr) prints one line per recognized
+    text with its x/y position as fractions from the bottom-left; only
+    text inside `region` is used.
     """
+    layout = {**DEFAULT_CONFIG["ocr_layout"], **(layout or {})}
+    ignore = {fold(t).lower() for t in layout.get("ignore") or []}
     r = subprocess.run(ocr_cmd + [frame_path], capture_output=True, text=True,
                        encoding="utf-8", errors="replace", timeout=120)
     rows = []
@@ -1417,15 +1441,32 @@ def read_overlay(ocr_cmd, frame_path, region):
             lines[-1][3] += " " + text
         else:
             lines.append([y, x, x + w, text])
+    lines = [ln for ln in lines if fold(ln[3]).lower() not in ignore]
     if not lines:
         return None
-    # the overlay block is left-aligned: artist and title share their left
-    # edge — anything starting further right is background junk, not a line
-    left = min(ln[1] for ln in lines)
-    lines = [ln for ln in lines if ln[1] - left < 0.04]
-    if len(lines) < 2:
-        return None
-    title, artist = clean_ocr_text(lines[1][3]), clean_ocr_text(lines[0][3])
+    if layout["align"] == "center":
+        # centered block: every line is centered on the widest one —
+        # anything off that axis is background junk, not a line
+        widest = max(lines, key=lambda ln: ln[2] - ln[1])
+        axis = (widest[1] + widest[2]) / 2
+        lines = [ln for ln in lines if abs((ln[1] + ln[2]) / 2 - axis) < 0.04]
+    else:
+        # left-aligned block: artist and title share their left edge —
+        # anything starting further right is background junk, not a line
+        left = min(ln[1] for ln in lines)
+        lines = [ln for ln in lines if ln[1] - left < 0.04]
+    if len(lines) == 1:
+        text = clean_ocr_text(lines[0][3])
+        if " - " in text:
+            artist, title = (clean_ocr_text(p) for p in text.split(" - ", 1))
+        elif layout["default_artist"]:
+            title, artist = text, layout["default_artist"]
+        else:
+            return None
+    elif layout["artist_line"] == "bottom":
+        title, artist = clean_ocr_text(lines[0][3]), clean_ocr_text(lines[1][3])
+    else:
+        title, artist = clean_ocr_text(lines[1][3]), clean_ocr_text(lines[0][3])
     if not title or not artist:
         return None
     return title, artist
@@ -1443,6 +1484,8 @@ def cmd_watch(args):
     warn_clock_skew(book, "watch")
     interval = float(radio.cfg["capture_interval_seconds"])
     region = radio.cfg["ocr_region"]
+    layout = radio.cfg["ocr_layout"]
+    unreadable = "?" if layout.get("always_visible", True) else "."
     frame = os.path.join(radio.folder, ".frame.jpg")
     print(f"Watching {radio.name}: {radio.url}", flush=True)
     print(f"One frame every {interval:.0f}s -> {radio.songs_csv}  (Ctrl+C to stop)", flush=True)
@@ -1522,13 +1565,13 @@ def cmd_watch(args):
                     if not manifest:
                         raise OSError("could not resolve the stream manifest")
                 grab_frame(ffmpeg, manifest, frame)
-                got = read_overlay(ocr, frame, region)
+                got = read_overlay(ocr, frame, region, layout)
             except (OSError, subprocess.SubprocessError):
                 manifest = None  # URL likely expired — resolve again next round
                 note("x")
             else:
                 if got is None:
-                    note("?")
+                    note(unreadable)
                 else:
                     title = normalize_name(got[0], casing)
                     artist = normalize_name(got[1], casing)
@@ -1793,6 +1836,8 @@ def cmd_stats(args):
 def cmd_enrich(args):
     """Fill in the youtube + year columns via a YouTube search per song."""
     radio = resolve_radio(args)
+    if not radio.cfg.get("youtube_lookup", True):
+        sys.exit(f'{radio.name}: "youtube_lookup" is off in {radio.config_path} — nothing to look up.')
     ytdlp = find_ytdlp(args.ytdlp)
     book = load_book(radio)
     todo = [r for r in book.songs.values() if not r["youtube"] or not r["year"]]

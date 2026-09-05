@@ -1,0 +1,35 @@
+{
+  "url": "https://www.youtube.com/watch?v=G-u5OhIeln4",
+  "capture_interval_seconds": 60,
+  "timezone": "Europe/Malta",
+  "youtube_lookup": false,
+  "download_mp3": {
+    "enabled": false,
+    "prefer": "",
+    "use_ignore_file": true
+  },
+  "save_to_yt_playlist": {
+    "enabled": false,
+    "link": "",
+    "use_ignore_file": true
+  },
+  "ocr_region": {
+    "x": [
+      0.03,
+      0.4
+    ],
+    "y": [
+      0.0,
+      0.15
+    ]
+  },
+  "ocr_layout": {
+    "artist_line": "top",
+    "align": "left",
+    "ignore": [
+      "NOW PLAYING"
+    ],
+    "default_artist": "Bassport Music",
+    "always_visible": true
+  }
+}

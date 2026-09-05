@@ -2,9 +2,10 @@
 
 Logs the songs played on YouTube 24/7 radio streams and tells you which
 songs repeat and **when each song was heard for the first time**. Ships
-configured for **"Deep & Melodic House 24/7"** (Monstercat Silk), and any
-number of other radios can be added — each one lives in its own folder
-under `radios/` with its own settings and song list.
+configured for **"Deep & Melodic House 24/7"** (Monstercat Silk) and
+**"Aegean Lounge Late Night Radio"**, and any number of other radios can
+be added — each one lives in its own folder under `radios/` with its own
+settings and song list.
 
 Two independent ways of hearing what's playing:
 
@@ -67,9 +68,11 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
   "url": "https://www.youtube.com/watch?v=WsDyRAPFBC8",
   "capture_interval_seconds": 60,
   "timezone": "Europe/Malta",
+  "youtube_lookup": true,
   "download_mp3": {"enabled": true, "prefer": "", "use_ignore_file": true},
   "save_to_yt_playlist": {"enabled": true, "link": "https://www.youtube.com/playlist?list=PL...", "use_ignore_file": true},
-  "ocr_region": {"x": [0.12, 0.75], "y": [0.02, 0.4]}
+  "ocr_region": {"x": [0.12, 0.75], "y": [0.02, 0.4]},
+  "ocr_layout": {"artist_line": "top", "align": "left", "ignore": [], "default_artist": "", "always_visible": true}
 }
 ```
 
@@ -83,6 +86,11 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
   travelling never shifts the log. An IANA name (`"Europe/Malta"`,
   `"UTC"`) or a fixed offset (`"+02:00"`). Changing it later leaves the
   rows already written in the old zone.
+- **`youtube_lookup`** — look every new song up on YouTube to fill the
+  link and year columns (the link is also what mp3 downloads and the
+  playlist sync use). Set `false` for stations whose music isn't on
+  YouTube — the search then only returns unrelated videos and stalls the
+  capture for ~40 s per new song. `enrich` respects it too.
 - **`download_mp3.enabled`** — when `true`, every newly logged song is
   also downloaded as a best-quality mp3 (YouTube's best audio, converted
   to MP3 V0) into `radios/<name>/mp3/`, named `Artist - Title - Year.mp3`
@@ -110,6 +118,44 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
   corner**. The default matches Monstercat's bottom-left overlay while
   excluding the cover art and the social handle in the top corner. Adjust
   per radio if a stream draws its overlay elsewhere.
+- **`ocr_layout`** — `watch` mode: how the overlay is arranged.
+  `artist_line` is `"top"` (artist above the title — Monstercat) or
+  `"bottom"` (title above the artist); `align` is `"left"` (the lines
+  share their left edge) or `"center"` (they are centered on each other).
+  Text that doesn't line up with the block is ignored as background junk.
+  `ignore` lists label texts inside the region that aren't names
+  (`["NOW PLAYING"]`). When only one line remains it is read as
+  `Artist - Title`, or as the title with `default_artist` as the artist.
+  `always_visible: false` is for stations that show the track name only
+  briefly per track — unreadable frames then print `.` instead of `?`;
+  pair it with a `capture_interval_seconds` short enough to land inside
+  that window.
+
+The included radios:
+
+- **`monstercat-silk`** — Monstercat Silk "Deep & Melodic House 24/7".
+  The overlay is always on screen: artist on top, title below,
+  left-aligned in the bottom-left corner.
+- **`aegean-lounge`** — "Aegean Lounge Late Night Radio". Its overlay
+  (title above `Aegean Lounge Official`, centered, bottom-left) is only
+  shown during the **first 25 and last 15 seconds** of each track, so this
+  radio captures every 10 seconds instead of 60 and has
+  `always_visible: false` — between those windows the log shows `.`
+  marks, which is normal. The tracks are the station's own productions,
+  so `youtube_lookup`, `download_mp3` and the playlist
+  sync are off (a YouTube search for
+  them mostly finds unrelated uploads). The live chat is disabled on this
+  stream, so only `watch` works here.
+- **`bassport-deep-techno`** — Bassport Music "Deep Techno 24/7". A
+  `NOW PLAYING` label (ignored) above a single title line in the
+  bottom-left corner; every track is the label's own, so `default_artist`
+  is `Bassport Music`. Lookup/downloads/playlist off for the same reason; no
+  track bot in chat, so `watch` only.
+
+With several radios present, every command needs the radio's name:
+`python3 radio_tracklog.py watch monstercat-silk` or
+`python3 radio_tracklog.py watch aegean-lounge` (they can run at the
+same time, each in its own terminal).
 
 **Adding a radio**: run `python3 radio_tracklog.py watch my-radio` — the
 folder and a default `config.json` are created — then put the stream's
@@ -314,7 +360,7 @@ it loads the casing file at startup.
 - **Other chat bots**: `log` mode is tuned to Monstercat's bot; edit
   `BOT_AUTHORS` / `TRACK_RE` at the top of the script for other bots.
   `watch` mode has no such dependency — just set `url` and, if needed,
-  `ocr_region`.
+  `ocr_region` and `ocr_layout`.
 - The full official rotation of the Monstercat Silk stream is also
   published as a Spotify playlist: https://monster.cat/chillhouse — the
   script tells you what actually played and when; the playlist tells you

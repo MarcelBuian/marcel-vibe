@@ -25,5 +25,9 @@
       0.02,
       0.4
     ]
+  },
+  "ocr_layout": {
+    "artist_line": "top",
+    "align": "left"
   }
 }
