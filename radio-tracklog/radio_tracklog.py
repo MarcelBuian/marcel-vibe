@@ -27,6 +27,7 @@ Usage:
   python3 radio_tracklog.py download [radio] # backfill missing mp3s
   python3 radio_tracklog.py playlist [radio] # sync songs into the YouTube playlist
   python3 radio_tracklog.py casing [radio]   # verify artist casing against YouTube titles
+  python3 radio_tracklog.py verify [radio]   # re-check stored YouTube links, drop wrong ones
 
 [radio] defaults to the only folder in radios/ (created on first run).
 yt-dlp and ffmpeg download themselves on first use — see README.md.
@@ -575,43 +576,228 @@ def normalize_name(text, casing):
 # --------------------------------------------------------------- songbook
 
 def _yt_search(ytdlp, query, n):
-    """yt-dlp search: list of (url, year_or_None, video_title)."""
+    """YouTube search, cheap (no per-video extraction):
+    [(url, video_title, channel, duration_seconds or None)]."""
     try:
         out = subprocess.run(
-            [
-                ytdlp,
-                "--skip-download",
-                "--print",
-                "%(webpage_url)s\t%(release_year,upload_date>%Y)s\t%(title)s",
-                f"ytsearch{n}:{query}",
-            ],
-            capture_output=True, text=True, timeout=90,
+            [ytdlp, "--flat-playlist", "--skip-download", "--no-warnings", "--print",
+             "%(url)s\t%(title)s\t%(channel)s\t%(duration)s", f"ytsearch{n}:{query}"],
+            capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120,
         ).stdout.strip()
     except (subprocess.TimeoutExpired, OSError):
         return []
     results = []
     for line in out.splitlines():
         parts = line.split("\t")
-        if len(parts) == 3 and parts[0].startswith("http"):
-            results.append((parts[0], parts[1] if parts[1].isdigit() else None, parts[2]))
+        if len(parts) == 4 and parts[0].startswith("http"):
+            dur = parts[3]
+            results.append((parts[0], parts[1], parts[2],
+                            float(dur) if re.fullmatch(r"\d+(\.\d+)?", dur) else None))
     return results
 
 
-def lookup_song(ytdlp, artist, title, prefer=""):
-    """Search YouTube for the song; returns (url, year) — either may be None.
+def video_year(ytdlp, url):
+    """Release/upload year of one video (a full extraction — a few seconds)."""
+    try:
+        out = subprocess.run(
+            [ytdlp, "--skip-download", "--no-warnings", "--print",
+             "%(release_year,upload_date>%Y)s", url],
+            capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120,
+        ).stdout.strip()
+    except (subprocess.TimeoutExpired, OSError):
+        return None
+    return out if out.isdigit() else None
 
-    With prefer (e.g. "extended mix"), results whose video title contains
-    that phrase win; otherwise it falls back to the plain best match.
+
+# Longest video still plausibly one track (extended mixes run ~10 min); above
+# this it's a DJ set / mix compilation. Below the minimum: teasers, shorts.
+MAX_TRACK_SECONDS = 20 * 60
+MIN_TRACK_SECONDS = 60
+
+_COUNTRY_TAG_RE = re.compile(r"\s*\((?:[A-Za-z]{2})\)")  # "Aurum (AR)", "Kora (CA)"
+
+
+def _clean_artist(artist):
+    return _COUNTRY_TAG_RE.sub("", artist).strip()
+
+
+_DECOR_WORDS = {"official", "audio", "video", "lyric", "lyrics", "visualizer", "hd", "hq",
+                "premiere", "free", "download", "out", "now", "full", "track", "original",
+                "mix", "extended", "remix", "edit", "rework", "version", "radio", "club",
+                "dub", "instrumental", "vip", "bootleg", "mashup"}
+
+
+_BRACKETS_RE = re.compile(r"[(\[][^)\]]*[)\]]")
+
+
+def _core(text, feat_tail=True):
+    """Folded name words minus brackets, quotes, "&" and decoration/version
+    words — the part of a name that must agree: "Amber Glow (Blood Groove &
+    Kikis Remix) [Silk Music]" -> "amber glow". With feat_tail (a single
+    name), a trailing "feat. X" goes too: "Request the Love in Me feat.
+    Caramelli" -> "request the love in me"; for a whole video title it must
+    stay, or "UNDERHER feat. Kyla Millette - Unbreakable" would lose the song."""
+    t = _BRACKETS_RE.sub(" ", fold(text).lower())
+    t = re.sub(r"[\"'`“”‘’«»]", "", t)
+    if feat_tail:
+        t = re.sub(r"(?<![a-z0-9])(?:feat|ft|featuring)\.?\s.*$", " ", t)
+    return " ".join(w for w in re.findall(r"[a-z0-9$.+]+", t) if w not in _DECOR_WORDS)
+
+
+def _title_segments(vtitle, artists=()):
+    """The video title's name-sized parts (split at " - ", "|", ":"), each as
+    its core, plus each part with the artist names taken out:
+    "PREMIERE: Krasa Rosa - Cassiopeia [Organic House]" -> {"premiere",
+    "krasa rosa", "cassiopeia"}; "Marsh 'Belle' Official Audio" -> {"marsh
+    belle", "belle"}. One of them must BE the song's core for a match —
+    "Oracle DB - Memory Architecture" has none equal to "memory"."""
+    out = set()
+    # brackets go first: a " / " inside "[Organic House / All Day I Dream]"
+    # must not split the title into halves with unbalanced brackets
+    for seg in re.split(r"\s+[-–—|•/:]\s+|\s*[|:]\s*", _BRACKETS_RE.sub(" ", fold(vtitle).lower())):
+        core = _core(seg)
+        if not core:
+            continue
+        out.add(core)
+        rest = core
+        for a in artists:
+            ac = _core(a)
+            if ac:
+                rest = re.sub(r"(?<![a-z0-9])" + re.escape(ac) + r"(?![a-z0-9])", " ", rest)
+        rest = " ".join(rest.split())
+        if rest:
+            out.add(rest)
+    return out
+
+
+def video_matches(artist, title, vtitle, channel, duration=None):
+    """Does this video look like THIS song? Returns a score > 0, or 0 for no.
+
+    Needed: the song title appears in the video title, and one of the
+    artists appears in the video title or channel name ("<Artist> - Topic",
+    the artist's own channel) — a first search hit that names neither is a
+    news clip, a tutorial, a game video (all seen). A DJ-set-length or
+    teaser-length video is never the track.
     """
+    if duration is not None and not (MIN_TRACK_SECONDS <= duration <= MAX_TRACK_SECONDS):
+        return 0
+    artists, base = song_signature(_clean_artist(artist), title)
+    core = _core(title) or base
+    vt, ch = _core(vtitle, feat_tail=False), _core(channel or "", feat_tail=False)
+    if not core:
+        return 0
+    if not _contains_words(vt, core):
+        # allow the near-miss spelling only when a whole segment nearly equals the title
+        if not any(_same_name(core, seg) for seg in _title_segments(vtitle, ())):
+            return 0
+    if not any(_same_name(core, seg) for seg in _title_segments(vtitle, artists)):
+        return 0  # the song title is only part of a longer phrase — not this song
+    artists = {_core(a) for a in artists} - {""}
+    hit_title = [a for a in artists if _contains_words(vt, a)]
+    # a channel counts when it is made of our artists' names and nothing
+    # else: "Krasa Rosa - Topic", "rshand", the collaboration auto-channels
+    # "Nichols+Roark - Topic" / "Mariner + Domingo - Topic" / "M.O.S. - Topic".
+    # Merely containing the word is not enough ("Kendrick Scott Oracle -
+    # Topic" is not ORACLE; "Valium Ssky - Topic" is not Drav).
+    ch_words = {w.strip(".+") for w in re.split(r"[\s+]+", ch)} - {"topic", ""}
+    artist_words = {w.strip(".+") for a in artists for w in a.split()} - {""}
+    hit_channel = [a for a in artists if (ch_words and ch_words <= artist_words
+                                          and any(w.strip(".+") in ch_words for w in a.split()))
+                   # a multi-word name inside a bigger channel name is still that
+                   # artist/label: "Cafe de Anatolia" on "Cafe De Anatolia LAB"
+                   or (" " in a and _contains_words(ch, a))]
+    topic = ch.endswith("topic")  # YouTube's auto-generated "<Artist> - Topic"
+    generic_topic = ch in ("release topic", "various artists topic")
+    if not hit_title and not hit_channel:
+        # Only the generic auto-channels are convincing on the title alone:
+        # they carry no artist name by design. A NAMED Topic channel that
+        # isn't our artist is somebody else's same-titled song
+        # ("SAY MY NAME" on "Valium Ssky - Topic" is not Drav's).
+        return 2 if generic_topic else 0
+    if not hit_channel:
+        # artist named only in the title: the title must then be mostly
+        # "artist + song" — a few leftover words ("[Silk Music]", "(Official
+        # Audio)") are fine, a headline that merely contains both words is not
+        # ("Oracle Memory Architecture Explained: SGA vs PGA for DBAs | Day 3")
+        rest = vt
+        for part in [core] + hit_title:
+            rest = re.sub(r"(?<![a-z0-9])" + re.escape(part) + r"(?![a-z0-9])", " ", rest)
+        if len(re.findall(r"[a-z0-9]+", rest)) > 6:
+            return 0
+    score = 1
+    if hit_title:
+        score += 2
+    if topic:
+        score += 4  # the artist's auto-generated official upload beats re-uploads
+    elif hit_channel:
+        score += 3  # the artist's (or a label's) own channel
+    if re.search(r"\s[-–—]\s", vtitle):
+        score += 1  # "Artist - Title" shape
+    version = re.findall(r"[(\[]([^)\]]*)[)\]]", fold(title).lower())
+    if version and all(_contains_words(fold(vtitle).lower(), v) for v in version):
+        score += 1  # the exact remix/edit named
+    return score
+
+
+def _same_name(a, b):
+    """Equal cores, or nearly (an upload's typo/plural: "lost dream" ~ "lost
+    dreams", "ploceus in congo" ~ "placeus in congo") — never for short names,
+    where one letter is a different word ("memory" vs "memories")."""
+    if a == b:
+        return True
+    if min(len(a), len(b)) < 8:
+        return False
+    import difflib
+
+    return difflib.SequenceMatcher(None, a, b).ratio() >= 0.9
+
+
+def _contains_words(haystack, needle):
+    """needle appears in haystack on word boundaries (both already folded/lower)."""
+    if not needle:
+        return False
+    return re.search(r"(?<![a-z0-9])" + re.escape(needle) + r"(?![a-z0-9])", haystack) is not None
+
+
+def lookup_song(ytdlp, artist, title, prefer=""):
+    """Find THE YouTube video for a song; returns (url, year) — (None, None)
+    when no search result convincingly names both artist and title.
+
+    With prefer (e.g. "extended mix"), matching results whose title
+    contains that phrase win; otherwise the best-scoring match does.
+    A blank result is deliberate: no link beats a wrong one (the mp3 and
+    playlist follow the link) — `enrich` can retry later.
+    """
+    query = f"{_clean_artist(artist)} - {title}"
     if prefer:
-        # strict phrase match: "Cola (ARTBAT Extended Remix)" must NOT count
-        # as the extended mix of "Cola" — better the plain original than a
-        # different version by someone else
-        for url, year, vtitle in _yt_search(ytdlp, f"{artist} {title} {prefer}", 8):
-            if fold(prefer).lower() in fold(vtitle).lower():
-                return url, year
-    results = _yt_search(ytdlp, f"{artist} {title}", 1)
-    return results[0][:2] if results else (None, None)
+        for url, vtitle, channel, dur in _yt_search(ytdlp, f"{query} {prefer}", 8):
+            if video_matches(artist, title, vtitle, channel, dur) \
+                    and fold(prefer).lower() in fold(vtitle).lower():
+                return url, video_year(ytdlp, url)
+    best, best_score = None, 0
+    for url, vtitle, channel, dur in _yt_search(ytdlp, query, 8):
+        sc = video_matches(artist, title, vtitle, channel, dur)
+        if sc > best_score:
+            best, best_score = url, sc
+    if not best:
+        return None, None
+    return best, video_year(ytdlp, best)
+
+
+def video_info(url):
+    """(title, channel) of a YouTube video via the oEmbed endpoint — instant,
+    no yt-dlp; None when the video is gone/private."""
+    import urllib.parse
+    import urllib.request
+
+    q = urllib.parse.quote(url, safe="")
+    try:
+        with urllib.request.urlopen(
+                f"https://www.youtube.com/oembed?format=json&url={q}", timeout=20) as r:
+            d = json.loads(r.read().decode("utf-8"))
+        return d.get("title", ""), d.get("author_name", "")
+    except (OSError, ValueError):
+        return None
 
 
 class SongBook:
@@ -815,6 +1001,8 @@ def record_spin(book, ytdlp, ts, title, artist, radio=None, downloads=None, live
         )
     book.save()
     notes = ""
+    if result == "new" and not song["youtube"] and radio and radio.cfg.get("youtube_lookup", True):
+        notes += "  [no convincing YouTube match — nothing downloaded; `enrich` retries later]"
     if result == "new" and radio and radio.cfg["download_mp3"]["enabled"]:
         if radio.cfg["download_mp3"].get("use_ignore_file") and is_ignored(radio, song):
             notes += "  [mp3: on the ignore list]"
@@ -920,6 +1108,8 @@ def song_signature(artist, title):
     tracklist line "Legroni, Peredel, Ilana Lorraine - Feel Me" matches our
     row "Legroni & Peredel & Ilana Lorraine — Feel Me (Extended Mix)".
     """
+    # country tags never decide identity: "Marc Samuel (CH)" is "Marc Samuel"
+    artist = re.sub(r"\s*\((?:[A-Za-z]{2,3})\)", "", artist)
     artists = frozenset(fold(a).lower() for a in re.split(r"\s*,\s*|" + SEP_RE.pattern, artist,
                                                         flags=re.IGNORECASE) if a and a.strip())
     base = _VERSION_RE.sub("", fold(title).lower()).strip()
@@ -942,7 +1132,7 @@ def load_ignore(radio):
     Lines may be bare "Artist - Title" or pasted straight from a tracklist
     ("[R] 01:02:30 - Artist, Artist - Title"); decorations are stripped.
     """
-    ids, names, sigs = set(), set(), []
+    ids, names, sigs, titles = set(), set(), [], set()
     if os.path.exists(radio.ignore_path):
         with open(radio.ignore_path, encoding="utf-8") as f:
             for line in f:
@@ -957,9 +1147,10 @@ def load_ignore(radio):
                 if parsed:
                     names.add(fold(f"{parsed[0]} - {parsed[1]}").lower())
                     sigs.append(song_signature(*parsed))
-                else:
+                else:  # a bare title: matches that title by any artist
                     names.add(fold(" ".join(line.split())).lower())
-    return {"ids": ids, "names": names, "sigs": sigs}
+                    titles.add(song_signature("", line)[1])
+    return {"ids": ids, "names": names, "sigs": sigs, "titles": titles}
 
 
 def is_ignored(radio, song):
@@ -974,6 +1165,8 @@ def is_ignored(radio, song):
     artists, base = song_signature(song["artist"], song["title"])
     if not base:
         return False
+    if base in radio.ignore.get("titles", ()):
+        return True
     return any(base == b and artists & a for a, b in radio.ignore["sigs"])
 
 
@@ -2016,6 +2209,45 @@ def cmd_ignore(args):
               f"ignored songs while download_mp3.use_ignore_file is on.)")
 
 
+def cmd_verify(args):
+    """Re-check every stored YouTube link: does the video name the artist and
+    the song? Wrong links (first-search-hit accidents) are cleared and their
+    mp3s deleted, so `enrich` + `download` redo them properly. --check only lists."""
+    radio = resolve_radio(args)
+    book = load_book(radio)
+    rows = [r for r in book.songs.values() if r["youtube"]]
+    print(f"{radio.name}: checking {len(rows)} linked songs against YouTube...", flush=True)
+    bad, gone = [], []
+    for i, r in enumerate(sorted(rows, key=lambda r: r["first_added"]), 1):
+        info = video_info(r["youtube"])
+        if info is None:
+            gone.append(r)
+        elif not video_matches(r["artist"], r["title"], info[0], info[1]):
+            bad.append((r, info))
+        if i % 50 == 0:
+            print(f"  {i}/{len(rows)}", flush=True)
+    for r, (vt, ch) in bad:
+        print(f"  WRONG  {r['artist']} — {r['title']}\n         is: {ch} | {vt[:90]}")
+    for r in gone:
+        print(f"  GONE   {r['artist']} — {r['title']}  {r['youtube']}")
+    if args.check:
+        print(f"--check: {len(bad)} wrong, {len(gone)} unavailable of {len(rows)} — nothing changed.")
+        return
+    for r in [b[0] for b in bad] + gone:
+        path = mp3_path(radio, r)
+        for f in [path] + glob.glob(path[:-4] + ".*"):
+            try:
+                os.remove(f)
+            except OSError:
+                pass
+        r["youtube"], r["year"] = "", ""
+    if bad or gone:
+        book.dirty = True
+        book.save()
+    print(f"Cleared {len(bad)} wrong + {len(gone)} unavailable link(s) and deleted their mp3s. "
+          f"Next: radio_tracklog.py enrich {radio.name}  then  download {radio.name}")
+
+
 # ----------------------------------------------------------- read-only
 
 def load_book(radio):
@@ -2139,7 +2371,7 @@ def main():
     p.add_argument(
         "command", nargs="?", default="log",
         choices=["watch", "log", "list", "stats", "enrich", "download", "playlist", "casing",
-                 "ignore"],
+                 "ignore", "verify"],
     )
     p.add_argument(
         "radio", nargs="?", default=None,
@@ -2148,12 +2380,13 @@ def main():
     p.add_argument("--url", default=None, help="override the radio's YouTube URL")
     p.add_argument("--ytdlp", default=None, help="path to yt-dlp (default: auto-detect)")
     p.add_argument("--check", action="store_true",
-                   help="casing / ignore: only report, change nothing")
+                   help="casing / ignore / verify: only report, change nothing")
     args = p.parse_args()
     {
         "watch": cmd_watch, "log": cmd_log, "list": cmd_list,
         "stats": cmd_stats, "enrich": cmd_enrich, "download": cmd_download,
         "playlist": cmd_playlist, "casing": cmd_casing, "ignore": cmd_ignore,
+        "verify": cmd_verify,
     }[args.command](args)
 
 

@@ -127,7 +127,9 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
   file's header explains the details.
   Lines pasted straight from a DJ tracklist work too (`[R] 01:02:30 -
   Artist, Artist - Title`): decorations are stripped, artist separators
-  don't matter, and a remix/edit of a listed track counts as that track.
+  and country tags (`Marc Samuel (CH)`) don't matter, and a remix/edit of
+  a listed track counts as that track. A bare title on its own line
+  matches that title by any artist.
   `python3 radio_tracklog.py ignore <radio>` shows which logged songs the
   list matches and deletes their mp3s (`--check` only lists) — handy after
   pasting the tracklists of sets you already played.
@@ -245,6 +247,20 @@ the song repeats. The same data lives in **`radios/<name>/songs.csv`**
 kept up to date live — open that file if you just want the playlist.
 
 ### Optional: fill in missing YouTube links and years
+
+How a song gets its link: the script searches YouTube and accepts a result
+only if the song title is a whole segment of the video title (not just words
+inside a longer headline), the artist appears in the title or channel — or
+the channel is YouTube's auto-generated `… - Topic` for that release — and
+the video is track-length (1–20 min, so never a DJ set). Official/Topic
+uploads win over re-uploads; a one-letter difference in a long title
+(`Lost Dream`/`Lost Dreams`) is tolerated, remix names in brackets may
+differ. Nothing convincing → the song stays without a link (and without an
+mp3) rather than getting a wrong one; `enrich` retries those later.
+`python3 radio_tracklog.py verify <radio>` re-checks all stored links the
+same way and clears the wrong ones (`--check` only lists), after which
+`enrich` and `download` redo them.
+
 
 ```bash
 python3 radio_tracklog.py enrich

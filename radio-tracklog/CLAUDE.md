@@ -96,6 +96,23 @@ backfill can't spawn hundreds of yt-dlp processes at once.
 `load_ignore()` accepts tracklist lines (`[R] 01:02:30 - A, B - Title`);
 `is_ignored()` matches by video id, exact folded name, or
 `song_signature()` (same base title + ≥1 shared artist, version suffixes
-stripped). `ignore` command = apply the list to existing mp3s. Marcel
+and country tags like "(CH)"/"(BR)" stripped — 2026-09-05: "Marc Samuel
+(CH)" failed to match "Marc Samuel"). A bare line without " - " is a
+title-only entry (any artist). `ignore` command = apply the list to
+existing mp3s. Marcel
 pastes the tracklists of sets he already played into a radio's ignore.txt
 so repeats are neither downloaded nor added to the playlist.
+
+## YouTube link matching (2026-09-05)
+14 of 316 record-organic songs had got a news clip, a game video, an Oracle
+DB tutorial, a Twitch DJ set, a podcast… because `lookup_song()` took the
+first search hit. Now `_yt_search()` is a cheap `--flat-playlist` search
+(8 results: title, channel, duration) and `video_matches()` gates every
+candidate: `_core(title)` must equal (or `_same_name()`-nearly equal) a
+`_title_segments()` part of the video title; an artist must be in the title
+or channel, or the channel must be a `- Topic` auto-channel ("Release -
+Topic" has no artist); 1–20 min; artist-only-in-title needs ≤ 6 leftover
+words. Topic +4, own channel +3. Regression cases (real search results) are in `tests_video_matches.py` —
+run it before touching the matcher, and never go back to "first hit wins". `verify` re-checks stored links
+via oEmbed (`video_info()`, no yt-dlp) and clears wrong ones; then `enrich`
++ `download`. Watches load the code at start — restart them after edits.

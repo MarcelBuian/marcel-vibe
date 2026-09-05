@@ -1,7 +1,12 @@
 {
   "url": "https://www.youtube.com/watch?v=18oJIWkEwQo",
-  "capture_interval_seconds": 10,
+  "source": {
+    "type": "youtube",
+    "station": "",
+    "poll_interval_seconds": 300
+  },
   "timezone": "Europe/Malta",
+  "capture_interval_seconds": 10,
   "youtube_lookup": false,
   "download_mp3": {
     "enabled": false,
