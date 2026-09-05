@@ -68,3 +68,34 @@ text box). ffmpeg auto-downloads on both (martin-riedl.de for macOS,
 BtbN GitHub builds for Windows); the single-instance lock uses fcntl on
 macOS and msvcrt on Windows. Only macOS can be tested from this machine —
 Windows changes need a run on a real Windows box.
+
+## Radio Record source (`source.type: radiorecord`)
+`watch` dispatches to `watch_radiorecord()`: it polls
+`radiorecord.ru/api/station/history/?id=<id>` (400 plays, ~28 h, unix
+times, `noShow` = jingles) and feeds each play through `record_spin()`
+with `live=False`, so the chat-backlog rule ("not newer than the newest
+row = already counted") is what makes re-polling idempotent — keep it.
+`record_names()` maps the API's `A/B` artist joins to `A & B` and `rmx`
+to `Remix` before `normalize_name()`. Replies are gzipped regardless of
+headers (`record_api()` inflates). Between-reads bookkeeping (progress
+marks, background mp3s, playlist catch-up) lives in `Housekeeping`,
+shared by both watch paths — don't re-inline it.
+
+## yt-dlp speed on this Mac
+The standalone yt-dlp binary (yt-dlp_macos) has a ~77 s cold start here
+(even `--version`), because it unpacks its bundled Python every launch —
+crippling for enrich/download across hundreds of songs. Fix in place: a
+`.venv` built with Homebrew python3.14 holding the current yt-dlp
+(`.venv/bin/pip install -U yt-dlp`), which `find_ytdlp()` now prefers over
+the standalone (still the fallback + auto-repair target). Refresh it with
+pip if YouTube extraction ever breaks. `record_spin()` caps concurrent
+background mp3 downloads at MAX_PARALLEL_DOWNLOADS so a Radio Record
+backfill can't spawn hundreds of yt-dlp processes at once.
+
+## ignore.txt matching
+`load_ignore()` accepts tracklist lines (`[R] 01:02:30 - A, B - Title`);
+`is_ignored()` matches by video id, exact folded name, or
+`song_signature()` (same base title + ≥1 shared artist, version suffixes
+stripped). `ignore` command = apply the list to existing mp3s. Marcel
+pastes the tracklists of sets he already played into a radio's ignore.txt
+so repeats are neither downloaded nor added to the playlist.

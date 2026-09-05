@@ -1,25 +1,21 @@
 {
-  "url": "https://www.youtube.com/watch?v=WsDyRAPFBC8",
+  "url": "https://www.radiorecord.ru/station/organic/",
   "source": {
-    "type": "youtube",
-    "station": "",
+    "type": "radiorecord",
+    "station": "organic",
     "poll_interval_seconds": 300
   },
   "timezone": "Europe/Malta",
   "capture_interval_seconds": 60,
   "youtube_lookup": true,
   "download_mp3": {
-    "enabled": {
-      "enabled": true,
-      "prefer": "radio edit",
-      "use_ignore_file": true
-    },
+    "enabled": true,
     "prefer": "",
     "use_ignore_file": true
   },
   "save_to_yt_playlist": {
-    "enabled": true,
-    "link": "https://music.youtube.com/playlist?list=PLoFzNYfE7BsiCqlFEJjndm53GIcXNAyDS",
+    "enabled": false,
+    "link": "",
     "use_ignore_file": true
   },
   "ocr_region": {

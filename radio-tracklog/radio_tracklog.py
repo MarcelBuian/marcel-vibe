@@ -7,6 +7,8 @@ Two independent ways of hearing what's playing:
            on-screen "now playing" overlay with the OS's built-in OCR
            (macOS Vision / Windows.Media.Ocr — offline, free, no AI
            service involved). Catches every song. macOS and Windows.
+           For Radio Record stations (radiorecord.ru) it instead polls the
+           station's public tracklist API — exact times, ~28 h of history.
   log    — capture the stream's live chat with yt-dlp and parse the chat
            bot's track announcements ("@user loves 'Title' by Artist!").
            Works on any OS, but sampled: only songs someone asked about.
@@ -57,6 +59,13 @@ DEFAULT_URL = "https://www.youtube.com/watch?v=WsDyRAPFBC8"  # Monstercat Silk 2
 DEFAULT_CONFIG = {
     # the YouTube live stream to follow
     "url": DEFAULT_URL,
+    # where the "now playing" information comes from:
+    #   youtube     — frames of the YouTube live stream at `url`, read by OCR
+    #   radiorecord — a Radio Record station (radiorecord.ru/station/<station>):
+    #                 its public tracklist API is polled every
+    #                 poll_interval_seconds; it holds ~28 h of history, so
+    #                 gaps between runs are filled in by the next poll
+    "source": {"type": "youtube", "station": "", "poll_interval_seconds": 300},
     # every date/time the script writes (songs.csv, lock, quota marker) is
     # in THIS zone, whatever zone the Mac is set to — so travelling never
     # shifts the log. IANA name ("Europe/Malta", "UTC") or a fixed offset
@@ -146,6 +155,13 @@ QUICK_FAIL_SECONDS = 60
 # After this many quick failures in a row, download a fresh standalone yt-dlp.
 UPDATE_AFTER_FAILURES = 3
 
+# Most background mp3 downloads to run at once. Normal live logging never
+# reaches this (songs arrive minutes apart), but a Radio Record backfill
+# records a whole day of history in one tight loop — without a cap that
+# would spawn one yt-dlp per song (hundreds at once). Reached, record_spin
+# waits for a slot before starting the next.
+MAX_PARALLEL_DOWNLOADS = 4
+
 YTDLP_ASSET = {"darwin": "yt-dlp_macos", "win32": "yt-dlp.exe"}.get(sys.platform, "yt-dlp")
 YTDLP_LOCAL = os.path.join(SCRIPT_DIR, "yt-dlp.exe" if sys.platform == "win32" else "yt-dlp")
 FFMPEG_LOCAL = os.path.join(SCRIPT_DIR, "ffmpeg.exe" if sys.platform == "win32" else "ffmpeg")
@@ -157,13 +173,23 @@ STREAM_FORMAT = "bv*[height<=720]/b[height<=720]/bv*/b"
 # ---------------------------------------------------------------- tools
 
 def find_ytdlp(override=None):
-    """Locate yt-dlp: --ytdlp flag, downloaded binary, .venv, or PATH."""
+    """Locate yt-dlp: --ytdlp flag, .venv, PATH, or the downloaded binary.
+
+    A yt-dlp in a local .venv (or on PATH) is preferred over our standalone
+    binary: the standalone bundles its own Python and unpacks it on every
+    launch, which on some Macs is pathologically slow to start (tens of
+    seconds per call — brutal when enriching/downloading hundreds of songs),
+    while a normally installed yt-dlp starts instantly. The standalone stays
+    the always-available fallback and the auto-repair target (download_ytdlp).
+    Create the fast path once with:  python3 -m venv .venv && .venv/bin/pip
+    install -U yt-dlp   (use a Python 3.10+ so pip gets the current yt-dlp).
+    """
     candidates = [override] if override else []
     candidates += [
-        YTDLP_LOCAL,  # standalone binary fetched by download_ytdlp()
         os.path.join(SCRIPT_DIR, ".venv", "bin", "yt-dlp"),
         os.path.join(SCRIPT_DIR, ".venv", "Scripts", "yt-dlp.exe"),  # Windows
         shutil.which("yt-dlp"),
+        YTDLP_LOCAL,  # standalone binary fetched by download_ytdlp()
     ]
     for c in candidates:
         if c and os.path.exists(c):
@@ -325,6 +351,10 @@ IGNORE_TEMPLATE = """\
 # config.json is true.
 #
 # One entry per line, in either form:
+# (lines pasted straight from a tracklist work too — a leading "[R]",
+#  a "01:02:30" timestamp and a "- " are stripped, and "A, B - Title"
+#  matches our "A & B — Title"; a remix/edit of a listed track counts as
+#  that track, so a song you already played never comes back)
 #
 #   https://www.youtube.com/watch?v=dQw4w9WgXcQ     a YouTube link
 #   dQw4w9WgXcQ                                     ...or just the video id
@@ -789,6 +819,9 @@ def record_spin(book, ytdlp, ts, title, artist, radio=None, downloads=None, live
         if radio.cfg["download_mp3"].get("use_ignore_file") and is_ignored(radio, song):
             notes += "  [mp3: on the ignore list]"
         else:
+            if downloads is not None:
+                while sum(i[0].poll() is None for i in downloads) >= MAX_PARALLEL_DOWNLOADS:
+                    time.sleep(0.5)  # hold the line until a download slot frees
             proc = download_mp3(radio, ytdlp, song)  # in the background; loop keeps going
             if proc is not None:
                 notes += "  [mp3 downloading...]"
@@ -875,9 +908,41 @@ def video_id(url):
     return m.group(1) if m else None
 
 
+# tracklist decorations in front of a name: "[R] 01:02:30 - Artist - Title"
+_TRACKLIST_PREFIX_RE = re.compile(r"^(?:\[[A-Za-z]\]\s*)?(?:\d{1,2}:)?\d{1,2}:\d{2}\s*(?:-\s*)?|^-\s+")
+
+
+def song_signature(artist, title):
+    """(artists, base title) for tolerant same-song matching.
+
+    Artists are split on any separator (& , x feat. vs ...) and folded, the
+    title loses its version suffix ("(Extended Mix)", "(Mixed)") — so a
+    tracklist line "Legroni, Peredel, Ilana Lorraine - Feel Me" matches our
+    row "Legroni & Peredel & Ilana Lorraine — Feel Me (Extended Mix)".
+    """
+    artists = frozenset(fold(a).lower() for a in re.split(r"\s*,\s*|" + SEP_RE.pattern, artist,
+                                                        flags=re.IGNORECASE) if a and a.strip())
+    base = _VERSION_RE.sub("", fold(title).lower()).strip()
+    base = re.sub(r"\s*[(\[]\s*mixed\s*[)\]]\s*$", "", base).strip()
+    return artists, base
+
+
+def parse_ignore_line(line):
+    """'[R] 05:13 Andre Rizo - Colindul (feat. X)  ' -> ('Andre Rizo', 'Colindul (feat. X)') or None."""
+    text = _TRACKLIST_PREFIX_RE.sub("", " ".join(line.split())).strip(" -")
+    if " - " not in text:
+        return None
+    artist, title = (p.strip() for p in text.split(" - ", 1))
+    return (artist, title) if artist and title else None
+
+
 def load_ignore(radio):
-    """Parse ignore.txt into video ids and folded 'artist - title' names."""
-    ids, names = set(), set()
+    """Parse ignore.txt: video ids, exact folded names, and song signatures.
+
+    Lines may be bare "Artist - Title" or pasted straight from a tracklist
+    ("[R] 01:02:30 - Artist, Artist - Title"); decorations are stripped.
+    """
+    ids, names, sigs = set(), set(), []
     if os.path.exists(radio.ignore_path):
         with open(radio.ignore_path, encoding="utf-8") as f:
             for line in f:
@@ -887,16 +952,29 @@ def load_ignore(radio):
                 vid = video_id(line) or (line if re.fullmatch(r"[\w-]{11}", line) else None)
                 if vid:
                     ids.add(vid)
+                    continue
+                parsed = parse_ignore_line(line)
+                if parsed:
+                    names.add(fold(f"{parsed[0]} - {parsed[1]}").lower())
+                    sigs.append(song_signature(*parsed))
                 else:
                     names.add(fold(" ".join(line.split())).lower())
-    return {"ids": ids, "names": names}
+    return {"ids": ids, "names": names, "sigs": sigs}
 
 
 def is_ignored(radio, song):
+    """On the ignore list: same video id, same exact name, or the same song
+    (same base title and at least one artist in common — a remix/edit of a
+    track you already played still counts as that track)."""
     vid = video_id(song.get("youtube"))
     if vid and vid in radio.ignore["ids"]:
         return True
-    return fold(f"{song['artist']} - {song['title']}").lower() in radio.ignore["names"]
+    if fold(f"{song['artist']} - {song['title']}").lower() in radio.ignore["names"]:
+        return True
+    artists, base = song_signature(song["artist"], song["title"])
+    if not base:
+        return False
+    return any(base == b and artists & a for a, b in radio.ignore["sigs"])
 
 
 # Local mirror of the playlist's content: "video_id<TAB>title<TAB>channel"
@@ -1472,8 +1550,177 @@ def read_overlay(ocr_cmd, frame_path, region, layout=None):
     return title, artist
 
 
+class Housekeeping:
+    """What a live logger does between reads: progress marks on one line,
+    background mp3 downloads, and the playlist catch-up (a few adds per
+    cycle, resuming the day after a quota block)."""
+
+    def __init__(self, radio, book):
+        self.radio, self.book = radio, book
+        self.downloads = []  # background mp3 downloads still running
+        self.pl_pending = None  # playlist catch-up queue; None = recompute when possible
+        self._dots = False
+
+    def note(self, sym):
+        print(sym, end="", flush=True)
+        self._dots = True
+
+    def show(self, line):
+        if self._dots:
+            print(flush=True)
+            self._dots = False
+        print(line, flush=True)
+
+    def tick(self):
+        radio, book = self.radio, self.book
+        for song, ok in finished_downloads(self.downloads):
+            if ok:
+                self.note("♪")
+            else:
+                self.show(
+                    f"mp3 download FAILED: {song['artist']} — {song['title']}"
+                    "  (backfill later with: radio_tracklog.py download)"
+                )
+        if not (playlist_enabled(radio) and not quota_blocked_today(radio)):
+            return
+        cache = read_playlist_cache(radio)
+        if cache is None:
+            return
+        if self.pl_pending is None:
+            self.pl_pending = playlist_pending(radio, book, cache)
+            if self.pl_pending:
+                self.show(f"playlist catch-up: {len(self.pl_pending)} song(s) to add")
+        if not self.pl_pending:
+            return
+        token = google_access_token()
+        if not token:
+            self.pl_pending = []  # not authorized (yet) — leave it be
+        added = 0
+        while self.pl_pending and added < 5:
+            s, vid = self.pl_pending[0]
+            ok, reason = playlist_insert(token, playlist_id(radio), vid)
+            if ok:
+                self.pl_pending.pop(0)
+                append_playlist_cache(radio, vid, s["title"], s["artist"])
+                added += 1
+            elif reason == "quotaExceeded":
+                mark_quota(radio)
+                self.show(f"playlist: daily quota reached — "
+                          f"{len(self.pl_pending)} song(s) wait for tomorrow")
+                self.pl_pending = None  # recompute once the day passes
+                break
+            else:
+                self.show(f"playlist: {s['artist']} — {s['title']} failed ({reason}) — skipped")
+                self.pl_pending.pop(0)
+        if added and not self.pl_pending:
+            self.show("playlist catch-up complete")
+
+    def finish(self):
+        if self.book.dirty:
+            self.book.save()
+        still = [i for i in self.downloads if i[0].poll() is None]
+        if still:
+            print(f"{len(still)} mp3 download(s) still finishing in the background.", flush=True)
+
+
+# ------------------------------------------------------------ radio record
+
+RECORD_API = "https://www.radiorecord.ru/api/"
+
+
+def record_api(path):
+    """One Radio Record API call -> its 'result' (the server gzips replies)."""
+    import gzip
+    import urllib.request
+
+    req = urllib.request.Request(RECORD_API + path, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        data = r.read()
+    if data[:2] == b"\x1f\x8b":
+        data = gzip.decompress(data)
+    d = json.loads(data.decode("utf-8"))
+    if "result" not in d:
+        raise OSError(f"Radio Record API: {(d.get('error') or {}).get('message', 'unexpected reply')}")
+    return d["result"]
+
+
+def record_station(prefix):
+    """(id, title) of a Radio Record station by its URL name ('organic')."""
+    for st in record_api("stations/").get("stations", []):
+        if st.get("prefix") == prefix:
+            return st["id"], st.get("title", prefix)
+    sys.exit(f'Radio Record has no station "{prefix}" — the name is the last part of the '
+             f'station URL on radiorecord.ru (e.g. .../station/organic -> "organic").')
+
+
+def record_history(station_id):
+    """The station's recent plays, oldest first: [(unix time, artist, song)].
+    Entries flagged noShow (jingles, ads) are skipped."""
+    hist = record_api(f"station/history/?id={station_id}").get("history", [])
+    plays = [(int(h["time"]), h["artist"].strip(), h["song"].strip()) for h in hist
+             if h.get("time") and not h.get("noShow") and h.get("artist") and h.get("song")]
+    return sorted(plays)
+
+
+_RMX_RE = re.compile(r"\brmx\b", re.IGNORECASE)
+
+
+def record_names(artist, song, casing):
+    """API spelling -> ours: 'LOST DESERT/HERMANEZ' -> 'Lost Desert & Hermanez',
+    'Jinx (Volen Sentir rmx)' -> 'Jinx (Volen Sentir Remix)'. Returns (title, artist)."""
+    artist = " & ".join(p.strip() for p in artist.split("/") if p.strip())
+    return normalize_name(_RMX_RE.sub("Remix", song), casing), normalize_name(artist, casing)
+
+
+def watch_radiorecord(args, radio):
+    """`watch` for a Radio Record station: poll the tracklist API instead of OCR."""
+    src = radio.cfg["source"]
+    _lock = acquire_single_instance(radio, "watch")  # noqa: F841 — held until exit
+    signal.signal(signal.SIGTERM, _sigterm)
+    ytdlp = find_ytdlp(args.ytdlp)
+    casing = load_artist_casing(radio)
+    book = SongBook(radio.songs_csv)
+    warn_clock_skew(book, "watch")
+    sid, title = record_station(src["station"])
+    every = float(src.get("poll_interval_seconds") or 300)
+    print(f'Watching {radio.name}: Radio Record "{title}" via its tracklist API', flush=True)
+    print(f"Polling every {every:.0f}s -> {radio.songs_csv}  (Ctrl+C to stop)", flush=True)
+    print("'.' = nothing new, '♪' = mp3 saved, 'x' = API hiccup; the API keeps ~28 h of "
+          "history, so whatever played while this wasn't running is filled in on the next poll",
+          flush=True)
+    hk = Housekeeping(radio, book)
+    try:
+        while True:
+            t0 = time.monotonic()
+            hk.tick()
+            try:
+                plays = record_history(sid)
+            except (OSError, ValueError, KeyError):
+                plays = []
+                hk.note("x")
+            new = 0
+            for ts, artist, song in plays:
+                t, a = record_names(artist, song, casing)
+                # live=False: plays not newer than the newest row are the
+                # already-counted past — exactly the chat-backlog rule
+                line = record_spin(book, ytdlp, from_epoch(ts), t, a, radio, hk.downloads)
+                if line:
+                    hk.show(line)
+                    new += 1
+            if plays and not new:
+                hk.note(".")
+            time.sleep(max(1.0, every - (time.monotonic() - t0)))
+    except KeyboardInterrupt:
+        print("\nStopping.")
+    finally:
+        hk.finish()
+    cmd_stats(args)
+
+
 def cmd_watch(args):
     radio = resolve_radio(args)  # (platform support is checked by ensure_ocr)
+    if radio.cfg["source"].get("type") == "radiorecord":
+        return watch_radiorecord(args, radio)
     _lock = acquire_single_instance(radio, "watch")  # noqa: F841 — held until exit
     signal.signal(signal.SIGTERM, _sigterm)
     ytdlp = find_ytdlp(args.ytdlp)
@@ -1498,66 +1745,13 @@ def cmd_watch(args):
     manifest = None
     last = None
     pending = None  # unseen name waiting for a second identical read
-    pending_dots = False
-    downloads = []  # background mp3 downloads still running
-    pl_pending = None  # playlist catch-up queue; None = recompute when possible
-
-    def note(sym):
-        nonlocal pending_dots
-        print(sym, end="", flush=True)
-        pending_dots = True
-
-    def show(line):
-        nonlocal pending_dots
-        if pending_dots:
-            print(flush=True)
-            pending_dots = False
-        print(line, flush=True)
+    hk = Housekeeping(radio, book)
+    note, show, downloads = hk.note, hk.show, hk.downloads
 
     try:
         while True:
             t0 = time.monotonic()
-            for song, ok in finished_downloads(downloads):
-                if ok:
-                    note("♪")
-                else:
-                    show(
-                        f"mp3 download FAILED: {song['artist']} — {song['title']}"
-                        "  (backfill later with: radio_tracklog.py download)"
-                    )
-            # playlist catch-up: work off songs still missing from the
-            # playlist, a few per cycle, resuming the day after a quota block
-            if playlist_enabled(radio) and not quota_blocked_today(radio):
-                cache = read_playlist_cache(radio)
-                if cache is not None:
-                    if pl_pending is None:
-                        pl_pending = playlist_pending(radio, book, cache)
-                        if pl_pending:
-                            show(f"playlist catch-up: {len(pl_pending)} song(s) to add")
-                    if pl_pending:
-                        token = google_access_token()
-                        if not token:
-                            pl_pending = []  # not authorized (yet) — leave it be
-                        added = 0
-                        while pl_pending and added < 5:
-                            s, vid = pl_pending[0]
-                            ok, reason = playlist_insert(token, playlist_id(radio), vid)
-                            if ok:
-                                pl_pending.pop(0)
-                                append_playlist_cache(radio, vid, s["title"], s["artist"])
-                                added += 1
-                            elif reason == "quotaExceeded":
-                                mark_quota(radio)
-                                show(f"playlist: daily quota reached — "
-                                     f"{len(pl_pending)} song(s) wait for tomorrow")
-                                pl_pending = None  # recompute once the day passes
-                                break
-                            else:
-                                show(f"playlist: {s['artist']} — {s['title']} "
-                                     f"failed ({reason}) — skipped")
-                                pl_pending.pop(0)
-                        if added and not pl_pending:
-                            show("playlist catch-up complete")
+            hk.tick()
             got = None
             try:
                 if manifest is None:
@@ -1603,11 +1797,7 @@ def cmd_watch(args):
             os.remove(frame)
         except OSError:
             pass
-        if book.dirty:
-            book.save()
-        still = [i for i in downloads if i[0].poll() is None]
-        if still:
-            print(f"{len(still)} mp3 download(s) still finishing in the background.", flush=True)
+        hk.finish()
     cmd_stats(args)
 
 
@@ -1798,6 +1988,34 @@ def cmd_casing(args):
         print("Restart a running `watch`/`log` so it picks up the new casing.")
 
 
+def cmd_ignore(args):
+    """Apply ignore.txt to what's already on disk: list the logged songs it
+    matches and delete their mp3s (and cover-art leftovers). --check only lists."""
+    radio = resolve_radio(args)
+    book = load_book(radio)
+    hits = [r for r in book.songs.values() if is_ignored(radio, r)]
+    listed = len(radio.ignore["ids"]) + len(radio.ignore["names"])
+    print(f"{radio.name}: {listed} entries in ignore.txt match {len(hits)} of {len(book.songs)} logged songs")
+    removed = 0
+    for r in sorted(hits, key=lambda r: (r["artist"].lower(), r["title"].lower())):
+        path = mp3_path(radio, r)
+        has = os.path.exists(path)
+        print(f"  {'mp3' if has else '   '}  {r['artist']} — {r['title']}")
+        if has and not args.check:
+            os.remove(path)
+            removed += 1
+            for side in glob.glob(path[:-4] + ".*"):  # .jpg thumbnail etc.
+                try:
+                    os.remove(side)
+                except OSError:
+                    pass
+    if args.check:
+        print(f"--check: {sum(os.path.exists(mp3_path(radio, r)) for r in hits)} mp3(s) would be deleted.")
+    else:
+        print(f"Deleted {removed} mp3(s). (They stay in songs.csv; `download` won't re-fetch "
+              f"ignored songs while download_mp3.use_ignore_file is on.)")
+
+
 # ----------------------------------------------------------- read-only
 
 def load_book(radio):
@@ -1920,7 +2138,8 @@ def main():
     )
     p.add_argument(
         "command", nargs="?", default="log",
-        choices=["watch", "log", "list", "stats", "enrich", "download", "playlist", "casing"],
+        choices=["watch", "log", "list", "stats", "enrich", "download", "playlist", "casing",
+                 "ignore"],
     )
     p.add_argument(
         "radio", nargs="?", default=None,
@@ -1929,12 +2148,12 @@ def main():
     p.add_argument("--url", default=None, help="override the radio's YouTube URL")
     p.add_argument("--ytdlp", default=None, help="path to yt-dlp (default: auto-detect)")
     p.add_argument("--check", action="store_true",
-                   help="casing: only report, change nothing")
+                   help="casing / ignore: only report, change nothing")
     args = p.parse_args()
     {
         "watch": cmd_watch, "log": cmd_log, "list": cmd_list,
         "stats": cmd_stats, "enrich": cmd_enrich, "download": cmd_download,
-        "playlist": cmd_playlist, "casing": cmd_casing,
+        "playlist": cmd_playlist, "casing": cmd_casing, "ignore": cmd_ignore,
     }[args.command](args)
 
 

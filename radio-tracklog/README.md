@@ -66,6 +66,7 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
 ```json
 {
   "url": "https://www.youtube.com/watch?v=WsDyRAPFBC8",
+  "source": {"type": "youtube", "station": "", "poll_interval_seconds": 300},
   "capture_interval_seconds": 60,
   "timezone": "Europe/Malta",
   "youtube_lookup": true,
@@ -79,6 +80,17 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
 (Configs in older layouts are upgraded automatically on first run.)
 
 - **`url`** — the YouTube live stream to follow.
+- **`source`** — where the track names come from. `youtube` (default):
+  frames of the live stream at `url`, read by OCR. `radiorecord`: a
+  [Radio Record](https://www.radiorecord.ru/) station — set `station` to
+  the last part of its URL (`.../station/organic` → `"organic"`) and the
+  script polls the station's public tracklist API every
+  `poll_interval_seconds` instead of grabbing frames: exact play times,
+  no misreads, and ~28 hours of history, so whatever played while the
+  script wasn't running is filled in on the next poll (first run backfills
+  the whole day). No OCR/ffmpeg needed for logging; `watch` works on any
+  OS for these. Everything downstream (`songs.csv`, mp3s, playlist,
+  `casing`, `enrich`) is the same.
 - **`capture_interval_seconds`** — `watch` mode: how often to grab a frame
   and read the overlay. 60 is a good default (songs run 3–5 minutes).
 - **`timezone`** — the zone every date/time is written in (`songs.csv`,
@@ -113,6 +125,12 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
   feature. The file takes one entry per line: a YouTube link (or bare
   video id), or `Artist - Title` (case- and accent-insensitive); the
   file's header explains the details.
+  Lines pasted straight from a DJ tracklist work too (`[R] 01:02:30 -
+  Artist, Artist - Title`): decorations are stripped, artist separators
+  don't matter, and a remix/edit of a listed track counts as that track.
+  `python3 radio_tracklog.py ignore <radio>` shows which logged songs the
+  list matches and deletes their mp3s (`--check` only lists) — handy after
+  pasting the tracklists of sets you already played.
 - **`ocr_region`** — `watch` mode: where the now-playing overlay sits in
   the frame, as fractions of width/height **measured from the bottom-left
   corner**. The default matches Monstercat's bottom-left overlay while
@@ -151,6 +169,11 @@ The included radios:
   bottom-left corner; every track is the label's own, so `default_artist`
   is `Bassport Music`. Lookup/downloads/playlist off for the same reason; no
   track bot in chat, so `watch` only.
+- **`record-organic`** — Radio Record "Organic" (organic house, "in the
+  style of Tim Green and Sebastien Leger"), via the `radiorecord` source.
+  Commercial releases, so YouTube lookup and mp3 downloads are on; the
+  API spells artists `LOST DESERT/HERMANEZ` — the script turns that into
+  `Lost Desert & Hermanez` (and `rmx` into `Remix`).
 
 With several radios present, every command needs the radio's name:
 `python3 radio_tracklog.py watch monstercat-silk` or
