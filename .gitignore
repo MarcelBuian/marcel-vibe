@@ -1,3 +1,6 @@
 .DS_Store
 .venv/
 __pycache__/
+
+# downloaded videos for re-upload (multi-GB, re-fetchable)
+MarcelVibe/uploads/
