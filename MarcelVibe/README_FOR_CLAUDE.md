@@ -93,6 +93,11 @@ Marcel's own labels are the source of truth; confirm with him when unsure.
   block.
 
 ## Tags style (Tags.txt)
+HARD LIMIT: the whole tag line must be **max 500 characters** (YouTube's cap on
+the tags field). Marcel's rule - he had to trim #27 after I overshot. Count the
+line length before delivering; aim for ~400-450 to leave headroom. Prioritise:
+branding variants > genre terms > location > a few headline artists, and cut
+artists first if over.
 Comma-separated, no spaces needed between items. Always include MANY branding
 variants so search catches them all:
 `Marcel Vibe,marcel vibe [NN],MarcelVibe[NN],marcelvibe[NN],MarcelVibe [NN],Marcel Vibe [NN]`
