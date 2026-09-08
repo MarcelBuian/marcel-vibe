@@ -125,6 +125,8 @@ and the notable artists/DJs in the set.
   Marcel if he wants the handle added.
 - **Artiom** — filmed #15, #17, #21, #22 (and drone). Amateur, improving.
 - **Joe** — filmed #27 and #28 (Aug 2026). Credited as `🎥 Filmed by: Joe`.
+- **Vova** — filmed #29 with a professional camera (no drone). Credited as
+  `🎥 Filmed by: Vova (professional camera)`.
 - **Shapovalov / Sapovalov / Sasha Shapovalov**, **Grisha / Grisa**, **Ion
   Soundgate / Ion Ples**, **Sasha Bezer** — guest DJs in #16–#19.
 - **vladimir.dogoter** — filming/edit on #04.
@@ -142,6 +144,14 @@ and the notable artists/DJs in the set.
   DnB, filmed by Joe). #28 Golden Bay (2026-08-22, third Silk-style melodic set
   after #21/#22, all tracks from the Monstercat Silk radio, filmed by Joe;
   Golden Bay = third time there after #16 and #19).
+- #29 **Deepium Exit 2026, Criuleni, Moldova, 2026-08-29 (Saturday), 22:00** —
+  the festival Marcel co-founded with friends 5 years earlier (~130 people at
+  the first edition); his FIRST time ever mixing in front of a crowd (~40
+  people). He played both Saturday and Sunday; #29 is the Saturday set.
+  Melodic opening (Makebo, Marsh x Volen Sentir) into Tech House (Matt
+  Sassari, HUGEL, Wade) - labelled Tech House in the title, "Melodic House /
+  Tech House" in the genres line. Organised by Shapovalov, filmed by Vova, no
+  drone. Not a sunset set - no time-of-day word in the title.
 - Marcel's sign-off since #26 is "Enjoy the vibe!" - keep it, it's his.
 
 ## Workflow when Marcel posts a new session
