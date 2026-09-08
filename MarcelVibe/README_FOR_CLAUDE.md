@@ -22,7 +22,11 @@ session(s) Marcel explicitly names in the current request.
 - **Tags.txt** — comma-separated YouTube tags per session.
 - **Playlists.txt** — `#NN - YYYY-MM-DD Location` header + timestamped tracklist.
   This is the most reliable place to find a session's **date, location and
-  tracklist** (Marcel fills it before the description).
+  tracklist** (Marcel fills it before the description). BUT the header location
+  can be a copy-paste slip: #27's header said "Golden Bay" while the set was
+  actually at **Paradise Bay** (Marcel had to fix title + description). If the
+  raw description text does not name the location itself, STATE the location
+  you took from the header explicitly in the reply so he can catch it.
 
 ## Genre labelling — IMPORTANT, check the tracklist properly
 Don't guess the genre from a vibe — read the actual artists/tracks and match them.
@@ -76,6 +80,12 @@ Marcel's own labels are the source of truth; confirm with him when unsure.
    Start with `#MarcelVibe`, then 2 that fit the session, e.g.
    `#MarcelVibe #SunriseMix #MelodicHouse`.
 
+## Facts to double-check before writing (Marcel had to fix these)
+- Location of the session (see Playlists.txt note above).
+- Counting claims like "second/third time at X" or "third set of this kind":
+  count the actual previous sessions in Titles.txt first, and avoid "in a row"
+  unless the sessions are literally consecutive.
+
 ## Voice / tone rules
 - First person, warm, humble, conversational. Real English of a non-native
   speaker — polish it, but DO NOT make it sound corporate or AI-perfect.
@@ -107,7 +117,8 @@ and the notable artists/DJs in the set.
 ## Recurring people
 - **Valentin** — drone footage. Instagram **@valiiancu** (credited in #12). Ask
   Marcel if he wants the handle added.
-- **Artiom** — filmed #15, #17 (and drone). Amateur, improving.
+- **Artiom** — filmed #15, #17, #21, #22 (and drone). Amateur, improving.
+- **Joe** — filmed #27 and #28 (Aug 2026). Credited as `🎥 Filmed by: Joe`.
 - **Shapovalov / Sapovalov / Sasha Shapovalov**, **Grisha / Grisa**, **Ion
   Soundgate / Ion Ples**, **Sasha Bezer** — guest DJs in #16–#19.
 - **vladimir.dogoter** — filming/edit on #04.
@@ -120,6 +131,12 @@ and the notable artists/DJs in the set.
   Valentin. Genre: Melodic & Progressive House.
 - #21 Għar ir-Riħ, Gozo (2026-05-30) and #22 Popeye Village (2026-06-04) share a
   Shingo Nakamura / progressive-melodic sound with #20.
+- #26 Riviera Bay (2026-08-15, Deep House, solo, first time flying the drone
+  while mixing). #27 **Paradise Bay** (2026-08-16, first Drum & Bass set, liquid
+  DnB, filmed by Joe). #28 Golden Bay (2026-08-22, third Silk-style melodic set
+  after #21/#22, all tracks from the Monstercat Silk radio, filmed by Joe;
+  Golden Bay = third time there after #16 and #19).
+- Marcel's sign-off since #26 is "Enjoy the vibe!" - keep it, it's his.
 
 ## Workflow when Marcel posts a new session
 1. Read all 4 files + this README.
