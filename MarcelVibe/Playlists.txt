@@ -513,34 +513,6 @@
 
 #27 - 2026-08-16 Golden Bay
 00:00:00 - Etherwood - Cast Away
-00:02:42 - HumaNature - First Light
-00:06:33 - HumaNature - Memories
-00:08:41 - LiquidHour DnB, Nenad Markovic - Flux
-00:12:10 - LiquidHour DnB, Nenad Markovic - Skittering Lamp Whirl
-00:15:03 - Tom Walker - Better Half of Me (Etherwood Remix)
-00:16:35 - Alpha Rhythm, Ritual - Downcast
-00:19:22 - Emily Makis, Monrroe - Never Too Old (Friction Remix)
-00:22:40 - Etherwood, Eva Lazarus - Light My Way Home (feat. Eva Lazarus)
-00:26:04 - Hybrid Minds, Netsky - Let Me Hold You (Grafix Remix)
-00:29:05 - Fugees - Ready Or Not (Champion Bootleg)
-00:33:19 - Netsky, Becky Hill - Hold On
-00:35:33 - Papa Pedro, Piotr Ostrowski, Piotr Ostrowski - Goodbye
-00:37:19 - Phaction, Leo Wood - Electric Wires
-00:41:15 - HumaNature, Tarz - Connection
-00:43:03 - Koven - Chase The Sun
-00:45:28 - Reflekt, Matrix, Delline Bass - Need To Feel Loved (Matrix Remix)
-00:49:41 - Technicolour, Komatic - The Glow
-00:51:36 - Culture Shock - Renaissance
-00:54:27 - Grafix - Radiance
-00:57:23 - Sub Focus, Wilkinson - Rock It (Wilkinson Remix)
-00:59:32 - Wilkinson - Decompression
-01:01:59 - Wilkinson, HAYLA - I Need (Wilkinson & Metrik Remix)
-01:03:59 - Erythh - SUBMITT
-01:07:11 - Tantrum Desire - Cluster
-01:10:30 - Gydra - Ikra (Original Mix)
-
-#28 - 2026-08-22 Golden Bay
-00:00:00 - Etherwood - Cast Away
 00:03:26 - HumaNature - First Light
 00:06:12 - HumaNature - Memories
 00:08:46 - LiquidHour DnB, Nenad Markovic - Flux
@@ -566,6 +538,30 @@
 01:01:08 - Erythh - Submitt
 01:03:21 - Tantrum Desire - Cluster
 01:06:38 - Gydra - Ikra
+
+#28 - 2026-08-22 Golden Bay
+00:00:01 - Gregory Esayan - Make A Wish (Jay FM Remix)
+00:04:58 - Meeting Molly - Westeros
+00:08:33 - Flexible Fire - Starfall
+00:11:01 - Aftruu - Falling Asleep
+00:13:45 - Archaellum - Threads
+00:15:39 - Finding Mero - Since July
+00:18:21 - Mango, Cloudcage - Snowglobe
+00:20:48 - Marsh - Mini Anthem
+00:22:58 - A.M.R - Silver Lining (Intro Mix)
+00:26:15 - Ra5im, Arnie Way - Stranger
+00:28:25 - Shingo Nakamura, Jordin Post - Take Me Away (A.M.R Remix)
+00:31:09 - Shingo Nakamura - Golden Leaves
+00:33:51 - Aleyum - Galvanic Seasons
+00:36:33 - Flexible Fire, Dias Ridge - Through The Inversion
+00:39:14 - Liam Thomas, Finding Mero - Phrases
+00:41:08 - A.M.R - Sealine
+00:43:24 - Barzek, Jethimself, DUALIS - Ride
+00:45:49 - Dokho - Crystal Cave
+00:47:57 - Flexible Fire, Etza - Sunlight
+00:52:13 - Not Now Please - Don't Forget The Parachute
+00:57:02 - Sound Quelle - Melancholy Strings
+01:02:04 - Not Now Please - Time Trap
 
 #29 - 2026-08-29 Deepium Exit 2026 - Criuleni, Moldova
 Sebastian Sellares - Timeless Era
