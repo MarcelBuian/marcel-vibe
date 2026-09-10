@@ -17,7 +17,6 @@
 # ARTIST / Söme Ärtist all count). Lines starting with # are comments.
 # Changes are picked up when a logger starts — restart a running watch
 # after editing.
-
 #01 - 2025-04-19 Sanap Cliffs, Gozo
 00:00 Moby - In This World (Amonita & Makebo Edit)  
 05:13 Andre Rizo - Colindul Cerbui (feat. Narcia Suciu)  
@@ -531,30 +530,111 @@
 01:08:29 - Sasha, Franky Wah, Alexander Coe, Luke Storrs - Haunted
 01:14:35 - Computer Data - Seele
 
-#27 - 2026-08-16 Golden Bay
+#27 - 2026-08-16 Paradise Bay
 00:00:00 - Etherwood - Cast Away
-00:02:42 - Humanature - First Light
-00:06:33 - HumaNature - Memories
-00:08:41 - LiquidHour DnB, Nenad Markovic - Flux
-00:12:10 - LiquidHour DnB, Nenad Markovic - Skittering Lamp Whirl
-00:15:03 - Tom Walker - Better Half of Me (Etherwood Remix)
-00:16:35 - Alpha Rhythm, Ritual - Downcast
-00:19:22 - Emily Makis, Monrroe - Never Too Old (Friction Remix)
-00:22:40 - Etherwood, Eva Lazarus - Light My Way Home (feat. Eva Lazarus)
-00:26:04 - Hybrid Minds, Netsky - Let Me Hold You (Grafix Remix)
-00:29:05 - Fugees - Ready Or Not (Champion Bootleg)
-00:33:19 - Netsky, Becky Hill - Hold On
-00:35:33 - Papa Pedro, Piotr Ostrowski, Piotr Ostrowski - Goodbye
-00:37:19 - Phaction, Leo Wood - Electric Wires
-00:41:15 - HumaNature, Tarz - Connection
-00:43:03 - Koven - Chase The Sun
-00:45:28 - Reflekt, Matrix, Delline Bass - Need To Feel Loved (Matrix Remix)
-00:49:41 - Technicolour, Komatic - The Glow
-00:51:36 - Culture Shock - Renaissance
-00:54:27 - Grafix - Radiance
-00:57:23 - Sub Focus, Wilkinson - Rock It (Wilkinson Remix)
-00:59:32 - Wilkinson - Decompression
-01:01:59 - Wilkinson, HAYLA - I Need (Wilkinson & Metrik Remix)
-01:03:59 - Erythh - SUBMITT
-01:07:11 - Tantrum Desire - Cluster
-01:10:30 - Gydra - Ikra (Original Mix)
+00:03:26 - HumaNature - First Light
+00:06:12 - HumaNature - Memories
+00:08:46 - LiquidHour DnB, Nenad Markovic - Flux
+00:13:11 - LiquidHour DnB, Nenad Markovic - Skittering Lamp Whirl
+00:15:12 - Tom Walker - Better Half of Me (Etherwood Remix)
+00:17:14 - Alpha Rhythm, Ritual - Downcast
+00:20:21 - Emily Makis, Monrroe - Never Too Old (Friction Remix)
+00:23:40 - Etherwood, Eva Lazarus - Light My Way Home (feat. Eva Lazarus)
+00:26:36 - Hybrid Minds, Netsky - Let Me Hold You (Grafix Remix)
+00:29:33 - Fugees - Ready Or Not (Champion Bootleg)
+00:33:36 - Netsky, Becky Hill - Hold On
+00:36:10 - Papa Pedro, Piotr Ostrowski, Piotr Ostrowski - Goodbye
+00:37:58 - Phaction, Leo Wood - Electric Wires
+00:41:11 - HumaNature, Tarz - Connection
+00:42:51 - Koven - Chase The Sun
+00:45:22 - Reflekt, Matrix, Delline Bass - Need To Feel Loved
+00:47:09 - Technicolour, Komatic - The Glow
+00:48:04 - Culture Shock - Renaissance
+00:50:59 - Grafix - Radiance
+00:53:33 - Sub Focus, Wilkinson - Rock It
+00:56:01 - Wilkinson - Decompression
+00:58:35 - Wilkinson, HAYLA - I Need (Wilkinson & Metrik Remix)
+01:01:08 - Erythh - Submitt
+01:03:21 - Tantrum Desire - Cluster
+01:06:38 - Gydra - Ikra
+
+#28 - 2026-08-22 Golden Bay
+00:00:00 - Gregory Esayan - Make A Wish (Jay FM Remix)
+00:04:55 - Meeting Molly - Westeros
+00:08:30 - Flexible Fire - Starfall
+00:10:58 - Aftruu - Falling Asleep
+00:13:25 - Archaellum - Threads
+00:15:35 - Finding Mero - Since July
+00:18:18 - Mango, Cloudcage - Snowglobe
+00:20:45 - Marsh - Mini Anthem
+00:22:55 - A.M.R - Silver Lining (Intro Mix)
+00:26:19 - Ra5im, Arnie Way - Stranger
+00:28:14 - Shingo Nakamura, Jordin Post - Take Me Away (A.M.R Remix)
+00:30:57 - Shingo Nakamura - Golden Leaves
+00:33:48 - Aleyum - Galvanic Seasons
+00:36:21 - Flexible Fire, Dias Ridge - Through The Inversion
+00:39:03 - Liam Thomas, Finding Mero - Phrases
+00:40:57 - A.M.R - Sealine
+00:43:13 - Barzek, Jethimself, DUALIS - Ride
+00:45:37 - Dokho - Crystal Cave
+00:47:45 - Flexible Fire, Etza - Sunlight
+00:52:02 - Not Now Please - Don't Forget The Parachute
+00:57:06 - Sound Quelle - Melancholy Strings
+01:01:53 - Not Now Please - Time Trap
+
+#29 - 2026-08-29 Deepium Exit 2026 - Criuleni, Moldova
+00:00:00 - Makebo - Upside Down
+00:04:20 - Marsh X Volen Sentir - Different (ID feat. XIRA)
+00:08:24 - Newman (I Love) - The Moon and the Stars
+00:12:04 - Joseph Ray - Blue Nights (Mixed)
+00:13:30 - Ilias Katelanos, Plecta - Asphodel
+00:15:57 - Mat.Joe, C'mon & Otistic - Sunflower
+00:20:40 - Kevin McKay - In The Air Tonight (Amal Nemer Extended Remix)
+00:24:01 - Frost - We Call It House
+00:27:53 - Simon Doty - Have You Ever?
+00:32:25 - Matt Sassari & HUGEL feat. Sonique - It Feels So Good (Jamy Nox Remix)
+00:35:13 - The Temper Trap - Sweet Disposition (John Summit & Silver Panda Remix)
+00:39:57 - Matt Sassari - Give It To Me (Full Vocal Mix)
+00:44:19 - TomDūno - Diamond
+00:47:05 - Da Hool - Meet Her at the Love Parade (Cassian & Yotto Remix)
+00:50:12 - Franky Rizardo & Ros T ft Eunice Collins - Out The Fire (At The Hotel)
+00:53:20 - Wade - I Was Made For Lovin' You
+
+#30 - 2026-09-05 - White Tower Bay, Malta
+00:00:00 - Peter Makto - Bedouin (Erdi Irmak Remix)
+00:02:03 - Alley Sa - Under the Same Sky
+00:05:00 - Alex Spite & Sandora - Waiting at Sunset
+00:08:47 - Aurel Den Bossa & Ias Ferndale - Famemba
+00:12:47 - Bona Fide - The Other Side Of The Moon
+00:18:55 - Death on the Balcony & Caramelli - Request the Love in Me
+00:23:43 - Dj Zombi & Guy Davidov & Seth Vogt - Free My World (Amata Remix)
+00:27:27 - Double Touch & Reigan - Greatest Day
+00:31:42 - Emi Brandan - Feel Natural
+00:34:06 - Ghon - Nimaya
+00:39:11 - Husa & Zeyada - Trick of the Mind (Erdi Irmak Remix)
+00:43:50 - Juan Pablo Moran - Simulation
+00:47:27 - Lublo - Kindergarten
+00:50:46 - Niko Garcia - Galaxy
+00:55:34 - Paul Losev - Dremunda
+00:58:48 - Paul Losev - Milkyway
+
+#31 - 2026-09-06 Xlendi, Gozo
+00:00:00 - Artem Prime & Cafe de Anatolia - Feel It
+00:01:52 - Artem Prime & Cafe de Anatolia - My Sea
+00:04:47 - Domingo - Pocket Vibes
+00:07:42 - Domingo - Hardway
+00:11:55 - Evren Furtuna - Stars
+00:15:24 - Mass Digital - Changes
+00:17:45 - Nufects - Autumn
+00:22:20 - Lost Desert & Hermanez - Jinx (Volen Sentir Remix)
+00:26:06 - Planet Funk - Chase the Sun (Makebo Remix)
+00:31:29 - Proff - Nara
+00:35:10 - Nohan - All I Need
+00:36:46 - Haft - Inverted Skies
+00:40:24 - Choopie - Alush (Alberto Hernandez & Dulus Remix)
+00:43:17 - Lisandro (Ar) - Love
+00:44:52 - Pambouk - Power of Imagination
+00:49:19 - Proff & Khen & Volen Sentir - Mirage
+00:52:12 - ST.EGO - Wilted Roses
+00:55:38 - Florian Gasperini - Alteration Nocturne
+00:57:59 - Morris (Ar) - Surge

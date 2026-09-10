@@ -152,6 +152,14 @@ and the notable artists/DJs in the set.
   Sassari, HUGEL, Wade) - labelled Tech House in the title, "Melodic House /
   Tech House" in the genres line. Organised by Shapovalov, filmed by Vova, no
   drone. Not a sunset set - no time-of-day word in the title.
+- #30 **White Tower Bay, Malta, 2026-09-05, sunset** - milestone mix number 30,
+  solo set, Artiom filmed (iPhone + drone), two more friends came for support
+  only (no guest DJs). First session at this spot. Marcel's own genre label:
+  **Organic Deep House** (one label, used verbatim in the genres line).
+- #31 **Xlendi, Gozo, 2026-09-06, sunset** - the day after #30, after a scuba
+  diving trip in Gozo. Artiom filmed (iPhone + drone). Same "Organic Deep House"
+  label. First session in Xlendi. Credit format used: `🎥 Filmed by: Artiom -
+  4K (iPhone + Drone)`.
 - Marcel's sign-off since #26 is "Enjoy the vibe!" - keep it, it's his.
 
 ## Workflow when Marcel posts a new session
