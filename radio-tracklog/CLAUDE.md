@@ -22,15 +22,15 @@ Extend those, don't bypass them.
 top/bottom, `align` left/center, `ignore` labels, `default_artist`,
 `always_visible`) next to `ocr_region` — add options there, never
 station-specific code. monstercat-silk is the default (artist on top,
-left-aligned); aegean-lounge is title on top over "Aegean Lounge
-Official", centered; bassport-deep-techno is a "NOW PLAYING" label
-(ignored) + one title line with default_artist "Bassport Music". Aegean
-only shows its overlay for the first 25 s and last 15 s of a track, hence
-its 10 s capture interval and `always_visible: false` (runs of `.` in
-between are not a bug). A new song there is confirmed by the second read
-inside the 25 s window. Neither new station has a usable chat: `watch`
-only. Both have `youtube_lookup: false` — their tracks aren't on YouTube;
-the search returns junk and blocks the loop ~40 s per new song. One `watch` process per radio; commands need the radio name.
+left-aligned). The options exist for stations whose overlay differs:
+`artist_line: bottom` + `align: center` for title-over-artist layouts,
+`ignore` for label texts like "NOW PLAYING", `default_artist` for
+single-line overlays, and `always_visible: false` (with a short capture
+interval) for stations that only show the name briefly per track (runs
+of `.` in between are not a bug; a new song is confirmed by a second
+read inside that window). Set `youtube_lookup: false` on stations whose
+tracks aren't on YouTube — the search returns junk and blocks the loop
+~40 s per new song. One `watch` process per radio; commands need the radio name.
 
 ## Artist name casing
 The overlay is ALL CAPS; `normalize_name()` title-cases it. Artists with

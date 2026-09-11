@@ -426,8 +426,16 @@ def resolve_radio(args):
     # must never blank out values a newer layout already holds.
     legacy_keys = {"download", "youtube_playlist", "ignore", "playlist", "save_to_playlist"}
     dl, pl = cfg["download_mp3"], cfg["save_to_yt_playlist"]
+    # Only a real migration rewrites config.json. Keys a user left out on
+    # purpose (e.g. the OCR settings on a Radio Record station) stay out —
+    # DEFAULT_CONFIG fills them in memory.
+    migrated = bool(legacy_keys & raw.keys())
     if isinstance(raw.get("download_mp3"), bool):  # the original flat toggle
         dl["enabled"] = raw["download_mp3"]
+        migrated = True
+    if isinstance(dl.get("enabled"), dict):  # a block pasted into the flag by mistake
+        dl["enabled"] = bool(dl["enabled"].get("enabled", True))
+        migrated = True
     if isinstance(raw.get("download"), dict):
         d = raw["download"]
         dl["enabled"] = d.get("mp3", dl["enabled"])
@@ -443,15 +451,16 @@ def resolve_radio(args):
             p = raw[old]
             pl["link"] = p.get("link") or pl["link"]
             pl["use_ignore_file"] = p.get("use_ignore_file", p.get("ignore", pl["use_ignore_file"]))
-    if "enabled" not in (raw.get("save_to_yt_playlist") or {}):
-        pl["enabled"] = bool(pl["link"])  # flag is new — on when a link exists
+    if pl["link"] and "enabled" not in (raw.get("save_to_yt_playlist") or {}):
+        pl["enabled"] = True  # flag is newer than the link — on when a link exists
+        migrated = True
     dl.pop("mp3", None)
     dl.pop("ignore", None)
     pl.pop("ignore", None)
     for k, v in raw.items():  # keep unknown keys a user may have added
         if k not in cfg and k not in legacy_keys:
             cfg[k] = v
-    if cfg != raw:
+    if migrated:
         with open(radio.config_path, "w", encoding="utf-8") as f:
             json.dump(cfg, f, indent=2)
             f.write("\n")

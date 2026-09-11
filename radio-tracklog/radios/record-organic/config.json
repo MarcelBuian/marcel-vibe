@@ -6,7 +6,6 @@
     "poll_interval_seconds": 300
   },
   "timezone": "Europe/Malta",
-  "capture_interval_seconds": 60,
   "youtube_lookup": true,
   "download_mp3": {
     "enabled": true,
@@ -17,22 +16,5 @@
     "enabled": false,
     "link": "",
     "use_ignore_file": true
-  },
-  "ocr_region": {
-    "x": [
-      0.12,
-      0.75
-    ],
-    "y": [
-      0.02,
-      0.4
-    ]
-  },
-  "ocr_layout": {
-    "artist_line": "top",
-    "align": "left",
-    "ignore": [],
-    "default_artist": "",
-    "always_visible": true
   }
 }

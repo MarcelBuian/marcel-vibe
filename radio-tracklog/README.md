@@ -77,7 +77,9 @@ several, name the one you mean: `python3 radio_tracklog.py watch chill`.
 }
 ```
 
-(Configs in older layouts are upgraded automatically on first run.)
+(Configs in older layouts are upgraded automatically on first run. Keys
+you leave out fall back to the defaults, so a Radio Record station's
+config can skip the OCR settings entirely.)
 
 - **`url`** — the YouTube live stream to follow.
 - **`source`** — where the track names come from. `youtube` (default):
@@ -156,30 +158,19 @@ The included radios:
 - **`monstercat-silk`** — Monstercat Silk "Deep & Melodic House 24/7".
   The overlay is always on screen: artist on top, title below,
   left-aligned in the bottom-left corner.
-- **`aegean-lounge`** — "Aegean Lounge Late Night Radio". Its overlay
-  (title above `Aegean Lounge Official`, centered, bottom-left) is only
-  shown during the **first 25 and last 15 seconds** of each track, so this
-  radio captures every 10 seconds instead of 60 and has
-  `always_visible: false` — between those windows the log shows `.`
-  marks, which is normal. The tracks are the station's own productions,
-  so `youtube_lookup`, `download_mp3` and the playlist
-  sync are off (a YouTube search for
-  them mostly finds unrelated uploads). The live chat is disabled on this
-  stream, so only `watch` works here.
-- **`bassport-deep-techno`** — Bassport Music "Deep Techno 24/7". A
-  `NOW PLAYING` label (ignored) above a single title line in the
-  bottom-left corner; every track is the label's own, so `default_artist`
-  is `Bassport Music`. Lookup/downloads/playlist off for the same reason; no
-  track bot in chat, so `watch` only.
 - **`record-organic`** — Radio Record "Organic" (organic house, "in the
   style of Tim Green and Sebastien Leger"), via the `radiorecord` source.
   Commercial releases, so YouTube lookup and mp3 downloads are on; the
   API spells artists `LOST DESERT/HERMANEZ` — the script turns that into
   `Lost Desert & Hermanez` (and `rmx` into `Remix`).
+- **`record-ibiza`** — Radio Record "Innocence" (techno, minimal, deep,
+  "sound like Solomun, Boris Brejcha and Nina Kraviz"); `ibiza` is the
+  station's URL name on radiorecord.ru. Same `radiorecord` source and
+  settings as record-organic.
 
 With several radios present, every command needs the radio's name:
 `python3 radio_tracklog.py watch monstercat-silk` or
-`python3 radio_tracklog.py watch aegean-lounge` (they can run at the
+`python3 radio_tracklog.py watch record-organic` (they can run at the
 same time, each in its own terminal).
 
 **Adding a radio**: run `python3 radio_tracklog.py watch my-radio` — the

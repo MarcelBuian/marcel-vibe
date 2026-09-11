@@ -19,11 +19,17 @@ session(s) Marcel explicitly names in the current request.
 ## The 4 source files (single source of truth, keep them in sync)
 - **Titles.txt** — one title per session. Since 2026-09-08 the `#NN` header
   carries the **YouTube link** of the published set on the same line:
-  `#NN - https://www.youtube.com/watch?v=ID`. Sessions not yet published (#28+)
-  keep a bare `#NN`; add the link once the video is up. To fetch all IDs:
+  `#NN - https://www.youtube.com/watch?v=ID`. Marcel usually uploads as
+  PRIVATE first and publishes later, so the link exists before the video is
+  public. To fetch public IDs:
   `yt-dlp --flat-playlist --print "%(title)s\t%(id)s" https://www.youtube.com/@MarcelVibe/videos`
   - also the quickest way to check Titles.txt still matches the live titles
   (Marcel sometimes tweaks a title on upload, e.g. dropped "Liquid" from #27).
+  For PRIVATE / scheduled uploads use the YouTube Data API with the OAuth
+  refresh token in `../radio-tracklog/.google-token.json` (scope `youtube`,
+  client in `../radio-tracklog/google-oauth.json`): refresh the token,
+  `channels.list?mine=true` -> uploads playlist -> `playlistItems.list` ->
+  `videos.list?part=snippet,status`. Never print the secrets.
 - **Descriptions.txt** — full YouTube description per session.
 - **Tags.txt** — comma-separated YouTube tags per session.
 - **Playlists.txt** — `#NN - YYYY-MM-DD Location` header + timestamped tracklist.
