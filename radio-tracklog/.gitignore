@@ -35,3 +35,4 @@ radios/*/.video-titles.txt
 
 # Python bytecode cache, auto-regenerated
 __pycache__/
+watch.log

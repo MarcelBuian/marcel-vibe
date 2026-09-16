@@ -29,7 +29,7 @@ Copy this folder, open a terminal, and run:
 
 ```bash
 cd radio-tracklog
-python3 radio_tracklog.py watch        # macOS
+python3 radio_tracklog.py watch        # macOS — all enabled radios in one terminal
 python radio_tracklog.py watch         # Windows (Python 3.9+ from python.org or the Store)
 ```
 
@@ -135,6 +135,9 @@ config can skip the OCR settings entirely.)
   `python3 radio_tracklog.py ignore <radio>` shows which logged songs the
   list matches and deletes their mp3s (`--check` only lists) — handy after
   pasting the tracklists of sets you already played.
+  Songs that no radio should ever fetch go in **`global_ignore.txt`** next
+  to the script (same format; created on first run): every radio applies
+  it on top of its own `ignore.txt`, under the same `use_ignore_file` flags.
 - **`ocr_region`** — `watch` mode: where the now-playing overlay sits in
   the frame, as fractions of width/height **measured from the bottom-left
   corner**. The default matches Monstercat's bottom-left overlay while
@@ -168,10 +171,19 @@ The included radios:
   station's URL name on radiorecord.ru. Same `radiorecord` source and
   settings as record-organic.
 
-With several radios present, every command needs the radio's name:
-`python3 radio_tracklog.py watch monstercat-silk` or
-`python3 radio_tracklog.py watch record-organic` (they can run at the
-same time, each in its own terminal).
+**One terminal for all radios**: `python3 radio_tracklog.py watch` with no
+name runs every radio whose `config.json` has `"enabled": true`, each as
+its own process, with every output line tagged `[radio-name]`. The same
+output (plus a timestamp per line) is appended to `watch.log` next to the
+script. Ctrl+C stops all of them; a radio that dies after running for a
+while is restarted automatically, one that fails right at start stays
+down so a config mistake is visible. Set `"enabled": false` in a radio's
+`config.json` to leave it out; `python3 radio_tracklog.py watch <name>`
+still runs that radio on its own regardless of the flag.
+
+Other commands still need the radio's name when several exist
+(`python3 radio_tracklog.py ignore record-organic`), except `download`,
+which also does every radio with `download_mp3` on when run bare.
 
 **Adding a radio**: run `python3 radio_tracklog.py watch my-radio` — the
 folder and a default `config.json` are created — then put the stream's

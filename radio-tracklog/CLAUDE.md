@@ -31,6 +31,13 @@ of `.` in between are not a bug; a new song is confirmed by a second
 read inside that window). Set `youtube_lookup: false` on stations whose
 tracks aren't on YouTube — the search returns junk and blocks the loop
 ~40 s per new song. One `watch` process per radio; commands need the radio name.
+Bare `watch` (no name) = `watch_all()` supervisor (added 2026-09-16): spawns
+`watch <name>` as a child (own session, so it gets SIGINT only from us) for
+every radio with top-level `"enabled": true` in config.json, prefixes each
+output line with `[name]` (switching writer mid-line forces a newline so the
+progress dots stay readable), tees everything with a timestamp into
+`watch.log` (gitignored), restarts a child that dies after >60 s, leaves one
+that dies at once. Per-radio `.watch.lock` still prevents double watches.
 
 ## Artist name casing
 The overlay is ALL CAPS; `normalize_name()` title-cases it. Artists with
@@ -93,6 +100,9 @@ background mp3 downloads at MAX_PARALLEL_DOWNLOADS so a Radio Record
 backfill can't spawn hundreds of yt-dlp processes at once.
 
 ## ignore.txt matching
+Two lists per radio, same format, merged by `load_ignore()`: the radio's
+`radios/<name>/ignore.txt` and the shared `global_ignore.txt` next to the
+script (`GLOBAL_IGNORE_FILE`, created on first run, added 2026-09-15).
 `load_ignore()` accepts tracklist lines (`[R] 01:02:30 - A, B - Title`);
 `is_ignored()` matches by video id, exact folded name, or
 `song_signature()` (same base title + ≥1 shared artist, version suffixes

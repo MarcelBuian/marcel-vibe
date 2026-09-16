@@ -50,6 +50,8 @@ import unicodedata
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 RADIOS_DIR = os.path.join(SCRIPT_DIR, "radios")
+GLOBAL_IGNORE_FILE = os.path.join(SCRIPT_DIR, "global_ignore.txt")  # shared by every radio
+WATCH_LOG_FILE = os.path.join(SCRIPT_DIR, "watch.log")  # everything `watch` (all radios) prints
 OCR_SWIFT = os.path.join(SCRIPT_DIR, "ocr.swift")
 OCR_BIN = os.path.join(SCRIPT_DIR, ".ocr")
 OCR_PS1 = os.path.join(SCRIPT_DIR, "ocr.ps1")  # Windows twin of ocr.swift
@@ -58,6 +60,10 @@ FIELDS = ["first_added", "plays", "last_played", "artist", "title", "youtube", "
 DEFAULT_RADIO = "monstercat-silk"
 DEFAULT_URL = "https://www.youtube.com/watch?v=WsDyRAPFBC8"  # Monstercat Silk 24/7
 DEFAULT_CONFIG = {
+    # include this radio when `watch` is run without a radio name (which
+    # runs every enabled radio in one terminal); an explicit
+    # `watch <name>` runs the radio regardless
+    "enabled": True,
     # the YouTube live stream to follow
     "url": DEFAULT_URL,
     # where the "now playing" information comes from:
@@ -365,6 +371,21 @@ IGNORE_TEMPLATE = """\
 # ARTIST / Söme Ärtist all count). Lines starting with # are comments.
 # Changes are picked up when a logger starts — restart a running watch
 # after editing.
+#
+# Songs to skip on EVERY radio go in global_ignore.txt next to the script
+# (same format); each radio applies that list on top of this one.
+"""
+
+
+GLOBAL_IGNORE_TEMPLATE = """\
+# global_ignore.txt — songs EVERY radio should SKIP.
+#
+# Same format as a radio's ignore.txt (YouTube link, video id, or
+# "Artist - Title"; tracklist lines work too). Every radio applies this
+# list on top of its own radios/<name>/ignore.txt, under the same
+# use_ignore_file flags in its config.json. Lines starting with # are
+# comments. Changes are picked up when a logger starts — restart running
+# watches after editing.
 """
 
 
@@ -414,6 +435,9 @@ def resolve_radio(args):
     if not os.path.exists(radio.ignore_path):
         with open(radio.ignore_path, "w", encoding="utf-8") as f:
             f.write(IGNORE_TEMPLATE)
+    if not os.path.exists(GLOBAL_IGNORE_FILE):
+        with open(GLOBAL_IGNORE_FILE, "w", encoding="utf-8") as f:
+            f.write(GLOBAL_IGNORE_TEMPLATE)
     with open(radio.config_path, encoding="utf-8") as f:
         raw = json.load(f)
     cfg = {}
@@ -1136,14 +1160,17 @@ def parse_ignore_line(line):
 
 
 def load_ignore(radio):
-    """Parse ignore.txt: video ids, exact folded names, and song signatures.
+    """Parse the radio's ignore.txt plus the shared global_ignore.txt:
+    video ids, exact folded names, and song signatures.
 
     Lines may be bare "Artist - Title" or pasted straight from a tracklist
     ("[R] 01:02:30 - Artist, Artist - Title"); decorations are stripped.
     """
     ids, names, sigs, titles = set(), set(), [], set()
-    if os.path.exists(radio.ignore_path):
-        with open(radio.ignore_path, encoding="utf-8") as f:
+    for path in (radio.ignore_path, GLOBAL_IGNORE_FILE):
+        if not os.path.exists(path):
+            continue
+        with open(path, encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
                 if not line or line.startswith("#"):
@@ -1919,7 +1946,148 @@ def watch_radiorecord(args, radio):
     cmd_stats(args)
 
 
+def enabled_radios(args):
+    """Names of the radios with `enabled: true` in their config.json."""
+    os.makedirs(RADIOS_DIR, exist_ok=True)
+    names = sorted(
+        d for d in os.listdir(RADIOS_DIR) if os.path.isdir(os.path.join(RADIOS_DIR, d))
+    )
+    picked = []
+    for name in names:
+        sub = argparse.Namespace(**vars(args))
+        sub.radio = name
+        radio = resolve_radio(sub)
+        if radio.cfg.get("enabled", True):
+            picked.append(name)
+        else:
+            print(f"{name}: enabled is false in config.json — skipping", flush=True)
+    return names, picked
+
+
+def watch_all(args, names):
+    """Run `watch <name>` for every enabled radio as a child process and show
+    their output side by side, each line tagged with the radio's name.
+    Ctrl+C stops all of them; a radio that dies after running for a while
+    is restarted, one that dies right away stays down (a config problem)."""
+    import threading
+
+    lock = threading.Lock()
+    state = {"writer": None, "at_line_start": True}
+    log = open(WATCH_LOG_FILE, "a", encoding="utf-8")
+
+    def stamp():
+        return dt.datetime.now(TZ).strftime("%Y-%m-%d %H:%M:%S")
+
+    def write(text, prefix=""):
+        """One piece of text to the terminal and the log; the log line also
+        starts with a timestamp."""
+        for piece in text.splitlines(keepends=True):
+            if state["at_line_start"]:
+                sys.stdout.write(prefix)
+                log.write(f"{stamp()} {prefix}")
+            sys.stdout.write(piece)
+            log.write(piece)
+            state["at_line_start"] = piece.endswith("\n")
+        sys.stdout.flush()
+        log.flush()
+
+    def newline_if_needed():
+        if not state["at_line_start"]:
+            write("\n")
+
+    def emit(name, text, fresh_line=False):
+        if not text:
+            return
+        with lock:
+            if fresh_line or state["writer"] != name:
+                newline_if_needed()
+            state["writer"] = name
+            write(text, f"[{name}] ")
+
+    def spawn(name):
+        cmd = [sys.executable, "-u", os.path.abspath(__file__), "watch", name]
+        if args.ytdlp:
+            cmd += ["--ytdlp", args.ytdlp]
+        kw = {}
+        if sys.platform == "win32":
+            kw["creationflags"] = subprocess.CREATE_NEW_PROCESS_GROUP
+        else:
+            kw["start_new_session"] = True  # terminal Ctrl+C reaches only us; we forward it once
+        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, **kw)
+
+        def pump():
+            with os.fdopen(os.dup(proc.stdout.fileno()), "rb", buffering=0) as raw:
+                while True:
+                    chunk = raw.read(256)
+                    if not chunk:
+                        break
+                    emit(name, chunk.decode("utf-8", "replace"))
+
+        threading.Thread(target=pump, daemon=True).start()
+        return {"proc": proc, "started": time.monotonic(), "restarts": 0}
+
+    def stop(child):
+        proc = child["proc"]
+        if proc.poll() is not None:
+            return
+        try:
+            if sys.platform == "win32":
+                proc.terminate()
+            else:
+                proc.send_signal(signal.SIGINT)  # same as Ctrl+C in its own terminal
+        except OSError:
+            return
+        try:
+            proc.wait(timeout=20)
+        except subprocess.TimeoutExpired:
+            proc.kill()
+
+    with lock:
+        write(f"Watching {len(names)} radio(s) in one terminal: {', '.join(names)}  (Ctrl+C stops all)\n"
+              f"Output is also appended to {WATCH_LOG_FILE}\n")
+    children = {name: spawn(name) for name in names}
+    signal.signal(signal.SIGTERM, _sigterm)
+    try:
+        while children:
+            time.sleep(1)
+            for name, child in list(children.items()):
+                code = child["proc"].poll()
+                if code is None:
+                    continue
+                ran = time.monotonic() - child["started"]
+                if ran > 60:
+                    emit(name, f"exited with code {code} after {ran / 60:.0f} min — restarting in 10 s\n",
+                         fresh_line=True)
+                    time.sleep(10)
+                    children[name] = spawn(name)
+                    children[name]["restarts"] = child["restarts"] + 1
+                else:
+                    emit(name, f"exited with code {code} right after starting — not restarting "
+                               f"(check its config.json / stream)\n", fresh_line=True)
+                    del children[name]
+        with lock:
+            newline_if_needed()
+            write("All radios have stopped.\n")
+    except KeyboardInterrupt:
+        with lock:
+            newline_if_needed()
+            write("Stopping all radios...\n")
+        for child in children.values():
+            stop(child)
+        time.sleep(0.5)  # let the last output lines through
+    finally:
+        with lock:
+            newline_if_needed()
+        log.close()
+
+
 def cmd_watch(args):
+    if not args.radio:
+        names, picked = enabled_radios(args)
+        if not picked:
+            sys.exit("No radio has enabled: true in its config.json — nothing to watch."
+                     if names else f"No radios yet. Start one with:  python3 radio_tracklog.py watch {DEFAULT_RADIO}")
+        return watch_all(args, picked)
     radio = resolve_radio(args)  # (platform support is checked by ensure_ocr)
     if radio.cfg["source"].get("type") == "radiorecord":
         return watch_radiorecord(args, radio)
@@ -2191,13 +2359,14 @@ def cmd_casing(args):
 
 
 def cmd_ignore(args):
-    """Apply ignore.txt to what's already on disk: list the logged songs it
-    matches and delete their mp3s (and cover-art leftovers). --check only lists."""
+    """Apply ignore.txt + global_ignore.txt to what's already on disk: list the
+    logged songs they match and delete their mp3s (and cover-art leftovers).
+    --check only lists."""
     radio = resolve_radio(args)
     book = load_book(radio)
     hits = [r for r in book.songs.values() if is_ignored(radio, r)]
     listed = len(radio.ignore["ids"]) + len(radio.ignore["names"])
-    print(f"{radio.name}: {listed} entries in ignore.txt match {len(hits)} of {len(book.songs)} logged songs")
+    print(f"{radio.name}: {listed} entries in ignore.txt + global_ignore.txt match {len(hits)} of {len(book.songs)} logged songs")
     removed = 0
     for r in sorted(hits, key=lambda r: (r["artist"].lower(), r["title"].lower())):
         path = mp3_path(radio, r)

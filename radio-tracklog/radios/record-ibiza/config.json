@@ -1,4 +1,5 @@
 {
+  "enabled": true,
   "url": "https://www.radiorecord.ru/station/ibiza/",
   "source": {
     "type": "radiorecord",
