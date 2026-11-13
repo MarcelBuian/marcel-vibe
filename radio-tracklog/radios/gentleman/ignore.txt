@@ -1,0 +1,26 @@
+# ignore.txt — songs this radio should SKIP.
+#
+# The logger still records every song it hears in songs.csv (the history
+# stays complete); this list only stops the two follow-up actions:
+#   - downloading the song as an mp3        (download_mp3.use_ignore_file)
+#   - adding the song to the YouTube playlist (save_to_yt_playlist.use_ignore_file)
+# Each action obeys this list only while its use_ignore_file flag in
+# config.json is true.
+#
+# One entry per line, in either form:
+# (lines pasted straight from a tracklist work too — a leading "[R]",
+#  a "01:02:30" timestamp and a "- " are stripped, and "A, B - Title"
+#  matches our "A & B — Title"; a remix/edit of a listed track counts as
+#  that track, so a song you already played never comes back)
+#
+#   https://www.youtube.com/watch?v=dQw4w9WgXcQ     a YouTube link
+#   dQw4w9WgXcQ                                     ...or just the video id
+#   Some Artist - Some Song                         artist - title
+#
+# Artist - Title entries match case- and accent-insensitively (SOME
+# ARTIST / Söme Ärtist all count). Lines starting with # are comments.
+# Changes are picked up when a logger starts — restart a running watch
+# after editing.
+#
+# Songs to skip on EVERY radio go in global_ignore.txt next to the script
+# (same format); each radio applies that list on top of this one.

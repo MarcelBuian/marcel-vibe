@@ -1,0 +1,22 @@
+{
+  "enabled": true,
+  "url": "https://www.youtube.com/watch?v=nBQaYt1FjZs",
+  "source": {
+    "type": "shazam",
+    "clip_seconds": 15,
+    "confirm_reads": 2
+  },
+  "timezone": "Europe/Malta",
+  "capture_interval_seconds": 30,
+  "youtube_lookup": true,
+  "download_mp3": {
+    "enabled": true,
+    "prefer": "",
+    "use_ignore_file": true
+  },
+  "save_to_yt_playlist": {
+    "enabled": false,
+    "link": "",
+    "use_ignore_file": true
+  }
+}

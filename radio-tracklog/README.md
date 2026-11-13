@@ -45,6 +45,10 @@ pip, no manual installs, no questions:
   nothing to compile or install (it needs a Windows language pack with
   OCR, which English and most others include).
 - **radios/monstercat-silk/**: created with a default `config.json`.
+- **Shazam helper** (only for radios with `"source": {"type": "shazam"}`):
+  `shazam_read.py` needs the `shazamio` package, so on first use the
+  script creates `.venv` (if it doesn't exist yet) and pip-installs
+  `shazamio` into it — one-time, ~20 s.
 
 The same self-setup keeps things working over time: when YouTube breaks
 an old yt-dlp (it regularly does), the script notices the repeated
@@ -61,100 +65,20 @@ Each radio is a folder: `radios/<name>/` containing `config.json` and
 `songs.csv`. With a single radio, commands need no arguments; with
 several, name the one you mean: `python3 radio_tracklog.py watch chill`.
 
-`config.json` parameters:
+**Every `config.json` setting is explained in
+[radios/CONFIG.md](radios/CONFIG.md)** — one reference for all radios:
+what each key does, its default, and which kind of radio uses it.
 
-```json
-{
-  "url": "https://www.youtube.com/watch?v=WsDyRAPFBC8",
-  "source": {"type": "youtube", "station": "", "poll_interval_seconds": 300},
-  "capture_interval_seconds": 60,
-  "timezone": "Europe/Malta",
-  "youtube_lookup": true,
-  "download_mp3": {"enabled": true, "prefer": "", "use_ignore_file": true},
-  "save_to_yt_playlist": {"enabled": true, "link": "https://www.youtube.com/playlist?list=PL...", "use_ignore_file": true},
-  "ocr_region": {"x": [0.12, 0.75], "y": [0.02, 0.4]},
-  "ocr_layout": {"artist_line": "top", "align": "left", "ignore": [], "default_artist": "", "always_visible": true}
-}
-```
-
-(Configs in older layouts are upgraded automatically on first run. Keys
-you leave out fall back to the defaults, so a Radio Record station's
-config can skip the OCR settings entirely.)
-
-- **`url`** — the YouTube live stream to follow.
-- **`source`** — where the track names come from. `youtube` (default):
-  frames of the live stream at `url`, read by OCR. `radiorecord`: a
-  [Radio Record](https://www.radiorecord.ru/) station — set `station` to
-  the last part of its URL (`.../station/organic` → `"organic"`) and the
-  script polls the station's public tracklist API every
-  `poll_interval_seconds` instead of grabbing frames: exact play times,
-  no misreads, and ~28 hours of history, so whatever played while the
-  script wasn't running is filled in on the next poll (first run backfills
-  the whole day). No OCR/ffmpeg needed for logging; `watch` works on any
-  OS for these. Everything downstream (`songs.csv`, mp3s, playlist,
-  `casing`, `enrich`) is the same.
-- **`capture_interval_seconds`** — `watch` mode: how often to grab a frame
-  and read the overlay. 60 is a good default (songs run 3–5 minutes).
-- **`timezone`** — the zone every date/time is written in (`songs.csv`,
-  lock and quota files), regardless of the zone the Mac is set to — so
-  travelling never shifts the log. An IANA name (`"Europe/Malta"`,
-  `"UTC"`) or a fixed offset (`"+02:00"`). Changing it later leaves the
-  rows already written in the old zone.
-- **`youtube_lookup`** — look every new song up on YouTube to fill the
-  link and year columns (the link is also what mp3 downloads and the
-  playlist sync use). Set `false` for stations whose music isn't on
-  YouTube — the search then only returns unrelated videos and stalls the
-  capture for ~40 s per new song. `enrich` respects it too.
-- **`download_mp3.enabled`** — when `true`, every newly logged song is
-  also downloaded as a best-quality mp3 (YouTube's best audio, converted
-  to MP3 V0) into `radios/<name>/mp3/`, named `Artist - Title - Year.mp3`
-  (year omitted when unknown). Each file gets the cover art embedded plus
-  clean ID3 tags (artist/title/year) taken from the song list, so players
-  identify every track properly. The download runs in the background so
-  the logger never skips a beat. The mp3 folder is gitignored — the files
-  can always be re-fetched.
-- **`download_mp3.prefer`** — bias the YouTube search that picks a song's
-  link, e.g. `"extended mix"` or `"radio edit"`. The search then favors
-  uploads whose title contains that phrase (falling back to the normal
-  best match). Note this decides THE link for the song — csv, playlist,
-  and mp3 all use it — and only affects songs logged after you set it;
-  already-logged songs keep their links.
-- **`save_to_yt_playlist.enabled` / `.link`** — when enabled, every
-  logged song is added to this YouTube playlist (see the playlist
-  section below for the one-time Google setup).
-- **`download_mp3.use_ignore_file` / `save_to_yt_playlist.use_ignore_file`**
-  — whether entries in the radio's `ignore.txt` are skipped for that
-  feature. The file takes one entry per line: a YouTube link (or bare
-  video id), or `Artist - Title` (case- and accent-insensitive); the
-  file's header explains the details.
-  Lines pasted straight from a DJ tracklist work too (`[R] 01:02:30 -
-  Artist, Artist - Title`): decorations are stripped, artist separators
-  and country tags (`Marc Samuel (CH)`) don't matter, and a remix/edit of
-  a listed track counts as that track. A bare title on its own line
-  matches that title by any artist.
-  `python3 radio_tracklog.py ignore <radio>` shows which logged songs the
-  list matches and deletes their mp3s (`--check` only lists) — handy after
-  pasting the tracklists of sets you already played.
-  Songs that no radio should ever fetch go in **`global_ignore.txt`** next
-  to the script (same format; created on first run): every radio applies
-  it on top of its own `ignore.txt`, under the same `use_ignore_file` flags.
-- **`ocr_region`** — `watch` mode: where the now-playing overlay sits in
-  the frame, as fractions of width/height **measured from the bottom-left
-  corner**. The default matches Monstercat's bottom-left overlay while
-  excluding the cover art and the social handle in the top corner. Adjust
-  per radio if a stream draws its overlay elsewhere.
-- **`ocr_layout`** — `watch` mode: how the overlay is arranged.
-  `artist_line` is `"top"` (artist above the title — Monstercat) or
-  `"bottom"` (title above the artist); `align` is `"left"` (the lines
-  share their left edge) or `"center"` (they are centered on each other).
-  Text that doesn't line up with the block is ignored as background junk.
-  `ignore` lists label texts inside the region that aren't names
-  (`["NOW PLAYING"]`). When only one line remains it is read as
-  `Artist - Title`, or as the title with `default_artist` as the artist.
-  `always_visible: false` is for stations that show the track name only
-  briefly per track — unreadable frames then print `.` instead of `?`;
-  pair it with a `capture_interval_seconds` short enough to land inside
-  that window.
+The short version: `source.type` decides how a radio learns what's
+playing — `youtube` reads the on-screen track name with OCR,
+`radiorecord` asks a Radio Record station's tracklist service, `shazam`
+identifies the stream's sound when nothing is shown on screen. The rest
+decides what happens with each new song (`youtube_lookup`,
+`download_mp3`, `save_to_yt_playlist`). Songs to skip go in the radio's
+`ignore.txt` or the shared `global_ignore.txt` (formats explained in
+those files' headers); `python3 radio_tracklog.py ignore <radio>` shows
+which logged songs the lists match and deletes their mp3s (`--check`
+only lists).
 
 The included radios:
 
@@ -170,6 +94,11 @@ The included radios:
   "sound like Solomun, Boris Brejcha and Nina Kraviz"); `ibiza` is the
   station's URL name on radiorecord.ru. Same `radiorecord` source and
   settings as record-organic.
+- **`gentleman`** — Gentleman Radio, deep house (its own GNTLMN label plus
+  well-known house), via the `shazam` source: the stream shows no track
+  names and has live chat off. A 2-hour test (2026-11-06) confirmed 19
+  songs, 1 of them doubtful. mp3 downloads on; no YouTube playlist set
+  yet.
 
 **One terminal for all radios**: `python3 radio_tracklog.py watch` with no
 name runs every radio whose `config.json` has `"enabled": true`, each as
@@ -197,25 +126,43 @@ URL into that `config.json` and run it again.
 python3 radio_tracklog.py watch
 ```
 
-Prints one line per song change; between changes it prints compact
-progress marks so you can see it's alive:
+Every read prints one line, so the newest line of a radio always says
+what it is playing:
 
 ```
-[2026-08-22 13:20] NEW song added: Arnie Way & Toutounji — Somebody  (2024)  https://...
-....
-[2026-08-22 13:24] NEW song added: Dokho — Finding Solane  (2026)  https://...
-..?.
+[2026-11-13 14:59] still playing: Approaching Black — What You Need
+[2026-11-13 15:00] play #76: Flexible Fire — Costa Serena
+[2026-11-13 15:01] still playing: Flexible Fire — Costa Serena
+[2026-11-13 15:04] unconfirmed (1 of 2 reads): Dokho — Finding Solane
+[2026-11-13 15:05] NEW song added: Dokho — Finding Solane  (2026)  https://...
 ```
 
-- `.` — same song still playing (nothing counted, on purpose)
-- `+` — a name never seen before; the script waits for a second identical
-  read before adding it (one-frame OCR misreads die here, real new songs
-  just get logged one capture later)
-- `♪` — a background mp3 download finished (with `download_mp3` on, new
-  songs get a `[mp3 downloading...]` tag on their line; a failed download
-  prints its own line so you know to backfill later)
-- `?` — frame captured but the overlay couldn't be read
-- `x` — capture hiccup (network/stream); recovers by itself
+- `NEW song added` / `play #N` — a song started and was counted. Only
+  these lines change `songs.csv`.
+- `still playing` — the same song as on the read before (nothing
+  counted, on purpose).
+- `unconfirmed (1 of 2 reads)` — a name never seen before; the script
+  waits for a second identical read before adding it (one-frame OCR
+  misreads die here, real new songs just get logged one capture later).
+- `track name not readable` — frame captured but the overlay couldn't be
+  read.
+- `could not capture the stream …` — network/stream hiccup; recovers by
+  itself.
+- `mp3 saved: …` — a background mp3 download finished (with
+  `download_mp3` on, new songs get a `[mp3 downloading...]` tag on their
+  line; a failed download prints `mp3 download FAILED` so you know to
+  backfill later).
+
+On a `shazam` radio the lines mean the same, except: `unconfirmed` is
+printed for **every** song's first read (even one already in the list — a
+single Shazam answer is never trusted), so many `unconfirmed` lines with
+changing names mean Shazam doesn't know the track that is playing.
+`Shazam has no match` means it gave no answer for the clip; if the lookup
+itself fails (network, throttling), the reason is printed. Every raw
+Shazam answer is also kept in `radios/<name>/.shazam-reads.tsv`.
+
+On a `radiorecord` radio every poll prints the songs that started since
+the last poll, or `still playing` with the newest one when there are none.
 
 Stop with `Ctrl+C` (prints the stats summary on exit).
 

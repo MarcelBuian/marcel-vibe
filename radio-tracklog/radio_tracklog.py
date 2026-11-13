@@ -9,6 +9,8 @@ Two independent ways of hearing what's playing:
            service involved). Catches every song. macOS and Windows.
            For Radio Record stations (radiorecord.ru) it instead polls the
            station's public tracklist API — exact times, ~28 h of history.
+           For streams with no overlay at all it asks Shazam: a 15 s audio
+           clip per minute, a song counts once two reads in a row agree.
   log    — capture the stream's live chat with yt-dlp and parse the chat
            bot's track announcements ("@user loves 'Title' by Artist!").
            Works on any OS, but sampled: only songs someone asked about.
@@ -55,6 +57,8 @@ WATCH_LOG_FILE = os.path.join(SCRIPT_DIR, "watch.log")  # everything `watch` (al
 OCR_SWIFT = os.path.join(SCRIPT_DIR, "ocr.swift")
 OCR_BIN = os.path.join(SCRIPT_DIR, ".ocr")
 OCR_PS1 = os.path.join(SCRIPT_DIR, "ocr.ps1")  # Windows twin of ocr.swift
+SHAZAM_HELPER = os.path.join(SCRIPT_DIR, "shazam_read.py")  # runs inside VENV_DIR
+VENV_DIR = os.path.join(SCRIPT_DIR, ".venv")  # fast yt-dlp + shazamio (see ensure_shazam)
 FIELDS = ["first_added", "plays", "last_played", "artist", "title", "youtube", "year"]
 
 DEFAULT_RADIO = "monstercat-silk"
@@ -72,7 +76,15 @@ DEFAULT_CONFIG = {
     #                 its public tracklist API is polled every
     #                 poll_interval_seconds; it holds ~28 h of history, so
     #                 gaps between runs are filled in by the next poll
-    "source": {"type": "youtube", "station": "", "poll_interval_seconds": 300},
+    #   shazam      — the YouTube live stream at `url` shows no track names:
+    #                 every capture_interval_seconds a 15 s audio clip is
+    #                 identified by Shazam (shazamio, installed into .venv
+    #                 on first run). clip_seconds: how much audio each
+    #                 read sends to Shazam. confirm_reads: how many reads in
+    #                 a row must name the same song before it counts
+    #                 (1 = trust every answer — wrong ones then get logged)
+    "source": {"type": "youtube", "station": "", "poll_interval_seconds": 300,
+               "clip_seconds": 15, "confirm_reads": 2},
     # every date/time the script writes (songs.csv, lock, quota marker) is
     # in THIS zone, whatever zone the Mac is set to — so travelling never
     # shifts the log. IANA name ("Europe/Malta", "UTC") or a fixed offset
@@ -109,8 +121,9 @@ DEFAULT_CONFIG = {
     #   (Bassport: every track is by Bassport Music).
     # always_visible: false for stations that show the track name only
     #   briefly per track (Aegean: first 25 s + last 15 s) — unreadable
-    #   frames then print '.' instead of '?'; keep capture_interval_seconds
-    #   short enough to land inside that window.
+    #   frames then print "no track name on screen" instead of "track name
+    #   not readable"; keep capture_interval_seconds short enough to land
+    #   inside that window.
     "ocr_layout": {"artist_line": "top", "align": "left", "ignore": [],
                    "default_artist": "", "always_visible": True},
 }
@@ -175,6 +188,9 @@ FFMPEG_LOCAL = os.path.join(SCRIPT_DIR, "ffmpeg.exe" if sys.platform == "win32" 
 
 # 720p is plenty for reading the overlay; prefer HLS video-only live formats.
 STREAM_FORMAT = "bv*[height<=720]/b[height<=720]/bv*/b"
+# source "shazam": YouTube live's audio-only HLS formats (234 = 128k, 233 = 48k),
+# else anything with sound (ffmpeg drops the video)
+AUDIO_FORMAT = "234/233/ba/b"
 
 
 # ---------------------------------------------------------------- tools
@@ -330,6 +346,53 @@ def ensure_ocr():
     if r.returncode != 0:
         sys.exit(f"OCR helper failed to compile:\n{r.stderr}")
     return [OCR_BIN]
+
+
+def venv_python():
+    """The Python inside VENV_DIR, or None when there is no (working) venv."""
+    for p in (os.path.join(VENV_DIR, "bin", "python"),
+              os.path.join(VENV_DIR, "Scripts", "python.exe")):  # Windows
+        if os.path.exists(p):  # False for a symlink whose Python was uninstalled
+            return p
+    return None
+
+
+def ensure_shazam():
+    """The Shazam helper as a command prefix (append the clip path to run it).
+
+    shazam_read.py needs the shazamio package (a Rust extension + aiohttp —
+    not stdlib), so it runs with the project's .venv, the same venv that
+    holds the fast yt-dlp (find_ytdlp). On first use the venv is created
+    with this Python if missing and shazamio is pip-installed into it; after
+    that it's one quick import check per start.
+    """
+    if not os.path.exists(SHAZAM_HELPER):
+        sys.exit(f"{SHAZAM_HELPER} is missing — it ships with this project (see README.md).")
+    py = venv_python()
+    if py and subprocess.run([py, "-c", "import shazamio"], capture_output=True).returncode == 0:
+        return [py, SHAZAM_HELPER]
+    if not py:
+        if os.path.isdir(VENV_DIR):
+            sys.exit(
+                f"{VENV_DIR} exists but its Python is gone (removed by a Python upgrade?).\n"
+                "Rebuild it once with:\n"
+                "  rm -rf .venv && python3 -m venv .venv && .venv/bin/pip install -U yt-dlp shazamio"
+            )
+        if sys.version_info < (3, 10):
+            sys.exit("Shazam recognition needs Python 3.10 or newer to set itself up — "
+                     "run this script with a newer python3.")
+        print(f"Creating {VENV_DIR} for the Shazam helper (one-time)...", flush=True)
+        r = subprocess.run([sys.executable, "-m", "venv", VENV_DIR], capture_output=True, text=True)
+        py = venv_python()
+        if r.returncode != 0 or not py:
+            sys.exit(f"Could not create {VENV_DIR}:\n{r.stderr.strip()[-800:]}")
+    print("Installing shazamio into .venv (one-time, ~20 s)...", flush=True)
+    r = subprocess.run([py, "-m", "pip", "install", "--disable-pip-version-check", "-q", "shazamio"],
+                       capture_output=True, text=True)
+    if r.returncode != 0 or subprocess.run([py, "-c", "import shazamio"],
+                                           capture_output=True).returncode != 0:
+        sys.exit(f"Could not install shazamio into {VENV_DIR}:\n{(r.stderr or r.stdout).strip()[-800:]}")
+    return [py, SHAZAM_HELPER]
 
 
 # ---------------------------------------------------------------- radios
@@ -1650,11 +1713,11 @@ def cmd_log(args):
 
 # ------------------------------------------------------------ watch mode
 
-def resolve_manifest(ytdlp, url):
+def resolve_manifest(ytdlp, url, fmt=STREAM_FORMAT):
     """The stream's HLS playlist URL (expires after a few hours), or None."""
     try:
         r = subprocess.run(
-            [ytdlp, "-g", "-f", STREAM_FORMAT, url],
+            [ytdlp, "-g", "-f", fmt, url],
             capture_output=True, text=True, timeout=120,
         )
     except subprocess.TimeoutExpired:
@@ -1670,15 +1733,78 @@ def http_get(url, timeout=20):
         return r.read()
 
 
-def grab_frame(ffmpeg, manifest_url, frame_path):
-    """Newest HLS segment -> one JPEG frame. Raises OSError when anything fails."""
+def hls_tail(manifest_url, seconds=0):
+    """The newest HLS segments, together at least `seconds` long (by their
+    #EXTINF durations; always at least the newest one): (urls, start).
+
+    `start` is the stream time, in seconds, at which the first of those
+    segments begins: Unix time from #EXT-X-PROGRAM-DATE-TIME when the
+    playlist carries it, else counted from #EXT-X-MEDIA-SEQUENCE, else
+    None. The starts of two clips differ by exactly the stream time
+    between them — unlike the wall clock of the two grabs, which is off by
+    up to a segment either way.
+    """
     playlist = http_get(manifest_url).decode("utf-8", "replace")
-    segs = [ln for ln in playlist.splitlines() if ln and not ln.startswith("#")]
+    base = manifest_url.rsplit("/", 1)[0] + "/"
+    segs, dur = [], None  # segs: (duration, url, start by date-time, seconds into playlist)
+    clock = None  # PROGRAM-DATE-TIME clock: when the next segment starts
+    counted = 0.0  # seconds from the playlist's first segment to the next one
+    seq, target = None, 5.0
+    for ln in playlist.splitlines():
+        if ln.startswith("#EXTINF:"):
+            try:
+                dur = float(ln[len("#EXTINF:"):].split(",")[0])
+            except ValueError:
+                dur = None
+        elif ln.startswith("#EXT-X-PROGRAM-DATE-TIME:"):
+            try:
+                stamp = ln.split(":", 1)[1].strip().replace("Z", "+00:00")
+                clock = dt.datetime.fromisoformat(stamp).timestamp()
+            except ValueError:
+                pass
+        elif ln.startswith("#EXT-X-MEDIA-SEQUENCE:"):
+            try:
+                seq = int(ln.split(":", 1)[1])
+            except ValueError:
+                pass
+        elif ln.startswith("#EXT-X-TARGETDURATION:"):
+            try:
+                target = float(ln.split(":", 1)[1])
+            except ValueError:
+                pass
+        elif ln and not ln.startswith("#"):
+            d = dur or target
+            segs.append((d, ln if ln.startswith("http") else base + ln, clock, counted))
+            if clock is not None:
+                clock += d
+            counted += d
+            dur = None
     if not segs:
         raise OSError("empty HLS playlist")
-    seg = segs[-1]
-    if not seg.startswith("http"):
-        seg = manifest_url.rsplit("/", 1)[0] + "/" + seg
+    picked, total = [], 0.0
+    for seg in reversed(segs):
+        picked.insert(0, seg)
+        total += seg[0]
+        if total >= seconds:
+            break
+    _, _, by_date, into = picked[0]
+    if by_date is not None:
+        start = by_date
+    elif seq is not None:
+        start = seq * target + into
+    else:
+        start = None
+    return [url for _, url, _, _ in picked], start
+
+
+def newest_segments(manifest_url, seconds=0):
+    """URLs of the newest HLS segments, together at least `seconds` long."""
+    return hls_tail(manifest_url, seconds)[0]
+
+
+def grab_frame(ffmpeg, manifest_url, frame_path):
+    """Newest HLS segment -> one JPEG frame. Raises OSError when anything fails."""
+    seg = newest_segments(manifest_url)[-1]
     seg_path = frame_path + ".seg.ts"
     with open(seg_path, "wb") as f:
         f.write(http_get(seg))
@@ -1690,6 +1816,31 @@ def grab_frame(ffmpeg, manifest_url, frame_path):
         )
         if r.returncode != 0 or not os.path.exists(frame_path):
             raise OSError(f"ffmpeg: {r.stderr.strip()[:200]}")
+    finally:
+        try:
+            os.remove(seg_path)
+        except OSError:
+            pass
+
+
+def grab_audio(ffmpeg, manifest_url, wav_path, seconds):
+    """The stream's newest `seconds` of sound -> mono 16 kHz WAV (the format
+    Shazam fingerprints). Returns the stream time at which the clip starts
+    (see hls_tail; None when unknown). Raises OSError when anything fails."""
+    seg_path = wav_path + ".seg.ts"
+    try:
+        urls, start = hls_tail(manifest_url, seconds)
+        with open(seg_path, "wb") as f:  # MPEG-TS segments concatenate byte-wise
+            for url in urls:
+                f.write(http_get(url))
+        r = subprocess.run(
+            [ffmpeg, "-hide_banner", "-loglevel", "error", "-i", seg_path,
+             "-vn", "-ac", "1", "-ar", "16000", "-y", wav_path],
+            capture_output=True, text=True, timeout=60,
+        )
+        if r.returncode != 0 or not os.path.exists(wav_path):
+            raise OSError(f"ffmpeg: {r.stderr.strip()[:200]}")
+        return start
     finally:
         try:
             os.remove(seg_path)
@@ -1780,31 +1931,36 @@ def read_overlay(ocr_cmd, frame_path, region, layout=None):
 
 
 class Housekeeping:
-    """What a live logger does between reads: progress marks on one line,
-    background mp3 downloads, and the playlist catch-up (a few adds per
-    cycle, resuming the day after a quota block)."""
+    """What a live logger does around its reads: the console lines (every
+    read prints one, so the console always says what plays), background mp3
+    downloads, and the playlist catch-up (a few adds per cycle, resuming
+    the day after a quota block)."""
 
     def __init__(self, radio, book):
         self.radio, self.book = radio, book
         self.downloads = []  # background mp3 downloads still running
         self.pl_pending = None  # playlist catch-up queue; None = recompute when possible
-        self._dots = False
-
-    def note(self, sym):
-        print(sym, end="", flush=True)
-        self._dots = True
 
     def show(self, line):
-        if self._dots:
-            print(flush=True)
-            self._dots = False
         print(line, flush=True)
+
+    def status(self, what, artist="", title=""):
+        """The line for a read that counted no spin: what plays right now, or
+        why nothing could be read —
+        `[2026-11-13 14:46] still playing: Artist — Title`.
+        (A read that counts a spin prints record_spin()'s line instead.)"""
+        if artist and title:
+            song = self.book.songs.get(song_key(artist, title))
+            if song:  # the spelling the song is listed under
+                artist, title = song["artist"], song["title"]
+            what += f": {artist} — {title}"
+        self.show(f"[{now():%Y-%m-%d %H:%M}] {what}")
 
     def tick(self):
         radio, book = self.radio, self.book
         for song, ok in finished_downloads(self.downloads):
             if ok:
-                self.note("♪")
+                self.show(f"mp3 saved: {song['artist']} — {song['title']}")
             else:
                 self.show(
                     f"mp3 download FAILED: {song['artist']} — {song['title']}"
@@ -1914,9 +2070,9 @@ def watch_radiorecord(args, radio):
     every = float(src.get("poll_interval_seconds") or 300)
     print(f'Watching {radio.name}: Radio Record "{title}" via its tracklist API', flush=True)
     print(f"Polling every {every:.0f}s -> {radio.songs_csv}  (Ctrl+C to stop)", flush=True)
-    print("'.' = nothing new, '♪' = mp3 saved, 'x' = API hiccup; the API keeps ~28 h of "
-          "history, so whatever played while this wasn't running is filled in on the next poll",
-          flush=True)
+    print("Every poll prints the songs that started since the last one, or 'still playing' "
+          "when there are none; the API keeps ~28 h of history, so whatever played while "
+          "this wasn't running is filled in on the next poll", flush=True)
     hk = Housekeeping(radio, book)
     try:
         while True:
@@ -1924,9 +2080,9 @@ def watch_radiorecord(args, radio):
             hk.tick()
             try:
                 plays = record_history(sid)
-            except (OSError, ValueError, KeyError):
+            except (OSError, ValueError, KeyError) as e:
                 plays = []
-                hk.note("x")
+                hk.status(f"tracklist not available ({type(e).__name__}) — trying again next poll")
             new = 0
             for ts, artist, song in plays:
                 t, a = record_names(artist, song, casing)
@@ -1936,12 +2092,183 @@ def watch_radiorecord(args, radio):
                 if line:
                     hk.show(line)
                     new += 1
-            if plays and not new:
-                hk.note(".")
+            if plays and not new:  # the newest play is the one still on air
+                t, a = record_names(plays[-1][1], plays[-1][2], casing)
+                hk.status("still playing", a, t)
             time.sleep(max(1.0, every - (time.monotonic() - t0)))
     except KeyboardInterrupt:
         print("\nStopping.")
     finally:
+        hk.finish()
+    cmd_stats(args)
+
+
+# ----------------------------------------------------------------- shazam
+
+class ShazamError(Exception):
+    """The Shazam lookup failed (network, throttling, helper crash). Unlike a
+    capture failure this says nothing about the stream URL, so it's kept."""
+
+
+def shazam_read(shazam_cmd, wav_path):
+    """Ask Shazam what plays in the clip: (title, artist, match), or None when
+    it has no match. Raises ShazamError when the lookup itself failed.
+
+    `match` is what Shazam says about HOW the clip matched (see
+    shazam_read.py): `offset` — seconds into the track where the clip
+    starts, `timeskew` / `frequencyskew` — how much the clip's tempo and
+    pitch deviate from the track (about 0.0001 on a true match), `matches`
+    — how many candidates it had. Values may be missing (None)."""
+    try:
+        r = subprocess.run(shazam_cmd + [wav_path], capture_output=True, text=True,
+                           encoding="utf-8", errors="replace", timeout=90)
+    except (OSError, subprocess.TimeoutExpired) as e:
+        raise ShazamError(f"Shazam lookup did not finish ({type(e).__name__})") from None
+    lines = r.stdout.strip().splitlines()
+    if r.returncode != 0 or not lines:
+        why = (r.stderr.strip().splitlines() or ["no output"])[-1]
+        raise ShazamError(f"Shazam lookup failed: {why[:200]}")
+    try:
+        got = json.loads(lines[-1])
+    except ValueError:
+        raise ShazamError(f"unexpected reply from shazam_read.py: {lines[-1][:200]}") from None
+    if not got.get("title") or not got.get("artist"):
+        return None
+    match = {k: got.get(k) for k in ("offset", "timeskew", "frequencyskew", "matches")}
+    return got["title"], got["artist"], match
+
+
+def watch_shazam(args, radio):
+    """`watch` for a stream that shows no track names: let Shazam listen.
+
+    Every capture_interval_seconds the newest source.clip_seconds of sound go
+    to Shazam (shazam_read.py inside .venv, see ensure_shazam). Single reads
+    can't be trusted: when Shazam doesn't know a track it often names some
+    unrelated famous song instead, a different one on nearly every read. So
+    a song only counts once source.confirm_reads reads in a row agree
+    (default 2), even a song already in songs.csv. (Prototype on Gentleman
+    Radio, 2026-11-06: 115 reads -> 19 songs, 18 plausible; a looser "1 of
+    the last 2 reads" rule would have let a wrong answer through that came
+    back with one read in between.) The spin is stamped with the time of
+    the first read of the agreeing run. Shazam's
+    spelling is the catalog's, so names are kept as they come — only
+    artist-casing.txt pins apply, no SHOUTING fix as for OCR.
+    """
+    import http.client
+
+    _lock = acquire_single_instance(radio, "watch")  # noqa: F841 — held until exit
+    signal.signal(signal.SIGTERM, _sigterm)
+    ytdlp = find_ytdlp(args.ytdlp)
+    ffmpeg = find_ffmpeg()
+    shazam = ensure_shazam()
+    casing = load_artist_casing(radio)
+    book = SongBook(radio.songs_csv)
+    warn_clock_skew(book, "watch")
+    interval = float(radio.cfg["capture_interval_seconds"])
+    src = radio.cfg["source"]
+    clip_seconds = float(src.get("clip_seconds") or 15)
+    confirm_reads = max(1, int(src.get("confirm_reads") or 2))
+    # a song unheard for longer than this has stopped playing: hearing it
+    # again is a new appearance that gets confirmed (and maybe counted) again
+    still_playing = dt.timedelta(seconds=max(180.0, 3 * interval))
+    clip = os.path.join(radio.folder, ".clip.wav")
+    # every raw answer, to check later what a doubtful song or a run of
+    # 'unconfirmed' reads was:
+    # time <TAB> answer, then name=value fields — clip_start (stream time at
+    # which the clip begins, see hls_tail), shazam_s (how long the lookup
+    # took) and, for a match, Shazam's offset into the track, timeskew,
+    # freqskew and number of candidate matches.
+    # On a true match, offset grows between two reads by exactly as much as
+    # clip_start does; these fields are recorded to turn that into a rule.
+    reads_log = os.path.join(radio.folder, ".shazam-reads.tsv")
+
+    def log_read(text, **fields):
+        parts = [f"{heard:%Y-%m-%d %H:%M:%S}", text]
+        for name, value in fields.items():
+            if isinstance(value, bool) or not isinstance(value, (int, float)):
+                continue  # missing or not a number — leave the field out
+            parts.append(f"{name}={value}" if isinstance(value, int)
+                         else f"{name}={value:.6f}".rstrip("0").rstrip("."))
+        try:
+            with open(reads_log, "a", encoding="utf-8") as f:
+                f.write("\t".join(parts) + "\n")
+        except OSError:
+            pass
+
+    print(f"Watching {radio.name}: {radio.url}  (no names on screen — Shazam listens)", flush=True)
+    print(f"One {clip_seconds:.0f}s audio clip every {interval:.0f}s, a song counts after "
+          f"{confirm_reads} matching read(s) in a row -> {radio.songs_csv}  (Ctrl+C to stop)",
+          flush=True)
+    print("Every read prints what Shazam heard: 'NEW song added' / 'play #N' when a song "
+          "counts, 'still playing', 'unconfirmed' (heard, but the next read must agree "
+          "before it counts) or 'Shazam has no match'", flush=True)
+
+    manifest = None
+    playing = None  # (song_key, last heard) of the song counted last
+    prev = None  # (song_key, first heard, reads in a row) up to the previous read
+    hk = Housekeeping(radio, book)
+    try:
+        while True:
+            t0 = time.monotonic()
+            hk.tick()
+            heard = now()
+            clip_start = None
+            try:
+                if manifest is None:
+                    manifest = resolve_manifest(ytdlp, radio.url, AUDIO_FORMAT)
+                    if not manifest:
+                        raise OSError("could not resolve the stream's audio")
+                clip_start = grab_audio(ffmpeg, manifest, clip, clip_seconds)
+                asked = time.monotonic()
+                got = shazam_read(shazam, clip)
+                lookup = round(time.monotonic() - asked, 1)  # slow = Shazam throttling us
+            except ShazamError as e:
+                prev = None
+                log_read(f"ERROR {e}", clip_start=clip_start)
+                hk.status(f"{e} — trying again next read")
+            except (OSError, ValueError, subprocess.SubprocessError, http.client.HTTPException) as e:
+                manifest, prev = None, None  # URL likely expired — resolve again next round
+                log_read(f"CAPTURE FAILED {type(e).__name__}: {str(e)[:200]}")
+                hk.status(f"could not capture the stream ({type(e).__name__}) — trying again next read")
+            else:
+                if got is None:
+                    prev = None
+                    log_read("NO MATCH", clip_start=clip_start, shazam_s=lookup)
+                    hk.status("Shazam has no match")
+                else:
+                    title, artist = (_recase(" ".join(s.split()), casing) for s in got[:2])
+                    match = got[2]
+                    log_read(f"{artist} - {title}", clip_start=clip_start,
+                             offset=match.get("offset"), timeskew=match.get("timeskew"),
+                             freqskew=match.get("frequencyskew"), matches=match.get("matches"),
+                             shazam_s=lookup)
+                    key = song_key(artist, title)
+                    if prev and key == prev[0]:
+                        prev = (key, prev[1], prev[2] + 1)
+                    else:
+                        prev = (key, heard, 1)
+                    if playing and key == playing[0] and heard - playing[1] <= still_playing:
+                        playing = (key, heard)
+                        hk.status("still playing", artist, title)
+                    elif prev[2] < confirm_reads:
+                        # too few reads to prove anything — the next must agree
+                        hk.status(f"unconfirmed ({prev[2]} of {confirm_reads} reads)", artist, title)
+                    else:
+                        playing = (key, heard)
+                        line = record_spin(book, ytdlp, prev[1], title, artist, radio,
+                                           hk.downloads, live=True)
+                        if line:
+                            hk.show(line)
+                        else:  # same spin as a few minutes ago
+                            hk.status("still playing", artist, title)
+            time.sleep(max(1.0, interval - (time.monotonic() - t0)))
+    except KeyboardInterrupt:
+        print("\nStopping.")
+    finally:
+        try:
+            os.remove(clip)
+        except OSError:
+            pass
         hk.finish()
     cmd_stats(args)
 
@@ -2091,6 +2418,8 @@ def cmd_watch(args):
     radio = resolve_radio(args)  # (platform support is checked by ensure_ocr)
     if radio.cfg["source"].get("type") == "radiorecord":
         return watch_radiorecord(args, radio)
+    if radio.cfg["source"].get("type") == "shazam":
+        return watch_shazam(args, radio)
     _lock = acquire_single_instance(radio, "watch")  # noqa: F841 — held until exit
     signal.signal(signal.SIGTERM, _sigterm)
     ytdlp = find_ytdlp(args.ytdlp)
@@ -2102,13 +2431,15 @@ def cmd_watch(args):
     interval = float(radio.cfg["capture_interval_seconds"])
     region = radio.cfg["ocr_region"]
     layout = radio.cfg["ocr_layout"]
-    unreadable = "?" if layout.get("always_visible", True) else "."
+    unreadable = ("track name not readable" if layout.get("always_visible", True)
+                  else "no track name on screen")
     frame = os.path.join(radio.folder, ".frame.jpg")
     print(f"Watching {radio.name}: {radio.url}", flush=True)
     print(f"One frame every {interval:.0f}s -> {radio.songs_csv}  (Ctrl+C to stop)", flush=True)
     print(
-        "'.' = same song still playing, '+' = new name, awaiting a confirming read, "
-        "'♪' = mp3 saved, '?' = overlay unreadable, 'x' = capture hiccup",
+        "Every read prints what is on screen: 'NEW song added' / 'play #N' when a song "
+        "starts, 'still playing', or 'unconfirmed' (a name never seen before — the next "
+        "read must agree before it counts)",
         flush=True,
     )
 
@@ -2116,7 +2447,7 @@ def cmd_watch(args):
     last = None
     pending = None  # unseen name waiting for a second identical read
     hk = Housekeeping(radio, book)
-    note, show, downloads = hk.note, hk.show, hk.downloads
+    show, status, downloads = hk.show, hk.status, hk.downloads
 
     try:
         while True:
@@ -2130,24 +2461,24 @@ def cmd_watch(args):
                         raise OSError("could not resolve the stream manifest")
                 grab_frame(ffmpeg, manifest, frame)
                 got = read_overlay(ocr, frame, region, layout)
-            except (OSError, subprocess.SubprocessError):
+            except (OSError, subprocess.SubprocessError) as e:
                 manifest = None  # URL likely expired — resolve again next round
-                note("x")
+                status(f"could not capture the stream ({type(e).__name__}) — trying again next read")
             else:
                 if got is None:
-                    note(unreadable)
+                    status(unreadable)
                 else:
                     title = normalize_name(got[0], casing)
                     artist = normalize_name(got[1], casing)
                     key = song_key(artist, title)
                     if key == last:
-                        note(".")
+                        status("still playing", artist, title)
                         pending = None
                     elif key not in book.songs and key != pending:
                         # a name never seen before: one-frame OCR misreads
                         # look exactly like this, so ask for a second opinion
                         pending = key
-                        note("+")
+                        status("unconfirmed (1 of 2 reads)", artist, title)
                     else:
                         pending = None
                         last = key
@@ -2157,8 +2488,8 @@ def cmd_watch(args):
                         )
                         if line:
                             show(line)
-                        else:
-                            note(".")  # e.g. brief flap back to the previous song
+                        else:  # e.g. brief flap back to the previous song
+                            status("still playing", artist, title)
             time.sleep(max(1.0, interval - (time.monotonic() - t0)))
     except KeyboardInterrupt:
         print("\nStopping.")

@@ -8,6 +8,21 @@ A repaired CSV without a code fix means the same junk returns on the
 next capture. After code changes, remind Marcel to restart his running
 `watch`/`log` process — it doesn't pick up code edits until restarted.
 
+## HISTORY.md — keep it current
+`HISTORY.md` is the project's memory inside git (Marcel's request,
+2026-11-11): his intentions, decisions and their reasons, experiments,
+what worked and what didn't, radios considered, test results. Claude's
+own memory folder does not move with the repository, so anything a
+future session on another machine (the Windows box) would need goes
+there. After any session that decides something, tries something, or
+learns something non-obvious, add a dated entry — in plain language
+Marcel can read, not code notes (those stay in this file).
+
+## Config reference
+`radios/CONFIG.md` explains every config.json key for Marcel (one page for
+all radios; README only points to it). When adding or changing a key,
+update it there AND in the DEFAULT_CONFIG comments.
+
 ## Known OCR junk patterns (already defended in code)
 The `watch` mode OCRs a video frame; one-frame misreads produce:
 leading/trailing junk chars (`• Name`, `Name*`, `Name -`, `Name®`),
@@ -27,17 +42,31 @@ left-aligned). The options exist for stations whose overlay differs:
 `ignore` for label texts like "NOW PLAYING", `default_artist` for
 single-line overlays, and `always_visible: false` (with a short capture
 interval) for stations that only show the name briefly per track (runs
-of `.` in between are not a bug; a new song is confirmed by a second
-read inside that window). Set `youtube_lookup: false` on stations whose
+of `no track name on screen` in between are not a bug; a new song is
+confirmed by a second read inside that window). Set `youtube_lookup: false` on stations whose
 tracks aren't on YouTube — the search returns junk and blocks the loop
 ~40 s per new song. One `watch` process per radio; commands need the radio name.
 Bare `watch` (no name) = `watch_all()` supervisor (added 2026-09-16): spawns
 `watch <name>` as a child (own session, so it gets SIGINT only from us) for
 every radio with top-level `"enabled": true` in config.json, prefixes each
-output line with `[name]` (switching writer mid-line forces a newline so the
-progress dots stay readable), tees everything with a timestamp into
+output line with `[name]` (switching writer mid-line forces a newline; the
+watches print whole lines only since 2026-11-13), tees everything with a timestamp into
 `watch.log` (gitignored), restarts a child that dies after >60 s, leaves one
 that dies at once. Per-radio `.watch.lock` still prevents double watches.
+
+## Console output: one line per read (2026-11-13)
+Marcel wants the console to say what every radio plays at any moment,
+not only when a song starts. So all three watch loops print exactly one
+line per read: `record_spin()`'s line when a spin counts (`NEW song
+added` / `play #N`), otherwise `Housekeeping.status()` — `still
+playing: A — T`, `unconfirmed (n of N reads): A — T`, `Shazam has no
+match`, `track name not readable`, `could not capture the stream (…)`.
+`radiorecord` prints `still playing` with the newest play when a poll
+brings nothing new. The old one-character progress marks (`.` `+` `?`
+`x` `♪`) are gone — don't bring them back, and give any new branch of a
+watch loop its own status line. Status lines never touch songs.csv.
+`watch.log` grows by an estimated 0.5 MB a day with four radios (it was
+0.18 MB on 2026-11-12, with the marks); there is no rotation yet.
 
 ## Artist name casing
 The overlay is ALL CAPS; `normalize_name()` title-cases it. Artists with
@@ -87,6 +116,46 @@ to `Remix` before `normalize_name()`. Replies are gzipped regardless of
 headers (`record_api()` inflates). Between-reads bookkeeping (progress
 marks, background mp3s, playlist catch-up) lives in `Housekeeping`,
 shared by both watch paths — don't re-inline it.
+
+## Shazam source (`source.type: shazam`, added 2026-11-11)
+For YouTube streams with no overlay and no chat bot (Gentleman Radio,
+radios/gentleman). `watch` dispatches to `watch_shazam()`: every
+capture_interval_seconds `grab_audio()` takes the newest
+`source.clip_seconds` (15) of the AUDIO_FORMAT HLS stream (via `newest_segments()`,
+shared with `grab_frame()`) as 16 kHz mono WAV, and `shazam_read()` runs
+`shazam_read.py` in `.venv` (one subprocess per read; JSON line out).
+`ensure_shazam()` pip-installs shazamio into `.venv` on first use (creates
+the venv with the running Python if missing). shazamio 0.9 / shazamio-core
+2.0 work on Python 3.14 and 3.15 (an older core segfaulted on 3.14).
+Rules, from the 2026-11-06 prototype: when Shazam doesn't know a track it
+returns a *different* famous song on nearly every read, so EVERY song
+needs `source.confirm_reads` (2) consecutive agreeing reads — no "known song counts at once"
+shortcut as in OCR watch, and no "1 of the last 2" rule (a wrong answer
+came back with one read in between). Any failed or no-match read resets
+the pair. A song unheard for > 3 intervals (min 3 min) must be re-confirmed; the
+12-minute same-spin window in `add_spin()` keeps that from double
+counting. Names keep Shazam's casing (`_recase()` with
+artist-casing.txt only, never `normalize_name()`'s SHOUTING fix).
+Shazam errors (`ShazamError`) keep the manifest and print their reason;
+capture errors reset the manifest. Every raw read
+(answer / NO MATCH / ERROR / CAPTURE FAILED) is appended to
+`radios/<name>/.shazam-reads.tsv` (gitignored) — check it before
+judging a run of `unconfirmed` lines or a doubtful song. Since 2026-11-12 each line also
+carries tab-separated `name=value` fields: `clip_start` (stream time of
+the clip's first segment from `hls_tail()`: PROGRAM-DATE-TIME as Unix
+time, else media sequence x target duration), `shazam_s` (lookup time;
+rises when Shazam throttles) and, for a match, `offset` (seconds into
+the track), `timeskew`, `freqskew`, `matches` (candidate count) from
+`shazam_read.py`. Older lines have only time + answer. On a true match
+`offset` grows by exactly the growth of `clip_start` (measured: within
+0.02 s) and both skews are ~0.0001; a wrong answer seen once had skews
+of 0.007-0.05. These fields are RECORDED ONLY so far — the plan is to
+require offset progress before a song counts, after checking a day of
+data against known wrong songs (see HISTORY.md, 2026-11-12). The helper
+runs per read, so a running watch picks up shazam_read.py edits at once
+(keep its JSON backward compatible); radio_tracklog.py edits need a
+restart. One read per
+minute was never throttled; bursts of ~20 requests were (≈30 s each).
 
 ## yt-dlp speed on this Mac
 The standalone yt-dlp binary (yt-dlp_macos) has a ~77 s cold start here

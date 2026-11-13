@@ -1,5 +1,6 @@
-# optional machine-specific Python env (not required — the script uses
-# the standalone yt-dlp binary it downloads itself)
+# machine-specific Python env: a faster yt-dlp (optional — the standalone
+# binary works too) and shazamio for `shazam` radios (installed into it
+# automatically on first use)
 .venv/
 
 # standalone binaries, auto-downloaded by the script on first use
@@ -21,6 +22,8 @@
 # transient files written while the loggers run (auto-cleaned on exit)
 radios/*/chat-*
 radios/*/.frame.jpg*
+radios/*/.clip.wav*
+radios/*/.shazam-reads.tsv
 radios/*/.*.lock
 
 # downloaded music (re-fetchable anytime with: radio_tracklog.py download)
